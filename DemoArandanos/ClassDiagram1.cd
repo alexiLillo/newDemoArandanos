@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DemoArandanos.Modelo">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAACAAAEABAAAAIAAQAEAAAAAAAAAAAAAAAAgg=</HashCode>
+      <FileName>Modelo\Modelo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DemoArandanos.Planta">
+    <Position X="3" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAAAAAAAEAABAAAAAAQCAAAAAAAAAAAgAAQAAAgg=</HashCode>
+      <FileName>Modelo\Planta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
