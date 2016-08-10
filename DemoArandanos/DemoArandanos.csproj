@@ -148,7 +148,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="aWebForm1.aspx" />
     <Content Include="CargarExcel2.aspx" />
     <Content Include="content\css\GridviewScroll.css" />
     <Content Include="Global.asax" />
@@ -216,13 +215,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
-    <Compile Include="aWebForm1.aspx.cs">
-      <DependentUpon>aWebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="aWebForm1.aspx.designer.cs">
-      <DependentUpon>aWebForm1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CargarExcel2.aspx.cs">
       <DependentUpon>CargarExcel2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
