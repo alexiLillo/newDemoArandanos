@@ -92,12 +92,32 @@
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="dsMapeo" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo3 %>" SelectCommand="SELECT ID_Mapeo, SUBSTRING(cast(Fecha_Inicio as varchar) + ' / ' + cast(Fecha_Termino as varchar),1,4) as temp FROM [Map]"></asp:SqlDataSource>
                         <br />
+                        <label for="ddVariedad">Variedad</label>
+                        <asp:DropDownList ID="ddVariedad" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsVariedad" DataTextField="Nombre" DataValueField="Nombre" OnDataBound="ddVariedad_DataBound" OnSelectedIndexChanged="ddVariedad_SelectedIndexChanged">
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="dsVariedad" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo6 %>" SelectCommand="SELECT * FROM [Variedad] WHERE ([ID_Producto] = @ID_Producto)">
+                            <SelectParameters>
+                                <asp:Parameter DefaultValue="32" Name="ID_Producto" Type="String" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
+                        <br />
                         <label for="ddFundo">Fundo</label>
-                        <asp:DropDownList ID="ddFundo" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="Nombre" DataValueField="ID_Fundo" DataSourceID="dsFundo" OnSelectedIndexChanged="ddFundo_SelectedIndexChanged"></asp:DropDownList>
+                        <asp:DropDownList ID="ddFundo" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="Nombre" DataValueField="ID_Fundo" DataSourceID="dsFundoVista" OnSelectedIndexChanged="ddFundo_SelectedIndexChanged" OnDataBound="ddFundo_DataBound"></asp:DropDownList>
+                        <asp:SqlDataSource ID="dsFundoVista" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo7 %>" SelectCommand="SELECT DISTINCT ID_Fundo, Nombre FROM VistaAll WHERE (nombreVariedad LIKE @nombreVariedad + '%')">
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="ddVariedad" Name="nombreVariedad" PropertyName="SelectedValue" Type="String" DefaultValue="" ConvertEmptyStringToNull="False" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
                         <asp:SqlDataSource ID="dsFundo" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo3 %>" SelectCommand="SELECT * FROM [Fundo]"></asp:SqlDataSource>
                         <br />
                         <label for="ddPotrero">Potrero</label>
-                        <asp:DropDownList ID="ddPotrero" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="Nombre" DataValueField="ID_Potrero" DataSourceID="potrerosDEfundo" AppendDataBoundItems="false" OnDataBound="ddPotrero_DataBound" OnSelectedIndexChanged="ddPotrero_SelectedIndexChanged"></asp:DropDownList>
+                        <asp:DropDownList ID="ddPotrero" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="nombrePotrero" DataValueField="ID_Potrero" DataSourceID="potrerosDEfundoVista" OnDataBound="ddPotrero_DataBound" OnSelectedIndexChanged="ddPotrero_SelectedIndexChanged"></asp:DropDownList>
+                        <asp:SqlDataSource ID="potrerosDEfundoVista" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo7 %>" SelectCommand="SELECT DISTINCT ID_Potrero, nombrePotrero FROM VistaAll WHERE (ID_Fundo LIKE @ID_Fundo + '%') AND (nombreVariedad LIKE @nombreVariedad + '%')">
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="ddFundo" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="ddVariedad" Name="nombreVariedad" PropertyName="SelectedValue" Type="String" DefaultValue="" ConvertEmptyStringToNull="False" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>                        
                         <asp:SqlDataSource ID="potrerosDEfundo" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo3 %>" SelectCommand="SELECT * FROM [Potrero] WHERE ([ID_Fundo] = @ID_Fundo)">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="ddFundo" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
@@ -105,7 +125,14 @@
                         </asp:SqlDataSource>
                         <br />
                         <label for="ddSector">Sector</label>
-                        <asp:DropDownList ID="ddSector" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="Nombre" DataValueField="ID_Sector" DataSourceID="sectoresDEpotrero" AppendDataBoundItems="false" OnDataBound="ddSector_DataBound" OnSelectedIndexChanged="ddSector_SelectedIndexChanged"></asp:DropDownList>
+                        <asp:DropDownList ID="ddSector" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="nombreSector" DataValueField="ID_Sector" DataSourceID="sectoresDEpotreroVista" OnDataBound="ddSector_DataBound" OnSelectedIndexChanged="ddSector_SelectedIndexChanged"></asp:DropDownList>
+                        <asp:SqlDataSource ID="sectoresDEpotreroVista" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo7 %>" SelectCommand="SELECT DISTINCT ID_Sector, nombreSector FROM VistaAll WHERE (ID_Fundo LIKE @ID_Fundo + '%') AND (ID_Potrero LIKE @ID_Potrero + '%') AND (nombreVariedad LIKE @nombreVariedad + '%')">
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="ddFundo" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="ddPotrero" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="ddVariedad" Name="nombreVariedad" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
                         <asp:SqlDataSource ID="sectoresDEpotrero" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo3 %>" SelectCommand="SELECT * FROM [Sector] WHERE (([ID_Potrero] = @ID_Potrero) AND ([ID_Fundo] = @ID_Fundo))">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="ddPotrero" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
@@ -115,7 +142,15 @@
                         <br />
                         <label for="ddCuartel">Cuartel</label>
                         <div class="input-group">
-                            <asp:DropDownList ID="ddCuartel" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="Nombre" DataValueField="ID_Cuartel" DataSourceID="cuartelesDEsector" AppendDataBoundItems="false" OnDataBound="ddCuartel_DataBound" OnSelectedIndexChanged="ddCuartel_SelectedIndexChanged"></asp:DropDownList>
+                            <asp:DropDownList ID="ddCuartel" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="nombreCuartel" DataValueField="ID_Cuartel" DataSourceID="cuartelesDEsectorVista" OnDataBound="ddCuartel_DataBound" OnSelectedIndexChanged="ddCuartel_SelectedIndexChanged"></asp:DropDownList>
+                            <asp:SqlDataSource ID="cuartelesDEsectorVista" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo7 %>" SelectCommand="SELECT DISTINCT nombreCuartel, ID_Cuartel FROM VistaAll WHERE (ID_Fundo LIKE @ID_Fundo + '%') AND (ID_Potrero LIKE @ID_Potrero + '%') AND (ID_Sector LIKE @ID_Sector + '%') AND (nombreVariedad LIKE @nombreVariedad + '%')">
+                                <SelectParameters>
+                                    <asp:ControlParameter ControlID="ddFundo" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" />
+                                    <asp:ControlParameter ControlID="ddPotrero" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" />
+                                    <asp:ControlParameter ControlID="ddSector" Name="ID_Sector" PropertyName="SelectedValue" Type="String" />
+                                    <asp:ControlParameter ControlID="ddVariedad" ConvertEmptyStringToNull="False" Name="nombreVariedad" PropertyName="SelectedValue" Type="String" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
                             <span class="input-group-btn">
                                 <asp:Button ID="btVerHileras" type="button" AutoPostBack="False" class="btn btn-default" runat="server" Text="Ver" OnClick="btVerHileras_Click" />
                             </span>
@@ -129,7 +164,16 @@
                         </asp:SqlDataSource>
                         <br />
                         <label for="ddHilera">Hilera</label>
-                        <asp:DropDownList ID="ddHilera" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="ID_Hilera" DataValueField="ID_Hilera" DataSourceID="hilerasDEcuartel" AppendDataBoundItems="false" OnDataBound="ddHilera_DataBound" OnSelectedIndexChanged="ddHilera_SelectedIndexChanged"></asp:DropDownList>
+                        <asp:DropDownList ID="ddHilera" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="ID_Hilera" DataValueField="ID_Hilera" DataSourceID="hilerasDEcuartelVista" OnDataBound="ddHilera_DataBound" OnSelectedIndexChanged="ddHilera_SelectedIndexChanged"></asp:DropDownList>
+                        <asp:SqlDataSource ID="hilerasDEcuartelVista" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo7 %>" SelectCommand="SELECT DISTINCT ID_Hilera FROM VistaAll WHERE (ID_Fundo LIKE @ID_Fundo + '%') AND (ID_Potrero LIKE @ID_Potrero + '%') AND (ID_Sector LIKE @ID_Sector + '%') AND (ID_Cuartel LIKE @ID_Cuartel + '%') AND (nombreVariedad LIKE @nombreVariedad + '%')">
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="ddFundo" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="ddPotrero" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="ddSector" Name="ID_Sector" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="ddCuartel" Name="ID_Cuartel" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="ddVariedad" ConvertEmptyStringToNull="False" Name="nombreVariedad" PropertyName="SelectedValue" Type="String" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
                         <asp:SqlDataSource ID="hilerasDEcuartel" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo3 %>" SelectCommand="SELECT * FROM [Hilera] WHERE (([ID_Cuartel] = @ID_Cuartel) AND ([ID_Sector] = @ID_Sector) AND ([ID_Potrero] = @ID_Potrero) AND ([ID_Fundo] = @ID_Fundo))">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="ddCuartel" Name="ID_Cuartel" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />

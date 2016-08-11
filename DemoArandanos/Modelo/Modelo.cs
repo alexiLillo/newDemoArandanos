@@ -8,7 +8,7 @@ namespace DemoArandanos.Modelo
     public partial class Modelo : DbContext
     {
         public Modelo()
-            : base("name=Modelo6")
+            : base("name=Modelo7")
         {
         }
 
@@ -34,6 +34,7 @@ namespace DemoArandanos.Modelo
         public virtual DbSet<SyncVariedad> SyncVariedad { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Variedad> Variedad { get; set; }
+        public virtual DbSet<VistaAll> VistaAll { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -60,7 +61,8 @@ namespace DemoArandanos.Modelo
             modelBuilder.Entity<Cuartel>()
                 .HasMany(e => e.Hilera)
                 .WithRequired(e => e.Cuartel)
-                .HasForeignKey(e => new { e.ID_Cuartel, e.ID_Sector, e.ID_Potrero, e.ID_Fundo });
+                .HasForeignKey(e => new { e.ID_Cuartel, e.ID_Sector, e.ID_Potrero, e.ID_Fundo })
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Estado>()
                 .Property(e => e.ID_Estado)
@@ -69,8 +71,7 @@ namespace DemoArandanos.Modelo
             modelBuilder.Entity<Estado>()
                 .HasMany(e => e.Planta)
                 .WithOptional(e => e.Estado1)
-                .HasForeignKey(e => e.Estado)
-                .WillCascadeOnDelete();
+                .HasForeignKey(e => e.Estado);
 
             modelBuilder.Entity<Fundo>()
                 .Property(e => e.ID_Fundo)
@@ -79,6 +80,11 @@ namespace DemoArandanos.Modelo
             modelBuilder.Entity<Fundo>()
                 .Property(e => e.Nombre)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Fundo>()
+                .HasMany(e => e.Potrero)
+                .WithRequired(e => e.Fundo)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Hilera>()
                 .Property(e => e.ID_Hilera)
@@ -107,8 +113,7 @@ namespace DemoArandanos.Modelo
             modelBuilder.Entity<Hilera>()
                 .HasMany(e => e.Planta)
                 .WithRequired(e => e.Hilera)
-                .HasForeignKey(e => new { e.ID_Hilera, e.ID_Cuartel, e.ID_Sector, e.ID_Potrero, e.ID_Fundo, e.ID_Mapeo })
-                .WillCascadeOnDelete(false);
+                .HasForeignKey(e => new { e.ID_Hilera, e.ID_Cuartel, e.ID_Sector, e.ID_Potrero, e.ID_Fundo, e.ID_Mapeo });
 
             modelBuilder.Entity<Map>()
                 .HasMany(e => e.Hilera)
@@ -166,7 +171,8 @@ namespace DemoArandanos.Modelo
             modelBuilder.Entity<Potrero>()
                 .HasMany(e => e.Sector)
                 .WithRequired(e => e.Potrero)
-                .HasForeignKey(e => new { e.ID_Potrero, e.ID_Fundo });
+                .HasForeignKey(e => new { e.ID_Potrero, e.ID_Fundo })
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Producto>()
                 .Property(e => e.ID_Producto)
@@ -200,7 +206,8 @@ namespace DemoArandanos.Modelo
             modelBuilder.Entity<Sector>()
                 .HasMany(e => e.Cuartel)
                 .WithRequired(e => e.Sector)
-                .HasForeignKey(e => new { e.ID_Sector, e.ID_Potrero, e.ID_Fundo });
+                .HasForeignKey(e => new { e.ID_Sector, e.ID_Potrero, e.ID_Fundo })
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SyncCuartel>()
                 .Property(e => e.ID_Cuartel)
@@ -420,6 +427,50 @@ namespace DemoArandanos.Modelo
 
             modelBuilder.Entity<Variedad>()
                 .Property(e => e.ID_Producto)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VistaAll>()
+                .Property(e => e.ID_Fundo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VistaAll>()
+                .Property(e => e.Nombre)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VistaAll>()
+                .Property(e => e.ID_Potrero)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VistaAll>()
+                .Property(e => e.nombrePotrero)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VistaAll>()
+                .Property(e => e.ID_Sector)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VistaAll>()
+                .Property(e => e.nombreSector)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VistaAll>()
+                .Property(e => e.ID_Cuartel)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VistaAll>()
+                .Property(e => e.nombreCuartel)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VistaAll>()
+                .Property(e => e.ID_Hilera)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VistaAll>()
+                .Property(e => e.Variedad)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VistaAll>()
+                .Property(e => e.nombreVariedad)
                 .IsUnicode(false);
         }
     }

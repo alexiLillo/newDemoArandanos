@@ -264,6 +264,19 @@ namespace DemoArandanos.Controlador
             return list;
         }
 
+        public string getVariedadHilera(String id_hilera, String id_cuartel, String id_sector, String id_potrero, String id_fundo, int id_mapeo)
+        {
+            String variedad = (from h in contexto.Hilera
+                               where h.ID_Hilera == id_hilera
+                                   && h.ID_Cuartel == id_cuartel
+                                   && h.ID_Sector == id_sector
+                                   && h.ID_Potrero == id_potrero
+                                   && h.ID_Fundo == id_fundo
+                                   && h.ID_Mapeo == id_mapeo
+                               select h.Variedad).FirstOrDefault().ToString();
+            return variedad;
+        }
+
         public void insertarHilera(String id_hilera, String id_cuartel, String id_sector, String id_potrero, String id_fundo, String id_variedad)
         {
             contexto.Hilera.Add(new Hilera { ID_Hilera = id_hilera.ToUpper().Replace(",", "."), ID_Cuartel = id_cuartel.ToUpper(), ID_Sector = id_sector.ToUpper(), ID_Potrero = id_potrero.ToUpper(), ID_Fundo = id_fundo.ToUpper(), Variedad = id_variedad.ToUpper(), ID_Mapeo = lastMapeo() });
@@ -379,36 +392,88 @@ namespace DemoArandanos.Controlador
             contexto.SaveChanges();
         }
 
-        public int countPlantas(String id_fundo, String id_potrero, String id_sector, String id_cuartel, String id_hilera, String estado, int mapeo)
+        public int countPlantas(String id_fundo, String id_potrero, String id_sector, String id_cuartel, String id_hilera, String estado, int mapeo, String variedad)
         {
             int cant = 0;
-            if (id_potrero.Equals("0"))
+            if (variedad.Equals(""))
             {
-                cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.Estado == estado && pl.ID_Mapeo == mapeo select pl).Count();
-            }
-            else
-            {
-                if (id_sector.Equals("0"))
+                if (id_fundo.Equals("0"))
                 {
-                    cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.ID_Potrero == id_potrero && pl.Estado == estado && pl.ID_Mapeo == mapeo select pl).Count();
+                    cant = (from pl in contexto.Planta where pl.Estado == estado && pl.ID_Mapeo == mapeo select pl).Count();
                 }
                 else
                 {
-                    if (id_cuartel.Equals("0"))
+                    if (id_potrero.Equals("0"))
                     {
-                        cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.ID_Potrero == id_potrero && pl.ID_Sector == id_sector && pl.Estado == estado && pl.ID_Mapeo == mapeo select pl).Count();
+                        cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.Estado == estado && pl.ID_Mapeo == mapeo select pl).Count();
                     }
                     else
                     {
-                        if (id_hilera.Equals("0"))
+                        if (id_sector.Equals("0"))
                         {
-                            cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.ID_Potrero == id_potrero && pl.ID_Sector == id_sector && pl.ID_Cuartel == id_cuartel && pl.Estado == estado && pl.ID_Mapeo == mapeo select pl).Count();
+                            cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.ID_Potrero == id_potrero && pl.Estado == estado && pl.ID_Mapeo == mapeo select pl).Count();
                         }
                         else
                         {
-                            if (!id_hilera.Equals("0"))
+                            if (id_cuartel.Equals("0"))
                             {
-                                cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.ID_Potrero == id_potrero && pl.ID_Sector == id_sector && pl.ID_Cuartel == id_cuartel && pl.ID_Hilera == id_hilera && pl.Estado == estado && pl.ID_Mapeo == mapeo select pl).Count();
+                                cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.ID_Potrero == id_potrero && pl.ID_Sector == id_sector && pl.Estado == estado && pl.ID_Mapeo == mapeo select pl).Count();
+                            }
+                            else
+                            {
+                                if (id_hilera.Equals("0"))
+                                {
+                                    cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.ID_Potrero == id_potrero && pl.ID_Sector == id_sector && pl.ID_Cuartel == id_cuartel && pl.Estado == estado && pl.ID_Mapeo == mapeo select pl).Count();
+                                }
+                                else
+                                {
+                                    if (!id_hilera.Equals("0"))
+                                    {
+                                        cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.ID_Potrero == id_potrero && pl.ID_Sector == id_sector && pl.ID_Cuartel == id_cuartel && pl.ID_Hilera == id_hilera && pl.Estado == estado && pl.ID_Mapeo == mapeo select pl).Count();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (id_fundo.Equals("0"))
+                {
+                    cant = (from pl in contexto.Planta where pl.Estado == estado && pl.ID_Mapeo == mapeo && pl.Hilera.Variedad == variedad select pl).Count();
+                }
+                else
+                {
+                    if (id_potrero.Equals("0"))
+                    {
+                        cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.Estado == estado && pl.ID_Mapeo == mapeo && pl.Hilera.Variedad == variedad select pl).Count();
+                    }
+                    else
+                    {
+                        if (id_sector.Equals("0"))
+                        {
+                            cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.ID_Potrero == id_potrero && pl.Estado == estado && pl.ID_Mapeo == mapeo && pl.Hilera.Variedad == variedad select pl).Count();
+                        }
+                        else
+                        {
+                            if (id_cuartel.Equals("0"))
+                            {
+                                cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.ID_Potrero == id_potrero && pl.ID_Sector == id_sector && pl.Estado == estado && pl.ID_Mapeo == mapeo && pl.Hilera.Variedad == variedad select pl).Count();
+                            }
+                            else
+                            {
+                                if (id_hilera.Equals("0"))
+                                {
+                                    cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.ID_Potrero == id_potrero && pl.ID_Sector == id_sector && pl.ID_Cuartel == id_cuartel && pl.Estado == estado && pl.ID_Mapeo == mapeo && pl.Hilera.Variedad == variedad select pl).Count();
+                                }
+                                else
+                                {
+                                    if (!id_hilera.Equals("0"))
+                                    {
+                                        cant = (from pl in contexto.Planta where pl.ID_Fundo == id_fundo && pl.ID_Potrero == id_potrero && pl.ID_Sector == id_sector && pl.ID_Cuartel == id_cuartel && pl.ID_Hilera == id_hilera && pl.Estado == estado && pl.ID_Mapeo == mapeo && pl.Hilera.Variedad == variedad select pl).Count();
+                                    }
+                                }
                             }
                         }
                     }

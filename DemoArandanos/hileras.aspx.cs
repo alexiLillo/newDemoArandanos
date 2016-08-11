@@ -21,25 +21,30 @@ namespace DemoArandanos
             string potrero = Application["potrero"].ToString();
             string sector = Application["sector"].ToString();
             string cuartel = Application["cuartel"].ToString();
+            string variedad = Application["variedad"].ToString();
             lbltitulo.Text = Application["titulo"].ToString();
-            lblgrande.Text = " Grandes: " + control.countPlantas(fundo, potrero, sector, cuartel, "0", "GRANDE", mapeo) + " ";
+
+            if (Application["variedad"].ToString().Equals(""))
+            {
+                lblvariedad.Text = "Todas";
+            }
+            else
+            {
+                lblvariedad.Text = Application["variedad"].ToString();
+            }
+            
+            lblgrande.Text = " Grandes: " + control.countPlantas(fundo, potrero, sector, cuartel, "0", "GRANDE", mapeo, variedad) + " ";
             lblgrande.BackColor = Color.Green;
             lblgrande.ForeColor = Color.White;
-            lblmediana.Text = " Medianas: " + control.countPlantas(fundo, potrero, sector, cuartel, "0", "MEDIANA", mapeo) + " ";
+            lblmediana.Text = " Medianas: " + control.countPlantas(fundo, potrero, sector, cuartel, "0", "MEDIANA", mapeo, variedad) + " ";
             lblmediana.BackColor = Color.LawnGreen;
             lblmediana.ForeColor = Color.Gray;
-            lblchica.Text = " Chicas: " + control.countPlantas(fundo, potrero, sector, cuartel, "0", "CHICA", mapeo) + " ";
+            lblchica.Text = " Chicas: " + control.countPlantas(fundo, potrero, sector, cuartel, "0", "CHICA", mapeo, variedad) + " ";
             lblchica.BackColor = Color.Yellow;
             lblchica.ForeColor = Color.Gray;
-            lblsin_planta.Text = " Sin planta: " + control.countPlantas(fundo, potrero, sector, cuartel, "0", "SIN_PLANTA", mapeo);
+            lblsin_planta.Text = " Sin planta: " + control.countPlantas(fundo, potrero, sector, cuartel, "0", "SIN_PLANTA", mapeo, variedad);
             lblsin_planta.BackColor = Color.Gray;
             lblsin_planta.ForeColor = Color.White;
-
-            //int mapeo = int.Parse(Request.Cookies["mapeo"].Value);
-            //string fundo = Request.Cookies["fundo"].Value;
-            //string potrero = Request.Cookies["potrero"].Value;
-            //string sector = Request.Cookies["sector"].Value;
-            //string cuartel = Request.Cookies["cuartel"].Value;
 
             listaHileras = control.listaHileras(cuartel, sector, potrero, fundo, mapeo);
             DataTable dt = new DataTable();
@@ -48,7 +53,6 @@ namespace DemoArandanos
             DataRow dr;
             bool first = true;
             dt.Columns.Add(new DataColumn("Hileras"));
-
 
 
             foreach (string idHilera in listaHileras)
@@ -66,7 +70,6 @@ namespace DemoArandanos
                 first = false;
             }
 
-
             foreach (string idHilera in listaHileras)
             {
                 dt.Columns.Add(new DataColumn(idHilera));
@@ -76,7 +79,6 @@ namespace DemoArandanos
                     if (listaEstadosPlantas[i].EndsWith("GRANDE"))
                     {
                         dt.Rows[int.Parse(listaEstadosPlantas[i].Substring(2, 4)) - 1][idHilera] = "G";
-
                     }
                     else
                     {
@@ -117,10 +119,44 @@ namespace DemoArandanos
             //        }
             //    }
             //}
-
-
+                        
             grillaHileras.DataSource = dt;
             grillaHileras.DataBind();
+
+            //PINTAR ENCABEZADOS
+            //int z = 1;
+            //foreach (string idHilera in listaHileras)
+            //{
+            //    String vari = control.getVariedadHilera(idHilera, cuartel, sector, potrero, fundo, mapeo);
+            //    if (vari.Equals("TIFBLUE"))
+            //    {
+            //        grillaHileras.HeaderRow.Cells[z].BackColor = Color.Blue;
+            //        grillaHileras.HeaderRow.Cells[z].ForeColor = Color.White;
+            //    }
+            //    if (vari.Equals("BRIGHTWELL"))
+            //    {
+            //        grillaHileras.HeaderRow.Cells[z].BackColor = Color.Gold;
+            //        grillaHileras.HeaderRow.Cells[z].ForeColor = Color.White;
+            //    }
+            //    z++;
+            //}            
+
+            //PINTAR BLANCA COLUMNA DE OTRA VARIEDAD
+            int z = 1;
+            foreach (string idHilera in listaHileras)
+            {
+                String vari = control.getVariedadHilera(idHilera, cuartel, sector, potrero, fundo, mapeo);
+                if (!vari.Equals(lblvariedad.Text) && !lblvariedad.Text.Equals("Todas"))
+                {
+                    foreach (GridViewRow row in grillaHileras.Rows)
+                    {
+                        row.Cells[z].BackColor = Color.White;
+                        row.Cells[z].ForeColor = Color.White;
+                    }
+                }            
+                z++;
+            }
+
         }
 
 

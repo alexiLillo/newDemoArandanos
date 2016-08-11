@@ -6,7 +6,7 @@
 <head runat="server">
     <title>Plantas por Cuartel</title>
 
-<%--    <link href="content/css/GridviewScroll.css" rel="stylesheet" type="text/css" />
+    <%--    <link href="content/css/GridviewScroll.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
     <script src="scripts/gridviewScroll.min.js" type="text/html"></script>
@@ -61,15 +61,38 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <h2><label><asp:Label ID="lbltitulo" runat="server" Text="Cuartel"></asp:Label></label></h2>
-        <label><asp:Label ID="Label1" runat="server" Text="Cantidad de Plantas: "></asp:Label> </label> 
-        <label><asp:Label ID="lblgrande" runat="server" Text=""></asp:Label> </label> 
-        <label><asp:Label ID="lblmediana" runat="server" Text=""></asp:Label> </label> 
-        <label><asp:Label ID="lblchica" runat="server" Text=""></asp:Label> </label> 
-        <label><asp:Label ID="lblsin_planta" runat="server" Text=""></asp:Label> </label>
+        <h2>
+            <label>
+                <asp:Label ID="lbltitulo" runat="server" Text="Cuartel"></asp:Label></label>
 
-                <asp:GridView ID="grillaHileras" class="table table-bordered" runat="server" OnRowDataBound="grillaHileras_RowDataBound" AutoGenerateColumns="true">
-                </asp:GridView>
+        </h2>
+        <h3>
+            <label>
+                <asp:Label ID="Label2" runat="server" Text="Variedad: "></asp:Label>
+            </label>
+            <label>
+                <asp:Label ID="lblvariedad" runat="server" Text=""></asp:Label>
+            </label>
+        </h3>        
+        <label>
+            <asp:Label ID="Label1" runat="server" Text="Cantidad de Plantas: "></asp:Label>
+        </label>
+        <label>
+            <asp:Label ID="lblgrande" runat="server" Text=""></asp:Label>
+        </label>
+        <label>
+            <asp:Label ID="lblmediana" runat="server" Text=""></asp:Label>
+        </label>
+        <label>
+            <asp:Label ID="lblchica" runat="server" Text=""></asp:Label>
+        </label>
+        <label>
+            <asp:Label ID="lblsin_planta" runat="server" Text=""></asp:Label>
+        </label>
+
+
+        <asp:GridView ID="grillaHileras" class="table table-bordered" runat="server" OnRowDataBound="grillaHileras_RowDataBound" AutoGenerateColumns="true">
+        </asp:GridView>
 
     </form>
 

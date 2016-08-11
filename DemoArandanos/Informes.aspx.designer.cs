@@ -193,6 +193,24 @@ namespace DemoArandanos {
         protected global::System.Web.UI.WebControls.SqlDataSource dsMapeo;
         
         /// <summary>
+        /// Control ddVariedad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddVariedad;
+        
+        /// <summary>
+        /// Control dsVariedad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource dsVariedad;
+        
+        /// <summary>
         /// Control ddFundo.
         /// </summary>
         /// <remarks>
@@ -200,6 +218,15 @@ namespace DemoArandanos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddFundo;
+        
+        /// <summary>
+        /// Control dsFundoVista.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource dsFundoVista;
         
         /// <summary>
         /// Control dsFundo.
@@ -220,6 +247,15 @@ namespace DemoArandanos {
         protected global::System.Web.UI.WebControls.DropDownList ddPotrero;
         
         /// <summary>
+        /// Control potrerosDEfundoVista.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource potrerosDEfundoVista;
+        
+        /// <summary>
         /// Control potrerosDEfundo.
         /// </summary>
         /// <remarks>
@@ -238,6 +274,15 @@ namespace DemoArandanos {
         protected global::System.Web.UI.WebControls.DropDownList ddSector;
         
         /// <summary>
+        /// Control sectoresDEpotreroVista.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sectoresDEpotreroVista;
+        
+        /// <summary>
         /// Control sectoresDEpotrero.
         /// </summary>
         /// <remarks>
@@ -254,6 +299,15 @@ namespace DemoArandanos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddCuartel;
+        
+        /// <summary>
+        /// Control cuartelesDEsectorVista.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource cuartelesDEsectorVista;
         
         /// <summary>
         /// Control btVerHileras.
@@ -281,6 +335,15 @@ namespace DemoArandanos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddHilera;
+        
+        /// <summary>
+        /// Control hilerasDEcuartelVista.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource hilerasDEcuartelVista;
         
         /// <summary>
         /// Control hilerasDEcuartel.

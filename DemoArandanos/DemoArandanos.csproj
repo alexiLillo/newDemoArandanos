@@ -179,6 +179,7 @@
     <Content Include="Master2.Master" />
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
     <Content Include="apiapp.json" />
+    <Content Include="ClassDiagram2.cd" />
     <None Include="Properties\PublishProfiles\GESTION.pubxml" />
     <None Include="Properties\PublishProfiles\GESTIONPRODCAF.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -305,6 +306,7 @@
     <Compile Include="Modelo\SyncVariedad.cs" />
     <Compile Include="Modelo\Usuarios.cs" />
     <Compile Include="Modelo\Variedad.cs" />
+    <Compile Include="Modelo\VistaAll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
