@@ -506,7 +506,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
-                    lbldanger.Text = "Ingrese datos válidos para poder actualizar";
+                    lbldanger.Text = "Ingrese datos válidos para poder actualizar";                    
                     divDanger.Visible = true;
                 }
             }

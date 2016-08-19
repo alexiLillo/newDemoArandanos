@@ -32,7 +32,7 @@ namespace DemoArandanos
             {
                 lblvariedad.Text = Application["variedad"].ToString();
             }
-            
+
             lblgrande.Text = " Grandes: " + control.countPlantas(fundo, potrero, sector, cuartel, "0", "GRANDE", mapeo, variedad) + " ";
             lblgrande.BackColor = Color.Green;
             lblgrande.ForeColor = Color.White;
@@ -45,6 +45,9 @@ namespace DemoArandanos
             lblsin_planta.Text = " Sin planta: " + control.countPlantas(fundo, potrero, sector, cuartel, "0", "SIN_PLANTA", mapeo, variedad);
             lblsin_planta.BackColor = Color.Gray;
             lblsin_planta.ForeColor = Color.White;
+            lblreplante.Text = " Replante: " + control.countPlantas(fundo, potrero, sector, cuartel, "0", "REPLANTE", mapeo, variedad);
+            lblreplante.BackColor = Color.LightBlue;
+            lblreplante.ForeColor = Color.Gray;
 
             listaHileras = control.listaHileras(cuartel, sector, potrero, fundo, mapeo);
             DataTable dt = new DataTable();
@@ -94,9 +97,16 @@ namespace DemoArandanos
                             }
                             else
                             {
-                                if (listaEstadosPlantas[i].EndsWith("SIN_PLANTA"))
+                                if (listaEstadosPlantas[i].EndsWith("REPLANTE"))
                                 {
-                                    dt.Rows[int.Parse(listaEstadosPlantas[i].Substring(2, 4)) - 1][idHilera] = "X";
+                                    dt.Rows[int.Parse(listaEstadosPlantas[i].Substring(2, 4)) - 1][idHilera] = "R";
+                                }
+                                else
+                                {
+                                    if (listaEstadosPlantas[i].EndsWith("SIN_PLANTA"))
+                                    {
+                                        dt.Rows[int.Parse(listaEstadosPlantas[i].Substring(2, 4)) - 1][idHilera] = "X";
+                                    }
                                 }
                             }
                         }
@@ -119,7 +129,7 @@ namespace DemoArandanos
             //        }
             //    }
             //}
-                        
+
             grillaHileras.DataSource = dt;
             grillaHileras.DataBind();
 
@@ -153,7 +163,7 @@ namespace DemoArandanos
                         row.Cells[z].BackColor = Color.White;
                         row.Cells[z].ForeColor = Color.White;
                     }
-                }            
+                }
                 z++;
             }
 
@@ -187,10 +197,18 @@ namespace DemoArandanos
                             }
                             else
                             {
-                                if (e.Row.Cells[i].Text.Equals("X"))
+                                if (e.Row.Cells[i].Text.Equals("R"))
                                 {
-                                    e.Row.Cells[i].BackColor = Color.Gray;
-                                    e.Row.Cells[i].ForeColor = Color.Gray;
+                                    e.Row.Cells[i].BackColor = Color.LightBlue;
+                                    e.Row.Cells[i].ForeColor = Color.LightBlue;
+                                }
+                                else
+                                {
+                                    if (e.Row.Cells[i].Text.Equals("X"))
+                                    {
+                                        e.Row.Cells[i].BackColor = Color.Gray;
+                                        e.Row.Cells[i].ForeColor = Color.Gray;
+                                    }
                                 }
                             }
                         }

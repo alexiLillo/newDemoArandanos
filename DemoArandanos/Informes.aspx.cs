@@ -32,11 +32,12 @@ namespace DemoArandanos
                 Session["medianas"] = control.countPlantas(ddFundo.SelectedValue, "0", "0", "0", "0", "MEDIANA", int.Parse(ddMapeo.SelectedValue), "");
                 Session["grandes"] = control.countPlantas(ddFundo.SelectedValue, "0", "0", "0", "0", "GRANDE", int.Parse(ddMapeo.SelectedValue), "");
                 Session["sin_planta"] = control.countPlantas(ddFundo.SelectedValue, "0", "0", "0", "0", "SIN_PLANTA", int.Parse(ddMapeo.SelectedValue), "");
-                cargarGrafico((int)Session["chicas"], (int)Session["medianas"], (int)Session["grandes"], (int)Session["sin_planta"]);
-                Session["total"] = (int)Session["chicas"] + (int)Session["medianas"] + (int)Session["grandes"];
+                Session["replante"] = control.countPlantas(ddFundo.SelectedValue, "0", "0", "0", "0", "REPLANTE", int.Parse(ddMapeo.SelectedValue), "");
+                cargarGrafico((int)Session["chicas"], (int)Session["medianas"], (int)Session["grandes"], (int)Session["sin_planta"], (int)Session["replante"]);
+                Session["total"] = (int)Session["chicas"] + (int)Session["medianas"] + (int)Session["grandes"] + (int)Session["replante"];
                 lbltotal.Text = Session["total"].ToString();
                 String variedades = string.Join(", ", control.variedades(ddHilera.SelectedValue, ddCuartel.SelectedValue, ddSector.SelectedValue, ddPotrero.SelectedValue, ddFundo.SelectedValue, int.Parse(ddMapeo.SelectedValue)).ToArray());
-                lblvariedad.Text = "";
+                lblvariedad.Text = "Todas";
                 if (ddFundo.SelectedItem != null)
                 {
                     //lblgrafico.Text = "FUNDO " + ddFundo.SelectedItem.Text;
@@ -79,11 +80,11 @@ namespace DemoArandanos
             nombresImp();
         }
 
-        public void cargarGrafico(int chicas, int medianas, int grandes, int sin_planta)
+        public void cargarGrafico(int chicas, int medianas, int grandes, int sin_planta, int replante)
         {
             //SET UP THE DATA TO PLOT  
-            double[] yVal = { grandes, medianas, chicas, sin_planta };
-            string[] xName = { "GRANDES:", "MEDIANAS:", "CHICAS:", "SIN PLANTA:" };
+            double[] yVal = { grandes, medianas, chicas, replante, sin_planta };
+            string[] xName = { "GRANDES:", "MEDIANAS:", "CHICAS:", "REPLANTE", "SIN PLANTA:" };
 
             //CREATE THE CHART
             // Don't need to create the chart because it's a control!
@@ -100,7 +101,7 @@ namespace DemoArandanos
             //SET THE COLOR PALETTE FOR THE CHART TO BE A PRESET OF NONE 
             //DEFINE OUR OWN COLOR PALETTE FOR THE CHART 
             Grafico1.Palette = ChartColorPalette.None;
-            Grafico1.PaletteCustomColors = new Color[] { Color.Green, Color.LawnGreen, Color.Yellow, Color.Gray };
+            Grafico1.PaletteCustomColors = new Color[] { Color.Green, Color.LawnGreen, Color.Yellow, Color.LightBlue, Color.Gray };
 
             //SET THE IMAGE OUTPUT TYPE TO BE JPEG
             Grafico1.ImageType = ChartImageType.Jpeg;
@@ -146,8 +147,9 @@ namespace DemoArandanos
             Session["medianas"] = control.countPlantas(ddFundo.SelectedValue, "0", "0", "0", "0", "MEDIANA", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
             Session["grandes"] = control.countPlantas(ddFundo.SelectedValue, "0", "0", "0", "0", "GRANDE", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
             Session["sin_planta"] = control.countPlantas(ddFundo.SelectedValue, "0", "0", "0", "0", "SIN_PLANTA", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
-            cargarGrafico((int)Session["chicas"], (int)Session["medianas"], (int)Session["grandes"], (int)Session["sin_planta"]);
-            Session["total"] = (int)Session["chicas"] + (int)Session["medianas"] + (int)Session["grandes"];
+            Session["replante"] = control.countPlantas(ddFundo.SelectedValue, "0", "0", "0", "0", "REPLANTE", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
+            cargarGrafico((int)Session["chicas"], (int)Session["medianas"], (int)Session["grandes"], (int)Session["sin_planta"], (int)Session["replante"]);
+            Session["total"] = (int)Session["chicas"] + (int)Session["medianas"] + (int)Session["grandes"] + (int)Session["replante"];
             lbltotal.Text = Session["total"].ToString();
             lblgrafico.Text = "FUNDO " + ddFundo.SelectedItem.Text;
             nombresImp();
@@ -162,8 +164,9 @@ namespace DemoArandanos
             Session["medianas"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, "0", "0", "0", "MEDIANA", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
             Session["grandes"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, "0", "0", "0", "GRANDE", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
             Session["sin_planta"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, "0", "0", "0", "SIN_PLANTA", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
-            cargarGrafico((int)Session["chicas"], (int)Session["medianas"], (int)Session["grandes"], (int)Session["sin_planta"]);
-            Session["total"] = (int)Session["chicas"] + (int)Session["medianas"] + (int)Session["grandes"];
+            Session["replante"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, "0", "0", "0", "REPLANTE", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
+            cargarGrafico((int)Session["chicas"], (int)Session["medianas"], (int)Session["grandes"], (int)Session["sin_planta"], (int)Session["replante"]);
+            Session["total"] = (int)Session["chicas"] + (int)Session["medianas"] + (int)Session["grandes"] + (int)Session["replante"];
             lbltotal.Text = Session["total"].ToString();
             if (ddPotrero.SelectedValue.Equals("0"))
             {
@@ -188,8 +191,9 @@ namespace DemoArandanos
             Session["medianas"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, "0", "0", "MEDIANA", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
             Session["grandes"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, "0", "0", "GRANDE", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
             Session["sin_planta"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, "0", "0", "SIN_PLANTA", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
-            cargarGrafico((int)Session["chicas"], (int)Session["medianas"], (int)Session["grandes"], (int)Session["sin_planta"]);
-            Session["total"] = (int)Session["chicas"] + (int)Session["medianas"] + (int)Session["grandes"];
+            Session["replante"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, "0", "0", "REPLANTE", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
+            cargarGrafico((int)Session["chicas"], (int)Session["medianas"], (int)Session["grandes"], (int)Session["sin_planta"], (int)Session["replante"]);
+            Session["total"] = (int)Session["chicas"] + (int)Session["medianas"] + (int)Session["grandes"] + (int)Session["replante"];
             lbltotal.Text = Session["total"].ToString();
             if (ddSector.SelectedValue.Equals("0"))
             {
@@ -214,22 +218,37 @@ namespace DemoArandanos
             Session["medianas"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, "0", "MEDIANA", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
             Session["grandes"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, "0", "GRANDE", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
             Session["sin_planta"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, "0", "SIN_PLANTA", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
-            cargarGrafico((int)Session["chicas"], (int)Session["medianas"], (int)Session["grandes"], (int)Session["sin_planta"]);
-            Session["total"] = (int)Session["chicas"] + (int)Session["medianas"] + (int)Session["grandes"];
+            Session["replante"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, "0", "REPLANTE", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
+            cargarGrafico((int)Session["chicas"], (int)Session["medianas"], (int)Session["grandes"], (int)Session["sin_planta"], (int)Session["replante"]);
+            Session["total"] = (int)Session["chicas"] + (int)Session["medianas"] + (int)Session["grandes"] + (int)Session["replante"];
             lbltotal.Text = Session["total"].ToString();
             if (ddCuartel.SelectedValue.Equals("0"))
             {
                 lblgrafico.Text = " " + ddSector.SelectedItem.Text;
                 nombresImp();
                 String variedades = string.Join(", ", control.variedades(ddHilera.SelectedValue, ddCuartel.SelectedValue, ddSector.SelectedValue, ddPotrero.SelectedValue, ddFundo.SelectedValue, int.Parse(ddMapeo.SelectedValue)).ToArray());
-                lblvariedad.Text = "Variedad: " + ddVariedad.SelectedItem.Text;
+                if (ddVariedad.SelectedItem.Text.Equals("Todas"))
+                {
+                    lblvariedad.Text = "Variedad: " + variedades;
+                }
+                else
+                {
+                    lblvariedad.Text = "Variedad: " + ddVariedad.SelectedItem.Text;
+                }
             }
             else
             {
                 lblgrafico.Text = " " + ddCuartel.SelectedItem.Text;
                 nombresImp();
                 String variedades = string.Join(", ", control.variedades(ddHilera.SelectedValue, ddCuartel.SelectedValue, ddSector.SelectedValue, ddPotrero.SelectedValue, ddFundo.SelectedValue, int.Parse(ddMapeo.SelectedValue)).ToArray());
-                lblvariedad.Text = "Variedad: " + ddVariedad.SelectedItem.Text;
+                if (ddVariedad.SelectedItem.Text.Equals("Todas"))
+                {
+                    lblvariedad.Text = "Variedad: " + variedades;
+                }
+                else
+                {
+                    lblvariedad.Text = "Variedad: " + ddVariedad.SelectedItem.Text;
+                }
             }
             UpdatePanel2.Update();
         }
@@ -240,34 +259,53 @@ namespace DemoArandanos
             Session["medianas"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, ddHilera.SelectedValue, "MEDIANA", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
             Session["grandes"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, ddHilera.SelectedValue, "GRANDE", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
             Session["sin_planta"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, ddHilera.SelectedValue, "SIN_PLANTA", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
-            cargarGrafico((int)Session["chicas"], (int)Session["medianas"], (int)Session["grandes"], (int)Session["sin_planta"]);
-            Session["total"] = (int)Session["chicas"] + (int)Session["medianas"] + (int)Session["grandes"];
+            Session["sin_planta"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, ddHilera.SelectedValue, "SIN_PLANTA", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
+            Session["replante"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, ddHilera.SelectedValue, "REPLANTE", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
+            cargarGrafico((int)Session["chicas"], (int)Session["medianas"], (int)Session["grandes"], (int)Session["sin_planta"], (int)Session["replante"]);
+            Session["total"] = (int)Session["chicas"] + (int)Session["medianas"] + (int)Session["grandes"] + (int)Session["replante"];
             lbltotal.Text = Session["total"].ToString();
             if (ddHilera.SelectedValue.Equals("0"))
             {
                 lblgrafico.Text = " " + ddCuartel.SelectedItem.Text;
                 nombresImp();
                 String variedades = string.Join(", ", control.variedades(ddHilera.SelectedValue, ddCuartel.SelectedValue, ddSector.SelectedValue, ddPotrero.SelectedValue, ddFundo.SelectedValue, int.Parse(ddMapeo.SelectedValue)).ToArray());
-                lblvariedad.Text = "Variedad: " + ddVariedad.SelectedItem.Text;
+                if (ddVariedad.SelectedItem.Text.Equals("Todas"))
+                {
+                    lblvariedad.Text = "Variedad: " + variedades;
+                }
+                else
+                {
+                    lblvariedad.Text = "Variedad: " + ddVariedad.SelectedItem.Text;
+                }
             }
             else
             {
                 lblgrafico.Text = "HILERA " + ddHilera.SelectedItem.Text;
                 nombresImp();
                 String variedades = string.Join(", ", control.variedades(ddHilera.SelectedValue, ddCuartel.SelectedValue, ddSector.SelectedValue, ddPotrero.SelectedValue, ddFundo.SelectedValue, int.Parse(ddMapeo.SelectedValue)).ToArray());
-                lblvariedad.Text = "Variedad: " + ddVariedad.SelectedItem.Text;
+                if (ddVariedad.SelectedItem.Text.Equals("Todas"))
+                {
+                    lblvariedad.Text = "Variedad: " + variedades;
+                }
+                else
+                {
+                    lblvariedad.Text = "Variedad: " + ddVariedad.SelectedItem.Text;
+                }
             }
             UpdatePanel2.Update();
         }
 
         protected void ddVariedad_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ddFundo.DataBind();
             Session["chicas"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, ddHilera.SelectedValue, "CHICA", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
             Session["medianas"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, ddHilera.SelectedValue, "MEDIANA", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
             Session["grandes"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, ddHilera.SelectedValue, "GRANDE", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
             Session["sin_planta"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, ddHilera.SelectedValue, "SIN_PLANTA", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
-            cargarGrafico((int)Session["chicas"], (int)Session["medianas"], (int)Session["grandes"], (int)Session["sin_planta"]);
-            Session["total"] = (int)Session["chicas"] + (int)Session["medianas"] + (int)Session["grandes"];
+            Session["replante"] = control.countPlantas(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, ddHilera.SelectedValue, "REPLANTE", int.Parse(ddMapeo.SelectedValue), ddVariedad.SelectedValue);
+
+            cargarGrafico((int)Session["chicas"], (int)Session["medianas"], (int)Session["grandes"], (int)Session["sin_planta"], (int)Session["replante"]);
+            Session["total"] = (int)Session["chicas"] + (int)Session["medianas"] + (int)Session["grandes"] + (int)Session["replante"];
             lbltotal.Text = Session["total"].ToString();
             nombresImp();
             String variedades = string.Join(", ", control.variedades(ddHilera.SelectedValue, ddCuartel.SelectedValue, ddSector.SelectedValue, ddPotrero.SelectedValue, ddFundo.SelectedValue, int.Parse(ddMapeo.SelectedValue)).ToArray());

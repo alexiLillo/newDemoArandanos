@@ -87,10 +87,12 @@
             <asp:Label ID="lblchica" runat="server" Text=""></asp:Label>
         </label>
         <label>
+            <asp:Label ID="lblreplante" runat="server" Text=""></asp:Label>
+        </label>
+        <label>
             <asp:Label ID="lblsin_planta" runat="server" Text=""></asp:Label>
         </label>
-
-
+        
         <asp:GridView ID="grillaHileras" class="table table-bordered" runat="server" OnRowDataBound="grillaHileras_RowDataBound" AutoGenerateColumns="true">
         </asp:GridView>
 
