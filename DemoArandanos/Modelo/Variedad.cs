@@ -9,12 +9,6 @@ namespace DemoArandanos.Modelo
     [Table("Variedad")]
     public partial class Variedad
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Variedad()
-        {
-            Pesaje = new HashSet<Pesaje>();
-        }
-
         [Key]
         [Column(Order = 0)]
         [StringLength(50)]
@@ -30,8 +24,5 @@ namespace DemoArandanos.Modelo
         public string ID_Producto { get; set; }
 
         public virtual Producto Producto { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pesaje> Pesaje { get; set; }
     }
 }

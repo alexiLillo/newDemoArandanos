@@ -72,7 +72,7 @@ namespace DemoArandanos
                     {
                         using (MemoryStream ms = new MemoryStream())
                         {
-                            bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                            bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
                             byte[] byteImage = ms.ToArray();
                             imgBarCode.ImageUrl = "data:image/png;base64," + Convert.ToBase64String(byteImage);
                         }

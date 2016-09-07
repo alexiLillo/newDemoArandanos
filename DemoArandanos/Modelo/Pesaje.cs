@@ -87,9 +87,5 @@ namespace DemoArandanos.Modelo
         public string Lectura_SVAL { get; set; }
 
         public int? ID_Map { get; set; }
-
-        public virtual Sector Sector1 { get; set; }
-
-        public virtual Variedad Variedad1 { get; set; }
     }
 }

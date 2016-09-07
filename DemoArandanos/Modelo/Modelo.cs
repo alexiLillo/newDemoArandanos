@@ -8,7 +8,7 @@ namespace DemoArandanos.Modelo
     public partial class Modelo : DbContext
     {
         public Modelo()
-            : base("name=Modelo8")
+            : base("name=Modelo9")
         {
         }
 
@@ -213,12 +213,6 @@ namespace DemoArandanos.Modelo
                 .HasMany(e => e.Cuartel)
                 .WithRequired(e => e.Sector)
                 .HasForeignKey(e => new { e.ID_Sector, e.ID_Potrero, e.ID_Fundo })
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Sector>()
-                .HasMany(e => e.Pesaje)
-                .WithRequired(e => e.Sector1)
-                .HasForeignKey(e => new { e.Sector, e.Potrero, e.Fundo })
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SyncCuartel>()
@@ -476,12 +470,6 @@ namespace DemoArandanos.Modelo
             modelBuilder.Entity<Variedad>()
                 .Property(e => e.ID_Producto)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Variedad>()
-                .HasMany(e => e.Pesaje)
-                .WithRequired(e => e.Variedad1)
-                .HasForeignKey(e => new { e.Variedad, e.Producto })
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Pesaje>()
                 .Property(e => e.Producto)

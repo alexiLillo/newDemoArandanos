@@ -13,7 +13,6 @@ namespace DemoArandanos.Modelo
         public Sector()
         {
             Cuartel = new HashSet<Cuartel>();
-            Pesaje = new HashSet<Pesaje>();
         }
 
         [Key]
@@ -38,8 +37,5 @@ namespace DemoArandanos.Modelo
         public virtual ICollection<Cuartel> Cuartel { get; set; }
 
         public virtual Potrero Potrero { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pesaje> Pesaje { get; set; }
     }
 }
