@@ -66,7 +66,8 @@
                     <li id="home" class="active"><a href="Home.aspx">Administración</a></li>
                     <li id="excel"><a href="CargaExcel.aspx">Cargar Excel</a></li>
                     <li id="user"><a href="Usuarios.aspx">Usuarios</a></li>
-                    <li id="info"><a href="Informes.aspx">Informes</a></li>
+                    <li id="info"><a href="Informes.aspx">Plantas</a></li>
+                    <li id="prod"><a href="Produccion.aspx">Produccion</a></li>
                     <li><a href="#" runat="server" onserverclick="salir">Salir</a></li>
                 </ul>
             </div>

@@ -103,6 +103,9 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="QRCoder">
+      <HintPath>..\packages\QR\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Swashbuckle.Core.5.0.0\lib\net40\Swashbuckle.Core.dll</HintPath>
       <Private>True</Private>
@@ -202,6 +205,8 @@
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="CargaExcel.aspx" />
+    <Content Include="Produccion.aspx" />
+    <Content Include="Produccion2.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\bootstrap.js" />
@@ -289,6 +294,7 @@
     <Compile Include="Modelo\Hilera.cs" />
     <Compile Include="Modelo\Map.cs" />
     <Compile Include="Modelo\Modelo.cs" />
+    <Compile Include="Modelo\Pesaje.cs" />
     <Compile Include="Modelo\Planta.cs" />
     <Compile Include="Modelo\Potrero.cs" />
     <Compile Include="Modelo\Producto.cs" />
@@ -304,9 +310,28 @@
     <Compile Include="Modelo\SyncSector.cs" />
     <Compile Include="Modelo\SyncUsuarios.cs" />
     <Compile Include="Modelo\SyncVariedad.cs" />
+    <Compile Include="Modelo\TablaVista.cs" />
+    <Compile Include="Modelo\Tara.cs" />
+    <Compile Include="Modelo\Trabajador.cs" />
     <Compile Include="Modelo\Usuarios.cs" />
     <Compile Include="Modelo\Variedad.cs" />
-    <Compile Include="Modelo\VistaAll.cs" />
+    <Compile Include="Modelo\VistaApkPesaje.cs" />
+    <Compile Include="Modelo\VistaConsulta.cs" />
+    <Compile Include="Modelo\VistaConsultaDia.cs" />
+    <Compile Include="Produccion.aspx.cs">
+      <DependentUpon>Produccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Produccion.aspx.designer.cs">
+      <DependentUpon>Produccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Produccion2.aspx.cs">
+      <DependentUpon>Produccion2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Produccion2.aspx.designer.cs">
+      <DependentUpon>Produccion2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

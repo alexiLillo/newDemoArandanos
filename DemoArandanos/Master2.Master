@@ -54,8 +54,8 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li id="info2" class="active" ><a href="Informes2.aspx" >Informes</a></li>
-                    <li id="excel2"><a href="#">Cargar Excel</a></li>                 
+                    <li id="info2" class="active" ><a href="Informes2.aspx" >Plantas</a></li>
+                    <li id="prod"><a href="Produccion2.aspx">Producción</a></li>                 
                     <li><a href="#" runat="server" onserverclick="salir">Salir</a></li>                    
                 </ul>
             </div>

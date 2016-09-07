@@ -554,5 +554,35 @@ namespace DemoArandanos.Controlador
             contexto.SyncVariedad.Add(new SyncVariedad { ID_Variedad = id_variedad.ToUpper().Replace(",", "."), Nombre = nombre.ToUpper().Replace(",", "."), ID_producto = id_producto.ToUpper().Replace(",", "."), OperacionSQL = operacion_sql });
             contexto.SaveChanges();
         }
+
+        //ADMINISTRADOR DE TRABAJADOR (SISTEMA PRODUCCION)
+
+        public void insertarTrabajador(String rut, String nombre, String apellido, String qrrut, String fechaNac)
+        {
+            contexto.Trabajador.Add(new Trabajador { Rut = rut.ToUpper().Replace(".",""), Nombre = nombre.ToUpper(), Apellido = apellido.ToUpper(), QRrut = qrrut.ToUpper().Replace(".", ""), FechaNacimiento = DateTime.Parse(fechaNac) });
+            contexto.SaveChanges();
+        }
+
+        public void actualizarTrabajador(String rut, String nombre, String apellido, String qrrut, String fechaNac)
+        {
+            Trabajador trabajador = (from t in contexto.Trabajador
+                                     where t.Rut == rut.ToUpper().Replace(".", "")
+                                     select t).FirstOrDefault();
+            trabajador.Nombre = nombre.ToUpper();
+            trabajador.Apellido = apellido.ToUpper();
+            trabajador.QRrut = qrrut.ToUpper().Replace(".", "");
+            trabajador.FechaNacimiento = DateTime.Parse(fechaNac);
+            contexto.SaveChanges();
+        }
+
+        public void eliminarTrabajador(String rut)
+        {
+            Trabajador trabajador = (from t in contexto.Trabajador
+                                     where t.Rut == rut.ToUpper().Replace(".", "")
+                                     select t).FirstOrDefault();
+            contexto.Trabajador.Remove(trabajador);
+            contexto.SaveChanges();
+        }
+
     }
 }

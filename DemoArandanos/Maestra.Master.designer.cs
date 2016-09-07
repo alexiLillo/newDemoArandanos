@@ -10,24 +10,24 @@
 namespace DemoArandanos {
     
     
-    public partial class Maestra {
+    public partial class Master2 {
         
         /// <summary>
-        /// Control head.
+        /// Control head2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder head2;
         
         /// <summary>
-        /// Control ContentPlaceHolder1.
+        /// Control ContentPlaceHolder2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder2;
     }
 }
