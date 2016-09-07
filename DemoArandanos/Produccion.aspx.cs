@@ -26,30 +26,11 @@ namespace DemoArandanos
 
         protected void btGenerarQR_Click(object sender, EventArgs e)
         {
-            //GUARDAR DATOS DE TRABAJADOR EN BD (VALIDAR RUT)
-            string code = txtRutTrabajador.Text.Replace(".", "");
+            string code = txtRutTrabajador.Text;
             if (validarRut(code))
             {
-                //GUARDAR DATOS DE TRABAJADOR EN BD (VALIDAR RUT)
-                try
-                {
-                    control.insertarTrabajador(code, txtNombreTrabajador.Text, txtApellidoTrabajador.Text, code, txtFechaNacimiento.Text);
-                    lblsuccess.Text = "Trabajador ingresado correctamente";
-                    divSuccess.Visible = true;
-                    txtRutTrabajador.Text = "";
-                    txtNombreTrabajador.Text = "";
-                    txtApellidoTrabajador.Text = "";
-                    txtFechaNacimiento.Text = "";
-                }
-                catch (Exception ex)
-                {
-                    lbldanger.Text = "No se pudo registrar al trabajador";
-                    divDanger.Visible = true;
-                }
-
                 plBarCode.Controls.Clear();
                 lblQR.Text = "";
-
 
                 String spaces = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
                 if (code.Length == 9)
@@ -122,5 +103,84 @@ namespace DemoArandanos
             }
             return validacion;
         }
+
+        protected void btGuardarTrabajador_Click(object sender, EventArgs e)
+        {
+            if (validarRut(txtRutTrabajador.Text))
+            {
+                //GUARDAR DATOS DE TRABAJADOR EN BD (VALIDAR RUT)
+                try
+                {
+                    control.insertarTrabajador(txtRutTrabajador.Text, txtNombreTrabajador.Text, txtApellidoTrabajador.Text, txtRutTrabajador.Text, txtFechaNacimiento.Text);
+                    lblsuccess.Text = "Trabajador ingresado correctamente";
+                    divSuccess.Visible = true;
+                    txtRutTrabajador.Text = "";
+                    txtNombreTrabajador.Text = "";
+                    txtApellidoTrabajador.Text = "";
+                    txtFechaNacimiento.Text = "";
+                    grillaTrabajadores.DataBind();
+                    btGenerarQR_Click(sender, e);
+                }
+                catch (Exception ex)
+                {
+                    lbldanger.Text = "No se pudo registrar al trabajador";
+                    divDanger.Visible = true;
+                }
+            }
+            else
+            {
+                lblwarning.Text = "Rut Inválido!";
+                divWarning.Visible = true;
+            }
+        }
+
+        protected void grillaTrabajadores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtRutTrabajador.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[1].Text.Replace("&nbsp;", "");
+            txtNombreTrabajador.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[2].Text.Replace("&nbsp;", "");
+            txtApellidoTrabajador.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[3].Text.Replace("&nbsp;", "");
+            txtFechaNacimiento.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[4].Text.Replace("&nbsp;", "");
+        }
+
+        protected void btActualizarTrabajador_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                control.actualizarTrabajador(txtRutTrabajador.Text, txtNombreTrabajador.Text, txtApellidoTrabajador.Text, txtRutTrabajador.Text, txtFechaNacimiento.Text);
+                lblsuccess.Text = "Trabajador actualizado correctamente";
+                divSuccess.Visible = true;
+                txtRutTrabajador.Text = "";
+                txtNombreTrabajador.Text = "";
+                txtApellidoTrabajador.Text = "";
+                txtFechaNacimiento.Text = "";
+                grillaTrabajadores.DataBind();
+            }
+            catch (Exception ex)
+            {
+                lbldanger.Text = "No se pudo actualziar información del trabajador";
+                divDanger.Visible = true;
+            }
+        }
+
+        protected void btEliminarTrabajador_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                control.eliminarTrabajador(txtRutTrabajador.Text);
+                lblinfo.Text = "Trabajador eliminado correctamente";
+                divInfo.Visible = true;
+                txtRutTrabajador.Text = "";
+                txtNombreTrabajador.Text = "";
+                txtApellidoTrabajador.Text = "";
+                txtFechaNacimiento.Text = "";
+                grillaTrabajadores.DataBind();
+            }
+            catch (Exception ex)
+            {
+                lbldanger.Text = "No se pudo eliminar el trabajador";
+                divDanger.Visible = true;
+            }
+        }
+
     }
 }

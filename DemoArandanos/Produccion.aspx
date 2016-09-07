@@ -23,41 +23,41 @@
 
         </script>
 
-            <!-- Alertas de Bootstrap -->
-            <asp:UpdatePanel ID="UpdatePanel9" UpdateMode="Always" runat="server">
-                <ContentTemplate>
-                    <!-- Funcion para desvanecer alertas -->
-                    <script language="javascript" type="text/javascript">
-                        function pageLoad() {
-                            window.setTimeout(function () {
-                                $(".alert").fadeTo(500, 0).slideUp(500, function () {
-                                    $(this).remove();
-                                });
-                            }, 4000);
-                        }
-                    </script>
-                    <div class="alert alert-success fade in" role="alert" id="divSuccess" runat="server">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>OK!</strong>
-                        <asp:Label ID="lblsuccess" runat="server" Text=""></asp:Label>
-                    </div>
-                    <div class="alert alert-warning fade in" role="alert" id="divWarning" runat="server">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>Atención!</strong>
-                        <asp:Label ID="lblwarning" runat="server" Text=""></asp:Label>
-                    </div>
-                    <div class="alert alert-info fade in" role="alert" id="divInfo" runat="server">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>Atención!</strong>
-                        <asp:Label ID="lblinfo" runat="server" Text=""></asp:Label>
-                    </div>
-                    <div class="alert alert-danger fade in" role="alert" id="divDanger" runat="server">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>Error!</strong>
-                        <asp:Label ID="lbldanger" runat="server"></asp:Label>
-                    </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+        <!-- Alertas de Bootstrap -->
+        <asp:UpdatePanel ID="UpdatePanel9" UpdateMode="Always" runat="server">
+            <ContentTemplate>
+                <!-- Funcion para desvanecer alertas -->
+                <script language="javascript" type="text/javascript">
+                    function pageLoad() {
+                        window.setTimeout(function () {
+                            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                                $(this).remove();
+                            });
+                        }, 4000);
+                    }
+                </script>
+                <div class="alert alert-success fade in" role="alert" id="divSuccess" runat="server">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>OK!</strong>
+                    <asp:Label ID="lblsuccess" runat="server" Text=""></asp:Label>
+                </div>
+                <div class="alert alert-warning fade in" role="alert" id="divWarning" runat="server">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Atención!</strong>
+                    <asp:Label ID="lblwarning" runat="server" Text=""></asp:Label>
+                </div>
+                <div class="alert alert-info fade in" role="alert" id="divInfo" runat="server">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Atención!</strong>
+                    <asp:Label ID="lblinfo" runat="server" Text=""></asp:Label>
+                </div>
+                <div class="alert alert-danger fade in" role="alert" id="divDanger" runat="server">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Error!</strong>
+                    <asp:Label ID="lbldanger" runat="server"></asp:Label>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
 
         <div class="col-md-5">
             <asp:UpdatePanel ID="UpdatePanel1" UpdateMode="Always" runat="server">
@@ -75,8 +75,13 @@
                     <asp:TextBox ID="txtFechaNacimiento" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-mm-dd"></asp:TextBox>
                     <br />
                     <br />
-                    <asp:Button ID="btGenerarQR" runat="server" Text="Guardar y Generar QR" type="submit" class="btn btn-default" OnClick="btGenerarQR_Click" />
-                    <br />                    
+                    <div class="btn-group" role="group" aria-label="...">
+                        <asp:Button ID="btGuardarTrabajador" runat="server" Text="Registrar" type="submit" class="btn btn-default" OnClick="btGuardarTrabajador_Click" />
+                        <asp:Button ID="btGenerarQR" runat="server" Text="Generar QR" type="submit" class="btn btn-default" OnClick="btGenerarQR_Click" />
+                        <asp:Button ID="btActualizarTrabajador" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btActualizarTrabajador_Click" />
+                        <asp:Button ID="btEliminarTrabajador" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarTrabajador_Click" />
+                    </div>
+                    <br />
                     <div id="printableArea">
                         <asp:PlaceHolder ID="plBarCode" runat="server" />
                         <div class="visible-print">
@@ -88,7 +93,32 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <div class="col-md-7"></div>
+        <div class="col-md-7">
+            <asp:UpdatePanel ID="UpdatePanel2" UpdateMode="Always" runat="server">
+                <ContentTemplate>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Trabajadores</h3>
+                        </div>
+                        <div class="panel-body" style="max-height: 500px; overflow-y: scroll;">
+                            <!-- grilla -->
+                            <div class="table-responsive">
+                                <asp:GridView ID="grillaTrabajadores" class="table table-bordered" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="grillaTrabajadores_SelectedIndexChanged" DataKeyNames="Rut" DataSourceID="dsTrabajadores">
+                                    <Columns>
+                                        <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
+                                        <asp:BoundField DataField="Rut" HeaderText="Rut" ReadOnly="True" SortExpression="Rut" />
+                                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                                        <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
+                                        <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha Nacimiento" SortExpression="FechaNacimiento" />
+                                    </Columns>
+                                </asp:GridView>
+                                <asp:SqlDataSource ID="dsTrabajadores" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [Rut], [Nombre], [Apellido], [FechaNacimiento] FROM [Trabajador] ORDER BY [Nombre], [Apellido]"></asp:SqlDataSource>
+                            </div>
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
 
     </form>
 
