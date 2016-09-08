@@ -10,7 +10,7 @@
 namespace DemoArandanos {
     
     
-    public partial class Produccion2 {
+    public partial class Pesajes2 {
         
         /// <summary>
         /// Control ScriptManager1.
@@ -112,6 +112,15 @@ namespace DemoArandanos {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
+        /// Control txtQRenvase.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtQRenvase;
+        
+        /// <summary>
         /// Control txtRutTrabajador.
         /// </summary>
         /// <remarks>
@@ -121,85 +130,202 @@ namespace DemoArandanos {
         protected global::System.Web.UI.WebControls.TextBox txtRutTrabajador;
         
         /// <summary>
-        /// Control txtNombreTrabajador.
+        /// Control txtRutPesador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreTrabajador;
+        protected global::System.Web.UI.WebControls.TextBox txtRutPesador;
         
         /// <summary>
-        /// Control txtApellidoTrabajador.
+        /// Control txtFechaHora.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApellidoTrabajador;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaHora;
         
         /// <summary>
-        /// Control txtFechaNacimiento.
+        /// Control txtPesoBruto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaNacimiento;
+        protected global::System.Web.UI.WebControls.TextBox txtPesoBruto;
         
         /// <summary>
-        /// Control btGuardarTrabajador.
+        /// Control ddTara.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btGuardarTrabajador;
+        protected global::System.Web.UI.WebControls.DropDownList ddTara;
         
         /// <summary>
-        /// Control btGenerarQR.
+        /// Control dsTara.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btGenerarQR;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsTara;
         
         /// <summary>
-        /// Control btActualizarTrabajador.
+        /// Control ddVariedad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btActualizarTrabajador;
+        protected global::System.Web.UI.WebControls.DropDownList ddVariedad;
         
         /// <summary>
-        /// Control btEliminarTrabajador.
+        /// Control dsVariedad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btEliminarTrabajador;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsVariedad;
         
         /// <summary>
-        /// Control plBarCode.
+        /// Control ddFundo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder plBarCode;
+        protected global::System.Web.UI.WebControls.DropDownList ddFundo;
         
         /// <summary>
-        /// Control lblQR.
+        /// Control dsFundoVista.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblQR;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsFundoVista;
+        
+        /// <summary>
+        /// Control dsFundo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource dsFundo;
+        
+        /// <summary>
+        /// Control ddPotrero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddPotrero;
+        
+        /// <summary>
+        /// Control potrerosDEfundoVista.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource potrerosDEfundoVista;
+        
+        /// <summary>
+        /// Control potrerosDEfundo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource potrerosDEfundo;
+        
+        /// <summary>
+        /// Control ddSector.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddSector;
+        
+        /// <summary>
+        /// Control sectoresDEpotreroVista.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sectoresDEpotreroVista;
+        
+        /// <summary>
+        /// Control sectoresDEpotrero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sectoresDEpotrero;
+        
+        /// <summary>
+        /// Control ddCuartel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddCuartel;
+        
+        /// <summary>
+        /// Control cuartelesDEsectorVista.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource cuartelesDEsectorVista;
+        
+        /// <summary>
+        /// Control cuartelesDEsector.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource cuartelesDEsector;
+        
+        /// <summary>
+        /// Control btGuardarPesaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btGuardarPesaje;
+        
+        /// <summary>
+        /// Control btActualizarPesaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btActualizarPesaje;
+        
+        /// <summary>
+        /// Control btEliminarPesaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btEliminarPesaje;
         
         /// <summary>
         /// Control UpdatePanel2.
@@ -211,21 +337,57 @@ namespace DemoArandanos {
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
-        /// Control grillaTrabajadores.
+        /// Control txtFiltroRut.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grillaTrabajadores;
+        protected global::System.Web.UI.WebControls.TextBox txtFiltroRut;
         
         /// <summary>
-        /// Control dsTrabajadores.
+        /// Control btFiltrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsTrabajadores;
+        protected global::System.Web.UI.WebControls.Button btFiltrar;
+        
+        /// <summary>
+        /// Control txtFechaInicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFechaInicio;
+        
+        /// <summary>
+        /// Control txtFechaTermino.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFechaTermino;
+        
+        /// <summary>
+        /// Control grillaPesajes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grillaPesajes;
+        
+        /// <summary>
+        /// Control dsPesajesFiltrados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource dsPesajesFiltrados;
     }
 }

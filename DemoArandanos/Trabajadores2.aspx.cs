@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-
 using QRCoder;
 using System.IO;
 using System.Drawing;
@@ -13,7 +12,7 @@ using DemoArandanos.Controlador;
 
 namespace DemoArandanos
 {
-    public partial class Produccion : System.Web.UI.Page
+    public partial class Trabajadores2 : System.Web.UI.Page
     {
         Controler control = new Controler();
         protected void Page_Load(object sender, EventArgs e)
@@ -139,7 +138,8 @@ namespace DemoArandanos
             txtRutTrabajador.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[1].Text.Replace("&nbsp;", "");
             txtNombreTrabajador.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[2].Text.Replace("&nbsp;", "");
             txtApellidoTrabajador.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[3].Text.Replace("&nbsp;", "");
-            txtFechaNacimiento.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[4].Text.Replace("&nbsp;", "");
+            DateTime d = DateTime.Parse(grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[4].Text.Replace("&nbsp;", "").ToString());
+            txtFechaNacimiento.Text = d.ToString("yyyy-MM-dd");
         }
 
         protected void btActualizarTrabajador_Click(object sender, EventArgs e)

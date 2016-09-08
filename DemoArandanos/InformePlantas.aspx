@@ -1,12 +1,12 @@
-﻿<%@ Page Title="" EnableEventValidation="false" Language="C#" MasterPageFile="~/Master2.Master" AutoEventWireup="true" CodeBehind="Informes.aspx.cs" Inherits="DemoArandanos.Informes" %>
+﻿<%@ Page Title="" EnableEventValidation="false" Language="C#" MasterPageFile="~/Maestra.Master" AutoEventWireup="true" CodeBehind="InformePlantas.aspx.cs" Inherits="DemoArandanos.InformePlantas" %>
 
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head2" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
-    <h1>Informe cantidad Plantas</h1>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <h1>Informe Plantas</h1>
     <br />
     <form runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -21,7 +21,7 @@
                                 $(".alert").fadeTo(500, 0).slideUp(500, function () {
                                     $(this).remove();
                                 });
-                            }, 4000);
+                            }, 4000); 
                         }
                     </script>
                     <div class="alert alert-success fade in" role="alert" id="divSuccess" runat="server">
@@ -85,7 +85,7 @@
                 </asp:UpdatePanel>
             </div>
             <div class="hidden-print">
-                <asp:UpdatePanel ID="UpdatePanel1" UpdateMode="Always" runat="server">
+                    <asp:UpdatePanel ID="UpdatePanel1" UpdateMode="Always" runat="server">
                     <ContentTemplate>
                         <label for="ddMapeo">Temporada</label>
                         <asp:DropDownList ID="ddMapeo" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsMapeo" DataTextField="temp" DataValueField="ID_Mapeo" DataTextFormatString="{0:d}">
@@ -186,7 +186,7 @@
                         <br />
                         <div class="hidden-print">
                             <p align="right">
-                                <input type="button" class="btn btn-default" name="VerMapa" value="Ver Mapa" onclick="window.open('mapa.aspx', null, 'height=740,width=1100', 'resizable=1');">
+                                <input type="button" class="btn btn-default" name="VerMapa" value="Ver Mapa" onclick="window.open('mapa.aspx', null, 'height=740,width=1100', 'resizable=yes');">
                                 <input type="button" class="btn btn-default" name="Imprimir" value="Imprimir" onclick="window.print();">
                             </p>
                         </div>
@@ -207,7 +207,6 @@
                     <br />
                     <label>
                         <asp:Label ID="lblvariedad" runat="server" Text=""></asp:Label></label>
-
                     <asp:Chart ID="Grafico1" runat="server" Width="750" Height="380" />
                     
                 </ContentTemplate>

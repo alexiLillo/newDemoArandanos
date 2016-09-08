@@ -1,0 +1,241 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master2.Master" AutoEventWireup="true" CodeBehind="Pesajes2.aspx.cs" Inherits="DemoArandanos.Pesajes2" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head2" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+    <h1>Pesajes</h1>
+    <br />
+    <form runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+        <script language="javascript" type="text/javascript">
+            function printDiv(divName) {
+                var printContents = document.getElementById(divName).innerHTML;
+                var originalContents = document.body.innerHTML;
+
+                document.body.innerHTML = printContents;
+
+                window.print();
+
+                document.body.innerHTML = originalContents;
+            }
+
+        </script>
+
+        <!-- Alertas de Bootstrap -->
+        <asp:UpdatePanel ID="UpdatePanel9" UpdateMode="Always" runat="server">
+            <ContentTemplate>
+                <!-- Funcion para desvanecer alertas -->
+                <script language="javascript" type="text/javascript">
+                    function pageLoad() {
+                        window.setTimeout(function () {
+                            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                                $(this).remove();
+                            });
+                        }, 4000);
+                    }
+                </script>
+                <div class="alert alert-success fade in" role="alert" id="divSuccess" runat="server">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>OK!</strong>
+                    <asp:Label ID="lblsuccess" runat="server" Text=""></asp:Label>
+                </div>
+                <div class="alert alert-warning fade in" role="alert" id="divWarning" runat="server">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Atención!</strong>
+                    <asp:Label ID="lblwarning" runat="server" Text=""></asp:Label>
+                </div>
+                <div class="alert alert-info fade in" role="alert" id="divInfo" runat="server">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Atención!</strong>
+                    <asp:Label ID="lblinfo" runat="server" Text=""></asp:Label>
+                </div>
+                <div class="alert alert-danger fade in" role="alert" id="divDanger" runat="server">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Error!</strong>
+                    <asp:Label ID="lbldanger" runat="server"></asp:Label>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+
+
+        <!-- DIVIDER -->
+        <div class="col-md-12">
+            <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
+                <span style="font-size: 20px; background-color: #F3F5F6; padding: 0 10px;">Administración de Pesajes</span>
+            </div>
+            <br />
+        </div>
+        <asp:UpdatePanel ID="UpdatePanel1" UpdateMode="Always" runat="server">
+            <ContentTemplate>
+                <div class="col-md-4">
+                    <label for="txtQRenvase">Código QR de Bandeja</label>
+                    <asp:TextBox ID="txtQRenvase" runat="server" type="input" required="required" class="form-control" placeholder="Ingrese QR de bandeja: ENV0000000"></asp:TextBox>
+                    <br />
+                    <label for="txtRutTrabajador">Rut Trabajador</label>
+                    <asp:TextBox ID="txtRutTrabajador" runat="server" type="input" required="required" class="form-control" placeholder="Ingrese Rut de Trabajador: 11111111-1"></asp:TextBox>
+                    <br />
+                    <label for="txtRutPesador">Rut Pesador</label>
+                    <asp:TextBox ID="txtRutPesador" runat="server" type="input" required="required" class="form-control" placeholder="Ingrese Rut de Pesador: 11111111-1"></asp:TextBox>
+                    <br />
+                    <label for="txtFechaHora">Fecha y Hora Cosecha</label>
+                    <asp:TextBox ID="txtFechaHora" CssClass="form-control" TextMode="DateTimeLocal" required="required" runat="server" placeholder="aaaa-MM-dd hh:mm"></asp:TextBox>
+                </div>
+                <div class="col-md-4">
+                    <label for="txtPesoBruto">Peso Bruto</label>
+                    <asp:TextBox ID="txtPesoBruto" runat="server" type="number" step="0.001" required="required" class="form-control" placeholder="Ingrese Peso bruto de la Bandeja: 0,00"></asp:TextBox>
+                    <br />
+                    <label for="ddTara">Tara</label>
+                    <asp:DropDownList ID="ddTara" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsTara" DataTextField="descri" DataValueField="Peso"></asp:DropDownList>
+                    <asp:SqlDataSource ID="dsTara" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT (Formato + ': ' + cast(Peso as varchar) + 'kl - ' + Descripcion) as descri, Peso FROM [Tara] ORDER BY [Producto], [Formato]"></asp:SqlDataSource>
+                    <br />
+                    <label for="ddVariedad">Variedad</label>
+                    <asp:DropDownList ID="ddVariedad" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsVariedad" DataTextField="Nombre" DataValueField="ID_Variedad" OnDataBound="ddVariedad_DataBound">
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="dsVariedad" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo6 %>" SelectCommand="SELECT * FROM [Variedad] WHERE ([ID_Producto] = @ID_Producto)">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="32" Name="ID_Producto" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <br />
+                    <label for="ddFundo">Fundo</label>
+                    <asp:DropDownList ID="ddFundo" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="Nombre" DataValueField="ID_Fundo" DataSourceID="dsFundoVista" OnDataBound="ddFundo_DataBound"></asp:DropDownList>
+                    <asp:SqlDataSource ID="dsFundoVista" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo7 %>" SelectCommand="SELECT DISTINCT ID_Fundo, Nombre FROM VistaAll WHERE (ID_Variedad LIKE @ID_Variedad + '%')">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="ddVariedad" Name="ID_Variedad" PropertyName="SelectedValue" Type="String" DefaultValue="" ConvertEmptyStringToNull="False" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:SqlDataSource ID="dsFundo" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo3 %>" SelectCommand="SELECT * FROM [Fundo]"></asp:SqlDataSource>
+                </div>
+                <div class="col-md-4">
+                    <label for="ddPotrero">Potrero</label>
+                    <asp:DropDownList ID="ddPotrero" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="nombrePotrero" DataValueField="ID_Potrero" DataSourceID="potrerosDEfundoVista" OnDataBound="ddPotrero_DataBound"></asp:DropDownList>
+                    <asp:SqlDataSource ID="potrerosDEfundoVista" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo7 %>" SelectCommand="SELECT DISTINCT ID_Potrero, nombrePotrero FROM VistaAll WHERE (ID_Fundo LIKE @ID_Fundo + '%') AND (ID_Variedad LIKE @ID_Variedad + '%')">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="ddFundo" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" />
+                            <asp:ControlParameter ControlID="ddVariedad" Name="ID_Variedad" PropertyName="SelectedValue" Type="String" DefaultValue="" ConvertEmptyStringToNull="False" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:SqlDataSource ID="potrerosDEfundo" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo3 %>" SelectCommand="SELECT * FROM [Potrero] WHERE ([ID_Fundo] = @ID_Fundo)">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="ddFundo" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <br />
+                    <label for="ddSector">Sector</label>
+                    <asp:DropDownList ID="ddSector" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="nombreSector" DataValueField="ID_Sector" DataSourceID="sectoresDEpotreroVista" OnDataBound="ddSector_DataBound"></asp:DropDownList>
+                    <asp:SqlDataSource ID="sectoresDEpotreroVista" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo7 %>" SelectCommand="SELECT DISTINCT ID_Sector, nombreSector FROM VistaAll WHERE (ID_Fundo LIKE @ID_Fundo + '%') AND (ID_Potrero LIKE @ID_Potrero + '%') AND (ID_Variedad LIKE @ID_Variedad + '%')">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="ddFundo" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" />
+                            <asp:ControlParameter ControlID="ddPotrero" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" />
+                            <asp:ControlParameter ControlID="ddVariedad" Name="ID_Variedad" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <asp:SqlDataSource ID="sectoresDEpotrero" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo3 %>" SelectCommand="SELECT * FROM [Sector] WHERE (([ID_Potrero] = @ID_Potrero) AND ([ID_Fundo] = @ID_Fundo))">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="ddPotrero" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
+                            <asp:ControlParameter ControlID="ddFundo" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <br />
+                    <label for="ddCuartel">Cuartel</label>
+                    <asp:DropDownList ID="ddCuartel" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="nombreCuartel" DataValueField="ID_Cuartel" DataSourceID="cuartelesDEsectorVista" OnDataBound="ddCuartel_DataBound"></asp:DropDownList>
+                    <asp:SqlDataSource ID="cuartelesDEsectorVista" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo7 %>" SelectCommand="SELECT DISTINCT nombreCuartel, ID_Cuartel FROM VistaAll WHERE (ID_Fundo LIKE @ID_Fundo + '%') AND (ID_Potrero LIKE @ID_Potrero + '%') AND (ID_Sector LIKE @ID_Sector + '%') AND (ID_Variedad LIKE @ID_Variedad + '%')">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="ddFundo" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" />
+                            <asp:ControlParameter ControlID="ddPotrero" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" />
+                            <asp:ControlParameter ControlID="ddSector" Name="ID_Sector" PropertyName="SelectedValue" Type="String" />
+                            <asp:ControlParameter ControlID="ddVariedad" ConvertEmptyStringToNull="False" Name="ID_Variedad" PropertyName="SelectedValue" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+
+                    <asp:SqlDataSource ID="cuartelesDEsector" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo3 %>" SelectCommand="SELECT * FROM [Cuartel] WHERE (([ID_Sector] = @ID_Sector) AND ([ID_Potrero] = @ID_Potrero) AND ([ID_Fundo] = @ID_Fundo))">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="ddSector" Name="ID_Sector" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
+                            <asp:ControlParameter ControlID="ddPotrero" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
+                            <asp:ControlParameter ControlID="ddFundo" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <br />
+                    <!-- GRUPO DE BOTONES -->
+                    <label>Seleccione una opción</label>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <asp:Button ID="btGuardarPesaje" runat="server" Text="Registrar" type="submit" class="btn btn-default" OnClick="btGuardarPesaje_Click" />
+                        <asp:Button ID="btActualizarPesaje" runat="server" Text="Actualizar" type="submit" class="btn btn-default" />
+                        <asp:Button ID="btEliminarPesaje" runat="server" Text="Eliminar" type="submit" class="btn btn-default" />
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <!-- DIVIDER -->
+        <div class="col-md-12">
+            <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
+                <span style="font-size: 20px; background-color: #F3F5F6; padding: 0 10px;">Tabla de Pesajes</span>
+            </div>
+        </div>
+        <asp:UpdatePanel ID="UpdatePanel2" UpdateMode="Always" runat="server">
+            <ContentTemplate>
+                <div class="col-md-4">
+                    <br />
+                    <label for="txtFiltroRut">Filtrar por Rut de Trabajador</label>
+                    <div class="input-group">
+                        <asp:TextBox ID="txtFiltroRut" AutoPostBack="true" runat="server" type="input" class="form-control" placeholder="Ingrese rut para filtrar la tabla" OnTextChanged="txtFiltroRut_TextChanged"></asp:TextBox>
+                        <span class="input-group-btn">
+                            <asp:Button ID="btFiltrar" type="button" AutoPostBack="False" class="btn btn-default" runat="server" Text="Filtrar" OnClick="btFiltrar_Click" />
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <br />
+                    <label for="txtFechaInicio">Fecha filtro inicio</label>
+                    <asp:TextBox ID="txtFechaInicio" AutoPostBack="true" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-MM-dd" OnTextChanged="txtFechaInicio_TextChanged"></asp:TextBox>
+                </div>
+                <div class="col-md-4">
+                    <br />
+                    <label for="txtFechaTermino">Fecha filtro inicio</label>
+                    <asp:TextBox ID="txtFechaTermino" AutoPostBack="true" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-MM-dd" OnTextChanged="txtFechaTermino_TextChanged"></asp:TextBox>
+                </div>
+                <div class="col-md-12">
+                    <br />
+                    <!-- grilla -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Pesajes</h3>
+                        </div>
+                        <div class="panel-body" style="max-height: 500px; overflow-y: scroll;">
+                            <div class="table-responsive">
+                                <asp:GridView ID="grillaPesajes" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="dsPesajesFiltrados" OnSelectedIndexChanged="grillaPesajes_SelectedIndexChanged">
+                                    <Columns>
+                                        <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
+                                        <asp:BoundField DataField="QRenvase" HeaderText="QR Envase" SortExpression="QRenvase"></asp:BoundField>
+                                        <asp:BoundField DataField="RutTrabajador" HeaderText="Rut Trabajador" SortExpression="RutTrabajador"></asp:BoundField>
+                                        <asp:BoundField DataField="RutPesador" HeaderText="Rut Pesador" SortExpression="RutPesador"></asp:BoundField>
+                                        <asp:BoundField DataField="Fundo" HeaderText="Fundo" SortExpression="Fundo"></asp:BoundField>
+                                        <asp:BoundField DataField="Potrero" HeaderText="Potrero" SortExpression="Potrero"></asp:BoundField>
+                                        <asp:BoundField DataField="Sector" HeaderText="Sector" SortExpression="Sector"></asp:BoundField>
+                                        <asp:BoundField DataField="Variedad" HeaderText="Variedad" SortExpression="Variedad"></asp:BoundField>
+                                        <asp:BoundField DataField="Cuartel" HeaderText="Cuartel" SortExpression="Cuartel"></asp:BoundField>
+                                        <asp:BoundField DataField="FechaHora" HeaderText="Fecha Hora" SortExpression="FechaHora" DataFormatString="{0:dd/MM/yyyy HH:mm}"></asp:BoundField>
+                                        <asp:BoundField DataField="PesoNeto" HeaderText="Peso Neto" SortExpression="PesoNeto" DataFormatString="{0:n2}"></asp:BoundField>
+                                        <asp:BoundField DataField="Tara" HeaderText="Tara" SortExpression="Tara"></asp:BoundField>
+                                    </Columns>
+                                </asp:GridView>
+                                <asp:SqlDataSource ID="dsPesajesFiltrados" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [QRenvase], [RutTrabajador], [RutPesador], [Fundo], [Potrero], [Sector], [Variedad], [Cuartel], [FechaHora], [PesoNeto], [Tara] FROM [Pesaje] WHERE (([RutTrabajador] LIKE '%' + @RutTrabajador + '%') AND [FechaHora] BETWEEN (@FechaHora + ' 00:00') AND (@FechaHora2 + ' 23:59')) ORDER BY [RutTrabajador], [FechaHora]">
+                                    <SelectParameters>
+                                        <asp:ControlParameter ControlID="txtFiltroRut" Name="RutTrabajador" PropertyName="Text" Type="String" ConvertEmptyStringToNull="False" />
+                                        <asp:ControlParameter ControlID="txtFechaInicio" Name="FechaHora" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" DefaultValue="1999-01-01" />
+                                        <asp:ControlParameter ControlID="txtFechaTermino" Name="FechaHora2" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" DefaultValue="2099-01-01" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </form>
+
+</asp:Content>

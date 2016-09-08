@@ -33,7 +33,7 @@ namespace DemoArandanos
                         HttpCookie cookie1 = new HttpCookie("login");
                         cookie1.Expires = DateTime.Now.AddMinutes(30);
                         Response.Cookies.Add(cookie1);
-                        Server.Transfer("Informes2.aspx", true);
+                        Server.Transfer("InformePlantas2.aspx", true);
                     }
                     else
                     {

@@ -10,7 +10,7 @@
 namespace DemoArandanos {
     
     
-    public partial class Informes {
+    public partial class InformePlantas2 {
         
         /// <summary>
         /// Control ScriptManager1.

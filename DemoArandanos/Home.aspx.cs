@@ -194,7 +194,8 @@ namespace DemoArandanos
         {
             txtIdPlanta.Text = grillaPlantas.Rows[grillaPlantas.SelectedIndex].Cells[1].Text.Replace("&nbsp;", "");
             ddEstado.SelectedValue = grillaPlantas.Rows[grillaPlantas.SelectedIndex].Cells[2].Text.Replace("&nbsp;", "");
-            txtFechaPlantacion.Text = grillaPlantas.Rows[grillaPlantas.SelectedIndex].Cells[3].Text.Replace("&nbsp;", "");
+            DateTime d = DateTime.Parse(grillaPlantas.Rows[grillaPlantas.SelectedIndex].Cells[3].Text.Replace("&nbsp;", "").ToString());
+            txtFechaPlantacion.Text = d.ToString("yyyy-MM-dd");
             txtObservaciones.Text = grillaPlantas.Rows[grillaPlantas.SelectedIndex].Cells[4].Text.Replace("&nbsp;", "");
             ddHilera.SelectedValue = grillaPlantas.Rows[grillaPlantas.SelectedIndex].Cells[5].Text.Replace("&nbsp;", "");
             ddCuartel2.SelectedValue = grillaPlantas.Rows[grillaPlantas.SelectedIndex].Cells[6].Text.Replace("&nbsp;", "");

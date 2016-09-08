@@ -555,11 +555,12 @@ namespace DemoArandanos.Controlador
             contexto.SaveChanges();
         }
 
-        //ADMINISTRADOR DE TRABAJADOR (SISTEMA PRODUCCION)
+        //SISTEMA PRODUCCION ARANDANOS
+        //ADMINISTRADOR DE TRABAJADOR 
 
         public void insertarTrabajador(String rut, String nombre, String apellido, String qrrut, String fechaNac)
         {
-            contexto.Trabajador.Add(new Trabajador { Rut = rut.ToUpper().Replace(".",""), Nombre = nombre.ToUpper(), Apellido = apellido.ToUpper(), QRrut = qrrut.ToUpper().Replace(".", ""), FechaNacimiento = DateTime.Parse(fechaNac) });
+            contexto.Trabajador.Add(new Trabajador { Rut = rut.ToUpper().Replace(".", ""), Nombre = nombre.ToUpper(), Apellido = apellido.ToUpper(), QRrut = qrrut.ToUpper().Replace(".", ""), FechaNacimiento = DateTime.Parse(fechaNac) });
             contexto.SaveChanges();
         }
 
@@ -581,6 +582,53 @@ namespace DemoArandanos.Controlador
                                      where t.Rut == rut.ToUpper().Replace(".", "")
                                      select t).FirstOrDefault();
             contexto.Trabajador.Remove(trabajador);
+            contexto.SaveChanges();
+        }
+
+        //ADMINISTRADOR DE PESAJE
+
+        public void insertarPesaje(String producto, String qrenvase, String ruttrabajador, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval)
+        {
+            contexto.Pesaje.Add(new Pesaje { Producto = producto.ToUpper().Replace(".", ""), QRenvase = qrenvase.ToUpper().Replace(".", ""), RutTrabajador = ruttrabajador.ToUpper().Replace(".", ""), RutPesador = rutpesador.ToUpper().Replace(".", ""), Fundo = fundo.ToUpper().Replace(".", ""), Potrero = potrero.ToUpper().Replace(".", ""), Sector = sector.ToUpper().Replace(".", ""), Variedad = variedad.ToUpper().Replace(".", ""), Cuartel = cuartel.ToUpper().Replace(".", ""), FechaHora = fechahora, PesoNeto = pesoneto, Tara = tara, Formato = formato.ToUpper().Replace(".", ""), TotalCantidad = totalcant, Factor = factor, Cantidad = cantidad, Lectura_SVAL = lecturasval.ToUpper().Replace(".", ""), ID_Map = lastMapeo() });
+            contexto.SaveChanges();
+        }
+
+        public void actualizarPesaje(String producto, String qrenvase, String ruttrabajador, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval)
+        {
+            Pesaje pesaje = (from p in contexto.Pesaje
+                             where p.Producto == producto
+                             && p.QRenvase == qrenvase.ToUpper().Replace(".", "")
+                             && p.FechaHora == fechahora
+                             select p).FirstOrDefault();
+            pesaje.Producto = producto.ToUpper().Replace(".", "");
+            pesaje.QRenvase = qrenvase.ToUpper().Replace(".", "");
+            pesaje.RutTrabajador = ruttrabajador.ToUpper().Replace(".", "");
+            pesaje.RutPesador = rutpesador.ToUpper().Replace(".", "");
+            pesaje.Fundo = fundo.ToUpper().Replace(".", "");
+            pesaje.Potrero = potrero.ToUpper().Replace(".", "");
+            pesaje.Sector = sector.ToUpper().Replace(".", "");
+            pesaje.Variedad = variedad.ToUpper().Replace(".", "");
+            pesaje.Cuartel = cuartel.ToUpper().Replace(".", "");
+            pesaje.FechaHora = fechahora;
+            pesaje.PesoNeto = pesoneto;
+            pesaje.Tara = tara;
+            pesaje.Formato = formato.ToUpper().Replace(".", "");
+            pesaje.TotalCantidad = totalcant;
+            pesaje.Factor = factor;
+            pesaje.Cantidad = cantidad;
+            pesaje.Lectura_SVAL = lecturasval.ToUpper().Replace(".", "");
+            pesaje.ID_Map = lastMapeo();
+            contexto.SaveChanges();
+        }
+
+        public void eliminarPesaje(String producto, String qrenvase, DateTime fechahora)
+        {
+            Pesaje pesaje = (from p in contexto.Pesaje
+                             where p.Producto == producto
+                             && p.QRenvase == qrenvase.ToUpper().Replace(".", "")
+                             && p.FechaHora == fechahora
+                             select p).FirstOrDefault();
+            contexto.Pesaje.Remove(pesaje);
             contexto.SaveChanges();
         }
 

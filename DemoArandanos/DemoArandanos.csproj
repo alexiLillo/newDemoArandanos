@@ -162,8 +162,8 @@
     <Content Include="images\ic_mode_edit_black_24dp_1x.png" />
     <Content Include="images\ic_mode_edit_black_24dp_2x.png" />
     <Content Include="images\mapa.png" />
-    <Content Include="Informes.aspx" />
-    <Content Include="Informes2.aspx" />
+    <Content Include="InformePlantas.aspx" />
+    <Content Include="InformePlantas2.aspx" />
     <Content Include="mapa.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -205,8 +205,9 @@
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="CargaExcel.aspx" />
-    <Content Include="Produccion.aspx" />
-    <Content Include="Produccion2.aspx" />
+    <Content Include="Pesajes2.aspx" />
+    <Content Include="Trabajadores.aspx" />
+    <Content Include="Trabajadores2.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\bootstrap.js" />
@@ -246,19 +247,19 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Informes.aspx.cs">
-      <DependentUpon>Informes.aspx</DependentUpon>
+    <Compile Include="InformePlantas.aspx.cs">
+      <DependentUpon>InformePlantas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Informes.aspx.designer.cs">
-      <DependentUpon>Informes.aspx</DependentUpon>
+    <Compile Include="InformePlantas.aspx.designer.cs">
+      <DependentUpon>InformePlantas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Informes2.aspx.cs">
-      <DependentUpon>Informes2.aspx</DependentUpon>
+    <Compile Include="InformePlantas2.aspx.cs">
+      <DependentUpon>InformePlantas2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Informes2.aspx.designer.cs">
-      <DependentUpon>Informes2.aspx</DependentUpon>
+    <Compile Include="InformePlantas2.aspx.designer.cs">
+      <DependentUpon>InformePlantas2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -318,19 +319,26 @@
     <Compile Include="Modelo\VistaApkPesaje.cs" />
     <Compile Include="Modelo\VistaConsulta.cs" />
     <Compile Include="Modelo\VistaConsultaDia.cs" />
-    <Compile Include="Produccion.aspx.cs">
-      <DependentUpon>Produccion.aspx</DependentUpon>
+    <Compile Include="Pesajes2.aspx.cs">
+      <DependentUpon>Pesajes2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Produccion.aspx.designer.cs">
-      <DependentUpon>Produccion.aspx</DependentUpon>
+    <Compile Include="Pesajes2.aspx.designer.cs">
+      <DependentUpon>Pesajes2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Produccion2.aspx.cs">
-      <DependentUpon>Produccion2.aspx</DependentUpon>
+    <Compile Include="Trabajadores.aspx.cs">
+      <DependentUpon>Trabajadores.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Produccion2.aspx.designer.cs">
-      <DependentUpon>Produccion2.aspx</DependentUpon>
+    <Compile Include="Trabajadores.aspx.designer.cs">
+      <DependentUpon>Trabajadores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajadores2.aspx.cs">
+      <DependentUpon>Trabajadores2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Trabajadores2.aspx.designer.cs">
+      <DependentUpon>Trabajadores2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

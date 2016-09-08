@@ -6,10 +6,9 @@ using System.Web.UI;
 using System.Web.UI.DataVisualization.Charting;
 using System.Web.UI.WebControls;
 
-
 namespace DemoArandanos
 {
-    public partial class Informes : System.Web.UI.Page
+    public partial class InformePlantas : System.Web.UI.Page
     {
         Controler control = new Controler();
         //private int chicas;

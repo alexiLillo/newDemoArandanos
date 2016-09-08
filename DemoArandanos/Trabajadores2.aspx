@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Maestra.Master" AutoEventWireup="true" CodeBehind="Produccion.aspx.cs" Inherits="DemoArandanos.Produccion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master2.Master" AutoEventWireup="true" CodeBehind="Trabajadores2.aspx.cs" Inherits="DemoArandanos.Trabajadores2" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head2" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <h1>Enrolamiento Trabajadores</h1>
     <br />
     <form runat="server">
@@ -63,13 +62,13 @@
             <asp:UpdatePanel ID="UpdatePanel1" UpdateMode="Always" runat="server">
                 <ContentTemplate>
                     <label for="txtRutTrabajador">Rut</label>
-                    <asp:TextBox ID="txtRutTrabajador" runat="server" type="input" class="form-control" placeholder="Ingrese Rut de Trabajador"></asp:TextBox>
+                    <asp:TextBox ID="txtRutTrabajador" runat="server" type="input" required="required" class="form-control" placeholder="Ingrese Rut de Trabajador"></asp:TextBox>
                     <br />
                     <label for="txtNombreTrabajador">Nombre</label>
-                    <asp:TextBox ID="txtNombreTrabajador" runat="server" type="input" class="form-control" placeholder="Ingrese Nombre de Trabajador"></asp:TextBox>
+                    <asp:TextBox ID="txtNombreTrabajador" runat="server" type="input" required="required"  class="form-control" placeholder="Ingrese Nombre de Trabajador"></asp:TextBox>
                     <br />
                     <label for="txtApellidoTrabajador">Apellido</label>
-                    <asp:TextBox ID="txtApellidoTrabajador" runat="server" type="input" class="form-control" placeholder="Ingrese Apellido de Trabajador"></asp:TextBox>
+                    <asp:TextBox ID="txtApellidoTrabajador" runat="server" type="input" required="required"  class="form-control" placeholder="Ingrese Apellido de Trabajador"></asp:TextBox>
                     <br />
                     <label for="txtFechaNacimiento">Fecha Nacimiento</label>
                     <asp:TextBox ID="txtFechaNacimiento" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-mm-dd"></asp:TextBox>
@@ -109,7 +108,7 @@
                                         <asp:BoundField DataField="Rut" HeaderText="Rut" ReadOnly="True" SortExpression="Rut" />
                                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                                         <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
-                                        <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha Nacimiento" SortExpression="FechaNacimiento" />
+                                        <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha Nacimiento" SortExpression="FechaNacimiento" DataFormatString="{0:dd/MM/yyyy}" />
                                     </Columns>
                                 </asp:GridView>
                                 <asp:SqlDataSource ID="dsTrabajadores" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [Rut], [Nombre], [Apellido], [FechaNacimiento] FROM [Trabajador] ORDER BY [Nombre], [Apellido]"></asp:SqlDataSource>

@@ -10,7 +10,7 @@
 namespace DemoArandanos {
     
     
-    public partial class Produccion {
+    public partial class Trabajadores2 {
         
         /// <summary>
         /// Control ScriptManager1.
