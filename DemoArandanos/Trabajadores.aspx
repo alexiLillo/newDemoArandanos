@@ -94,6 +94,7 @@
             </asp:UpdatePanel>
         </div>
         <div class="col-md-7">
+            <br />
             <asp:UpdatePanel ID="UpdatePanel2" UpdateMode="Always" runat="server">
                 <ContentTemplate>
                     <!-- grilla -->
