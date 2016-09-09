@@ -1,6 +1,7 @@
 ﻿using DemoArandanos.Modelo;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 
@@ -8,8 +9,7 @@ namespace DemoArandanos.Controlador
 {
     public class Controler
     {
-        DemoArandanos.Modelo.Modelo contexto = new DemoArandanos.Modelo.Modelo();
-
+        Modelo.Modelo contexto = new Modelo.Modelo();
         public int login(string usuario, string contraseña)
         {
             int login = 0;
@@ -20,9 +20,10 @@ namespace DemoArandanos.Controlador
                 {
                     if (resultado.tipo.Equals("admin"))
                         login = 1;
-                    else
-                        if (resultado.tipo.Equals("normal"))
+                    if (resultado.tipo.Equals("normal"))
                         login = 2;
+                    if (resultado.tipo.Equals("informes"))
+                        login = 3;
                 }
             }
             return login;
@@ -589,47 +590,87 @@ namespace DemoArandanos.Controlador
 
         public void insertarPesaje(String producto, String qrenvase, String ruttrabajador, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval)
         {
-            contexto.Pesaje.Add(new Pesaje { Producto = producto.ToUpper().Replace(".", ""), QRenvase = qrenvase.ToUpper().Replace(".", ""), RutTrabajador = ruttrabajador.ToUpper().Replace(".", ""), RutPesador = rutpesador.ToUpper().Replace(".", ""), Fundo = fundo.ToUpper().Replace(".", ""), Potrero = potrero.ToUpper().Replace(".", ""), Sector = sector.ToUpper().Replace(".", ""), Variedad = variedad.ToUpper().Replace(".", ""), Cuartel = cuartel.ToUpper().Replace(".", ""), FechaHora = fechahora, PesoNeto = pesoneto, Tara = tara, Formato = formato.ToUpper().Replace(".", ""), TotalCantidad = totalcant, Factor = factor, Cantidad = cantidad, Lectura_SVAL = lecturasval.ToUpper().Replace(".", ""), ID_Map = lastMapeo() });
-            contexto.SaveChanges();
+            try
+            {
+                contexto.Pesaje.Add(new Pesaje { Producto = producto.ToUpper().Replace(".", ""), QRenvase = qrenvase.ToUpper().Replace(".", ""), RutTrabajador = ruttrabajador.ToUpper().Replace(".", ""), RutPesador = rutpesador.ToUpper().Replace(".", ""), Fundo = fundo.ToUpper().Replace(".", ""), Potrero = potrero.ToUpper().Replace(".", ""), Sector = sector.ToUpper().Replace(".", ""), Variedad = variedad.ToUpper().Replace(".", ""), Cuartel = cuartel.ToUpper().Replace(".", ""), FechaHora = fechahora, PesoNeto = pesoneto, Tara = tara, Formato = formato.ToUpper().Replace(".", ""), TotalCantidad = totalcant, Factor = factor, Cantidad = cantidad, Lectura_SVAL = lecturasval.ToUpper().Replace(".", ""), ID_Map = lastMapeo() });
+                contexto.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
         }
 
-        public void actualizarPesaje(String producto, String qrenvase, String ruttrabajador, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval)
+        public void actualizarPesaje(String qrold, DateTime fechaold, String producto, String qrenvase, String ruttrabajador, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval)
         {
-            Pesaje pesaje = (from p in contexto.Pesaje
-                             where p.Producto == producto
-                             && p.QRenvase == qrenvase.ToUpper().Replace(".", "")
-                             && p.FechaHora == fechahora
-                             select p).FirstOrDefault();
-            pesaje.Producto = producto.ToUpper().Replace(".", "");
-            pesaje.QRenvase = qrenvase.ToUpper().Replace(".", "");
-            pesaje.RutTrabajador = ruttrabajador.ToUpper().Replace(".", "");
-            pesaje.RutPesador = rutpesador.ToUpper().Replace(".", "");
-            pesaje.Fundo = fundo.ToUpper().Replace(".", "");
-            pesaje.Potrero = potrero.ToUpper().Replace(".", "");
-            pesaje.Sector = sector.ToUpper().Replace(".", "");
-            pesaje.Variedad = variedad.ToUpper().Replace(".", "");
-            pesaje.Cuartel = cuartel.ToUpper().Replace(".", "");
-            pesaje.FechaHora = fechahora;
-            pesaje.PesoNeto = pesoneto;
-            pesaje.Tara = tara;
-            pesaje.Formato = formato.ToUpper().Replace(".", "");
-            pesaje.TotalCantidad = totalcant;
-            pesaje.Factor = factor;
-            pesaje.Cantidad = cantidad;
-            pesaje.Lectura_SVAL = lecturasval.ToUpper().Replace(".", "");
-            pesaje.ID_Map = lastMapeo();
-            contexto.SaveChanges();
+            try
+            {
+                Pesaje pesaje = (from p in contexto.Pesaje
+                                 where p.Producto == producto
+                                 //&& p.QRenvase == qrold.ToUpper().Replace(".", "")
+                                 && p.FechaHora == fechaold
+                                 select p).FirstOrDefault();
+                pesaje.Producto = producto.ToUpper().Replace(".", "");
+                pesaje.QRenvase = qrenvase.ToUpper().Replace(".", "");
+                pesaje.RutTrabajador = ruttrabajador.ToUpper().Replace(".", "");
+                pesaje.RutPesador = rutpesador.ToUpper().Replace(".", "");
+                pesaje.Fundo = fundo.ToUpper().Replace(".", "");
+                pesaje.Potrero = potrero.ToUpper().Replace(".", "");
+                pesaje.Sector = sector.ToUpper().Replace(".", "");
+                pesaje.Variedad = variedad.ToUpper().Replace(".", "");
+                pesaje.Cuartel = cuartel.ToUpper().Replace(".", "");
+                pesaje.FechaHora = fechahora;
+                pesaje.PesoNeto = pesoneto;
+                pesaje.Tara = tara;
+                pesaje.Formato = formato.ToUpper().Replace(".", "");
+                pesaje.TotalCantidad = totalcant;
+                pesaje.Factor = factor;
+                pesaje.Cantidad = cantidad;
+                pesaje.Lectura_SVAL = lecturasval.ToUpper().Replace(".", "");
+                pesaje.ID_Map = lastMapeo();
+                contexto.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+
         }
 
         public void eliminarPesaje(String producto, String qrenvase, DateTime fechahora)
         {
-            Pesaje pesaje = (from p in contexto.Pesaje
-                             where p.Producto == producto
-                             && p.QRenvase == qrenvase.ToUpper().Replace(".", "")
-                             && p.FechaHora == fechahora
-                             select p).FirstOrDefault();
-            contexto.Pesaje.Remove(pesaje);
-            contexto.SaveChanges();
+            try
+            {
+                Pesaje pesaje = (from p in contexto.Pesaje
+                                 where p.Producto == producto
+                                 && p.QRenvase == qrenvase.ToUpper().Replace(".", "")
+                                 && p.FechaHora == fechahora
+                                 select p).FirstOrDefault();
+                contexto.Pesaje.Remove(pesaje);
+                contexto.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
         }
 
     }

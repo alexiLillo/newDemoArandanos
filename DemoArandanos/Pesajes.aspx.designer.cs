@@ -10,7 +10,7 @@
 namespace DemoArandanos {
     
     
-    public partial class Pesajes2 {
+    public partial class Pesajes {
         
         /// <summary>
         /// Control ScriptManager1.

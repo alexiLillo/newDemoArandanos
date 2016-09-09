@@ -164,6 +164,7 @@
     <Content Include="images\mapa.png" />
     <Content Include="InformePlantas.aspx" />
     <Content Include="InformePlantas2.aspx" />
+    <Content Include="InformePlantas3.aspx" />
     <Content Include="mapa.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -183,6 +184,7 @@
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
     <Content Include="apiapp.json" />
     <Content Include="ClassDiagram2.cd" />
+    <Content Include="MasterInformes.Master" />
     <None Include="Properties\PublishProfiles\GESTION.pubxml" />
     <None Include="Properties\PublishProfiles\GESTIONPRODCAF.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -205,6 +207,7 @@
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="CargaExcel.aspx" />
+    <Content Include="Pesajes.aspx" />
     <Content Include="Pesajes2.aspx" />
     <Content Include="Trabajadores.aspx" />
     <Content Include="Trabajadores2.aspx" />
@@ -261,6 +264,13 @@
     <Compile Include="InformePlantas2.aspx.designer.cs">
       <DependentUpon>InformePlantas2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InformePlantas3.aspx.cs">
+      <DependentUpon>InformePlantas3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformePlantas3.aspx.designer.cs">
+      <DependentUpon>InformePlantas3.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -289,6 +299,13 @@
     <Compile Include="Master2.Master.designer.cs">
       <DependentUpon>Master2.Master</DependentUpon>
     </Compile>
+    <Compile Include="MasterInformes.Master.cs">
+      <DependentUpon>MasterInformes.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterInformes.Master.designer.cs">
+      <DependentUpon>MasterInformes.Master</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\Cuartel.cs" />
     <Compile Include="Modelo\Estado.cs" />
     <Compile Include="Modelo\Fundo.cs" />
@@ -316,9 +333,19 @@
     <Compile Include="Modelo\Trabajador.cs" />
     <Compile Include="Modelo\Usuarios.cs" />
     <Compile Include="Modelo\Variedad.cs" />
+    <Compile Include="Modelo\View_1.cs" />
+    <Compile Include="Modelo\VistaAll.cs" />
     <Compile Include="Modelo\VistaApkPesaje.cs" />
     <Compile Include="Modelo\VistaConsulta.cs" />
     <Compile Include="Modelo\VistaConsultaDia.cs" />
+    <Compile Include="Modelo\Vis_Fun_Pot_Sec_Cua_Hil_Est_Var.cs" />
+    <Compile Include="Pesajes.aspx.cs">
+      <DependentUpon>Pesajes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pesajes.aspx.designer.cs">
+      <DependentUpon>Pesajes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pesajes2.aspx.cs">
       <DependentUpon>Pesajes2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

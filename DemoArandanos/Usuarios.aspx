@@ -58,6 +58,7 @@
                     <asp:DropDownList ID="ddTipo" CssClass="form-control" runat="server">
                         <asp:ListItem Selected="True" Value="normal">Normal</asp:ListItem>
                         <asp:ListItem Value="admin">Administrador</asp:ListItem>
+                        <asp:ListItem Value="informes">Gerencia</asp:ListItem>
                     </asp:DropDownList>
                     <br />
                     <label for="txtPass1">Contraseña</label>

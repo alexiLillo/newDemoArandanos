@@ -10,7 +10,7 @@
 namespace DemoArandanos {
     
     
-    public partial class Pesajes2 {
+    public partial class InformePlantas3 {
         
         /// <summary>
         /// Control ScriptManager1.
@@ -103,6 +103,69 @@ namespace DemoArandanos {
         protected global::System.Web.UI.WebControls.Label lbldanger;
         
         /// <summary>
+        /// Control UpdatePanel3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
+        
+        /// <summary>
+        /// Control lbltemporada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbltemporada;
+        
+        /// <summary>
+        /// Control lblfundo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblfundo;
+        
+        /// <summary>
+        /// Control lblpotrero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblpotrero;
+        
+        /// <summary>
+        /// Control lblsector.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblsector;
+        
+        /// <summary>
+        /// Control lblcuartel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblcuartel;
+        
+        /// <summary>
+        /// Control lblhilera.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblhilera;
+        
+        /// <summary>
         /// Control UpdatePanel1.
         /// </summary>
         /// <remarks>
@@ -112,85 +175,22 @@ namespace DemoArandanos {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// Control lblqrold.
+        /// Control ddMapeo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblqrold;
+        protected global::System.Web.UI.WebControls.DropDownList ddMapeo;
         
         /// <summary>
-        /// Control lblfechaold.
+        /// Control dsMapeo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblfechaold;
-        
-        /// <summary>
-        /// Control txtQRenvase.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtQRenvase;
-        
-        /// <summary>
-        /// Control txtRutTrabajador.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRutTrabajador;
-        
-        /// <summary>
-        /// Control txtRutPesador.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRutPesador;
-        
-        /// <summary>
-        /// Control txtFechaHora.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaHora;
-        
-        /// <summary>
-        /// Control txtPesoBruto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPesoBruto;
-        
-        /// <summary>
-        /// Control ddTara.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddTara;
-        
-        /// <summary>
-        /// Control dsTara.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsTara;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsMapeo;
         
         /// <summary>
         /// Control ddVariedad.
@@ -310,6 +310,15 @@ namespace DemoArandanos {
         protected global::System.Web.UI.WebControls.SqlDataSource cuartelesDEsectorVista;
         
         /// <summary>
+        /// Control btVerHileras.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btVerHileras;
+        
+        /// <summary>
         /// Control cuartelesDEsector.
         /// </summary>
         /// <remarks>
@@ -319,40 +328,31 @@ namespace DemoArandanos {
         protected global::System.Web.UI.WebControls.SqlDataSource cuartelesDEsector;
         
         /// <summary>
-        /// Control btGuardarPesaje.
+        /// Control ddHilera.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btGuardarPesaje;
+        protected global::System.Web.UI.WebControls.DropDownList ddHilera;
         
         /// <summary>
-        /// Control btActualizarPesaje.
+        /// Control hilerasDEcuartelVista.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btActualizarPesaje;
+        protected global::System.Web.UI.WebControls.SqlDataSource hilerasDEcuartelVista;
         
         /// <summary>
-        /// Control btEliminarPesaje.
+        /// Control hilerasDEcuartel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btEliminarPesaje;
-        
-        /// <summary>
-        /// Control btLimpiar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btLimpiar;
+        protected global::System.Web.UI.WebControls.SqlDataSource hilerasDEcuartel;
         
         /// <summary>
         /// Control UpdatePanel2.
@@ -364,57 +364,39 @@ namespace DemoArandanos {
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
-        /// Control txtFiltroRut.
+        /// Control lblgrafico.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFiltroRut;
+        protected global::System.Web.UI.WebControls.Label lblgrafico;
         
         /// <summary>
-        /// Control btFiltrar.
+        /// Control lbltotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btFiltrar;
+        protected global::System.Web.UI.WebControls.Label lbltotal;
         
         /// <summary>
-        /// Control txtFechaInicio.
+        /// Control lblvariedad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaInicio;
+        protected global::System.Web.UI.WebControls.Label lblvariedad;
         
         /// <summary>
-        /// Control txtFechaTermino.
+        /// Control Grafico1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaTermino;
-        
-        /// <summary>
-        /// Control grillaPesajes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grillaPesajes;
-        
-        /// <summary>
-        /// Control dsPesajesFiltrados.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsPesajesFiltrados;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Grafico1;
     }
 }

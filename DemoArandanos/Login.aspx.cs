@@ -37,12 +37,23 @@ namespace DemoArandanos
                     }
                     else
                     {
-                        if (control.login(txtUser.Text, txtPass.Text) == 0)
+                        if (control.login(txtUser.Text, txtPass.Text) == 3)
                         {
-                            lblLogin.Text = "Datos de inicio de sesión incorrectos.";
-                            divBadLogin.Visible = true;
-                            txtUser.Text = "";
-                            txtPass.Text = "";
+                            //usuario de tipo solo informes
+                            HttpCookie cookie1 = new HttpCookie("login");
+                            cookie1.Expires = DateTime.Now.AddMinutes(30);
+                            Response.Cookies.Add(cookie1);
+                            Server.Transfer("InformePlantas3.aspx", true);
+                        }
+                        else
+                        {
+                            if (control.login(txtUser.Text, txtPass.Text) == 0)
+                            {
+                                lblLogin.Text = "Datos de inicio de sesión incorrectos.";
+                                divBadLogin.Visible = true;
+                                txtUser.Text = "";
+                                txtPass.Text = "";
+                            }
                         }
                     }
                 }

@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace DemoArandanos
 {
-    public partial class Pesajes2 : System.Web.UI.Page
+    public partial class Pesajes : System.Web.UI.Page
     {
         Controler control = new Controler();
         public String qrold;
@@ -105,7 +105,7 @@ namespace DemoArandanos
             txtRutTrabajador.Text = grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[2].Text.Replace("&nbsp;", "");
             txtRutPesador.Text = grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[3].Text.Replace("&nbsp;", "");
             DateTime d = DateTime.Parse(grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[9].Text.Replace("&nbsp;", "").ToString());
-            txtFechaHora.Text = d.ToString("yyyy-MM-ddTHH:mm:ss");            
+            txtFechaHora.Text = d.ToString("yyyy-MM-ddTHH:mm:ss");
             decimal neto = Decimal.Parse(grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[10].Text.Replace("&nbsp;", "").ToString().Replace(".", ","));
             decimal tara = Decimal.Parse(grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[11].Text.Replace("&nbsp;", "").ToString().Replace(".", ","));
             decimal bruto = neto + tara;
@@ -134,7 +134,7 @@ namespace DemoArandanos
                 String formato = split[0];
                 control.actualizarPesaje(lblqrold.Text, DateTime.Parse(lblfechaold.Text), "32", txtQRenvase.Text, txtRutTrabajador.Text, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto, Decimal.Parse(ddTara.SelectedValue), formato, 1, 1, 1, "");
                 lblsuccess.Text = "Pesaje actualizado correctamente.";
-                divSuccess.Visible = true;                
+                divSuccess.Visible = true;
                 limpiarCampos();
             }
             catch (Exception ex)
@@ -147,7 +147,7 @@ namespace DemoArandanos
         protected void btEliminarPesaje_Click(object sender, EventArgs e)
         {
             try
-            {                
+            {
                 control.eliminarPesaje("32", txtQRenvase.Text, DateTime.Parse(txtFechaHora.Text));
                 lblinfo.Text = "Pesaje eliminado.";
                 divInfo.Visible = true;
