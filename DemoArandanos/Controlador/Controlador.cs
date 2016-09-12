@@ -673,5 +673,33 @@ namespace DemoArandanos.Controlador
             }
         }
 
+        //ADMINISTRACION DE TARA
+        public void insertarTara(String id_tara, decimal peso, String descripcion, String producto, String formato)
+        {
+            contexto.Tara.Add(new Modelo.Tara { ID_Tara = id_tara.ToUpper(), Peso = peso, Descripcion = descripcion.ToUpper(), Producto = producto.ToUpper(), Formato = formato.ToUpper() });
+            contexto.SaveChanges();
+        }
+
+        public void actualizarTara(String id_tara, decimal peso, String descripcion, String producto, String formato)
+        {
+            Modelo.Tara tara = (from t in contexto.Tara
+                         where t.ID_Tara == id_tara
+                         select t).FirstOrDefault();
+            tara.Peso = peso;
+            tara.Descripcion = descripcion.ToUpper();
+            tara.Producto = producto.ToUpper();
+            tara.Formato = formato.ToUpper();
+            contexto.SaveChanges();
+        }
+
+        public void eliminarTara(String id_tara)
+        {
+            Modelo.Tara tara = (from t in contexto.Tara
+                                where t.ID_Tara == id_tara
+                                select t).FirstOrDefault();
+            contexto.Tara.Remove(tara);
+            contexto.SaveChanges();
+        }
+
     }
 }

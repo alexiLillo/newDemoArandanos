@@ -209,6 +209,7 @@
     <Content Include="CargaExcel.aspx" />
     <Content Include="Pesajes.aspx" />
     <Content Include="Pesajes2.aspx" />
+    <Content Include="Taras.aspx" />
     <Content Include="Trabajadores.aspx" />
     <Content Include="Trabajadores2.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
@@ -352,6 +353,13 @@
     </Compile>
     <Compile Include="Pesajes2.aspx.designer.cs">
       <DependentUpon>Pesajes2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Taras.aspx.cs">
+      <DependentUpon>Taras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Taras.aspx.designer.cs">
+      <DependentUpon>Taras.aspx</DependentUpon>
     </Compile>
     <Compile Include="Trabajadores.aspx.cs">
       <DependentUpon>Trabajadores.aspx</DependentUpon>

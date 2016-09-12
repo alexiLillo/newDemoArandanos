@@ -83,8 +83,9 @@
                             <li><a href="#">Informe 1</a></li>
                             <li><a href="#">Informe 2</a></li>
                             <li class="divider"></li>
-                            <li><a href="Trabajadores.aspx">Enrolar Trabajadores</a></li>
-                            <li><a href="Pesajes.aspx">Ingreso Pesajes</a></li>
+                            <li><a href="Trabajadores.aspx">Trabajadores</a></li>
+                            <li><a href="Pesajes.aspx">Pesajes</a></li>
+                            <li><a href="Taras.aspx">Tara</a></li>
                         </ul>
                     </li>
                     <li><a href="#" runat="server" onserverclick="salir">Salir</a></li>
