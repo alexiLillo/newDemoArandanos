@@ -40,14 +40,7 @@
 
 <body>
 
-    <script language="javascript" type="text/javascript">
-        //$(document).ready(function () {
-        //    $('ul li a').click(function () {
-        //        $('li a').removeClass("active");
-        //        $(this).addClass("active");
-        //    });
-        //});
-    </script>
+
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
