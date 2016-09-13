@@ -165,6 +165,7 @@
     <Content Include="InformePlantas.aspx" />
     <Content Include="InformePlantas2.aspx" />
     <Content Include="InformePlantas3.aspx" />
+    <Content Include="InformeProd1.aspx" />
     <Content Include="mapa.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -271,6 +272,13 @@
     </Compile>
     <Compile Include="InformePlantas3.aspx.designer.cs">
       <DependentUpon>InformePlantas3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeProd1.aspx.cs">
+      <DependentUpon>InformeProd1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeProd1.aspx.designer.cs">
+      <DependentUpon>InformeProd1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

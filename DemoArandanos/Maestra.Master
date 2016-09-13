@@ -73,7 +73,7 @@
                                <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Informe 1</a></li>
+                            <li><a href="InformeProd1.aspx">Producción</a></li>
                             <li><a href="#">Informe 2</a></li>
                             <li class="divider"></li>
                             <li><a href="Trabajadores.aspx">Trabajadores</a></li>
