@@ -613,7 +613,7 @@ namespace DemoArandanos.Controlador
             {
                 Pesaje pesaje = (from p in contexto.Pesaje
                                  where p.Producto == producto
-                                 //&& p.QRenvase == qrold.ToUpper().Replace(".", "")
+                                 && p.QRenvase == qrold.ToUpper().Replace(".", "")
                                  && p.FechaHora == fechaold
                                  select p).FirstOrDefault();
                 pesaje.Producto = producto.ToUpper().Replace(".", "");

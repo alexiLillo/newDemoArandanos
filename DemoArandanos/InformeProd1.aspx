@@ -8,7 +8,22 @@
     <br />
     <form runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <div class=" col-md-6">
+        <div class=" col-md-12">
+
+            <script language="javascript" type="text/javascript">
+                function printDiv(divName) {
+                    var printContents = document.getElementById(divName).innerHTML;
+                    var originalContents = document.body.innerHTML;
+
+                    document.body.innerHTML = printContents;
+
+                    window.print();
+
+                    document.body.innerHTML = originalContents;
+                }
+
+            </script>
+
             <!-- Alertas de Bootstrap -->
             <asp:UpdatePanel ID="UpdatePanel9" UpdateMode="Always" runat="server">
                 <ContentTemplate>
@@ -46,7 +61,47 @@
             </asp:UpdatePanel>
         </div>
 
-        <div class="col-md-6"></div>
+        <div class="col-md-12">
+            <div id="printableArea">
+
+                <div class="col-md-12">
+                    <div class="visible-print">
+                        <h2>Informe de Producción Arándanos</h2>
+                        <br />
+                        <h5>Desde:
+                            <asp:Label ID="lbldesde" runat="server" Text=""></asp:Label></h5>
+                        <h5>Hasta:
+                            <asp:Label ID="lblhasta" runat="server" Text=""></asp:Label></h5>
+                        <br />
+                        <h6>Variedad: <asp:Label ID="lblvaried" runat="server" Text=""></asp:Label> - Fundo: <asp:Label ID="lblfund" runat="server" Text=""></asp:Label> - <asp:Label ID="lblpotrer" runat="server" Text=""></asp:Label> - <asp:Label ID="lblsect" runat="server" Text=""></asp:Label> - <asp:Label ID="lblcuart" runat="server" Text=""></asp:Label></h6>
+                        <h6>Filtro de búsqueda: <asp:Label ID="lblfiltr" runat="server" Text=""></asp:Label></h6>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <h3>Total Bandejas:
+                <asp:Label ID="lbltotalbandejas" runat="server" Text=""></asp:Label></h3>
+                    <h3>Total Kilos Neto:
+                <asp:Label ID="lbltotalkilos" runat="server" Text=""></asp:Label></h3>
+                    <br />
+                    <br />
+                </div>
+                <div class="col-md-5">
+                    <h3>Cantidad Trabajadores:
+                <asp:Label ID="lbltotaltrabajadores" runat="server" Text=""></asp:Label></h3>
+                    <h3>Promedio Kg/Trabajador:
+                <asp:Label ID="lblpromkltrab" runat="server" Text=""></asp:Label></h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <br />
+                <br />
+                <br />
+                <input type="button" Style="float: left" class="btn btn-default" name="Imprimir" value="Imprimir" onclick="printDiv('printableArea')">
+            </div>
+        </div>
+
+
 
         <div class="col-md-2">
             <label for="ddVariedad">Variedad</label>
@@ -84,7 +139,7 @@
                 <SelectParameters>
                     <asp:ControlParameter DefaultValue="0" ControlID="ddFundo" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" />
                     <asp:ControlParameter DefaultValue="0" ControlID="ddPotrero" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" />
-                    <asp:ControlParameter DefaultValue="0" ControlID="ddVariedad" Name="ID_Variedad" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False"  />
+                    <asp:ControlParameter DefaultValue="0" ControlID="ddVariedad" Name="ID_Variedad" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
                 </SelectParameters>
             </asp:SqlDataSource>
 
@@ -126,17 +181,17 @@
             </div>
             <!-- grilla -->
             <div class="panel panel-default">
-                
+
                 <div class="panel-body" style="max-height: 296px; overflow-y: scroll;">
                     <div class="table-responsive">
-                        <asp:GridView ID="grillaPesajesProd" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="dsGrillaPesajeProd">
+                        <asp:GridView ID="grillaPesajesProd" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="dsGrillaPesajeProd" OnDataBound="grillaPesajesProd_DataBound">
                             <Columns>
                                 <asp:BoundField DataField="QRenvase" HeaderText="QR envase" SortExpression="QRenvase"></asp:BoundField>
                                 <asp:BoundField DataField="RutTrabajador" HeaderText="Rut Trabajador" SortExpression="RutTrabajador"></asp:BoundField>
                                 <asp:BoundField DataField="RutPesador" HeaderText="Rut Pesador" SortExpression="RutPesador"></asp:BoundField>
                                 <asp:BoundField DataField="Formato" HeaderText="Formato" SortExpression="Formato" />
                                 <asp:BoundField DataField="FechaHora" HeaderText="Fecha Hora" SortExpression="FechaHora" />
-                                <asp:BoundField DataField="PesoNeto" HeaderText="Peso Neto" SortExpression="PesoNeto" />
+                                <asp:BoundField DataField="PesoNeto" HeaderText="Peso Neto" SortExpression="PesoNeto" DataFormatString="{0:n2}" />
                                 <asp:BoundField DataField="Tara" HeaderText="Tara" SortExpression="Tara" />
                             </Columns>
                         </asp:GridView>
@@ -157,8 +212,8 @@
                                 <asp:ControlParameter ControlID="txtFiltro" ConvertEmptyStringToNull="False" Name="RutTrabajador" PropertyName="Text" Type="String" />
                                 <asp:ControlParameter ControlID="txtFiltro" ConvertEmptyStringToNull="False" Name="Sector" PropertyName="Text" Type="String" />
                                 <asp:ControlParameter ControlID="txtFiltro" ConvertEmptyStringToNull="False" Name="Variedad" PropertyName="Text" Type="String" />
-                                <asp:ControlParameter ControlID="txtFechaInicio" Name="FechaHora" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" DefaultValue="1999-01-01" />
-                                <asp:ControlParameter ControlID="txtFechaTermino" Name="FechaHora2" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" DefaultValue="2099-01-01" />
+                                <asp:ControlParameter ControlID="txtFechaInicio" Name="FechaHora" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" />
+                                <asp:ControlParameter ControlID="txtFechaTermino" Name="FechaHora2" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" />
                             </SelectParameters>
                         </asp:SqlDataSource>
                     </div>
@@ -166,6 +221,8 @@
             </div>
 
         </div>
+
+
 
     </form>
 

@@ -11,35 +11,46 @@ namespace DemoArandanos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                //dsGrillaPesajeProd.SelectParameters["FechaHora"].DefaultValue = DateTime.Now.ToString("dd-MM-yyyy");
+                //dsGrillaPesajeProd.SelectParameters["FechaHora2"].DefaultValue = DateTime.Now.ToString("dd-MM-yyyy");
+
+                txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                txtFechaTermino.Text = DateTime.Now.ToString("yyyy-MM-dd");               
+            }
+
             divSuccess.Visible = false;
             divWarning.Visible = false;
             divInfo.Visible = false;
             divDanger.Visible = false;
+
+            //resumen();
         }
 
         protected void ddVariedad_DataBound(object sender, EventArgs e)
         {
-            ddVariedad.Items.Insert(0, new ListItem("Todas...", ""));
+            ddVariedad.Items.Insert(0, new ListItem("Todas", ""));
         }
 
         protected void ddFundo_DataBound(object sender, EventArgs e)
         {
-            ddFundo.Items.Insert(0, new ListItem("Todos...", ""));
+            ddFundo.Items.Insert(0, new ListItem("Todo", ""));
         }
 
         protected void ddPotrero_DataBound(object sender, EventArgs e)
         {
-            ddPotrero.Items.Insert(0, new ListItem("Todos...", ""));
+            ddPotrero.Items.Insert(0, new ListItem("Todos", ""));
         }
 
         protected void ddSector_DataBound(object sender, EventArgs e)
         {
-            ddSector.Items.Insert(0, new ListItem("Todos...", ""));
+            ddSector.Items.Insert(0, new ListItem("Todos", ""));
         }
 
         protected void ddCuartel_DataBound(object sender, EventArgs e)
         {
-            ddCuartel.Items.Insert(0, new ListItem("Todos...", ""));
+            ddCuartel.Items.Insert(0, new ListItem("Todos", ""));
         }
 
 
@@ -61,6 +72,47 @@ namespace DemoArandanos
         protected void txtFechaTermino_TextChanged(object sender, EventArgs e)
         {
             grillaPesajesProd.DataBind();
+        }
+
+        public void resumen()
+        {
+            int rows = grillaPesajesProd.Rows.Count;
+            double kilos = 0;
+            List<String> lista = new List<string>();
+
+            for (int i = 0; i < rows; i++)
+            {
+                kilos += Double.Parse(grillaPesajesProd.Rows[i].Cells[5].Text);
+                lista.Add(grillaPesajesProd.Rows[i].Cells[1].Text);
+            }
+
+            int trabajadores = new HashSet<String>(lista).Count;
+
+            lbltotalbandejas.Text = rows.ToString();
+            lbltotalkilos.Text = kilos.ToString();
+            lbltotaltrabajadores.Text = trabajadores.ToString();
+            double prom = kilos / trabajadores;
+            lblpromkltrab.Text = prom.ToString();
+
+            //imprimir
+            DateTime desde = DateTime.Parse(txtFechaInicio.Text);
+            lbldesde.Text = desde.ToString("dd-MM-yyyy");
+            DateTime hasta = DateTime.Parse(txtFechaTermino.Text);
+            lblhasta.Text = hasta.ToString("dd-MM-yyyy");
+            lblvaried.Text = ddVariedad.SelectedItem.Text;
+            lblfund.Text = ddFundo.SelectedItem.Text;
+            if (!ddPotrero.SelectedItem.Text.Equals("Todos"))
+                lblpotrer.Text = ddPotrero.SelectedItem.Text;
+            if (!ddSector.SelectedItem.Text.Equals("Todos"))
+                lblsect.Text = ddSector.SelectedItem.Text;
+            if (!ddCuartel.SelectedItem.Text.Equals("Todos"))
+                lblcuart.Text = ddCuartel.SelectedItem.Text;
+            lblfiltr.Text = txtFiltro.Text;
+        }
+
+        protected void grillaPesajesProd_DataBound(object sender, EventArgs e)
+        {
+            resumen();
         }
     }
 }

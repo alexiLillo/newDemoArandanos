@@ -23,9 +23,9 @@ namespace DemoArandanos
             divDanger.Visible = false;
         }
 
-        protected void btGenerarQR_Click(object sender, EventArgs e)
+        public void generaQR(String rut)
         {
-            string code = txtRutTrabajador.Text;
+            string code = rut;
             if (validarRut(code))
             {
                 plBarCode.Controls.Clear();
@@ -75,6 +75,11 @@ namespace DemoArandanos
             }
         }
 
+        protected void btGenerarQR_Click(object sender, EventArgs e)
+        {
+            generaQR(txtRutTrabajador.Text);
+        }
+
         public bool validarRut(string rut)
         {
             bool validacion = false;
@@ -113,12 +118,12 @@ namespace DemoArandanos
                     control.insertarTrabajador(txtRutTrabajador.Text, txtNombreTrabajador.Text, txtApellidoTrabajador.Text, txtRutTrabajador.Text, txtFechaNacimiento.Text);
                     lblsuccess.Text = "Trabajador ingresado correctamente";
                     divSuccess.Visible = true;
+                    generaQR(txtRutTrabajador.Text);
                     txtRutTrabajador.Text = "";
                     txtNombreTrabajador.Text = "";
                     txtApellidoTrabajador.Text = "";
                     txtFechaNacimiento.Text = "";
-                    grillaTrabajadores.DataBind();
-                    btGenerarQR_Click(sender, e);
+                    grillaTrabajadores.DataBind();                    
                 }
                 catch (Exception ex)
                 {

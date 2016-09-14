@@ -123,6 +123,8 @@ namespace DemoArandanos
 
             lblqrold.Text = grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[1].Text.Replace("&nbsp;", "");
             lblfechaold.Text = d.ToString("yyyy-MM-ddTHH:mm:ss");
+
+            btGuardarPesaje.Attributes.Add("disabled", "true");
         }
 
         protected void btActualizarPesaje_Click(object sender, EventArgs e)
@@ -136,6 +138,7 @@ namespace DemoArandanos
                 lblsuccess.Text = "Pesaje actualizado correctamente.";
                 divSuccess.Visible = true;
                 limpiarCampos();
+                btGuardarPesaje.Attributes.Remove("disabled");
             }
             catch (Exception ex)
             {
@@ -152,6 +155,7 @@ namespace DemoArandanos
                 lblinfo.Text = "Pesaje eliminado.";
                 divInfo.Visible = true;
                 limpiarCampos();
+                btGuardarPesaje.Attributes.Remove("disabled");
             }
             catch (Exception ex)
             {
@@ -163,6 +167,7 @@ namespace DemoArandanos
         protected void btLimpiar_Click(object sender, EventArgs e)
         {
             limpiarCampos();
+            btGuardarPesaje.Attributes.Remove("disabled");
         }
     }
 }
