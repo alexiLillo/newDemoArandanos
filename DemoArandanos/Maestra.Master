@@ -74,7 +74,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="InformeProd1.aspx">Producción</a></li>
-                            <li><a href="#">Informe 2</a></li>
+                            <li><a href="InformeGraficos1.aspx">Gráficos</a></li>
                             <li class="divider"></li>
                             <li><a href="Trabajadores.aspx">Trabajadores</a></li>
                             <li><a href="Pesajes.aspx">Pesajes</a></li>

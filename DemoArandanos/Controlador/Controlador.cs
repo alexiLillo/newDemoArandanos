@@ -683,8 +683,8 @@ namespace DemoArandanos.Controlador
         public void actualizarTara(String id_tara, decimal peso, String descripcion, String producto, String formato)
         {
             Modelo.Tara tara = (from t in contexto.Tara
-                         where t.ID_Tara == id_tara
-                         select t).FirstOrDefault();
+                                where t.ID_Tara == id_tara
+                                select t).FirstOrDefault();
             tara.Peso = peso;
             tara.Descripcion = descripcion.ToUpper();
             tara.Producto = producto.ToUpper();
@@ -701,5 +701,38 @@ namespace DemoArandanos.Controlador
             contexto.SaveChanges();
         }
 
+        //funciones para llenar gráficos
+        public String[] getVariedades()
+        {
+            String[] variedades = (from v in contexto.Variedad where v.ID_Producto == "32" orderby v.ID_Variedad select v.Nombre).ToArray();
+            return variedades;
+        }
+
+        public String[] getIDvariedades()
+        {
+            String[] variedades = (from v in contexto.Variedad where v.ID_Producto == "32" orderby v.ID_Variedad select v.ID_Variedad).ToArray();
+            return variedades;
+        }
+
+        public double[] getCantidadPorVariedad()
+        {
+            String[] lista = getIDvariedades();
+            double[] cantidades = new double[lista.Length];
+            for (int i = 0; i < lista.Length; i++)
+            {
+                var temp = lista[i];
+                double cantidad;
+                try
+                {
+                    cantidad = Double.Parse((from p in contexto.Pesaje where p.Variedad == temp select p.PesoNeto).Sum().ToString());
+                }
+                catch (Exception ex)
+                {
+                    cantidad = 0;
+                }
+                cantidades[i] = cantidad;
+            }
+            return cantidades;
+        }
     }
 }
