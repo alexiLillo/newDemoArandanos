@@ -15,20 +15,28 @@ namespace DemoArandanos
         Controler control = new Controler();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                txtFechaTermino.Text = DateTime.Now.ToString("yyyy-MM-dd");
-            }
             divSuccess.Visible = false;
             divWarning.Visible = false;
             divInfo.Visible = false;
             divDanger.Visible = false;
 
-            //double[] yVal = { 558, 666, 216, 305, 824, 457 };
-            //string[] xName = { "17 A", "17 B", "17 C", "17 D", "11 C", "11 D" };
-            String inicio = DateTime.Parse(txtFechaInicio.Text + " 00:00:00").ToString("yyyy-MM-ddTHH:mm:ss");
-            String fin = DateTime.Parse(txtFechaTermino.Text + " 23:59:59").ToString("yyyy-MM-ddTHH:mm:ss");
+            if (!IsPostBack)
+            {
+                lblinfo.Text = "Seleccione un rango de fecha";
+                divInfo.Visible = true;
+                //txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-01");
+                //txtFechaTermino.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                load();
+            }
+        }
+
+        public void load()
+        {
+            String inicio = DateTime.Parse(txtFechaInicio.Text + " 00:00").ToString("yyyy-MM-ddTHH:mm");
+            String fin = DateTime.Parse(txtFechaTermino.Text + " 23:59").ToString("yyyy-MM-ddTHH:mm");
             cargarGrafico(GraficoVariedad, control.getCantidadPorVariedad(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getVariedades(), true);
             cargarGrafico(GraficoCuartel, control.getCantidadTotal(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getNombres(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue), false);
         }
@@ -46,22 +54,22 @@ namespace DemoArandanos
 
             if (colores)
             {
-                for (int i = 0; i < xNombres.Length; i++) //xValues.Lenght = 4 in this case where you have 4 Data number
+                for (int i = 0; i < xNombres.Length; i++)
                 {
-                    if (i == 0) // Don't forget xValues[0] is Data4 in your case
-                        graf.Series[0].Points[i].Color = Color.Blue;
+                    if (i == 0)
+                        graf.Series[0].Points[i].Color = Color.PaleGreen;       //BRIGITTA
                     if (i == 1)
-                        graf.Series[0].Points[i].Color = Color.Yellow;
+                        graf.Series[0].Points[i].Color = Color.Violet;          //LEGACY
                     if (i == 2)
-                        graf.Series[0].Points[i].Color = Color.Violet;
+                        graf.Series[0].Points[i].Color = Color.Salmon;          //DUKE
                     if (i == 3)
-                        graf.Series[0].Points[i].Color = Color.SkyBlue;
+                        graf.Series[0].Points[i].Color = Color.SkyBlue;         //BLUEGOLD
                     if (i == 4)
-                        graf.Series[0].Points[i].Color = Color.Orange;
+                        graf.Series[0].Points[i].Color = Color.Khaki;           //CAMELIA
                     if (i == 5)
-                        graf.Series[0].Points[i].Color = Color.Green;
+                        graf.Series[0].Points[i].Color = Color.DodgerBlue;      //TIFBLUE
                     if (i == 6)
-                        graf.Series[0].Points[i].Color = Color.Pink;
+                        graf.Series[0].Points[i].Color = Color.DeepSkyBlue;     //BRIGHTWELL
                     if (i == 7)
                         graf.Series[0].Points[i].Color = Color.Purple;
                     if (i == 8)
@@ -78,20 +86,18 @@ namespace DemoArandanos
             }
             else
             {
-                graf.PaletteCustomColors = new Color[] { Color.DarkViolet };
+                graf.Series[0].Color = Color.Blue;
                 lbltotal.Text = yValores.Sum().ToString();
             }
 
             graf.ImageType = ChartImageType.Jpeg;
             graf.ChartAreas.Add(new ChartArea());
-        }               
+            graf.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
+        }
 
         protected void ddFundo_DataBound(object sender, EventArgs e)
         {
-            //ddFundo.Items.Insert(0, new ListItem("Todo", ""));
-            String inicio = DateTime.Parse(txtFechaInicio.Text + " 00:00:00").ToString("yyyy-MM-ddTHH:mm:ss");
-            String fin = DateTime.Parse(txtFechaTermino.Text + " 23:59:59").ToString("yyyy-MM-ddTHH:mm:ss");
-            cargarGrafico(GraficoCuartel, control.getCantidadTotal(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getNombres(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue), false);
+
         }
 
         protected void ddPotrero_DataBound(object sender, EventArgs e)

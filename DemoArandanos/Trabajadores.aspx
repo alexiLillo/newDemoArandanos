@@ -63,7 +63,7 @@
             <asp:UpdatePanel ID="UpdatePanel1" UpdateMode="Always" runat="server">
                 <ContentTemplate>
                     <label for="txtRutTrabajador">Rut</label>
-                    <asp:TextBox ID="txtRutTrabajador" runat="server" type="input" required="required" class="form-control" placeholder="Ingrese Rut de Trabajador"></asp:TextBox>
+                    <asp:TextBox ID="txtRutTrabajador" runat="server" type="input" required="required" class="form-control" placeholder="Ingrese Rut de Trabajador" ></asp:TextBox>
                     <br />
                     <label for="txtNombreTrabajador">Nombre</label>
                     <asp:TextBox ID="txtNombreTrabajador" runat="server" type="input" required="required"  class="form-control" placeholder="Ingrese Nombre de Trabajador"></asp:TextBox>

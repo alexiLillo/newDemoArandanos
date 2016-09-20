@@ -17,7 +17,7 @@ namespace DemoArandanos
                 //dsGrillaPesajeProd.SelectParameters["FechaHora2"].DefaultValue = DateTime.Now.ToString("dd-MM-yyyy");
 
                 txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                txtFechaTermino.Text = DateTime.Now.ToString("yyyy-MM-dd");               
+                txtFechaTermino.Text = DateTime.Now.ToString("yyyy-MM-dd");
             }
 
             divSuccess.Visible = false;
@@ -95,10 +95,26 @@ namespace DemoArandanos
             lblpromkltrab.Text = prom.ToString();
 
             //imprimir
-            DateTime desde = DateTime.Parse(txtFechaInicio.Text);
-            lbldesde.Text = desde.ToString("dd-MM-yyyy");
-            DateTime hasta = DateTime.Parse(txtFechaTermino.Text);
-            lblhasta.Text = hasta.ToString("dd-MM-yyyy");
+            try
+            {
+                DateTime desde = DateTime.Parse(txtFechaInicio.Text);
+                lbldesde.Text = desde.ToString("dd-MM-yyyy");
+            }
+            catch (Exception ex)
+            {
+                lbldesde.Text = "-";
+            }
+
+            try
+            {
+                DateTime hasta = DateTime.Parse(txtFechaTermino.Text);
+                lblhasta.Text = hasta.ToString("dd-MM-yyyy");
+            }
+            catch (Exception ex)
+            {
+                lblhasta.Text = "-";
+            }
+
             lblvaried.Text = ddVariedad.SelectedItem.Text;
             lblfund.Text = ddFundo.SelectedItem.Text;
             if (!ddPotrero.SelectedItem.Text.Equals("Todos"))
@@ -108,6 +124,7 @@ namespace DemoArandanos
             if (!ddCuartel.SelectedItem.Text.Equals("Todos"))
                 lblcuart.Text = ddCuartel.SelectedItem.Text;
             lblfiltr.Text = txtFiltro.Text;
+
         }
 
         protected void grillaPesajesProd_DataBound(object sender, EventArgs e)
