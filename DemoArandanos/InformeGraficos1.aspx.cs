@@ -93,6 +93,32 @@ namespace DemoArandanos
             graf.ImageType = ChartImageType.Jpeg;
             graf.ChartAreas.Add(new ChartArea());
             graf.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
+
+            //labels imprimir
+            try
+            {
+                DateTime desde = DateTime.Parse(txtFechaInicio.Text);
+                lbldesdeimp.Text = desde.ToString("dd-MM-yyyy");
+            }
+            catch (Exception ex)
+            {
+                lbldesdeimp.Text = "-";
+            }
+
+            try
+            {
+                DateTime hasta = DateTime.Parse(txtFechaTermino.Text);
+                lblhastaimp.Text = hasta.ToString("dd-MM-yyyy");
+            }
+            catch (Exception ex)
+            {
+                lblhastaimp.Text = "-";
+            }
+            lblfundimp.Text = ddFundo.SelectedItem.Text;
+            lblpotrerimp.Text = ddPotrero.SelectedItem.Text;
+            lblsectimp.Text = ddSector.SelectedItem.Text;
+            lblcuartelimp.Text = ddCuartel.SelectedItem.Text;
+            lbltotalimp.Text = lbltotal.Text;
         }
 
         protected void ddFundo_DataBound(object sender, EventArgs e)

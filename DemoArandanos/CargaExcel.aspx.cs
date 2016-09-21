@@ -55,7 +55,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
-                    lbldanger.Text = "El archivo que intenta cargar no posee el formato correcto";
+                    lbldanger.Text = "El archivo que intenta cargar no posee el formato correcto" + ex.ToString();
                     divDanger.Visible = true;
                 }
             }
