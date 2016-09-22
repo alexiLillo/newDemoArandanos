@@ -115,7 +115,7 @@ namespace DemoArandanos
                 //GUARDAR DATOS DE TRABAJADOR EN BD (VALIDAR RUT)
                 try
                 {
-                    control.insertarTrabajador(txtRutTrabajador.Text, txtNombreTrabajador.Text, txtApellidoTrabajador.Text, txtRutTrabajador.Text, txtFechaNacimiento.Text);
+                    control.insertarTrabajador(txtRutTrabajador.Text, txtNombreTrabajador.Text, txtApellidoTrabajador.Text, txtRutTrabajador.Text, txtFechaNacimiento.Text, DateTime.Now.ToString("yyyy-MM-dd"), Int32.Parse(txtFicha.Text));
                     lblsuccess.Text = "Trabajador ingresado correctamente";
                     divSuccess.Visible = true;
                     generaQR(txtRutTrabajador.Text);
@@ -123,6 +123,7 @@ namespace DemoArandanos
                     txtNombreTrabajador.Text = "";
                     txtApellidoTrabajador.Text = "";
                     txtFechaNacimiento.Text = "";
+                    txtFicha.Text = "";
                     grillaTrabajadores.DataBind();                    
                 }
                 catch (Exception ex)
@@ -145,19 +146,22 @@ namespace DemoArandanos
             txtApellidoTrabajador.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[3].Text.Replace("&nbsp;", "");
             DateTime d = DateTime.Parse(grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[4].Text.Replace("&nbsp;", "").ToString());
             txtFechaNacimiento.Text = d.ToString("yyyy-MM-dd");
+            txtFicha.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[5].Text.Replace("&nbsp;", "");
+
         }
 
         protected void btActualizarTrabajador_Click(object sender, EventArgs e)
         {
             try
             {
-                control.actualizarTrabajador(txtRutTrabajador.Text, txtNombreTrabajador.Text, txtApellidoTrabajador.Text, txtRutTrabajador.Text, txtFechaNacimiento.Text);
+                control.actualizarTrabajador(txtRutTrabajador.Text, txtNombreTrabajador.Text, txtApellidoTrabajador.Text, txtRutTrabajador.Text, txtFechaNacimiento.Text, DateTime.Now.ToString("yyyy-MM-dd"), Int32.Parse(txtFicha.Text));
                 lblsuccess.Text = "Trabajador actualizado correctamente";
                 divSuccess.Visible = true;
                 txtRutTrabajador.Text = "";
                 txtNombreTrabajador.Text = "";
                 txtApellidoTrabajador.Text = "";
                 txtFechaNacimiento.Text = "";
+                txtFicha.Text = "";
                 grillaTrabajadores.DataBind();
             }
             catch (Exception ex)
@@ -178,6 +182,7 @@ namespace DemoArandanos
                 txtNombreTrabajador.Text = "";
                 txtApellidoTrabajador.Text = "";
                 txtFechaNacimiento.Text = "";
+                txtFicha.Text = "";
                 grillaTrabajadores.DataBind();
             }
             catch (Exception ex)

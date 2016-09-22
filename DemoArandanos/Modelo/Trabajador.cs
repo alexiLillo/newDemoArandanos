@@ -25,5 +25,13 @@ namespace DemoArandanos.Modelo
 
         [Column(TypeName = "smalldatetime")]
         public DateTime? FechaNacimiento { get; set; }
+
+        [Column(TypeName = "smalldatetime")]
+        public DateTime? FechaIngreso { get; set; }
+
+        public int? Ficha { get; set; }
+
+        [StringLength(2)]
+        public string Importado { get; set; }
     }
 }

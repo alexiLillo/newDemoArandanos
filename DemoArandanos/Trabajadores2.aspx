@@ -73,6 +73,8 @@
                     <label for="txtFechaNacimiento">Fecha Nacimiento</label>
                     <asp:TextBox ID="txtFechaNacimiento" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-mm-dd"></asp:TextBox>
                     <br />
+                    <label for="txtFicha">Número Ficha</label>
+                    <asp:TextBox ID="txtFicha" runat="server" type="number" required="required"  class="form-control" ></asp:TextBox>
                     <br />
                     <div class="btn-group" role="group" aria-label="...">
                         <asp:Button ID="btGuardarTrabajador" runat="server" Text="Registrar" type="submit" class="btn btn-default" OnClick="btGuardarTrabajador_Click" />
@@ -110,9 +112,10 @@
                                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
                                         <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
                                         <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha Nacimiento" SortExpression="FechaNacimiento" DataFormatString="{0:dd/MM/yyyy}" />
+                                        <asp:BoundField DataField="Ficha" HeaderText="Ficha" SortExpression="Ficha" />
                                     </Columns>
                                 </asp:GridView>
-                                <asp:SqlDataSource ID="dsTrabajadores" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [Rut], [Nombre], [Apellido], [FechaNacimiento] FROM [Trabajador] ORDER BY [Nombre], [Apellido]"></asp:SqlDataSource>
+                                <asp:SqlDataSource ID="dsTrabajadores" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [Rut], [Nombre], [Apellido], [FechaNacimiento], [Ficha] FROM [Trabajador] ORDER BY [Nombre], [Apellido]"></asp:SqlDataSource>
                             </div>
                         </div>
                     </div>

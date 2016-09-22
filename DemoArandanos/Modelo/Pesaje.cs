@@ -66,7 +66,6 @@ namespace DemoArandanos.Modelo
 
         public int? ID_Map { get; set; }
 
-        [Key]
         public int id { get; set; }
     }
 }

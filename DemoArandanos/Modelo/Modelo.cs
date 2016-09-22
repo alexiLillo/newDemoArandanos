@@ -8,7 +8,7 @@ namespace DemoArandanos.Modelo
     public partial class Modelo : DbContext
     {
         public Modelo()
-            : base("name=Modelo10")
+            : base("name=Modelo11")
         {
         }
 
@@ -512,6 +512,10 @@ namespace DemoArandanos.Modelo
 
             modelBuilder.Entity<Trabajador>()
                 .Property(e => e.QRrut)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Trabajador>()
+                .Property(e => e.Importado)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Usuarios>()

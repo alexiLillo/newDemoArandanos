@@ -559,13 +559,13 @@ namespace DemoArandanos.Controlador
         //SISTEMA PRODUCCION ARANDANOS
         //ADMINISTRADOR DE TRABAJADOR 
 
-        public void insertarTrabajador(String rut, String nombre, String apellido, String qrrut, String fechaNac)
+        public void insertarTrabajador(String rut, String nombre, String apellido, String qrrut, String fechaNac, String fechaIngreso, int ficha)
         {
-            contexto.Trabajador.Add(new Trabajador { Rut = rut.ToUpper().Replace(".", ""), Nombre = nombre.ToUpper(), Apellido = apellido.ToUpper(), QRrut = qrrut.ToUpper().Replace(".", ""), FechaNacimiento = DateTime.Parse(fechaNac) });
+            contexto.Trabajador.Add(new Trabajador { Rut = rut.ToUpper().Replace(".", ""), Nombre = nombre.ToUpper(), Apellido = apellido.ToUpper(), QRrut = qrrut.ToUpper().Replace(".", ""), FechaNacimiento = DateTime.Parse(fechaNac), FechaIngreso = DateTime.Parse(fechaIngreso), Ficha = ficha });
             contexto.SaveChanges();
         }
 
-        public void actualizarTrabajador(String rut, String nombre, String apellido, String qrrut, String fechaNac)
+        public void actualizarTrabajador(String rut, String nombre, String apellido, String qrrut, String fechaNac, String fechaIngreso, int ficha)
         {
             Trabajador trabajador = (from t in contexto.Trabajador
                                      where t.Rut == rut.ToUpper().Replace(".", "")
@@ -574,6 +574,8 @@ namespace DemoArandanos.Controlador
             trabajador.Apellido = apellido.ToUpper();
             trabajador.QRrut = qrrut.ToUpper().Replace(".", "");
             trabajador.FechaNacimiento = DateTime.Parse(fechaNac);
+            trabajador.FechaIngreso = DateTime.Parse(fechaIngreso);
+            trabajador.Ficha = ficha;
             contexto.SaveChanges();
         }
 
