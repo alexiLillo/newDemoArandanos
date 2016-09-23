@@ -97,6 +97,14 @@
         </div>
         <div class="col-md-7">
             <br />
+                    <label for="txtFiltroRut">Filtrar por Rut o Ficha de Trabajador</label>
+                    <div class="input-group">
+                        <asp:TextBox ID="txtFiltroRut" AutoPostBack="true" runat="server" type="input" class="form-control" placeholder="Ingrese rut o ficha para filtrar la tabla" OnTextChanged="txtFiltroRut_TextChanged"></asp:TextBox>
+                        <span class="input-group-btn">
+                            <asp:Button ID="btFiltrar" type="button" AutoPostBack="False" class="btn btn-default" runat="server" Text="Filtrar" OnClick="btFiltrar_Click" />
+                        </span>
+                    </div>
+            <br />
             <asp:UpdatePanel ID="UpdatePanel2" UpdateMode="Always" runat="server">
                 <ContentTemplate>
                     <!-- grilla -->
@@ -116,7 +124,11 @@
                                         <asp:BoundField DataField="Ficha" HeaderText="Ficha" SortExpression="Ficha" />
                                     </Columns>
                                 </asp:GridView>
-                                <asp:SqlDataSource ID="dsTrabajadores" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [Rut], [Nombre], [Apellido], [FechaNacimiento], [Ficha] FROM [Trabajador] ORDER BY [Nombre], [Apellido]"></asp:SqlDataSource>
+                                <asp:SqlDataSource ID="dsTrabajadores" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [Rut], [Nombre], [Apellido], [FechaNacimiento], [Ficha] FROM [Trabajador] WHERE (([Rut] LIKE '%' + @RutTrabajador + '%') OR ([Ficha] LIKE '%' + @RutTrabajador + '%')) ORDER BY [Nombre], [Apellido]">
+                                    <SelectParameters>
+                                        <asp:ControlParameter ControlID="txtFiltroRut" Name="RutTrabajador" PropertyName="Text" Type="String" ConvertEmptyStringToNull="False" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource>
                             </div>
                         </div>
                     </div>

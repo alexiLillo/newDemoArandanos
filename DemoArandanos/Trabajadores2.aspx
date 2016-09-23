@@ -62,19 +62,19 @@
             <asp:UpdatePanel ID="UpdatePanel1" UpdateMode="Always" runat="server">
                 <ContentTemplate>
                     <label for="txtRutTrabajador">Rut</label>
-                    <asp:TextBox ID="txtRutTrabajador" runat="server" type="input" required="required" class="form-control" placeholder="Ingrese Rut de Trabajador" ></asp:TextBox>
+                    <asp:TextBox ID="txtRutTrabajador" runat="server" type="input" required="required" class="form-control" placeholder="Ingrese Rut de Trabajador"></asp:TextBox>
                     <br />
                     <label for="txtNombreTrabajador">Nombre</label>
-                    <asp:TextBox ID="txtNombreTrabajador" runat="server" type="input" required="required"  class="form-control" placeholder="Ingrese Nombre de Trabajador"></asp:TextBox>
+                    <asp:TextBox ID="txtNombreTrabajador" runat="server" type="input" required="required" class="form-control" placeholder="Ingrese Nombre de Trabajador"></asp:TextBox>
                     <br />
                     <label for="txtApellidoTrabajador">Apellido</label>
-                    <asp:TextBox ID="txtApellidoTrabajador" runat="server" type="input" required="required"  class="form-control" placeholder="Ingrese Apellido de Trabajador"></asp:TextBox>
+                    <asp:TextBox ID="txtApellidoTrabajador" runat="server" type="input" required="required" class="form-control" placeholder="Ingrese Apellido de Trabajador"></asp:TextBox>
                     <br />
                     <label for="txtFechaNacimiento">Fecha Nacimiento</label>
                     <asp:TextBox ID="txtFechaNacimiento" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-mm-dd"></asp:TextBox>
                     <br />
                     <label for="txtFicha">Número Ficha</label>
-                    <asp:TextBox ID="txtFicha" runat="server" type="number" required="required"  class="form-control" ></asp:TextBox>
+                    <asp:TextBox ID="txtFicha" runat="server" type="number" required="required" class="form-control"></asp:TextBox>
                     <br />
                     <div class="btn-group" role="group" aria-label="...">
                         <asp:Button ID="btGuardarTrabajador" runat="server" Text="Registrar" type="submit" class="btn btn-default" OnClick="btGuardarTrabajador_Click" />
@@ -96,6 +96,14 @@
         </div>
         <div class="col-md-7">
             <br />
+            <label for="txtFiltroRut">Filtrar por Rut o Ficha de Trabajador</label>
+            <div class="input-group">
+                <asp:TextBox ID="txtFiltroRut" AutoPostBack="true" runat="server" type="input" class="form-control" placeholder="Ingrese rut o ficha para filtrar la tabla" OnTextChanged="txtFiltroRut_TextChanged"></asp:TextBox>
+                <span class="input-group-btn">
+                    <asp:Button ID="btFiltrar" type="button" AutoPostBack="False" class="btn btn-default" runat="server" Text="Filtrar" OnClick="btFiltrar_Click" />
+                </span>
+            </div>
+            <br />
             <asp:UpdatePanel ID="UpdatePanel2" UpdateMode="Always" runat="server">
                 <ContentTemplate>
                     <div class="panel panel-default">
@@ -115,7 +123,11 @@
                                         <asp:BoundField DataField="Ficha" HeaderText="Ficha" SortExpression="Ficha" />
                                     </Columns>
                                 </asp:GridView>
-                                <asp:SqlDataSource ID="dsTrabajadores" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [Rut], [Nombre], [Apellido], [FechaNacimiento], [Ficha] FROM [Trabajador] ORDER BY [Nombre], [Apellido]"></asp:SqlDataSource>
+                                <asp:SqlDataSource ID="dsTrabajadores" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [Rut], [Nombre], [Apellido], [FechaNacimiento], [Ficha] FROM [Trabajador] WHERE (([Rut] LIKE '%' + @RutTrabajador + '%') OR ([Ficha] LIKE '%' + @RutTrabajador + '%')) ORDER BY [Nombre], [Apellido]">
+                                    <SelectParameters>
+                                        <asp:ControlParameter ControlID="txtFiltroRut" Name="RutTrabajador" PropertyName="Text" Type="String" ConvertEmptyStringToNull="False" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource>
                             </div>
                         </div>
                     </div>

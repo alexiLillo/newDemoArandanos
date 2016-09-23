@@ -192,5 +192,14 @@ namespace DemoArandanos
             }
         }
 
+        protected void txtFiltroRut_TextChanged(object sender, EventArgs e)
+        {
+            grillaTrabajadores.DataBind();
+        }
+        protected void btFiltrar_Click(object sender, EventArgs e)
+        {
+            grillaTrabajadores.DataBind();
+        }
+
     }
 }
