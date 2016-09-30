@@ -163,6 +163,7 @@
     <Content Include="images\ic_mode_edit_black_24dp_1x.png" />
     <Content Include="images\ic_mode_edit_black_24dp_2x.png" />
     <Content Include="images\mapa.png" />
+    <Content Include="InformeCosecha1.aspx" />
     <Content Include="InformeGraficos1.aspx" />
     <Content Include="InformePlantas.aspx" />
     <Content Include="InformePlantas2.aspx" />
@@ -253,6 +254,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeCosecha1.aspx.cs">
+      <DependentUpon>InformeCosecha1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeCosecha1.aspx.designer.cs">
+      <DependentUpon>InformeCosecha1.aspx</DependentUpon>
     </Compile>
     <Compile Include="InformeGraficos1.aspx.cs">
       <DependentUpon>InformeGraficos1.aspx</DependentUpon>
