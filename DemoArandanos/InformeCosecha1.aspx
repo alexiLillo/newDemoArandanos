@@ -111,7 +111,6 @@
             </div>
         </div>
         <div class="col-md-12">
-            <br />
             <!-- grilla -->
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -119,28 +118,52 @@
                 </div>
                 <div class="panel-body" style="max-height: 500px; overflow-y: scroll;">
                     <div class="table-responsive">
-                        <asp:GridView ID="grillaCosecha" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="dsCosecha" >
+                        <asp:GridView ID="grillaCosecha" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="dsCosecha">
                             <Columns>
-                                <asp:BoundField DataField="Potrero" HeaderText="Potrero" SortExpression="Potrero" />
-                                <asp:BoundField DataField="Sector" HeaderText="Sector" SortExpression="Sector" />
-                                <asp:BoundField DataField="Cuartel" HeaderText="Cuartel" SortExpression="Cuartel" />
-                                <asp:BoundField DataField="Dias" HeaderText="Cosechado" ReadOnly="True" SortExpression="Dias" DataFormatString="Hace {0:d} dias" />
-                                <asp:BoundField DataField="BandejasTotal" HeaderText="BandejasTotal" ReadOnly="True" SortExpression="BandejasTotal" />
-                                <asp:BoundField DataField="KilosTotal" HeaderText="KilosTotal" ReadOnly="True" SortExpression="KilosTotal" />
-                                <asp:BoundField DataField="BandejasDia" HeaderText="BandejasDia" ReadOnly="True" SortExpression="BandejasDia" />
-                                <asp:BoundField DataField="KilosDia" HeaderText="KilosDia" ReadOnly="True" SortExpression="KilosDia" />
-                            </Columns>                            
+                                <asp:BoundField DataField="Potrero" HeaderText="Potrero" SortExpression="Potrero">
+                                    <HeaderStyle HorizontalAlign="Center" />
+                                    <ItemStyle HorizontalAlign="Center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Sector" HeaderText="Sector" SortExpression="Sector">
+                                    <HeaderStyle HorizontalAlign="Center" />
+                                    <ItemStyle HorizontalAlign="Center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Cuartel" HeaderText="Cuartel" SortExpression="Cuartel">
+                                    <HeaderStyle HorizontalAlign="Center" />
+                                    <ItemStyle HorizontalAlign="Center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Dias" HeaderText="Cosechado" ReadOnly="True" SortExpression="Dias" DataFormatString="Hace {0:d} dias">
+                                    <HeaderStyle HorizontalAlign="Center" />
+                                    <ItemStyle HorizontalAlign="Center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="BandejasDia" HeaderText="Bandejas Hoy" ReadOnly="True" SortExpression="BandejasDia" DataFormatString="{0:n0}">
+                                    <HeaderStyle HorizontalAlign="Center" />
+                                    <ItemStyle HorizontalAlign="Center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="KilosDia" HeaderText="Kilos Hoy" ReadOnly="True" SortExpression="KilosDia" DataFormatString="{0:n2}">
+                                    <HeaderStyle HorizontalAlign="Center" />
+                                    <ItemStyle HorizontalAlign="Center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="BandejasTotal" HeaderText="Bandejas Total" ReadOnly="True" SortExpression="BandejasTotal" DataFormatString="{0:n0}">
+                                    <HeaderStyle HorizontalAlign="Center" />
+                                    <ItemStyle HorizontalAlign="Center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="KilosTotal" HeaderText="Kilos Total" ReadOnly="True" SortExpression="KilosTotal" DataFormatString="{0:n2}">
+                                    <HeaderStyle HorizontalAlign="Center" />
+                                    <ItemStyle HorizontalAlign="Center" />
+                                </asp:BoundField>
+                            </Columns>
                         </asp:GridView>
                         
                         <asp:SqlDataSource ID="dsCosecha" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo11 %>" SelectCommand="SP_VistaCosecha" SelectCommandType="StoredProcedure">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="txtFechaInicio" Name="FEC_D" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" />
                                 <asp:ControlParameter ControlID="txtFechaTermino" Name="FEC_H" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" />
-                                <asp:ControlParameter ControlID="ddFundo" Name="FUNDO" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False"/>
-                                <asp:ControlParameter ControlID="ddPotrero" Name="POTRERO" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False"/>
-                                <asp:ControlParameter ControlID="ddSector" Name="SECTOR" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False"/>
+                                <asp:ControlParameter ControlID="ddFundo" Name="FUNDO" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
+                                <asp:ControlParameter ControlID="ddPotrero" Name="POTRERO" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
+                                <asp:ControlParameter ControlID="ddSector" Name="SECTOR" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
                             </SelectParameters>
-                        </asp:SqlDataSource>                        
+                        </asp:SqlDataSource>
                     </div>
                 </div>
             </div>
