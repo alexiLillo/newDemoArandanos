@@ -61,10 +61,11 @@
                                <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li id="home" class="active"><a href="Home.aspx">Administración</a></li>
-                            <li id="excel"><a href="CargaExcel.aspx">Cargar Excel</a></li>
-                            <li id="user"><a href="Usuarios.aspx">Usuarios</a></li>
                             <li id="info"><a href="InformePlantas.aspx">Informes Plantas</a></li>
+                            <li class="divider"></li>
+                            <li id="home"><a href="Home.aspx">Administración</a></li>
+                            <li id="excel"><a href="CargaExcel.aspx">Cargar Excel</a></li>
+                            <li id="user"><a href="Usuarios.aspx">Usuarios</a></li>                            
                         </ul>
                     </li>
 
