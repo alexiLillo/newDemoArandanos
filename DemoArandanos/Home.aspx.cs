@@ -235,6 +235,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "No se pudo ingresar el Fundo";
                     divDanger.Visible = true;
                 }
@@ -262,6 +263,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lblwarning.Text = "No se pudo eliminar el Fundo";
                     divWarning.Visible = true;
                 }
@@ -289,6 +291,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "Ingrese datos válidos para poder actualizar";
                     divDanger.Visible = true;
                 }
@@ -316,6 +319,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "No se pudo ingresar el Potrero";
                     divDanger.Visible = true;
                 }
@@ -343,6 +347,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lblwarning.Text = "No se pudo eliminar el Potrero";
                     divWarning.Visible = true;
                 }
@@ -370,6 +375,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "Ingrese datos válidos para poder actualizar";
                     divDanger.Visible = true;
                 }
@@ -397,6 +403,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "No se pudo ingresar el Sector ";
                     divDanger.Visible = true;
                 }
@@ -424,6 +431,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "Ingrese datos válidos para poder actualizar";
                     divDanger.Visible = true;
                 }
@@ -451,6 +459,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lblwarning.Text = "No se pudo eliminar el Sector";
                     divWarning.Visible = true;
                 }
@@ -479,6 +488,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "No se pudo ingresar el Cuartel";
                     divDanger.Visible = true;
                 }
@@ -507,6 +517,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "Ingrese datos válidos para poder actualizar";                    
                     divDanger.Visible = true;
                 }
@@ -535,6 +546,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lblwarning.Text = "No se pudo eliminar el Cuartel";
                     divWarning.Visible = true;
                 }
@@ -561,6 +573,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "No se pudo ingresar la Hilera";
                     divDanger.Visible = true;
                 }
@@ -587,6 +600,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "Ingrese datos válidos para poder actualizar";
                     divDanger.Visible = true;
                 }
@@ -613,6 +627,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lblwarning.Text = "No se pudo eliminar la Hilera";
                     divWarning.Visible = true;
                 }
@@ -641,6 +656,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "No se pudo ingresar la Planta";
                     divDanger.Visible = true;
                 }
@@ -669,6 +685,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "Ingrese datos válidos para poder actualizar";
                     divDanger.Visible = true;
                 }
@@ -697,6 +714,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lblwarning.Text = "No se pudo eliminar la Planta";
                     divWarning.Visible = true;
                 }
@@ -723,6 +741,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "No se pudo ingresar el Estado";
                     divDanger.Visible = true;
                 }
@@ -767,6 +786,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lblwarning.Text = "No se pudo eliminar el Estado";
                     divWarning.Visible = true;
                 }
@@ -794,6 +814,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "No se pudo ingresar la Variedad";
                     divDanger.Visible = true;
                 }
@@ -821,6 +842,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lblwarning.Text = "No se pudo eliminar la Variedad";
                     divWarning.Visible = true;
                 }
@@ -847,6 +869,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "Ingrese datos válidos para poder actualizar";
                     divDanger.Visible = true;
                 }

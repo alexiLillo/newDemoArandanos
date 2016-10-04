@@ -102,6 +102,7 @@ namespace DemoArandanos
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
                 lbldesdeimp.Text = "-";
             }
 
@@ -112,6 +113,7 @@ namespace DemoArandanos
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
                 lblhastaimp.Text = "-";
             }
             lblfundimp.Text = ddFundo.SelectedItem.Text;

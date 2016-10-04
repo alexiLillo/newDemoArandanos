@@ -36,7 +36,7 @@
                                     $(".alert").fadeTo(500, 0).slideUp(500, function () {
                                         $(this).remove();
                                     });
-                                }, 4000);
+                                }, 6000);
                             }
                         </script>
                         <div class="alert alert-success fade in" role="alert" id="divSuccess" runat="server">
@@ -67,7 +67,7 @@
             <div class="col-md-12">
                 <div class="col-md-2">
                     <label for="ddFundo">Fundo</label>
-                    <asp:DropDownList ID="ddFundo" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="Nombre" DataValueField="ID_Fundo" DataSourceID="dsFundoVista" OnDataBound="ddFundo_DataBound"></asp:DropDownList>
+                    <asp:DropDownList ID="ddFundo" CssClass="form-control" AutoPostBack="True" runat="server" DataTextField="Nombre" DataValueField="ID_Fundo" DataSourceID="dsFundoVista" OnDataBound="ddFundo_DataBound" OnSelectedIndexChanged="ddFundo_SelectedIndexChanged"></asp:DropDownList>
                     <asp:SqlDataSource ID="dsFundoVista" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo7 %>" SelectCommand="SELECT DISTINCT ID_Fundo, Nombre FROM VistaAll "></asp:SqlDataSource>
                     <br />
                     <br />
@@ -110,63 +110,124 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
-            <!-- grilla -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Cosecha</h3>
+
+        <div class="visible-print">
+            <div class="col-md-12">
+                <div class="visible-print">
+                    <h2>Informe de Cosecha Arándanos</h2>
+                    <br />
+                    <h6>Fundo: <asp:Label ID="lblfund" runat="server" Text=""></asp:Label></h6>
+                    <h5>Desde: <asp:Label ID="lbldesde" runat="server" Text=""></asp:Label></h5>
+                    <h5>Hasta: <asp:Label ID="lblhasta" runat="server" Text=""></asp:Label></h5>                    
+                    <br />
                 </div>
-                <div class="panel-body" style="max-height: 500px; overflow-y: scroll;">
-                    <div class="table-responsive">
-                        <asp:GridView ID="grillaCosecha" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="dsCosecha">
-                            <Columns>
-                                <asp:BoundField DataField="Potrero" HeaderText="Potrero" SortExpression="Potrero">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Sector" HeaderText="Sector" SortExpression="Sector">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Cuartel" HeaderText="Cuartel" SortExpression="Cuartel">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="Dias" HeaderText="Cosechado" ReadOnly="True" SortExpression="Dias" DataFormatString="Hace {0:d} dias">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="BandejasDia" HeaderText="Bandejas Hoy" ReadOnly="True" SortExpression="BandejasDia" DataFormatString="{0:n0}">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="KilosDia" HeaderText="Kilos Hoy" ReadOnly="True" SortExpression="KilosDia" DataFormatString="{0:n2}">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="BandejasTotal" HeaderText="Bandejas Total" ReadOnly="True" SortExpression="BandejasTotal" DataFormatString="{0:n0}">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="KilosTotal" HeaderText="Kilos Total" ReadOnly="True" SortExpression="KilosTotal" DataFormatString="{0:n2}">
-                                    <HeaderStyle HorizontalAlign="Center" />
-                                    <ItemStyle HorizontalAlign="Center" />
-                                </asp:BoundField>
-                            </Columns>
-                        </asp:GridView>
-                        
-                        <asp:SqlDataSource ID="dsCosecha" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo11 %>" SelectCommand="SP_VistaCosecha" SelectCommandType="StoredProcedure">
-                            <SelectParameters>
-                                <asp:ControlParameter ControlID="txtFechaInicio" Name="FEC_D" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" />
-                                <asp:ControlParameter ControlID="txtFechaTermino" Name="FEC_H" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" />
-                                <asp:ControlParameter ControlID="ddFundo" Name="FUNDO" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
-                                <asp:ControlParameter ControlID="ddPotrero" Name="POTRERO" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
-                                <asp:ControlParameter ControlID="ddSector" Name="SECTOR" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
-                            </SelectParameters>
-                        </asp:SqlDataSource>
+            </div>
+        </div>
+
+        <div class="hidden-print">
+            <div class="col-md-12">
+                <!-- grilla -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Cosecha</h3>
+                    </div>
+                    <div class="panel-body" style="max-height: 420px; overflow-y: scroll;">
+                        <div class="table-responsive">
+                            <asp:GridView ID="grillaCosecha" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="dsCosecha">
+                                <Columns>
+                                    <asp:BoundField DataField="Potrero" HeaderText="Potrero" SortExpression="Potrero">
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Sector" HeaderText="Sector" SortExpression="Sector">
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Cuartel" HeaderText="Cuartel" SortExpression="Cuartel">
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Dias" HeaderText="Cosechado" ReadOnly="True" SortExpression="Dias" DataFormatString="Hace {0:d} dias">
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="BandejasDia" HeaderText="Bandejas Hoy" ReadOnly="True" SortExpression="BandejasDia" DataFormatString="{0:n0}">
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="KilosDia" HeaderText="Kilos Hoy" ReadOnly="True" SortExpression="KilosDia" DataFormatString="{0:n2}">
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="BandejasTotal" HeaderText="Bandejas Total" ReadOnly="True" SortExpression="BandejasTotal" DataFormatString="{0:n0}">
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="KilosTotal" HeaderText="Kilos Total" ReadOnly="True" SortExpression="KilosTotal" DataFormatString="{0:n2}">
+                                        <HeaderStyle HorizontalAlign="Center" />
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
+                                </Columns>
+                            </asp:GridView>
+
+                            <asp:SqlDataSource ID="dsCosecha" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo11 %>" SelectCommand="SP_VistaCosecha" SelectCommandType="StoredProcedure">
+                                <SelectParameters>
+                                    <asp:ControlParameter ControlID="txtFechaInicio" Name="FEC_D" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" />
+                                    <asp:ControlParameter ControlID="txtFechaTermino" Name="FEC_H" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" />
+                                    <asp:ControlParameter ControlID="ddFundo" Name="FUNDO" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
+                                    <asp:ControlParameter ControlID="ddPotrero" Name="POTRERO" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
+                                    <asp:ControlParameter ControlID="ddSector" Name="SECTOR" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="visible-print">
+            <div class="table-responsive">
+                <asp:GridView ID="GridView1" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="dsCosecha">
+                    <Columns>
+                        <asp:BoundField DataField="Potrero" HeaderText="Potrero" SortExpression="Potrero">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Sector" HeaderText="Sector" SortExpression="Sector">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Cuartel" HeaderText="Cuartel" SortExpression="Cuartel">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Dias" HeaderText="Cosechado" ReadOnly="True" SortExpression="Dias" DataFormatString="Hace {0:d} dias">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="BandejasDia" HeaderText="Bandejas Hoy" ReadOnly="True" SortExpression="BandejasDia" DataFormatString="{0:n0}">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="KilosDia" HeaderText="Kilos Hoy" ReadOnly="True" SortExpression="KilosDia" DataFormatString="{0:n2}">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="BandejasTotal" HeaderText="Bandejas Total" ReadOnly="True" SortExpression="BandejasTotal" DataFormatString="{0:n0}">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="KilosTotal" HeaderText="Kilos Total" ReadOnly="True" SortExpression="KilosTotal" DataFormatString="{0:n2}">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                    </Columns>
+                </asp:GridView>                
+            </div>
+        </div>
+
+        <div class="hidden-print">
+            <input type="button" style="float: right" class="btn btn-default" name="Imprimir" value="Imprimir" onclick="window.print()">
         </div>
     </form>
 </asp:Content>

@@ -15,17 +15,23 @@ namespace DemoArandanos
             divWarning.Visible = false;
             divInfo.Visible = false;
             divDanger.Visible = false;
-            grillaCosecha.DataBind();
+            //grillaCosecha.DataBind();
             if (!IsPostBack)
             {
+                lblinfo.Text = "Bandejas Total y Kilos Total varían según el rango de fecha asignado";
+                divInfo.Visible = true;
+
                 txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-01");
                 txtFechaTermino.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                imp();
             }
         }
 
         protected void ddFundo_DataBound(object sender, EventArgs e)
         {
-            grillaCosecha.DataBind();
+            //grillaCosecha.DataBind();
+            lblfund.Text = ddFundo.SelectedItem.Text;
+
         }
 
         protected void ddPotrero_DataBound(object sender, EventArgs e)
@@ -38,29 +44,59 @@ namespace DemoArandanos
             ddSector.Items.Insert(0, new ListItem("Todos...", "0"));
         }
 
-        //protected void ddCuartel_DataBound(object sender, EventArgs e)
-        //{
-        //    ddCuartel.Items.Insert(0, new ListItem("Todos", "0"));
-        //}
-
         protected void txtFechaInicio_TextChanged(object sender, EventArgs e)
         {
             grillaCosecha.DataBind();
+            imp();
         }
 
         protected void txtFechaTermino_TextChanged(object sender, EventArgs e)
         {
             grillaCosecha.DataBind();
+            imp();
+        }
+
+        protected void ddFundo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            grillaCosecha.DataBind();
+            lblfund.Text = ddFundo.SelectedItem.Text;
         }
 
         protected void ddPotrero_SelectedIndexChanged(object sender, EventArgs e)
         {
             grillaCosecha.DataBind();
+            imp();
         }
 
         protected void ddSector_SelectedIndexChanged(object sender, EventArgs e)
         {
             grillaCosecha.DataBind();
-        }       
+            imp();
+        }
+
+        private void imp()
+        {
+            try
+            {
+                DateTime desde = DateTime.Parse(txtFechaInicio.Text);
+                lbldesde.Text = desde.ToString("dd-MM-yyyy");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+                lbldesde.Text = "-";
+            }
+
+            try
+            {
+                DateTime hasta = DateTime.Parse(txtFechaTermino.Text);
+                lblhasta.Text = hasta.ToString("dd-MM-yyyy");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+                lblhasta.Text = "-";
+            }
+        }        
     }
 }

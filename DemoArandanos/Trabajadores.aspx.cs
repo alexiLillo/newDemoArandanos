@@ -129,6 +129,7 @@ namespace DemoArandanos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     lbldanger.Text = "No se pudo registrar al trabajador";
                     divDanger.Visible = true;
                 }
@@ -166,6 +167,7 @@ namespace DemoArandanos
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
                 lbldanger.Text = "No se pudo actualziar información del trabajador";
                 divDanger.Visible = true;
             }
@@ -187,6 +189,7 @@ namespace DemoArandanos
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
                 lbldanger.Text = "No se pudo eliminar el trabajador";
                 divDanger.Visible = true;
             }

@@ -94,6 +94,7 @@ namespace DemoArandanos
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
                 lbldanger.Text = "No se pudo ingresar Pesaje";
                 divDanger.Visible = true;
             }
@@ -142,6 +143,7 @@ namespace DemoArandanos
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
                 lbldanger.Text = "No se pudo actualizar Pesaje ";
                 divDanger.Visible = true;
             }
@@ -159,6 +161,7 @@ namespace DemoArandanos
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
                 lbldanger.Text = "No se pudo eliminar Pesaje";
                 divDanger.Visible = true;
             }

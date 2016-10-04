@@ -135,7 +135,10 @@ namespace DemoArandanos
                     lblcuartel.Text = ddCuartel.SelectedItem.Text;
                     lblhilera.Text = ddHilera.SelectedItem.Text;
                 }
-                catch (Exception ex) { }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
+                }
 
             }
         }
