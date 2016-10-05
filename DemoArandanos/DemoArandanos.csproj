@@ -163,11 +163,17 @@
     <Content Include="images\ic_mode_edit_black_24dp_1x.png" />
     <Content Include="images\ic_mode_edit_black_24dp_2x.png" />
     <Content Include="images\mapa.png" />
+    <Content Include="InformeCosecha3.aspx" />
+    <Content Include="InformeCosecha2.aspx" />
     <Content Include="InformeCosecha1.aspx" />
+    <Content Include="InformeGraficos3.aspx" />
+    <Content Include="InformeGraficos2.aspx" />
     <Content Include="InformeGraficos1.aspx" />
     <Content Include="InformePlantas.aspx" />
     <Content Include="InformePlantas2.aspx" />
     <Content Include="InformePlantas3.aspx" />
+    <Content Include="InformeProd3.aspx" />
+    <Content Include="InformeProd2.aspx" />
     <Content Include="InformeProd1.aspx" />
     <Content Include="mapa.aspx" />
     <Content Include="packages.config" />
@@ -255,12 +261,40 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InformeCosecha3.aspx.cs">
+      <DependentUpon>InformeCosecha3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeCosecha3.aspx.designer.cs">
+      <DependentUpon>InformeCosecha3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeCosecha2.aspx.cs">
+      <DependentUpon>InformeCosecha2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeCosecha2.aspx.designer.cs">
+      <DependentUpon>InformeCosecha2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="InformeCosecha1.aspx.cs">
       <DependentUpon>InformeCosecha1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="InformeCosecha1.aspx.designer.cs">
       <DependentUpon>InformeCosecha1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeGraficos3.aspx.cs">
+      <DependentUpon>InformeGraficos3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeGraficos3.aspx.designer.cs">
+      <DependentUpon>InformeGraficos3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeGraficos2.aspx.cs">
+      <DependentUpon>InformeGraficos2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeGraficos2.aspx.designer.cs">
+      <DependentUpon>InformeGraficos2.aspx</DependentUpon>
     </Compile>
     <Compile Include="InformeGraficos1.aspx.cs">
       <DependentUpon>InformeGraficos1.aspx</DependentUpon>
@@ -289,6 +323,20 @@
     </Compile>
     <Compile Include="InformePlantas3.aspx.designer.cs">
       <DependentUpon>InformePlantas3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeProd3.aspx.cs">
+      <DependentUpon>InformeProd3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeProd3.aspx.designer.cs">
+      <DependentUpon>InformeProd3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeProd2.aspx.cs">
+      <DependentUpon>InformeProd2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeProd2.aspx.designer.cs">
+      <DependentUpon>InformeProd2.aspx</DependentUpon>
     </Compile>
     <Compile Include="InformeProd1.aspx.cs">
       <DependentUpon>InformeProd1.aspx</DependentUpon>

@@ -62,10 +62,10 @@
             <br />
             <form role="form" runat="server">
                 <label for="txtUser">Usuario:</label>
-                <asp:TextBox ID="txtUser" Text="" runat="server" type="input" required class="form-control" placeholder="Ingrese nombre de usuario"></asp:TextBox>
+                <asp:TextBox ID="txtUser" Text="user" runat="server" type="input" required class="form-control" placeholder="Ingrese nombre de usuario"></asp:TextBox>
                 <br />
                 <label for="txtPass">Contraseña</label>
-                <asp:TextBox ID="txtPass" Text="" runat="server" type="password" required class="form-control" placeholder="Ingrese contraseña"></asp:TextBox>
+                <asp:TextBox ID="txtPass" Text="user" runat="server" type="password" required class="form-control" placeholder="Ingrese contraseña"></asp:TextBox>
                 <br />
                 <div class="alert alert-danger fade in" id="divBadLogin" runat="server">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

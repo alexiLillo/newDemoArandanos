@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Maestra.master.cs" Inherits="DemoArandanos.Master2" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master2.Master.cs" Inherits="DemoArandanos.Master2" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,8 +60,9 @@
                                <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Informe 1</a></li>
-                            <li><a href="#">Informe 2</a></li>
+                            <li><a href="InformeCosecha2.aspx">Cosecha</a></li>
+                            <li><a href="InformeProd2.aspx">Producción</a></li>
+                            <li><a href="InformeGraficos2.aspx">Gráficos</a></li>
                             <li class="divider"></li>
                             <li><a href="Trabajadores2.aspx">Trabajadores</a></li>
                             <li><a href="Pesajes2.aspx">Pesajes</a></li>

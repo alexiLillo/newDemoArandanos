@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterInformes.Master" AutoEventWireup="true" CodeBehind="InformePlantas3.aspx.cs" Inherits="DemoArandanos.InformePlantas3" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head2" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head3" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
 <h1>Informe cantidad Plantas</h1>
     <br />
     <form runat="server">
