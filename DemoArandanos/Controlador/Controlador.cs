@@ -590,11 +590,11 @@ namespace DemoArandanos.Controlador
 
         //ADMINISTRADOR DE PESAJE
 
-        public void insertarPesaje(String producto, String qrenvase, String ruttrabajador, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval)
+        public void insertarPesaje(String producto, String qrenvase, String ruttrabajador, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval, String tiporegistro, String fechahoramod, String usuariomod)
         {
             try
             {
-                contexto.Pesaje.Add(new Pesaje { Producto = producto.ToUpper().Replace(".", ""), QRenvase = qrenvase.ToUpper().Replace(".", ""), RutTrabajador = ruttrabajador.ToUpper().Replace(".", ""), RutPesador = rutpesador.ToUpper().Replace(".", ""), Fundo = fundo.ToUpper().Replace(".", ""), Potrero = potrero.ToUpper().Replace(".", ""), Sector = sector.ToUpper().Replace(".", ""), Variedad = variedad.ToUpper().Replace(".", ""), Cuartel = cuartel.ToUpper().Replace(".", ""), FechaHora = fechahora, PesoNeto = pesoneto, Tara = tara, Formato = formato.ToUpper().Replace(".", ""), TotalCantidad = totalcant, Factor = factor, Cantidad = cantidad, Lectura_SVAL = lecturasval.ToUpper().Replace(".", ""), ID_Map = lastMapeo() });
+                contexto.Pesaje.Add(new Pesaje { Producto = producto.ToUpper().Replace(".", ""), QRenvase = qrenvase.ToUpper().Replace(".", ""), RutTrabajador = ruttrabajador.ToUpper().Replace(".", ""), RutPesador = rutpesador.ToUpper().Replace(".", ""), Fundo = fundo.ToUpper().Replace(".", ""), Potrero = potrero.ToUpper().Replace(".", ""), Sector = sector.ToUpper().Replace(".", ""), Variedad = variedad.ToUpper().Replace(".", ""), Cuartel = cuartel.ToUpper().Replace(".", ""), FechaHora = fechahora, PesoNeto = pesoneto, Tara = tara, Formato = formato.ToUpper().Replace(".", ""), TotalCantidad = totalcant, Factor = factor, Cantidad = cantidad, Lectura_SVAL = lecturasval.ToUpper().Replace(".", ""), ID_Map = lastMapeo(), TipoRegistro = tiporegistro.ToUpper().Replace(".", ""), FechaHoraModificacion = fechahoramod.ToUpper().Replace(".", ""), UsuarioModificacion = usuariomod.ToUpper().Replace(".", "") });
                 contexto.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
@@ -609,7 +609,7 @@ namespace DemoArandanos.Controlador
             }
         }
 
-        public void actualizarPesaje(String qrold, DateTime fechaold, String producto, String qrenvase, String ruttrabajador, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval)
+        public void actualizarPesaje(String qrold, DateTime fechaold, String producto, String qrenvase, String ruttrabajador, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval, String fechahoramod, String usuariomod)
         {
             try
             {
@@ -636,6 +636,8 @@ namespace DemoArandanos.Controlador
                 pesaje.Cantidad = cantidad;
                 pesaje.Lectura_SVAL = lecturasval.ToUpper().Replace(".", "");
                 pesaje.ID_Map = lastMapeo();
+                pesaje.FechaHoraModificacion = fechahoramod.ToUpper().Replace(".", "");
+                pesaje.UsuarioModificacion = usuariomod.ToUpper().Replace(".", "");
                 contexto.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)

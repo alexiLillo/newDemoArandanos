@@ -96,7 +96,7 @@
                                 <div class="btn-group" role="group" aria-label="...">
                                     <asp:Button ID="btnIngresarFundo" runat="server" Text="Insertar" type="submit" class="btn btn-default" OnClick="btnIngresarFundo_Click" />
                                     <asp:Button ID="btnActualizarFundo" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btnActualizarFundo_Click" />
-                                    <asp:Button ID="btnEliminarFundo" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btnEliminarFundo_Click" />
+                                    <asp:Button ID="btnEliminarFundo" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btnEliminarFundo_Click" onclientclick="return confirm('¿Está seguro de que desea eliminar el Fundo?');"/>
                                 </div>
                                 <br />
                                 <br />
@@ -148,7 +148,7 @@
                                 <div class="btn-group" role="group" aria-label="...">
                                     <asp:Button ID="btInsertarPotrero" runat="server" Text="Insertar" type="submit" class="btn btn-default" OnClick="btInsertarPotrero_Click" />
                                     <asp:Button ID="btActualizarPotrero" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btActualizarPotrero_Click" />
-                                    <asp:Button ID="btEliminarPotrero" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarPotrero_Click" />
+                                    <asp:Button ID="btEliminarPotrero" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarPotrero_Click" onclientclick="return confirm('¿Está seguro de que desea eliminar el Potrero?');" />
                                 </div>
                                 <br />
                                 <br />
@@ -213,7 +213,7 @@
                                 <div class="btn-group" role="group" aria-label="...">
                                     <asp:Button ID="btInsertarSector" runat="server" Text="Insertar" type="submit" class="btn btn-default" OnClick="btInsertarSector_Click" />
                                     <asp:Button ID="btActualizarSector" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btActualizarSector_Click" />
-                                    <asp:Button ID="btEliminarSector" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarSector_Click" />
+                                    <asp:Button ID="btEliminarSector" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarSector_Click" onclientclick="return confirm('¿Está seguro de que desea eliminar el Sector?');" />
                                 </div>
                                 <br />
                                 <br />
@@ -290,7 +290,7 @@
                                 <div class="btn-group" role="group" aria-label="...">
                                     <asp:Button ID="btInsertarCuartel" runat="server" Text="Insertar" type="submit" class="btn btn-default" OnClick="btInsertarCuartel_Click" />
                                     <asp:Button ID="btActualizarCuartel" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btActualizarCuartel_Click" />
-                                    <asp:Button ID="btEliminarCuartel" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarCuartel_Click" />
+                                    <asp:Button ID="btEliminarCuartel" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarCuartel_Click" onclientclick="return confirm('¿Está seguro de que desea eliminar el Cuartel?');" />
                                 </div>
                                 <br />
                                 <br />
@@ -378,7 +378,7 @@
                                 <div class="btn-group" role="group" aria-label="...">
                                     <asp:Button ID="btInsertarHilera" runat="server" Text="Insertar" type="submit" class="btn btn-default" OnClick="btInsertarHilera_Click" />
                                     <asp:Button ID="btActualizarHilera" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btActualizarHilera_Click" />
-                                    <asp:Button ID="btEliminarHilera" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarHilera_Click" />
+                                    <asp:Button ID="btEliminarHilera" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarHilera_Click" onclientclick="return confirm('¿Está seguro de que desea eliminar la Hilera?');" />
                                 </div>
                                 <br />
                                 <br />
@@ -483,7 +483,7 @@
                                 <div class="btn-group" role="group" aria-label="...">
                                     <asp:Button ID="btInsertarPlanta" runat="server" Text="Insertar" type="submit" class="btn btn-default" OnClick="btInsertarPlanta_Click" />
                                     <asp:Button ID="btActualizarPlanta" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btActualizarPlanta_Click" />
-                                    <asp:Button ID="btEliminarPlanta" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarPlanta_Click" />
+                                    <asp:Button ID="btEliminarPlanta" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarPlanta_Click" onclientclick="return confirm('¿Está seguro de que desea eliminar la Planta?');" />
                                 </div>
                                 <br />
                                 <br />
@@ -542,7 +542,7 @@
                                 <br />
                                 <div class="btn-group" role="group" aria-label="...">
                                     <asp:Button ID="btInsertarEstado" runat="server" Text="Insertar" type="submit" class="btn btn-default" OnClick="btInsertarEstado_Click" />
-                                    <asp:Button ID="btEliminarEstado" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarEstado_Click" />
+                                    <asp:Button ID="btEliminarEstado" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarEstado_Click" onclientclick="return confirm('¿Está seguro de que desea eliminar el Estado?');" />
                                 </div>
                                 <br />
                                 <br />
@@ -594,7 +594,7 @@
                                 <div class="btn-group" role="group" aria-label="...">
                                     <asp:Button ID="btInsertarVariedad" runat="server" Text="Insertar" type="submit" class="btn btn-default" OnClick="btInsertarVariedad_Click" />
                                     <asp:Button ID="btActualizarVariedad" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btActualizarVariedad_Click"  />
-                                    <asp:Button ID="btEliminarVariedad" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarVariedad_Click" />
+                                    <asp:Button ID="btEliminarVariedad" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarVariedad_Click" onclientclick="return confirm('¿Está seguro de que desea eliminar la Variedad?');" />
                                 </div>
                                 <br />
                                 <br />
@@ -642,7 +642,7 @@
                                 <br />
                                 <div class="btn-group" role="group" aria-label="...">
                                     <asp:Button ID="Button1" runat="server" Text="Generar Nuevo Mapeo" type="submit" class="btn btn-default" />
-                                    <asp:Button ID="Button2" runat="server" Text="Eliminar" type="submit" class="btn btn-default" />
+                                    <asp:Button ID="Button2" runat="server" Text="Eliminar" type="submit" class="btn btn-default" onclientclick="return confirm('¿Está seguro de que desea eliminar el Mapeo? (Esto puede ser peligrooooso...)');" />
                                 </div>
                                 <br />
                                 <br />

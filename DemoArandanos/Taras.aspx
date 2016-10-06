@@ -91,7 +91,7 @@
                     <div class="btn-group" role="group" aria-label="...">
                         <asp:Button ID="btGuardarTara" runat="server" Text="Registrar" type="submit" class="btn btn-default" OnClick="btGuardarTara_Click" />
                         <asp:Button ID="btActualizarTara" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btActualizarTara_Click" />
-                        <asp:Button ID="btEliminarTara" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarTara_Click" />
+                        <asp:Button ID="btEliminarTara" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarTara_Click"  onclientclick="return confirm('¿Está seguro de que desea eliminar la Tara?');" />
                     </div>
                 </div>
                 <div class="col-md-8">

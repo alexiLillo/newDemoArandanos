@@ -193,6 +193,18 @@ namespace DemoArandanos.Modelo
                 .Property(e => e.Lectura_SVAL)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Pesaje>()
+                .Property(e => e.TipoRegistro)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Pesaje>()
+                .Property(e => e.FechaHoraModificacion)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Pesaje>()
+                .Property(e => e.UsuarioModificacion)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Planta>()
                 .Property(e => e.ID_Planta)
                 .IsUnicode(false);

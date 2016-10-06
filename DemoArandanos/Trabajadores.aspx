@@ -81,7 +81,7 @@
                         <asp:Button ID="btGuardarTrabajador" runat="server" Text="Registrar" type="submit" class="btn btn-default" OnClick="btGuardarTrabajador_Click" />
                         <asp:Button ID="btGenerarQR" runat="server" Text="Generar QR" type="submit" class="btn btn-default" OnClick="btGenerarQR_Click" />
                         <asp:Button ID="btActualizarTrabajador" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btActualizarTrabajador_Click" />
-                        <asp:Button ID="btEliminarTrabajador" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarTrabajador_Click" />
+                        <asp:Button ID="btEliminarTrabajador" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarTrabajador_Click" onclientclick="return confirm('¿Está seguro de que desea eliminar el Trabajador?');" />
                     </div>
                     <br />
                     <div id="printableArea">

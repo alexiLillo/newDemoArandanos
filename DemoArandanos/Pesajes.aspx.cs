@@ -78,6 +78,9 @@ namespace DemoArandanos
             txtRutPesador.Text = "";
             txtFechaHora.Text = "";
             txtPesoBruto.Text = "";
+            btGuardarPesaje.Attributes.Remove("disabled");
+            txtPesoBruto.Attributes.Remove("disabled");
+            btEliminarPesaje.Attributes.Remove("disabled");
         }
 
         protected void btGuardarPesaje_Click(object sender, EventArgs e)
@@ -87,7 +90,7 @@ namespace DemoArandanos
                 decimal pesoNeto = Decimal.Parse(txtPesoBruto.Text.Replace(".", ",")) - Decimal.Parse(ddTara.SelectedValue.Replace(".", ","));
                 String[] split = ddTara.SelectedItem.Text.Split(':');
                 String formato = split[0];
-                control.insertarPesaje("32", txtQRenvase.Text, txtRutTrabajador.Text, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto, Decimal.Parse(ddTara.SelectedValue), formato, 1, 1, 1, "");
+                control.insertarPesaje("32", txtQRenvase.Text, txtRutTrabajador.Text, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto, Decimal.Parse(ddTara.SelectedValue), formato, 1, 1, 1, "", "Manual", "-", Application["usuario"].ToString());
                 lblsuccess.Text = "Pesaje ingresado correctamente.";
                 divSuccess.Visible = true;
                 limpiarCampos();
@@ -126,6 +129,17 @@ namespace DemoArandanos
             lblfechaold.Text = d.ToString("yyyy-MM-ddTHH:mm:ss");
 
             btGuardarPesaje.Attributes.Add("disabled", "true");
+
+            if (grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[12].Text.Replace("&nbsp;", "").ToString().Equals("Celular"))
+            {
+                txtPesoBruto.Attributes.Add("disabled", "true");
+                btEliminarPesaje.Attributes.Add("disabled", "true");
+            }
+            else
+            {
+                txtPesoBruto.Attributes.Remove("disabled");
+                btEliminarPesaje.Attributes.Remove("disabled");
+            }
         }
 
         protected void btActualizarPesaje_Click(object sender, EventArgs e)
@@ -135,7 +149,7 @@ namespace DemoArandanos
                 decimal pesoNeto = Decimal.Parse(txtPesoBruto.Text.Replace(".", ",")) - Decimal.Parse(ddTara.SelectedValue.Replace(".", ","));
                 String[] split = ddTara.SelectedItem.Text.Split(':');
                 String formato = split[0];
-                control.actualizarPesaje(lblqrold.Text, DateTime.Parse(lblfechaold.Text), "32", txtQRenvase.Text, txtRutTrabajador.Text, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto, Decimal.Parse(ddTara.SelectedValue), formato, 1, 1, 1, "");
+                control.actualizarPesaje(lblqrold.Text, DateTime.Parse(lblfechaold.Text), "32", txtQRenvase.Text, txtRutTrabajador.Text, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto, Decimal.Parse(ddTara.SelectedValue), formato, 1, 1, 1, "", DateTime.Now.ToString("dd/MM/yyyy HH:mm"), Application["usuario"].ToString());
                 lblsuccess.Text = "Pesaje actualizado correctamente.";
                 divSuccess.Visible = true;
                 limpiarCampos();
@@ -169,8 +183,7 @@ namespace DemoArandanos
 
         protected void btLimpiar_Click(object sender, EventArgs e)
         {
-            limpiarCampos();
-            btGuardarPesaje.Attributes.Remove("disabled");
+            limpiarCampos();            
         }
     }
 }

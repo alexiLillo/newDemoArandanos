@@ -69,7 +69,7 @@
                     <br />
                     <div class="btn-group" role="group" aria-label="...">
                         <asp:Button ID="btnIngresarUsuario" runat="server" Text="Insertar" type="submit" class="btn btn-default" OnClick="btnIngresarUsuario_Click" />
-                        <asp:Button ID="btnEliminarUsuario" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btnEliminarUsuario_Click" />
+                        <asp:Button ID="btnEliminarUsuario" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btnEliminarUsuario_Click" onclientclick="return confirm('¿Está seguro de que desea eliminar el Usuario?');" />
                     </div>
                     <br />
                     <br />

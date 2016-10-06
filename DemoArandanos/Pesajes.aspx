@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Maestra.Master" AutoEventWireup="true" CodeBehind="Pesajes.aspx.cs" Inherits="DemoArandanos.Pesajes" %>
+﻿ <%@ Page Title="" Language="C#" MasterPageFile="~/Maestra.Master" AutoEventWireup="true" CodeBehind="Pesajes.aspx.cs" Inherits="DemoArandanos.Pesajes" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -177,7 +177,7 @@
                     <div class="btn-group" role="group" aria-label="...">
                         <asp:Button ID="btGuardarPesaje" runat="server" Text="Registrar" type="submit" class="btn btn-default" OnClick="btGuardarPesaje_Click" />
                         <asp:Button ID="btActualizarPesaje" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btActualizarPesaje_Click" />
-                        <asp:Button ID="btEliminarPesaje" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarPesaje_Click" />
+                        <asp:Button ID="btEliminarPesaje" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarPesaje_Click" onclientclick="return confirm('¿Está seguro de que desea eliminar el pesaje?');" />
                     </div>
                     <asp:Button ID="btLimpiar" runat="server" Text="Limpiar" type="submit" class="btn btn-default" OnClick="btLimpiar_Click" />
                     <br />
@@ -237,9 +237,12 @@
                                         <asp:BoundField DataField="FechaHora" HeaderText="Fecha Hora" SortExpression="FechaHora" DataFormatString="{0:dd/MM/yyyy HH:mm}"></asp:BoundField>
                                         <asp:BoundField DataField="PesoNeto" HeaderText="Peso Neto" SortExpression="PesoNeto" DataFormatString="{0:n2}"></asp:BoundField>
                                         <asp:BoundField DataField="Tara" HeaderText="Tara" SortExpression="Tara"></asp:BoundField>
+                                        <asp:BoundField DataField="TipoRegistro" HeaderText="Registro" SortExpression="TipoRegistro"></asp:BoundField>
+                                        <asp:BoundField DataField="FechaHoraModificacion" HeaderText="Fecha Modificación" SortExpression="FechaHoraModificacion"></asp:BoundField>
+                                        <asp:BoundField DataField="UsuarioModificacion" HeaderText="Usuario que modificó" SortExpression="UsuarioModificacion"></asp:BoundField>
                                     </Columns>
                                 </asp:GridView>
-                                <asp:SqlDataSource ID="dsPesajesFiltrados" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [QRenvase], [RutTrabajador], [RutPesador], [Fundo], [Potrero], [Sector], [Variedad], [Cuartel], [FechaHora], [PesoNeto], [Tara] FROM [Pesaje] WHERE (([RutTrabajador] LIKE '%' + @RutTrabajador + '%') AND [FechaHora] BETWEEN (@FechaHora + ' 00:00') AND (@FechaHora2 + ' 23:59')) ORDER BY [FechaHora]">
+                                <asp:SqlDataSource ID="dsPesajesFiltrados" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [QRenvase], [RutTrabajador], [RutPesador], [Fundo], [Potrero], [Sector], [Variedad], [Cuartel], [FechaHora], [PesoNeto], [Tara], [TipoRegistro], [FechaHoraModificacion], [UsuarioModificacion] FROM [Pesaje] WHERE (([RutTrabajador] LIKE '%' + @RutTrabajador + '%') AND [FechaHora] BETWEEN (@FechaHora + ' 00:00') AND (@FechaHora2 + ' 23:59')) ORDER BY [FechaHora]">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="txtFiltroRut" Name="RutTrabajador" PropertyName="Text" Type="String" ConvertEmptyStringToNull="False" />
                                         <asp:ControlParameter ControlID="txtFechaInicio" Name="FechaHora" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" DefaultValue="1999-01-01" />

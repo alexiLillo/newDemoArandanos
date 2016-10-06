@@ -66,6 +66,15 @@ namespace DemoArandanos.Modelo
 
         public int? ID_Map { get; set; }
 
+        [StringLength(50)]
+        public string TipoRegistro { get; set; }
+
+        [StringLength(50)]
+        public string FechaHoraModificacion { get; set; }
+
+        [StringLength(50)]
+        public string UsuarioModificacion { get; set; }
+
         public int id { get; set; }
     }
 }
