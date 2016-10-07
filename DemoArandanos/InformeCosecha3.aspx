@@ -103,8 +103,8 @@
                     <br />
                 </div>
                 <div class="col-md-3">
-                    <label for="txtFechaTermino">Fecha filtro fin</label>
-                    <asp:TextBox ID="txtFechaTermino" AutoPostBack="true" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-MM-dd" OnTextChanged="txtFechaTermino_TextChanged"></asp:TextBox>
+                    <label for="txtFechaTermino">Fecha filtro fin (hoy)</label>
+                    <asp:TextBox ID="txtFechaTermino" AutoPostBack="true" disabled="true" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-MM-dd" OnTextChanged="txtFechaTermino_TextChanged"></asp:TextBox>
                     <br />
                     <br />
                 </div>

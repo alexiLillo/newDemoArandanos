@@ -774,6 +774,7 @@ namespace DemoArandanos.Controlador
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     cantidad = 0;
                 }
                 cantidades[i] = cantidad;
@@ -859,6 +860,7 @@ namespace DemoArandanos.Controlador
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
                     cantidad = 0;
                 }
                 cantidades[i] = cantidad;

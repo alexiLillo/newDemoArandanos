@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Web;
 using DemoArandanos.Controlador;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace DemoArandanos
 {
@@ -17,8 +19,8 @@ namespace DemoArandanos
         {
             divBadLogin.Visible = false;
             try
-            {
-                if (control.login(txtUser.Text, txtPass.Text) == 1)
+            {               
+                if (control.login(txtUser.Text, Encrypt.GetMD5(txtPass.Text)) == 1)
                 {
                     Application["usuario"] = txtUser.Text;
                     HttpCookie cookie1 = new HttpCookie("login");
@@ -39,7 +41,7 @@ namespace DemoArandanos
                     }
                     else
                     {
-                        if (control.login(txtUser.Text, txtPass.Text) == 3)
+                        if (control.login(txtUser.Text, Encrypt.GetMD5(txtPass.Text)) == 3)
                         {
                             //usuario de tipo solo informes
                             Application["usuario"] = txtUser.Text;
@@ -63,8 +65,23 @@ namespace DemoArandanos
             }
             catch (Exception ex)
             {
-                lblLogin.Text = "No se puede establecer conexión con el servidor. "+ ex.ToString();
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+                lblLogin.Text = "No se puede establecer conexión con el servidor.";
                 divBadLogin.Visible = true;
+            }
+        }
+
+        public class Encrypt
+        {
+            public static string GetMD5(string str)
+            {
+                MD5 md5 = MD5CryptoServiceProvider.Create();
+                ASCIIEncoding encoding = new ASCIIEncoding();
+                byte[] stream = null;
+                StringBuilder sb = new StringBuilder();
+                stream = md5.ComputeHash(encoding.GetBytes(str));
+                for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+                return sb.ToString();
             }
         }
     }

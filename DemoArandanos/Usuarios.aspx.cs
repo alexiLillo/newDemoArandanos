@@ -1,5 +1,7 @@
 ﻿using DemoArandanos.Controlador;
 using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace DemoArandanos
 {
@@ -35,8 +37,8 @@ namespace DemoArandanos
             {
                 if (txtPass1.Text.Equals(txtPass2.Text))
                 {
-                    control.insertarUsuario(txtUser.Text, txtPass1.Text, ddTipo.SelectedValue);
-                    control.insertarSyncUsuario(txtUser.Text, txtPass1.Text, ddTipo.SelectedValue, 0,"insert");
+                    control.insertarUsuario(txtUser.Text, Encrypt.GetMD5(txtPass1.Text), ddTipo.SelectedValue);
+                    control.insertarSyncUsuario(txtUser.Text, Encrypt.GetMD5(txtPass1.Text), ddTipo.SelectedValue, 0,"insert");
                     txtUser.Text = "";
                     txtPass1.Text = "";
                     txtPass2.Text = "";
@@ -63,8 +65,8 @@ namespace DemoArandanos
             {
                 if (txtPass1.Text.Equals(txtPass2.Text))
                 {
-                    control.eliminarUsuario(txtUser.Text, txtPass1.Text);
-                    control.insertarSyncUsuario(txtUser.Text, txtPass1.Text, ddTipo.SelectedValue, 0, "delete");
+                    control.eliminarUsuario(txtUser.Text, Encrypt.GetMD5(txtPass1.Text));
+                    control.insertarSyncUsuario(txtUser.Text, Encrypt.GetMD5(txtPass1.Text), ddTipo.SelectedValue, 0, "delete");
                     txtUser.Text = "";
                     txtPass1.Text = "";
                     txtPass2.Text = "";
@@ -77,6 +79,20 @@ namespace DemoArandanos
                     lbldanger.Text = "Las contraseñas no coinciden!";
                     divDanger.Visible = true;
                 }
+            }
+        }
+
+        public class Encrypt
+        {
+            public static string GetMD5(string str)
+            {
+                MD5 md5 = MD5CryptoServiceProvider.Create();
+                ASCIIEncoding encoding = new ASCIIEncoding();
+                byte[] stream = null;
+                StringBuilder sb = new StringBuilder();
+                stream = md5.ComputeHash(encoding.GetBytes(str));
+                for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+                return sb.ToString();
             }
         }
     }

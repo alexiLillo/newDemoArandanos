@@ -130,7 +130,7 @@ namespace DemoArandanos
 
             btGuardarPesaje.Attributes.Add("disabled", "true");
 
-            if (grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[12].Text.Replace("&nbsp;", "").ToString().Equals("Celular"))
+            if (grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[12].Text.Replace("&nbsp;", "").ToString().Equals("CELULAR"))
             {
                 txtPesoBruto.Attributes.Add("disabled", "true");
                 btEliminarPesaje.Attributes.Add("disabled", "true");
