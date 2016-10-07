@@ -47,6 +47,14 @@ namespace DemoArandanos.Controlador
             contexto.SaveChanges();
         }
 
+        public String getTipoUser(String usuario, String contraseña)
+        {
+            return (from u in contexto.Usuarios
+                    where u.user == usuario
+                    && u.pass == contraseña
+                    select u.tipo).FirstOrDefault();
+        }
+
         public void insertarSyncUsuario(String usuario, String contraseña, String tipo_usuario, int id_usuario, String operacion_sql)
         {
             contexto.SyncUsuarios.Add(new Modelo.SyncUsuarios { user = usuario, pass = contraseña, tipo = tipo_usuario, id_usuario = id_usuario, OperacionSQL = operacion_sql });

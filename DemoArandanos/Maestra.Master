@@ -65,7 +65,7 @@
                             <li class="divider"></li>
                             <li id="home"><a href="Home.aspx">Administración</a></li>
                             <li id="excel"><a href="CargaExcel.aspx">Cargar Excel</a></li>
-                            <li id="user"><a href="Usuarios.aspx">Usuarios</a></li>                            
+                                                        
                         </ul>
                     </li>
 
@@ -83,7 +83,9 @@
                             <li><a href="Taras.aspx">Tara</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" runat="server" onserverclick="salir">Salir</a></li>
+                    <li id="user"><a href="Usuarios.aspx">Usuarios</a></li>
+                    <li id="pass"><a href="Password.aspx">Cambiar contraseña</a></li>
+                    <li ><a href="#" runat="server" onserverclick="salir">Salir</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->

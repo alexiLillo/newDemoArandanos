@@ -217,6 +217,7 @@
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="CargaExcel.aspx" />
+    <Content Include="Password.aspx" />
     <Content Include="Pesajes.aspx" />
     <Content Include="Pesajes2.aspx" />
     <Content Include="Taras.aspx" />
@@ -413,6 +414,13 @@
     <Compile Include="Modelo\VistaConsulta.cs" />
     <Compile Include="Modelo\VistaConsultaDia.cs" />
     <Compile Include="Modelo\Vis_Fun_Pot_Sec_Cua_Hil_Est_Var.cs" />
+    <Compile Include="Password.aspx.cs">
+      <DependentUpon>Password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Password.aspx.designer.cs">
+      <DependentUpon>Password.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pesajes.aspx.cs">
       <DependentUpon>Pesajes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -30,6 +30,7 @@ namespace DemoArandanos
                 }
                 else
                 {
+                    //POR ENCRYP
                     if (control.login(txtUser.Text, txtPass.Text) == 2)
                     {
                         //usuario de tipo normals
