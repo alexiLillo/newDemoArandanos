@@ -29,7 +29,7 @@ namespace DemoArandanos
             {
                 if (control.login(txtUser.Text, Encrypt.GetMD5(txtPass.Text)) == 1)
                 {
-                    Session["log"] = true;
+                    Session["log"] = 1;
 
                     Application["usuario"] = txtUser.Text;
                     HttpCookie cookie1 = new HttpCookie("login");
@@ -42,7 +42,7 @@ namespace DemoArandanos
                     //POR ENCRYP
                     if (control.login(txtUser.Text, txtPass.Text) == 2)
                     {
-                        Session["log"] = true;
+                        Session["log"] = 2;
 
                         //usuario de tipo normals
                         Application["usuario"] = txtUser.Text;
@@ -56,7 +56,7 @@ namespace DemoArandanos
                     {
                         if (control.login(txtUser.Text, Encrypt.GetMD5(txtPass.Text)) == 3)
                         {
-                            Session["log"] = true;
+                            Session["log"] = 3;
 
                             //usuario de tipo solo informes
                             Application["usuario"] = txtUser.Text;
@@ -70,7 +70,7 @@ namespace DemoArandanos
                         {
                             if (control.login(txtUser.Text, txtPass.Text) == 0)
                             {
-                                Session["log"] = false;
+                                Session["log"] = 0;
 
                                 lblLogin.Text = "Datos de inicio de sesión incorrectos.";
                                 divBadLogin.Visible = true;

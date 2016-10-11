@@ -13,7 +13,7 @@ namespace DemoArandanos
         {
             if (Request.Cookies.Get("login") != null)
             {
-                Session["log"] = false;
+                Session["log"] = 0;
 
                 HttpCookie cookie1 = new HttpCookie("login");
                 cookie1.Expires = DateTime.Now.AddDays(-1d);
@@ -22,7 +22,7 @@ namespace DemoArandanos
             }
             else
             {
-                Session["log"] = false;
+                Session["log"] = 0;
 
                 Response.Redirect("Login.aspx");
             }

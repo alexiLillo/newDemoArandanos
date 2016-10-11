@@ -13,7 +13,7 @@ namespace DemoArandanos
         {
             if (!IsPostBack)
             {
-                if (Session["log"] == null || (bool)Session["log"] == false)
+                if (Session["log"] == null || (int)Session["log"] != 2)
                 {
                     Server.Transfer("Login.aspx", true);
                 }
