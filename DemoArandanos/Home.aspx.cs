@@ -8,6 +8,14 @@ namespace DemoArandanos
         Controler control = new Controler();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["log"] == null || (bool)Session["log"] == false)
+                {
+                    Server.Transfer("Login.aspx", true);
+                }
+            }
+
             divSuccess.Visible = false;
             divWarning.Visible = false;
             divInfo.Visible = false;
@@ -18,10 +26,10 @@ namespace DemoArandanos
                 dataBind("all");
             }
 
-            if (Request.Cookies.Get("login") == null)
-            {
-                Server.Transfer("Login.aspx", true);
-            }
+            //if (Request.Cookies.Get("login") == null)
+            //{
+            //    Server.Transfer("Login.aspx", true);
+            //}
         }
 
         //ACTUALIZACION GENERAL DE TABLAS (GRILLAS) Y DROPDOWNS

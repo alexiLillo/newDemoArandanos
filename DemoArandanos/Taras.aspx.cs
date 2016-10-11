@@ -13,6 +13,14 @@ namespace DemoArandanos
         Controler control = new Controler();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["log"] == null || (bool)Session["log"] == false)
+                {
+                    Server.Transfer("Login.aspx", true);
+                }
+            }
+
             divSuccess.Visible = false;
             divWarning.Visible = false;
             divInfo.Visible = false;

@@ -13,6 +13,11 @@ namespace DemoArandanos
         {
             if (!IsPostBack)
             {
+                if (Session["log"] == null || (bool)Session["log"] == false)
+                {
+                    Server.Transfer("Login.aspx", true);
+                }
+
                 //dsGrillaPesajeProd.SelectParameters["FechaHora"].DefaultValue = DateTime.Now.ToString("dd-MM-yyyy");
                 //dsGrillaPesajeProd.SelectParameters["FechaHora2"].DefaultValue = DateTime.Now.ToString("dd-MM-yyyy");
 
@@ -77,12 +82,12 @@ namespace DemoArandanos
         public void resumen()
         {
             int rows = grillaPesajesProd.Rows.Count;
-            double kilos = 0;
+            decimal kilos = 0;
             List<String> lista = new List<string>();
 
             for (int i = 0; i < rows; i++)
             {
-                kilos += Double.Parse(grillaPesajesProd.Rows[i].Cells[5].Text);
+                kilos += Decimal.Parse(grillaPesajesProd.Rows[i].Cells[5].Text);
                 lista.Add(grillaPesajesProd.Rows[i].Cells[1].Text);
             }
 
@@ -91,7 +96,15 @@ namespace DemoArandanos
             lbltotalbandejas.Text = rows.ToString();
             lbltotalkilos.Text = kilos.ToString();
             lbltotaltrabajadores.Text = trabajadores.ToString();
-            double prom = kilos / trabajadores;
+            decimal prom = 0;
+            try
+            {
+                prom = decimal.Round(kilos / trabajadores, 2);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
             lblpromkltrab.Text = prom.ToString();
 
             //imprimir

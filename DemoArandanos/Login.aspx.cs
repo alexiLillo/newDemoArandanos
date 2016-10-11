@@ -12,6 +12,13 @@ namespace DemoArandanos
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (!IsPostBack)
+            //{
+            //    Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
+            //    Response.Cache.SetAllowResponseInBrowserHistory(false);
+            //    Response.Cache.SetNoStore();
+            //}
+
             divBadLogin.Visible = false;
         }
 
@@ -19,46 +26,57 @@ namespace DemoArandanos
         {
             divBadLogin.Visible = false;
             try
-            {               
+            {
                 if (control.login(txtUser.Text, Encrypt.GetMD5(txtPass.Text)) == 1)
                 {
+                    Session["log"] = true;
+
                     Application["usuario"] = txtUser.Text;
                     HttpCookie cookie1 = new HttpCookie("login");
                     cookie1.Expires = DateTime.Now.AddMinutes(30);
                     Response.Cookies.Add(cookie1);
-                    Server.Transfer("InformePlantas.aspx", true);
+                    Server.Transfer("InformePlantas.aspx", true);                    
                 }
                 else
                 {
                     //POR ENCRYP
                     if (control.login(txtUser.Text, txtPass.Text) == 2)
                     {
+                        Session["log"] = true;
+
                         //usuario de tipo normals
                         Application["usuario"] = txtUser.Text;
                         HttpCookie cookie1 = new HttpCookie("login");
                         cookie1.Expires = DateTime.Now.AddMinutes(30);
                         Response.Cookies.Add(cookie1);
                         Server.Transfer("InformePlantas2.aspx", true);
+
                     }
                     else
                     {
                         if (control.login(txtUser.Text, Encrypt.GetMD5(txtPass.Text)) == 3)
                         {
+                            Session["log"] = true;
+
                             //usuario de tipo solo informes
                             Application["usuario"] = txtUser.Text;
                             HttpCookie cookie1 = new HttpCookie("login");
                             cookie1.Expires = DateTime.Now.AddMinutes(30);
                             Response.Cookies.Add(cookie1);
                             Server.Transfer("InformePlantas3.aspx", true);
+
                         }
                         else
                         {
                             if (control.login(txtUser.Text, txtPass.Text) == 0)
                             {
+                                Session["log"] = false;
+
                                 lblLogin.Text = "Datos de inicio de sesión incorrectos.";
                                 divBadLogin.Visible = true;
                                 txtUser.Text = "";
                                 txtPass.Text = "";
+
                             }
                         }
                     }

@@ -66,7 +66,16 @@
                             <li><a href="InformeGraficos3.aspx">Gráficos</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" runat="server" onserverclick="salir">Salir</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Opciones
+                               <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li id="pass"><a href="Password.aspx">Cambiar contraseña</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" runat="server" onserverclick="salir">Cerrar sesión <img style="margin-left:15px" class="imagen" width="20" heigth="20" src="images/logout.png"></a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!--/.nav-collapse -->

@@ -23,6 +23,11 @@ namespace DemoArandanos
             divDanger.Visible = false;
             if (!IsPostBack)
             {
+                if (Session["log"] == null || (bool)Session["log"] == false)
+                {
+                    Server.Transfer("Login.aspx", true);
+                }
+
                 txtUser.Text = Application["usuario"].ToString();
             }
         }
@@ -130,6 +135,8 @@ namespace DemoArandanos
         {
             if (Request.Cookies.Get("login") != null)
             {
+                Session["log"] = false;
+
                 HttpCookie cookie1 = new HttpCookie("login");
                 cookie1.Expires = DateTime.Now.AddDays(-1d);
                 Response.Cookies.Add(cookie1);
@@ -137,6 +144,8 @@ namespace DemoArandanos
             }
             else
             {
+                Session["log"] = false;
+
                 Response.Redirect("Login.aspx");
             }
         }

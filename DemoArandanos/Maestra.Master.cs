@@ -6,13 +6,15 @@ namespace DemoArandanos
     public partial class Maestra : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
-        {           
+        {
         }
 
         public void salir(object sender, EventArgs e)
         {
             if (Request.Cookies.Get("login") != null)
             {
+                Session["log"] = false;
+
                 HttpCookie cookie1 = new HttpCookie("login");
                 cookie1.Expires = DateTime.Now.AddDays(-1d);
                 Response.Cookies.Add(cookie1);
@@ -20,6 +22,8 @@ namespace DemoArandanos
             }
             else
             {
+                Session["log"] = false;
+
                 Response.Redirect("Login.aspx");
             }
         }

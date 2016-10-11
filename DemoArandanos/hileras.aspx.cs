@@ -16,6 +16,14 @@ namespace DemoArandanos
         List<string> listaHileras;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["log"] == null || (bool)Session["log"] == false)
+                {
+                    Server.Transfer("Login.aspx", true);
+                }
+            }
+
             int mapeo = int.Parse(Application["mapeo"].ToString());
             string fundo = Application["fundo"].ToString();
             string potrero = Application["potrero"].ToString();

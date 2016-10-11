@@ -15,12 +15,23 @@ namespace DemoArandanos
         public DateTime fechaold;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["log"] == null || (bool)Session["log"] == false)
+                {
+                    Server.Transfer("Login.aspx", true);
+                }
+            }
+
             divSuccess.Visible = false;
             divWarning.Visible = false;
             divInfo.Visible = false;
             divDanger.Visible = false;
             lblqrold.Visible = false;
             lblfechaold.Visible = false;
+
+            txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-01");
+            txtFechaTermino.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         protected void ddVariedad_DataBound(object sender, EventArgs e)
