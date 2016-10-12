@@ -40,7 +40,7 @@ namespace DemoArandanos
                 else
                 {
                     //POR ENCRYP
-                    if (control.login(txtUser.Text, txtPass.Text) == 2)
+                    if (control.login(txtUser.Text, Encrypt.GetMD5(txtPass.Text)) == 2)
                     {
                         Session["log"] = 2;
 
