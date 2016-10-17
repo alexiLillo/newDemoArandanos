@@ -58,7 +58,7 @@
             </ContentTemplate>
         </asp:UpdatePanel>
 
-        <div class="col-md-5">
+        <div class="col-md-4">
             <asp:UpdatePanel ID="UpdatePanel1" UpdateMode="Always" runat="server">
                 <ContentTemplate>
                     <label for="txtRutTrabajador">Rut</label>
@@ -94,8 +94,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <div class="col-md-7">
-            <br />
+        <div class="col-md-8">
             <label for="txtFiltroRut">Filtrar por Rut o Ficha de Trabajador</label>
             <div class="input-group">
                 <asp:TextBox ID="txtFiltroRut" AutoPostBack="true" runat="server" type="input" class="form-control" placeholder="Ingrese rut o ficha para filtrar la tabla" OnTextChanged="txtFiltroRut_TextChanged"></asp:TextBox>
@@ -117,8 +116,8 @@
                                     <Columns>
                                         <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
                                         <asp:BoundField DataField="Rut" HeaderText="Rut" ReadOnly="True" SortExpression="Rut" />
-                                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
-                                        <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
+                                        <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" HtmlEncode="False" />
+                                        <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" HtmlEncode="False" />
                                         <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha Nacimiento" SortExpression="FechaNacimiento" DataFormatString="{0:dd/MM/yyyy}" />
                                         <asp:BoundField DataField="Ficha" HeaderText="Ficha" SortExpression="Ficha" />
                                     </Columns>

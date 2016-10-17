@@ -108,9 +108,9 @@
                                         <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
                                         <asp:BoundField DataField="ID_Tara" HeaderText="ID Tara" ReadOnly="True" SortExpression="ID_Tara" />
                                         <asp:BoundField DataField="Peso" HeaderText="Peso" SortExpression="Peso" />
-                                        <asp:BoundField DataField="Producto" HeaderText="Producto" SortExpression="Producto" />
-                                        <asp:BoundField DataField="Formato" HeaderText="Formato" SortExpression="Formato" />
-                                        <asp:BoundField DataField="Descripcion" HeaderText="Descripción" SortExpression="Descripcion" />
+                                        <asp:BoundField DataField="Producto" HeaderText="Producto" SortExpression="Producto" HtmlEncode="False" />
+                                        <asp:BoundField DataField="Formato" HeaderText="Formato" SortExpression="Formato" HtmlEncode="False" />
+                                        <asp:BoundField DataField="Descripcion" HeaderText="Descripción" SortExpression="Descripcion" HtmlEncode="False" />
                                     </Columns>
 
                                 </asp:GridView>

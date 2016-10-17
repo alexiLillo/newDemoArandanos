@@ -116,8 +116,8 @@
 
                                                 <Columns>
                                                     <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
-                                                    <asp:BoundField DataField="ID_Fundo" HeaderText="Código Fundo" ReadOnly="True" SortExpression="ID_Fundo" />
-                                                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                                                    <asp:BoundField DataField="ID_Fundo" HeaderText="Código Fundo" ReadOnly="True" SortExpression="ID_Fundo" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" HtmlEncode="False" />
                                                 </Columns>
 
                                             </asp:GridView>
@@ -168,9 +168,9 @@
 
                                                 <Columns>
                                                     <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
-                                                    <asp:BoundField DataField="ID_Potrero" HeaderText="Código Potrero" ReadOnly="True" SortExpression="ID_Potrero" />
-                                                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
-                                                    <asp:BoundField DataField="ID_Fundo" HeaderText="Fundo" ReadOnly="True" SortExpression="ID_Fundo" />
+                                                    <asp:BoundField DataField="ID_Potrero" HeaderText="Código Potrero" ReadOnly="True" SortExpression="ID_Potrero" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Fundo" HeaderText="Fundo" ReadOnly="True" SortExpression="ID_Fundo" HtmlEncode="False" />
                                                 </Columns>
 
                                             </asp:GridView>
@@ -232,10 +232,10 @@
                                             <asp:GridView ID="grillaSector" class="table table-bordered" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="grillaSector_SelectedIndexChanged" DataKeyNames="ID_Sector,ID_Potrero,ID_Fundo" DataSourceID="sectoresDEpotrero">
                                                 <Columns>
                                                     <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
-                                                    <asp:BoundField DataField="ID_Sector" HeaderText="Código Sector" ReadOnly="True" SortExpression="ID_Sector" />
-                                                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
-                                                    <asp:BoundField DataField="ID_Potrero" HeaderText="Potrero" ReadOnly="True" SortExpression="ID_Potrero" />
-                                                    <asp:BoundField DataField="ID_Fundo" HeaderText="Fundo" ReadOnly="True" SortExpression="ID_Fundo" />
+                                                    <asp:BoundField DataField="ID_Sector" HeaderText="Código Sector" ReadOnly="True" SortExpression="ID_Sector" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Potrero" HeaderText="Potrero" ReadOnly="True" SortExpression="ID_Potrero" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Fundo" HeaderText="Fundo" ReadOnly="True" SortExpression="ID_Fundo" HtmlEncode="False" />
                                                 </Columns>
                                             </asp:GridView>
                                             <asp:SqlDataSource ID="sectoresDEpotrero" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Sector] WHERE (([ID_Potrero] = @ID_Potrero) AND ([ID_Fundo] = @ID_Fundo))">
@@ -309,12 +309,12 @@
                                             <asp:GridView ID="grillaCuarteles" class="table table-bordered" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="grillaCuarteles_SelectedIndexChanged" DataKeyNames="ID_Cuartel,ID_Sector,ID_Potrero,ID_Fundo" DataSourceID="cuartelesDEsector">
                                                 <Columns>
                                                     <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
-                                                    <asp:BoundField DataField="ID_Cuartel" HeaderText="Código Cuartel" ReadOnly="True" SortExpression="ID_Cuartel" />
-                                                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+                                                    <asp:BoundField DataField="ID_Cuartel" HeaderText="Código Cuartel" ReadOnly="True" SortExpression="ID_Cuartel" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" HtmlEncode="False" />
                                                     <asp:BoundField DataField="Superficie" HeaderText="Superficie" SortExpression="Superficie" />
-                                                    <asp:BoundField DataField="ID_Sector" HeaderText="Sector" ReadOnly="True" SortExpression="ID_Sector" />
-                                                    <asp:BoundField DataField="ID_Potrero" HeaderText="Potrero" ReadOnly="True" SortExpression="ID_Potrero" />
-                                                    <asp:BoundField DataField="ID_Fundo" HeaderText="Fundo" ReadOnly="True" SortExpression="ID_Fundo" />
+                                                    <asp:BoundField DataField="ID_Sector" HeaderText="Sector" ReadOnly="True" SortExpression="ID_Sector" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Potrero" HeaderText="Potrero" ReadOnly="True" SortExpression="ID_Potrero" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Fundo" HeaderText="Fundo" ReadOnly="True" SortExpression="ID_Fundo" HtmlEncode="False" />
                                                 </Columns>
                                             </asp:GridView>
                                             <asp:SqlDataSource ID="cuartelesDEsector" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Cuartel] WHERE (([ID_Sector] = @ID_Sector) AND ([ID_Potrero] = @ID_Potrero) AND ([ID_Fundo] = @ID_Fundo))">
@@ -397,12 +397,12 @@
                                             <asp:GridView ID="grillaHilera" class="table table-bordered" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="grillaHilera_SelectedIndexChanged" DataSourceID="hilerasDEcuartel" DataKeyNames="ID_Hilera,ID_Cuartel,ID_Sector,ID_Potrero,ID_Fundo">
                                                 <Columns>
                                                     <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
-                                                    <asp:BoundField DataField="ID_Hilera" HeaderText="Código Hilera" ReadOnly="True" SortExpression="ID_Hilera" />
-                                                    <asp:BoundField DataField="Variedad" HeaderText="Variedad" SortExpression="Variedad" />
-                                                    <asp:BoundField DataField="ID_Cuartel" HeaderText="Cuartel" ReadOnly="True" SortExpression="ID_Cuartel" />
-                                                    <asp:BoundField DataField="ID_Sector" HeaderText="Sector" ReadOnly="True" SortExpression="ID_Sector" />
-                                                    <asp:BoundField DataField="ID_Potrero" HeaderText="Potrero" ReadOnly="True" SortExpression="ID_Potrero" />
-                                                    <asp:BoundField DataField="ID_Fundo" HeaderText="Fundo" ReadOnly="True" SortExpression="ID_Fundo" />
+                                                    <asp:BoundField DataField="ID_Hilera" HeaderText="Código Hilera" ReadOnly="True" SortExpression="ID_Hilera" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="Variedad" HeaderText="Variedad" SortExpression="Variedad" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Cuartel" HeaderText="Cuartel" ReadOnly="True" SortExpression="ID_Cuartel" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Sector" HeaderText="Sector" ReadOnly="True" SortExpression="ID_Sector" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Potrero" HeaderText="Potrero" ReadOnly="True" SortExpression="ID_Potrero" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Fundo" HeaderText="Fundo" ReadOnly="True" SortExpression="ID_Fundo" HtmlEncode="False" />
                                                 </Columns>
                                             </asp:GridView>
                                             <asp:SqlDataSource ID="hilerasDEcuartel" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Hilera] WHERE (([ID_Cuartel] = @ID_Cuartel) AND ([ID_Sector] = @ID_Sector) AND ([ID_Potrero] = @ID_Potrero) AND ([ID_Fundo] = @ID_Fundo))">
@@ -502,15 +502,15 @@
 
                                                 <Columns>
                                                     <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
-                                                    <asp:BoundField DataField="ID_Planta" HeaderText="Código Planta" ReadOnly="True" SortExpression="ID_Planta" />
-                                                    <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" />
+                                                    <asp:BoundField DataField="ID_Planta" HeaderText="Código Planta" ReadOnly="True" SortExpression="ID_Planta" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="Estado" HeaderText="Estado" SortExpression="Estado" HtmlEncode="False" />
                                                     <asp:BoundField DataField="Fecha_Plantacion" HeaderText="Fecha Plantación" SortExpression="Fecha_Plantacion" DataFormatString="{0:d}" />
-                                                    <asp:BoundField DataField="Observaciones" HeaderText="Observaciones" SortExpression="Observaciones" />
-                                                    <asp:BoundField DataField="ID_Hilera" HeaderText="Hilera" ReadOnly="True" SortExpression="ID_Hilera" />
-                                                    <asp:BoundField DataField="ID_Cuartel" HeaderText="Cuartel" ReadOnly="True" SortExpression="ID_Cuartel" />
-                                                    <asp:BoundField DataField="ID_Sector" HeaderText="Sector" ReadOnly="True" SortExpression="ID_Sector" />
-                                                    <asp:BoundField DataField="ID_Potrero" HeaderText="Potrero" ReadOnly="True" SortExpression="ID_Potrero" />
-                                                    <asp:BoundField DataField="ID_Fundo" HeaderText="Fundo" ReadOnly="True" SortExpression="ID_Fundo" />
+                                                    <asp:BoundField DataField="Observaciones" HeaderText="Observaciones" SortExpression="Observaciones" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Hilera" HeaderText="Hilera" ReadOnly="True" SortExpression="ID_Hilera" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Cuartel" HeaderText="Cuartel" ReadOnly="True" SortExpression="ID_Cuartel" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Sector" HeaderText="Sector" ReadOnly="True" SortExpression="ID_Sector" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Potrero" HeaderText="Potrero" ReadOnly="True" SortExpression="ID_Potrero" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Fundo" HeaderText="Fundo" ReadOnly="True" SortExpression="ID_Fundo" HtmlEncode="False" />
                                                 </Columns>
 
                                             </asp:GridView>
@@ -562,7 +562,7 @@
 
                                                 <Columns>
                                                     <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
-                                                    <asp:BoundField DataField="ID_Estado" HeaderText="Estado" ReadOnly="True" SortExpression="ID_Estado" />
+                                                    <asp:BoundField DataField="ID_Estado" HeaderText="Estado" ReadOnly="True" SortExpression="ID_Estado" HtmlEncode="False" />
                                                 </Columns>
 
                                             </asp:GridView>
@@ -614,9 +614,9 @@
 
                                                 <Columns>
                                                     <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
-                                                    <asp:BoundField DataField="ID_Variedad" HeaderText="ID_Variedad" ReadOnly="True" SortExpression="ID_Variedad" />
-                                                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
-                                                    <asp:BoundField DataField="ID_Producto" HeaderText="ID_Producto" ReadOnly="True" SortExpression="ID_Producto" />
+                                                    <asp:BoundField DataField="ID_Variedad" HeaderText="ID_Variedad" ReadOnly="True" SortExpression="ID_Variedad" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" HtmlEncode="False" />
+                                                    <asp:BoundField DataField="ID_Producto" HeaderText="ID_Producto" ReadOnly="True" SortExpression="ID_Producto" HtmlEncode="False" />
                                                 </Columns>
 
                                             </asp:GridView>

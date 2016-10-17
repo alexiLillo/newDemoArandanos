@@ -229,17 +229,17 @@
                                         <asp:BoundField DataField="QRenvase" HeaderText="QR Envase" SortExpression="QRenvase"></asp:BoundField>
                                         <asp:BoundField DataField="RutTrabajador" HeaderText="Rut Trabajador" SortExpression="RutTrabajador"></asp:BoundField>
                                         <asp:BoundField DataField="RutPesador" HeaderText="Rut Pesador" SortExpression="RutPesador"></asp:BoundField>
-                                        <asp:BoundField DataField="Fundo" HeaderText="Fundo" SortExpression="Fundo"></asp:BoundField>
-                                        <asp:BoundField DataField="Potrero" HeaderText="Potrero" SortExpression="Potrero"></asp:BoundField>
-                                        <asp:BoundField DataField="Sector" HeaderText="Sector" SortExpression="Sector"></asp:BoundField>
-                                        <asp:BoundField DataField="Variedad" HeaderText="Variedad" SortExpression="Variedad"></asp:BoundField>
-                                        <asp:BoundField DataField="Cuartel" HeaderText="Cuartel" SortExpression="Cuartel"></asp:BoundField>
+                                        <asp:BoundField DataField="Fundo" HeaderText="Fundo" SortExpression="Fundo" HtmlEncode="False"></asp:BoundField>
+                                        <asp:BoundField DataField="Potrero" HeaderText="Potrero" SortExpression="Potrero" HtmlEncode="False"></asp:BoundField>
+                                        <asp:BoundField DataField="Sector" HeaderText="Sector" SortExpression="Sector" HtmlEncode="False"></asp:BoundField>
+                                        <asp:BoundField DataField="Variedad" HeaderText="Variedad" SortExpression="Variedad" HtmlEncode="False"></asp:BoundField>
+                                        <asp:BoundField DataField="Cuartel" HeaderText="Cuartel" SortExpression="Cuartel" HtmlEncode="False"></asp:BoundField>
                                         <asp:BoundField DataField="FechaHora" HeaderText="Fecha Hora" SortExpression="FechaHora" DataFormatString="{0:dd/MM/yyyy HH:mm}"></asp:BoundField>
                                         <asp:BoundField DataField="PesoNeto" HeaderText="Peso Neto" SortExpression="PesoNeto" DataFormatString="{0:n2}"></asp:BoundField>
                                         <asp:BoundField DataField="Tara" HeaderText="Tara" SortExpression="Tara"></asp:BoundField>
-                                        <asp:BoundField DataField="TipoRegistro" HeaderText="Registro" SortExpression="TipoRegistro"></asp:BoundField>
+                                        <asp:BoundField DataField="TipoRegistro" HeaderText="Registro" SortExpression="TipoRegistro" HtmlEncode="False"></asp:BoundField>
                                         <asp:BoundField DataField="FechaHoraModificacion" HeaderText="Fecha Modificación" SortExpression="FechaHoraModificacion"></asp:BoundField>
-                                        <asp:BoundField DataField="UsuarioModificacion" HeaderText="Usuario que modificó" SortExpression="UsuarioModificacion"></asp:BoundField>
+                                        <asp:BoundField DataField="UsuarioModificacion" HeaderText="Usuario que modificó" SortExpression="UsuarioModificacion" HtmlEncode="False"></asp:BoundField>
                                     </Columns>
                                 </asp:GridView>
                                 <asp:SqlDataSource ID="dsPesajesFiltrados" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [QRenvase], [RutTrabajador], [RutPesador], [Fundo], [Potrero], [Sector], [Variedad], [Cuartel], [FechaHora], [PesoNeto], [Tara], [TipoRegistro], [FechaHoraModificacion], [UsuarioModificacion] FROM [Pesaje] WHERE (([RutTrabajador] LIKE '%' + @RutTrabajador + '%') AND [FechaHora] BETWEEN (@FechaHora + ' 00:00') AND (@FechaHora2 + ' 23:59')) ORDER BY [FechaHora]">

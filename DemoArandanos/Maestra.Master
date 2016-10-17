@@ -77,6 +77,7 @@
                             <li><a href="InformeCosecha1.aspx">Cosecha</a></li>
                             <li><a href="InformeProd1.aspx">Producción</a></li>
                             <li><a href="InformeGraficos1.aspx">Gráficos</a></li>
+                            <li><a href="InformeRanking1.aspx">Ranking</a></li>
                             <li class="divider"></li>
                             <li><a href="Trabajadores.aspx">Trabajadores</a></li>
                             <li><a href="Pesajes.aspx">Pesajes</a></li>

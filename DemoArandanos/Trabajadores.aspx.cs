@@ -157,6 +157,8 @@ namespace DemoArandanos
             DateTime d = DateTime.Parse(grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[4].Text.Replace("&nbsp;", "").ToString());
             txtFechaNacimiento.Text = d.ToString("yyyy-MM-dd");
             txtFicha.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[5].Text.Replace("&nbsp;", "");
+
+            generaQR(txtRutTrabajador.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[1].Text.Replace("&nbsp;", ""));
         }
 
         protected void btActualizarTrabajador_Click(object sender, EventArgs e)

@@ -88,7 +88,7 @@
                                 <asp:GridView ID="grillaUsuarios" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="dsUsuarios" OnSelectedIndexChanged="grillaUsuarios_SelectedIndexChanged">
                                     <Columns>
                                         <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
-                                        <asp:BoundField DataField="user" HeaderText="Usuario" SortExpression="user" />
+                                        <asp:BoundField DataField="user" HeaderText="Usuario" SortExpression="user" HtmlEncode="False" />
                                         <asp:BoundField DataField="tipo" HeaderText="Tipo" SortExpression="tipo" />
                                     </Columns>
                                 </asp:GridView>
