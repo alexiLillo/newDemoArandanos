@@ -64,6 +64,7 @@
                             <li><a href="InformeCosecha3.aspx">Cosecha</a></li>
                             <li><a href="InformeProd3.aspx">Producción</a></li>
                             <li><a href="InformeGraficos3.aspx">Gráficos</a></li>
+                            <li><a href="InformeRanking3.aspx">Ranking</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
