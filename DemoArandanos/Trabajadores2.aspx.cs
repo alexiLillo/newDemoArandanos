@@ -218,6 +218,7 @@ namespace DemoArandanos
         {
             Response.Clear();
             Response.Buffer = true;
+            Response.ContentEncoding = System.Text.Encoding.Default;
             Response.AddHeader("content-disposition", "attachment;filename=Trabajadores-" + txtFiltroRut.Text + ".xls");
             Response.Charset = "";
             Response.ContentType = "application/vnd.ms-excel";
