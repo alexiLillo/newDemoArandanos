@@ -1,6 +1,8 @@
 ﻿using DemoArandanos.Controlador;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -195,6 +197,64 @@ namespace DemoArandanos
         protected void btLimpiar_Click(object sender, EventArgs e)
         {
             limpiarCampos();            
+        }
+
+
+        protected void ExportToExcel(object sender, EventArgs e)
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=Pesajes-"+ txtFiltroRut.Text +"-'"+ txtFechaInicio.Text +"'-'" + txtFechaTermino.Text + "'.xls");
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.ms-excel";
+            using (StringWriter sw = new StringWriter())
+            {
+                HtmlTextWriter hw = new HtmlTextWriter(sw);
+
+                //To Export all pages
+                grillaPesajes.AllowPaging = false;
+                grillaPesajes.DataBind();
+
+                grillaPesajes.Columns[0].Visible = false;
+
+                grillaPesajes.HeaderRow.BackColor = Color.White;
+                foreach (TableCell cell in grillaPesajes.HeaderRow.Cells)
+                {
+                    cell.BackColor = grillaPesajes.HeaderStyle.BackColor;
+                }
+                foreach (GridViewRow row in grillaPesajes.Rows)
+                {
+                    row.BackColor = Color.White;
+                    foreach (TableCell cell in row.Cells)
+                    {
+                        if (row.RowIndex % 2 == 0)
+                        {
+                            cell.BackColor = grillaPesajes.AlternatingRowStyle.BackColor;
+                        }
+                        else
+                        {
+                            cell.BackColor = grillaPesajes.RowStyle.BackColor;
+                        }
+                        cell.CssClass = "textmode";
+                    }
+                }
+
+                grillaPesajes.RenderControl(hw);
+
+                //style to format numbers to string
+                string style = @"<style> .textmode { } </style>";
+                Response.Write(style);
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
+
+                grillaPesajes.Columns[0].Visible = true;
+            }
+        }
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            /* Verifies that the control is rendered */
         }
     }
 }

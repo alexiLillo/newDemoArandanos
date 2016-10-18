@@ -228,6 +228,7 @@
 
         <div class="hidden-print">
             <input type="button" style="float: right" class="btn btn-default" name="Imprimir" value="Imprimir" onclick="window.print()">
+            <asp:Button ID="Button1" Style="margin-right:5px; float: right" class="btn btn-default" runat="server" Text="Exportar a Excel" OnClick="ExportToExcel" />
         </div>
     </form>
 </asp:Content>

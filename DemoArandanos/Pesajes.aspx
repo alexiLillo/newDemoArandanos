@@ -179,7 +179,7 @@
                         <asp:Button ID="btActualizarPesaje" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btActualizarPesaje_Click" />
                         <asp:Button ID="btEliminarPesaje" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarPesaje_Click" onclientclick="return confirm('¿Está seguro de que desea eliminar el pesaje?');" />
                     </div>
-                    <asp:Button ID="btLimpiar" runat="server" Text="Limpiar" type="submit" class="btn btn-default" OnClick="btLimpiar_Click" />
+                    <asp:Button ID="btLimpiar" runat="server" formnovalidate Text="Limpiar" type="submit" class="btn btn-default" OnClick="btLimpiar_Click" />
                     <br />
                     <br />
                     <br />
@@ -200,7 +200,7 @@
                     <div class="input-group">
                         <asp:TextBox ID="txtFiltroRut" AutoPostBack="true" runat="server" type="input" class="form-control" placeholder="Ingrese rut para filtrar la tabla" OnTextChanged="txtFiltroRut_TextChanged"></asp:TextBox>
                         <span class="input-group-btn">
-                            <asp:Button ID="btFiltrar" type="button" AutoPostBack="False" class="btn btn-default" runat="server" Text="Filtrar" OnClick="btFiltrar_Click" />
+                            <asp:Button ID="btFiltrar" formnovalidate type="button" AutoPostBack="False" class="btn btn-default" runat="server" Text="Filtrar" OnClick="btFiltrar_Click" />
                         </span>
                     </div>
                 </div>
@@ -255,6 +255,7 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
+        <asp:Button ID="Button1" formnovalidate Style="margin-right: 5px; float: right" class="btn btn-default" runat="server" Text="Exportar a Excel" OnClick="ExportToExcel" />
     </form>
 
 </asp:Content>

@@ -98,6 +98,7 @@
                 <br />
                 <br />
                 <input type="button" Style="float: left" class="btn btn-default" name="Imprimir" value="Imprimir" onclick="printDiv('printableArea')">
+                <asp:Button ID="Button1" Style="margin-right:5px; float: right" class="btn btn-default" runat="server" Text="Exportar a Excel" OnClick="ExportToExcel" />
             </div>
         </div>
 

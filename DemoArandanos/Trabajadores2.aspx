@@ -62,13 +62,13 @@
             <asp:UpdatePanel ID="UpdatePanel1" UpdateMode="Always" runat="server">
                 <ContentTemplate>
                     <label for="txtRutTrabajador">Rut</label>
-                    <asp:TextBox ID="txtRutTrabajador" runat="server" type="input" required="required" class="form-control" placeholder="Ingrese Rut de Trabajador"></asp:TextBox>
+                    <asp:TextBox ID="txtRutTrabajador" runat="server" required="required" type="input" class="form-control" placeholder="Ingrese Rut de Trabajador"></asp:TextBox>
                     <br />
                     <label for="txtNombreTrabajador">Nombre</label>
-                    <asp:TextBox ID="txtNombreTrabajador" runat="server" type="input" required="required" class="form-control" placeholder="Ingrese Nombre de Trabajador"></asp:TextBox>
+                    <asp:TextBox ID="txtNombreTrabajador" runat="server" required="required" type="input" class="form-control" placeholder="Ingrese Nombre de Trabajador"></asp:TextBox>
                     <br />
                     <label for="txtApellidoTrabajador">Apellido</label>
-                    <asp:TextBox ID="txtApellidoTrabajador" runat="server" type="input" required="required" class="form-control" placeholder="Ingrese Apellido de Trabajador"></asp:TextBox>
+                    <asp:TextBox ID="txtApellidoTrabajador" runat="server" required="required" type="input" class="form-control" placeholder="Ingrese Apellido de Trabajador"></asp:TextBox>
                     <br />
                     <label for="txtFechaNacimiento">Fecha Nacimiento</label>
                     <asp:TextBox ID="txtFechaNacimiento" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-mm-dd"></asp:TextBox>
@@ -99,7 +99,7 @@
             <div class="input-group">
                 <asp:TextBox ID="txtFiltroRut" AutoPostBack="true" runat="server" type="input" class="form-control" placeholder="Ingrese rut o ficha para filtrar la tabla" OnTextChanged="txtFiltroRut_TextChanged"></asp:TextBox>
                 <span class="input-group-btn">
-                    <asp:Button ID="btFiltrar" type="button" AutoPostBack="False" class="btn btn-default" runat="server" Text="Filtrar" OnClick="btFiltrar_Click" />
+                    <asp:Button ID="btFiltrar" formnovalidate type="button" AutoPostBack="False" class="btn btn-default" runat="server" Text="Filtrar" OnClick="btFiltrar_Click" />
                 </span>
             </div>
             <br />
@@ -109,7 +109,7 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">Trabajadores</h3>
                         </div>
-                        <div class="panel-body" style="max-height: 500px; overflow-y: scroll;">
+                        <div class="panel-body" style="max-height: 480px; overflow-y: scroll;">
                             <!-- grilla -->
                             <div class="table-responsive">
                                 <asp:GridView ID="grillaTrabajadores" class="table table-bordered" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="grillaTrabajadores_SelectedIndexChanged" DataKeyNames="Rut" DataSourceID="dsTrabajadores">
@@ -133,5 +133,6 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
+        <asp:Button ID="Button1" formnovalidate Style="margin-right: 5px; float: right" class="btn btn-default" runat="server" Text="Exportar a Excel" OnClick="ExportToExcel" />
     </form>
 </asp:Content>
