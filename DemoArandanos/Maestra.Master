@@ -74,14 +74,15 @@
                                <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="InformeCosecha1.aspx">Cosecha</a></li>
-                            <li><a href="InformeProd1.aspx">Producción</a></li>
-                            <li><a href="InformeGraficos1.aspx">Gráficos</a></li>
-                            <li><a href="InformeRanking1.aspx">Ranking</a></li>
+                            <li><a href="InformeCosecha1.aspx">Cosecha Cuarteles</a></li>
+                            <li><a href="InformeProd1.aspx">Producción Arándanos</a></li>
+                            <li><a href="InformeGraficos1.aspx">Gráficos Producción</a></li>
+                            <li><a href="InformeRanking1.aspx">Ranking Trabajadores</a></li>
+                            <li><a href="InformeRepetidas1.aspx">Bandejas Repetidas</a></li>
                             <li class="divider"></li>
-                            <li><a href="Trabajadores.aspx">Trabajadores</a></li>
-                            <li><a href="Pesajes.aspx">Pesajes</a></li>
-                            <li><a href="Taras.aspx">Tara</a></li>
+                            <li><a href="Trabajadores.aspx">Enrolamiento Trabajadores</a></li>
+                            <li><a href="Pesajes.aspx">Administración Pesajes</a></li>
+                            <li><a href="Taras.aspx">Administración Taras</a></li>
                         </ul>
                     </li>
                     <li id="user"><a href="Usuarios.aspx">Usuarios</a></li>

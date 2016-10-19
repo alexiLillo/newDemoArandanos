@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <br />
-                    <input type="button" class="btn btn-default" name="Imprimir" value="Imprimir" onclick="printDiv('printableArea')">
+                    <input type="button" class="btn btn-default" name="Imprimir QR" value="Imprimir QR" onclick="printDiv('printableArea')">
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>

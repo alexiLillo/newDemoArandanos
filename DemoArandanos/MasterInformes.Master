@@ -61,10 +61,11 @@
                                <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="InformeCosecha3.aspx">Cosecha</a></li>
-                            <li><a href="InformeProd3.aspx">Producción</a></li>
-                            <li><a href="InformeGraficos3.aspx">Gráficos</a></li>
-                            <li><a href="InformeRanking3.aspx">Ranking</a></li>
+                             <li><a href="InformeCosecha3.aspx">Cosecha Cuarteles</a></li>
+                            <li><a href="InformeProd3.aspx">Producción Arándanos</a></li>
+                            <li><a href="InformeGraficos3.aspx">Gráficos Producción</a></li>
+                            <li><a href="InformeRanking3.aspx">Ranking Trabajadores</a></li>
+                            <li><a href="InformeRepetidas3.aspx">Bandejas Repetidas</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

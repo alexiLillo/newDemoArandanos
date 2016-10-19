@@ -178,6 +178,9 @@
     <Content Include="InformeRanking3.aspx" />
     <Content Include="InformeRanking2.aspx" />
     <Content Include="InformeRanking1.aspx" />
+    <Content Include="InformeRepetidas3.aspx" />
+    <Content Include="InformeRepetidas2.aspx" />
+    <Content Include="InformeRepetidas1.aspx" />
     <Content Include="mapa.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -369,6 +372,27 @@
     </Compile>
     <Compile Include="InformeRanking1.aspx.designer.cs">
       <DependentUpon>InformeRanking1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeRepetidas3.aspx.cs">
+      <DependentUpon>InformeRepetidas3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRepetidas3.aspx.designer.cs">
+      <DependentUpon>InformeRepetidas3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeRepetidas2.aspx.cs">
+      <DependentUpon>InformeRepetidas2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRepetidas2.aspx.designer.cs">
+      <DependentUpon>InformeRepetidas2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeRepetidas1.aspx.cs">
+      <DependentUpon>InformeRepetidas1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRepetidas1.aspx.designer.cs">
+      <DependentUpon>InformeRepetidas1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

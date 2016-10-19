@@ -23,6 +23,9 @@ namespace DemoArandanos
                 {
                     Server.Transfer("Login.aspx", true);
                 }
+
+                txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-01");
+                txtFechaTermino.Text = DateTime.Now.ToString("yyyy-MM-dd");
             }
 
             divSuccess.Visible = false;
@@ -30,10 +33,7 @@ namespace DemoArandanos
             divInfo.Visible = false;
             divDanger.Visible = false;
             lblqrold.Visible = false;
-            lblfechaold.Visible = false;
-
-            txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-01");
-            txtFechaTermino.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            lblfechaold.Visible = false;            
         }
 
         protected void ddVariedad_DataBound(object sender, EventArgs e)
