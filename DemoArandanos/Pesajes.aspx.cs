@@ -33,7 +33,7 @@ namespace DemoArandanos
             divInfo.Visible = false;
             divDanger.Visible = false;
             lblqrold.Visible = false;
-            lblfechaold.Visible = false;            
+            lblfechaold.Visible = false;
         }
 
         protected void ddVariedad_DataBound(object sender, EventArgs e)
@@ -98,21 +98,30 @@ namespace DemoArandanos
 
         protected void btGuardarPesaje_Click(object sender, EventArgs e)
         {
-            try
+            if (ddFundo.SelectedValue != "0" && ddPotrero.SelectedValue != "0" && ddSector.SelectedValue != "0" && ddVariedad.SelectedValue != "0" && ddCuartel.SelectedValue != "0")
             {
-                decimal pesoNeto = Decimal.Parse(txtPesoBruto.Text.Replace(".", ",")) - Decimal.Parse(ddTara.SelectedValue.Replace(".", ","));
-                String[] split = ddTara.SelectedItem.Text.Split(':');
-                String formato = split[0];
-                control.insertarPesaje("32", txtQRenvase.Text, txtRutTrabajador.Text, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto, Decimal.Parse(ddTara.SelectedValue), formato, 1, 1, 1, "", "Manual", "-", Application["usuario"].ToString());
-                lblsuccess.Text = "Pesaje ingresado correctamente.";
-                divSuccess.Visible = true;
-                limpiarCampos();
+                try
+                {
+                    decimal pesoNeto = Decimal.Parse(txtPesoBruto.Text.Replace(".", ",")) - Decimal.Parse(ddTara.SelectedValue.Replace(".", ","));
+                    String[] split = ddTara.SelectedItem.Text.Split(':');
+                    String formato = split[0];
+                    control.insertarPesaje("32", txtQRenvase.Text, txtRutTrabajador.Text, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto, Decimal.Parse(ddTara.SelectedValue), formato, 1, 1, 1, "", "Manual", "-", Application["usuario"].ToString());
+                    lblsuccess.Text = "Pesaje ingresado correctamente.";
+                    divSuccess.Visible = true;
+                    limpiarCampos();
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
+                    lbldanger.Text = "No se pudo ingresar Pesaje";
+                    divDanger.Visible = true;
+                }
+
             }
-            catch (Exception ex)
+            else
             {
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
-                lbldanger.Text = "No se pudo ingresar Pesaje";
-                divDanger.Visible = true;
+                lblwarning.Text = "Seleccione todos los campos para poder registrar Pesaje";
+                divWarning.Visible = true;
             }
         }
 
@@ -157,22 +166,30 @@ namespace DemoArandanos
 
         protected void btActualizarPesaje_Click(object sender, EventArgs e)
         {
-            try
+            if (ddFundo.SelectedValue != "0" && ddPotrero.SelectedValue != "0" && ddSector.SelectedValue != "0" && ddVariedad.SelectedValue != "0" && ddCuartel.SelectedValue != "0")
             {
-                decimal pesoNeto = Decimal.Parse(txtPesoBruto.Text.Replace(".", ",")) - Decimal.Parse(ddTara.SelectedValue.Replace(".", ","));
-                String[] split = ddTara.SelectedItem.Text.Split(':');
-                String formato = split[0];
-                control.actualizarPesaje(lblqrold.Text, DateTime.Parse(lblfechaold.Text), "32", txtQRenvase.Text, txtRutTrabajador.Text, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto, Decimal.Parse(ddTara.SelectedValue), formato, 1, 1, 1, "", DateTime.Now.ToString("dd/MM/yyyy HH:mm"), Application["usuario"].ToString());
-                lblsuccess.Text = "Pesaje actualizado correctamente.";
-                divSuccess.Visible = true;
-                limpiarCampos();
-                btGuardarPesaje.Attributes.Remove("disabled");
+                try
+                {
+                    decimal pesoNeto = Decimal.Parse(txtPesoBruto.Text.Replace(".", ",")) - Decimal.Parse(ddTara.SelectedValue.Replace(".", ","));
+                    String[] split = ddTara.SelectedItem.Text.Split(':');
+                    String formato = split[0];
+                    control.actualizarPesaje(lblqrold.Text, DateTime.Parse(lblfechaold.Text), "32", txtQRenvase.Text, txtRutTrabajador.Text, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto, Decimal.Parse(ddTara.SelectedValue), formato, 1, 1, 1, "", DateTime.Now.ToString("dd/MM/yyyy HH:mm"), Application["usuario"].ToString());
+                    lblsuccess.Text = "Pesaje actualizado correctamente.";
+                    divSuccess.Visible = true;
+                    limpiarCampos();
+                    btGuardarPesaje.Attributes.Remove("disabled");
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
+                    lbldanger.Text = "No se pudo actualizar Pesaje ";
+                    divDanger.Visible = true;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
-                lbldanger.Text = "No se pudo actualizar Pesaje ";
-                divDanger.Visible = true;
+                lblwarning.Text = "Seleccione todos los campos para poder actualizar Pesaje";
+                divWarning.Visible = true;
             }
         }
 
@@ -196,7 +213,7 @@ namespace DemoArandanos
 
         protected void btLimpiar_Click(object sender, EventArgs e)
         {
-            limpiarCampos();            
+            limpiarCampos();
         }
 
 
@@ -205,7 +222,7 @@ namespace DemoArandanos
             Response.Clear();
             Response.Buffer = true;
             Response.ContentEncoding = System.Text.Encoding.Default;
-            Response.AddHeader("content-disposition", "attachment;filename=Pesajes-"+ txtFiltroRut.Text +"-'"+ txtFechaInicio.Text +"'-'" + txtFechaTermino.Text + "'.xls");
+            Response.AddHeader("content-disposition", "attachment;filename=Pesajes-" + txtFiltroRut.Text + "-'" + txtFechaInicio.Text + "'-'" + txtFechaTermino.Text + "'.xls");
             Response.Charset = "";
             Response.ContentType = "application/vnd.ms-excel";
             using (StringWriter sw = new StringWriter())
