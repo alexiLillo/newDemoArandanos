@@ -162,6 +162,8 @@
     <Content Include="images\arrowvt.png" />
     <Content Include="images\ic_mode_edit_black_24dp_1x.png" />
     <Content Include="images\ic_mode_edit_black_24dp_2x.png" />
+    <Content Include="images\logout2.png" />
+    <Content Include="images\logout3.png" />
     <Content Include="images\mapa.png" />
     <Content Include="InformeCosecha3.aspx" />
     <Content Include="InformeCosecha2.aspx" />
