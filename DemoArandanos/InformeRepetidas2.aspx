@@ -78,7 +78,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Bandejas repetidas del día</h3>
                     </div>
-                    <div class="panel-body" style="max-height: 480px; overflow-y: scroll;">
+                    <div class="panel-body" style="max-height: 480px; overflow-y: scroll; font-size:83%">
                         <div class="table-responsive">
                             <asp:GridView ID="grillaRepetidas" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="dsRepetidas" OnDataBound="grillaRepetidas_DataBound">
                                 <Columns>

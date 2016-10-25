@@ -58,7 +58,7 @@
             </ContentTemplate>
         </asp:UpdatePanel>
 
-        <div class="col-md-4">
+        <div class="col-md-5">
             <asp:UpdatePanel ID="UpdatePanel1" UpdateMode="Always" runat="server">
                 <ContentTemplate>
                     <label for="txtRutTrabajador">Rut</label>
@@ -94,7 +94,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
             <label for="txtFiltroRut">Buscar Trabajador</label>
             <div class="input-group">
                 <asp:TextBox ID="txtFiltroRut" AutoPostBack="true" runat="server" type="input" class="form-control" placeholder="Ingrese rut, nombre o ficha para filtrar la tabla" OnTextChanged="txtFiltroRut_TextChanged"></asp:TextBox>
@@ -109,7 +109,7 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">Trabajadores</h3>
                         </div>
-                        <div class="panel-body" style="max-height: 480px; overflow-y: scroll;">
+                        <div class="panel-body" style="max-height: 480px; overflow-y: scroll; font-size:85%">
                             <!-- grilla -->
                             <div class="table-responsive">
                                 <asp:GridView ID="grillaTrabajadores" class="table table-bordered" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="grillaTrabajadores_SelectedIndexChanged" DataKeyNames="Rut" DataSourceID="dsTrabajadores">

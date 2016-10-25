@@ -221,7 +221,7 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">Pesajes</h3>
                         </div>
-                        <div class="panel-body" style="max-height: 500px; overflow-y: scroll;">
+                        <div class="panel-body" style="max-height: 500px; overflow-y: scroll; font-size:83%">
                             <div class="table-responsive">
                                 <asp:GridView ID="grillaPesajes" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="dsPesajesFiltrados" OnSelectedIndexChanged="grillaPesajes_SelectedIndexChanged">
                                     <Columns>

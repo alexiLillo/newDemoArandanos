@@ -73,8 +73,18 @@
                         <h5>Hasta:
                             <asp:Label ID="lblhasta" runat="server" Text=""></asp:Label></h5>
                         <br />
-                        <h6>Variedad: <asp:Label ID="lblvaried" runat="server" Text=""></asp:Label> - Fundo: <asp:Label ID="lblfund" runat="server" Text=""></asp:Label> - <asp:Label ID="lblpotrer" runat="server" Text=""></asp:Label> - <asp:Label ID="lblsect" runat="server" Text=""></asp:Label> - <asp:Label ID="lblcuart" runat="server" Text=""></asp:Label></h6>
-                        <h6>Filtro de búsqueda: <asp:Label ID="lblfiltr" runat="server" Text=""></asp:Label></h6>
+                        <h6>Variedad:
+                            <asp:Label ID="lblvaried" runat="server" Text=""></asp:Label>
+                            - Fundo:
+                            <asp:Label ID="lblfund" runat="server" Text=""></asp:Label>
+                            -
+                            <asp:Label ID="lblpotrer" runat="server" Text=""></asp:Label>
+                            -
+                            <asp:Label ID="lblsect" runat="server" Text=""></asp:Label>
+                            -
+                            <asp:Label ID="lblcuart" runat="server" Text=""></asp:Label></h6>
+                        <h6>Filtro de búsqueda:
+                            <asp:Label ID="lblfiltr" runat="server" Text=""></asp:Label></h6>
                     </div>
                 </div>
 
@@ -97,8 +107,8 @@
                 <br />
                 <br />
                 <br />
-                <input type="button" Style="float: left" class="btn btn-default" name="Imprimir" value="Imprimir" onclick="printDiv('printableArea')">
-                <asp:Button ID="Button1" Style="margin-right:5px; float: right" class="btn btn-default" runat="server" Text="Exportar a Excel" OnClick="ExportToExcel" />
+                <input type="button" style="float: left" class="btn btn-default" name="Imprimir" value="Imprimir" onclick="printDiv('printableArea')">
+                <asp:Button ID="Button1" Style="margin-right: 5px; float: right" class="btn btn-default" runat="server" Text="Exportar a Excel" OnClick="ExportToExcel" />
             </div>
         </div>
 
@@ -183,7 +193,7 @@
             <!-- grilla -->
             <div class="panel panel-default">
 
-                <div class="panel-body" style="max-height: 296px; overflow-y: scroll;">
+                <div class="panel-body" style="max-height: 400px; overflow-y: scroll;">
                     <div class="table-responsive">
                         <asp:GridView ID="grillaPesajesProd" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="dsGrillaPesajeProd" OnDataBound="grillaPesajesProd_DataBound">
                             <Columns>
@@ -220,10 +230,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
-
 
     </form>
 

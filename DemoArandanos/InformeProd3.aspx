@@ -183,7 +183,7 @@
             <!-- grilla -->
             <div class="panel panel-default">
 
-                <div class="panel-body" style="max-height: 296px; overflow-y: scroll;">
+                <div class="panel-body" style="max-height: 400px; overflow-y: scroll;">
                     <div class="table-responsive">
                         <asp:GridView ID="grillaPesajesProd" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="dsGrillaPesajeProd" OnDataBound="grillaPesajesProd_DataBound">
                             <Columns>
@@ -220,11 +220,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
-
-
+        
     </form>
 
 </asp:Content>
