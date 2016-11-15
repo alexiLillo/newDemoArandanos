@@ -569,6 +569,7 @@ namespace DemoArandanos.Controlador
 
         public void insertarTrabajador(String rut, String nombre, String apellido, String qrrut, String fechaNac, String fechaIngreso, int ficha)
         {
+            //ultimo campo adicional para sistema alamo (null)
             contexto.Trabajador.Add(new Trabajador { Rut = rut.ToUpper().Replace(".", ""), Nombre = nombre.ToUpper(), Apellido = apellido.ToUpper(), QRrut = qrrut.ToUpper().Replace(".", ""), FechaNacimiento = DateTime.Parse(fechaNac), FechaIngreso = DateTime.Parse(fechaIngreso), Ficha = ficha });
             contexto.SaveChanges();
         }

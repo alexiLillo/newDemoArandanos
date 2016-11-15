@@ -64,7 +64,7 @@
                 <label for="txtUser">Usuario:</label>
                 <asp:TextBox ID="txtUser" Text="user" runat="server" type="input" required class="form-control" placeholder="Ingrese nombre de usuario"></asp:TextBox>
                 <br />
-                <label for="txtPass">Contraseña</label>
+                <label for="txtPass">Contraseña:</label>
                 <asp:TextBox ID="txtPass" Text="user" runat="server" type="password" required class="form-control" placeholder="Ingrese contraseña"></asp:TextBox>
                 <br />
                 <div class="alert alert-danger fade in" id="divBadLogin" runat="server">
