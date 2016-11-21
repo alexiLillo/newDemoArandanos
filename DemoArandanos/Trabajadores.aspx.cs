@@ -124,7 +124,7 @@ namespace DemoArandanos
                 //GUARDAR DATOS DE TRABAJADOR EN BD (VALIDAR RUT)
                 try
                 {
-                    control.insertarTrabajador(txtRutTrabajador.Text, txtNombreTrabajador.Text, txtApellidoTrabajador.Text, txtRutTrabajador.Text, txtFechaNacimiento.Text, DateTime.Now.ToString("yyyy-MM-dd"), Int32.Parse(txtFicha.Text));
+                    control.insertarTrabajador(txtRutTrabajador.Text, txtNombreTrabajador.Text, txtApellidoTrabajador.Text, txtRutTrabajador.Text, txtFechaNacimiento.Text, txtFechaIngreso.Text, Int32.Parse(txtFicha.Text));
                     lblsuccess.Text = "Trabajador ingresado correctamente";
                     divSuccess.Visible = true;
                     generaQR(txtRutTrabajador.Text);
@@ -132,6 +132,7 @@ namespace DemoArandanos
                     txtNombreTrabajador.Text = "";
                     txtApellidoTrabajador.Text = "";
                     txtFechaNacimiento.Text = "";
+                    txtFechaIngreso.Text = "";
                     txtFicha.Text = "";
                     grillaTrabajadores.DataBind();
                 }
@@ -156,7 +157,9 @@ namespace DemoArandanos
             txtApellidoTrabajador.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[3].Text.Replace("&nbsp;", "");
             DateTime d = DateTime.Parse(grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[4].Text.Replace("&nbsp;", "").ToString());
             txtFechaNacimiento.Text = d.ToString("yyyy-MM-dd");
-            txtFicha.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[5].Text.Replace("&nbsp;", "");
+            DateTime di = DateTime.Parse(grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[5].Text.Replace("&nbsp;", "").ToString());
+            txtFechaIngreso.Text = di.ToString("yyyy-MM-dd");
+            txtFicha.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[6].Text.Replace("&nbsp;", "");
 
             generaQR(txtRutTrabajador.Text = grillaTrabajadores.Rows[grillaTrabajadores.SelectedIndex].Cells[1].Text.Replace("&nbsp;", ""));
         }
@@ -165,7 +168,7 @@ namespace DemoArandanos
         {
             try
             {
-                control.actualizarTrabajador(txtRutTrabajador.Text, txtNombreTrabajador.Text, txtApellidoTrabajador.Text, txtRutTrabajador.Text, txtFechaNacimiento.Text, DateTime.Now.ToString("yyyy-MM-dd"), Int32.Parse(txtFicha.Text));
+                control.actualizarTrabajador(txtRutTrabajador.Text, txtNombreTrabajador.Text, txtApellidoTrabajador.Text, txtRutTrabajador.Text, txtFechaNacimiento.Text, txtFechaIngreso.Text, Int32.Parse(txtFicha.Text));
                 lblsuccess.Text = "Trabajador actualizado correctamente";
                 divSuccess.Visible = true;
                 txtRutTrabajador.Text = "";

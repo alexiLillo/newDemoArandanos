@@ -196,9 +196,9 @@
             <ContentTemplate>
                 <div class="col-md-4">
                     <br />
-                    <label for="txtFiltroRut">Filtrar por Rut de Trabajador</label>
+                    <label for="txtFiltroRut">Filtrar por QR o Rut de Trabajador</label>
                     <div class="input-group">
-                        <asp:TextBox ID="txtFiltroRut" AutoPostBack="true" runat="server" type="input" class="form-control" placeholder="Ingrese rut para filtrar la tabla" OnTextChanged="txtFiltroRut_TextChanged"></asp:TextBox>
+                        <asp:TextBox ID="txtFiltroRut" AutoPostBack="true" runat="server" type="input" class="form-control" placeholder="Ingrese qr o rut para filtrar la tabla" OnTextChanged="txtFiltroRut_TextChanged"></asp:TextBox>
                         <span class="input-group-btn">
                             <asp:Button ID="btFiltrar" formnovalidate type="button" AutoPostBack="False" class="btn btn-default" runat="server" Text="Filtrar" OnClick="btFiltrar_Click" />
                         </span>
@@ -242,7 +242,7 @@
                                         <asp:BoundField DataField="UsuarioModificacion" HeaderText="Usuario que modificó" SortExpression="UsuarioModificacion" HtmlEncode="False"></asp:BoundField>
                                     </Columns>
                                 </asp:GridView>
-                                <asp:SqlDataSource ID="dsPesajesFiltrados" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [QRenvase], [RutTrabajador], [RutPesador], [Fundo], [Potrero], [Sector], [Variedad], [Cuartel], [FechaHora], [PesoNeto], [Tara], [TipoRegistro], [FechaHoraModificacion], [UsuarioModificacion] FROM [Pesaje] WHERE (([RutTrabajador] LIKE '%' + @RutTrabajador + '%') AND [FechaHora] BETWEEN (@FechaHora + ' 00:00') AND (@FechaHora2 + ' 23:59')) ORDER BY [FechaHora]">
+                                <asp:SqlDataSource ID="dsPesajesFiltrados" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [QRenvase], [RutTrabajador], [RutPesador], [Fundo], [Potrero], [Sector], [Variedad], [Cuartel], [FechaHora], [PesoNeto], [Tara], [TipoRegistro], [FechaHoraModificacion], [UsuarioModificacion] FROM [Pesaje] WHERE (([RutTrabajador] LIKE '%' + @RutTrabajador + '%' OR [QRenvase] LIKE '%' + @RutTrabajador + '%') AND [FechaHora] BETWEEN (@FechaHora + ' 00:00') AND (@FechaHora2 + ' 23:59')) ORDER BY [FechaHora]">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="txtFiltroRut" Name="RutTrabajador" PropertyName="Text" Type="String" ConvertEmptyStringToNull="False" />
                                         <asp:ControlParameter ControlID="txtFechaInicio" Name="FechaHora" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" DefaultValue="1999-01-01" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -32,7 +33,7 @@ namespace DemoArandanos
         {
             grillaRepetidas.DataBind();
         }
-                
+
         protected void grillaRepetidas_DataBound(object sender, EventArgs e)
         {
             string vari = "";
@@ -54,7 +55,7 @@ namespace DemoArandanos
                     {
                         row.Cells[i].BackColor = Color.LightGray;
                         //row.Cells[i].ForeColor = Color.White;
-                    }                    
+                    }
                 }
 
                 vari = row.Cells[0].Text;
@@ -85,6 +86,71 @@ namespace DemoArandanos
 
                 vari = row.Cells[0].Text;
             }
+        }
+
+        protected void ExportToExcel(object sender, EventArgs e)
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.ContentEncoding = System.Text.Encoding.Default;
+            Response.AddHeader("content-disposition", "attachment;filename=Informe Repetidas - " + txtFecha.Text + ".xls");
+            Response.Charset = "";
+            Response.ContentType = "application/vnd.ms-excel";
+            using (StringWriter sw = new StringWriter())
+            {
+                HtmlTextWriter hw = new HtmlTextWriter(sw);
+                try
+                {
+                    //To Export all pages
+                    grillaRepetidas.AllowPaging = false;
+                    grillaRepetidas.DataBind();
+
+                    grillaRepetidas.Columns[0].Visible = false;
+
+                    grillaRepetidas.HeaderRow.BackColor = Color.White;
+                    foreach (TableCell cell in grillaRepetidas.HeaderRow.Cells)
+                    {
+                        cell.BackColor = grillaRepetidas.HeaderStyle.BackColor;
+                    }
+                    foreach (GridViewRow row in grillaRepetidas.Rows)
+                    {
+                        row.BackColor = Color.White;
+                        foreach (TableCell cell in row.Cells)
+                        {
+                            if (row.RowIndex % 2 == 0)
+                            {
+                                cell.BackColor = grillaRepetidas.AlternatingRowStyle.BackColor;
+                            }
+                            else
+                            {
+                                cell.BackColor = grillaRepetidas.RowStyle.BackColor;
+                            }
+                            cell.CssClass = "textmode";
+                        }
+                    }
+
+                    grillaRepetidas.RenderControl(hw);
+
+                    //style to format numbers to string
+                    string style = @"<style> .textmode { } </style>";
+                    Response.Write(style);
+                    Response.Output.Write(sw.ToString());
+                    Response.Flush();
+                    Response.End();
+
+                    grillaRepetidas.Columns[0].Visible = true;
+                }
+                catch (Exception)
+                {
+                    lblwarning.Text = "No se puede convertir a Excel";
+                    divWarning.Visible = true;                                        
+                }
+            }
+        }
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            /* Verifies that the control is rendered */
         }
     }
 }

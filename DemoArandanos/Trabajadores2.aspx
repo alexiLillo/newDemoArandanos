@@ -73,6 +73,9 @@
                     <label for="txtFechaNacimiento">Fecha Nacimiento</label>
                     <asp:TextBox ID="txtFechaNacimiento" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-mm-dd"></asp:TextBox>
                     <br />
+                    <label for="txtFechaIngreso">Fecha Ingreso</label>
+                    <asp:TextBox ID="txtFechaIngreso" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-mm-dd"></asp:TextBox>
+                    <br />
                     <label for="txtFicha">Número Ficha</label>
                     <asp:TextBox ID="txtFicha" runat="server" type="number" required="required" class="form-control"></asp:TextBox>
                     <br />
@@ -80,7 +83,7 @@
                         <asp:Button ID="btGuardarTrabajador" runat="server" Text="Registrar" type="submit" class="btn btn-default" OnClick="btGuardarTrabajador_Click" />
                         <asp:Button ID="btGenerarQR" runat="server" Text="Generar QR" type="submit" class="btn btn-default" OnClick="btGenerarQR_Click" />
                         <asp:Button ID="btActualizarTrabajador" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btActualizarTrabajador_Click" />
-                        <asp:Button ID="btEliminarTrabajador" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarTrabajador_Click" onclientclick="return confirm('¿Está seguro de que desea eliminar el Trabajador?');" />
+                        <asp:Button ID="btEliminarTrabajador" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarTrabajador_Click" OnClientClick="return confirm('¿Está seguro de que desea eliminar el Trabajador?');" />
                     </div>
                     <br />
                     <div id="printableArea">
@@ -109,7 +112,7 @@
                         <div class="panel-heading">
                             <h3 class="panel-title">Trabajadores</h3>
                         </div>
-                        <div class="panel-body" style="max-height: 480px; overflow-y: scroll; font-size:85%">
+                        <div class="panel-body" style="max-height: 480px; overflow-y: scroll; font-size: 85%">
                             <!-- grilla -->
                             <div class="table-responsive">
                                 <asp:GridView ID="grillaTrabajadores" class="table table-bordered" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="grillaTrabajadores_SelectedIndexChanged" DataKeyNames="Rut" DataSourceID="dsTrabajadores">
@@ -119,10 +122,11 @@
                                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" HtmlEncode="False" />
                                         <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" HtmlEncode="False" />
                                         <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha Nacimiento" SortExpression="FechaNacimiento" DataFormatString="{0:dd/MM/yyyy}" />
+                                        <asp:BoundField DataField="FechaIngreso" HeaderText="Fecha Ingreso" SortExpression="FechaIngreso" DataFormatString="{0:dd/MM/yyyy}" />
                                         <asp:BoundField DataField="Ficha" HeaderText="Ficha" SortExpression="Ficha" />
                                     </Columns>
                                 </asp:GridView>
-                                <asp:SqlDataSource ID="dsTrabajadores" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [Rut], [Nombre], [Apellido], [FechaNacimiento], [Ficha] FROM [Trabajador] WHERE (([Rut] LIKE @RutTrabajador + '%') OR ([Ficha] LIKE @RutTrabajador + '%') OR ([Nombre] LIKE @RutTrabajador + '%') OR ([Apellido] LIKE @RutTrabajador + '%')) ORDER BY [Nombre], [Apellido]">
+                                <asp:SqlDataSource ID="dsTrabajadores" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [Rut], [Nombre], [Apellido], [FechaNacimiento], [FechaIngreso], [Ficha] FROM [Trabajador] WHERE (([Rut] LIKE @RutTrabajador + '%') OR ([Ficha] LIKE @RutTrabajador + '%') OR ([Nombre] LIKE @RutTrabajador + '%') OR ([Apellido] LIKE @RutTrabajador + '%')) ORDER BY [Nombre], [Apellido]">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="txtFiltroRut" Name="RutTrabajador" PropertyName="Text" Type="String" ConvertEmptyStringToNull="False" />
                                     </SelectParameters>

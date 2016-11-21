@@ -119,12 +119,12 @@
                                     <asp:BoundField DataField="Rut" HeaderText="Rut" ReadOnly="True" SortExpression="Rut" />
                                     <asp:BoundField DataField="Nombre" HeaderText="Nombres" SortExpression="Nombre" HtmlEncode="False" />
                                     <asp:BoundField DataField="Apellido" HeaderText="Apellidos" SortExpression="Apellido" HtmlEncode="False" />
-                                    <asp:BoundField DataField="Bandejas" HeaderText="Bandejas" ReadOnly="True" DataFormatString="{0:n0}" SortExpression="Bandejas">
-                                        <ItemStyle HorizontalAlign="Center" />
-                                    </asp:BoundField>
                                     <asp:BoundField DataField="Kilos" HeaderText="Kilos" ReadOnly="True" DataFormatString="{0:n2}" SortExpression="Kilos">
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
+                                    <asp:BoundField DataField="Bandejas" HeaderText="Bandejas" ReadOnly="True" DataFormatString="{0:n0}" SortExpression="Bandejas">
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>                                    
                                     <asp:BoundField DataField="DiasTrabajados" HeaderText="Dias Trabajados" DataFormatString="{0:n0}" ReadOnly="True" SortExpression="DiasTrabajados">
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>

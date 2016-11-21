@@ -23,7 +23,7 @@ namespace DemoArandanos
                 }
                 lblinfo.Text = "Los valores para cada trabajador varían según el rango de fecha asignado";
                 divInfo.Visible = true;
-                txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-01");
+                txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 txtFechaTermino.Text = DateTime.Now.ToString("yyyy-MM-dd");
             }
             imp();

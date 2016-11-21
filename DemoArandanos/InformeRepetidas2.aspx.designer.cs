@@ -130,6 +130,15 @@ namespace DemoArandanos {
         protected global::System.Web.UI.WebControls.SqlDataSource dsRepetidas;
         
         /// <summary>
+        /// Control Button1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
         /// Control grillaImp.
         /// </summary>
         /// <remarks>

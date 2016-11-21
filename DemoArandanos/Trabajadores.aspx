@@ -74,6 +74,9 @@
                     <label for="txtFechaNacimiento">Fecha Nacimiento</label>
                     <asp:TextBox ID="txtFechaNacimiento" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-mm-dd"></asp:TextBox>
                     <br />
+                    <label for="txtFechaIngreso">Fecha Ingreso</label>
+                    <asp:TextBox ID="txtFechaIngreso" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-mm-dd"></asp:TextBox>
+                    <br />
                     <label for="txtFicha">Número Ficha</label>
                     <asp:TextBox ID="txtFicha" runat="server" type="number" required="required" class="form-control"></asp:TextBox>
                     <br />
@@ -120,10 +123,11 @@
                                         <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" HtmlEncode="False" />
                                         <asp:BoundField DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" HtmlEncode="False" />
                                         <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha Nacimiento" SortExpression="FechaNacimiento" DataFormatString="{0:dd/MM/yyyy}" />
+                                        <asp:BoundField DataField="FechaIngreso" HeaderText="Fecha Ingreso" SortExpression="FechaIngreso" DataFormatString="{0:dd/MM/yyyy}" />
                                         <asp:BoundField DataField="Ficha" HeaderText="Ficha" SortExpression="Ficha" />
                                     </Columns>
                                 </asp:GridView>
-                                <asp:SqlDataSource ID="dsTrabajadores" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [Rut], [Nombre], [Apellido], [FechaNacimiento], [Ficha] FROM [Trabajador] WHERE (([Rut] LIKE @RutTrabajador + '%') OR ([Ficha] LIKE @RutTrabajador + '%') OR ([Nombre] LIKE @RutTrabajador + '%') OR ([Apellido] LIKE @RutTrabajador + '%')) ORDER BY [Nombre], [Apellido]">
+                                <asp:SqlDataSource ID="dsTrabajadores" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT [Rut], [Nombre], [Apellido], [FechaNacimiento], [FechaIngreso], [Ficha] FROM [Trabajador] WHERE (([Rut] LIKE @RutTrabajador + '%') OR ([Ficha] LIKE @RutTrabajador + '%') OR ([Nombre] LIKE @RutTrabajador + '%') OR ([Apellido] LIKE @RutTrabajador + '%')) ORDER BY [Nombre], [Apellido]">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="txtFiltroRut" Name="RutTrabajador" PropertyName="Text" Type="String" ConvertEmptyStringToNull="False" />
                                     </SelectParameters>

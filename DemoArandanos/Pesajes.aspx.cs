@@ -24,7 +24,7 @@ namespace DemoArandanos
                     Server.Transfer("Login.aspx", true);
                 }
 
-                txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-01");
+                txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 txtFechaTermino.Text = DateTime.Now.ToString("yyyy-MM-dd");
             }
 
@@ -93,7 +93,7 @@ namespace DemoArandanos
             txtPesoBruto.Text = "";
             btGuardarPesaje.Attributes.Remove("disabled");
             txtPesoBruto.Attributes.Remove("disabled");
-            btEliminarPesaje.Attributes.Remove("disabled");
+            //btEliminarPesaje.Attributes.Remove("disabled");
         }
 
         protected void btGuardarPesaje_Click(object sender, EventArgs e)
@@ -155,12 +155,12 @@ namespace DemoArandanos
             if (grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[12].Text.Replace("&nbsp;", "").ToString().Equals("CELULAR"))
             {
                 txtPesoBruto.Attributes.Add("disabled", "true");
-                btEliminarPesaje.Attributes.Add("disabled", "true");
+                //btEliminarPesaje.Attributes.Add("disabled", "true");
             }
             else
             {
                 txtPesoBruto.Attributes.Remove("disabled");
-                btEliminarPesaje.Attributes.Remove("disabled");
+                //btEliminarPesaje.Attributes.Remove("disabled");
             }
         }
 

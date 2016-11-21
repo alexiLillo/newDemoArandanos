@@ -78,7 +78,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Bandejas repetidas del día</h3>
                     </div>
-                    <div class="panel-body" style="max-height: 480px; overflow-y: scroll; font-size:83%">
+                    <div class="panel-body" style="max-height: 480px; overflow-y: scroll; font-size: 83%">
                         <div class="table-responsive">
                             <asp:GridView ID="grillaRepetidas" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="dsRepetidas" OnDataBound="grillaRepetidas_DataBound">
                                 <Columns>
@@ -90,7 +90,7 @@
                                     <asp:BoundField DataField="Variedad" HeaderText="Variedad" SortExpression="Variedad" />
                                     <asp:BoundField DataField="Cuartel" HeaderText="Cuartel" SortExpression="Cuartel" />
                                     <asp:BoundField DataField="FechaHora" HeaderText="Fecha Hora" SortExpression="FechaHora" />
-                                    <asp:BoundField DataField="PesoNeto" HeaderText="Peso Neto" SortExpression="PesoNeto" DataFormatString="{0:n2}"/>
+                                    <asp:BoundField DataField="PesoNeto" HeaderText="Peso Neto" SortExpression="PesoNeto" DataFormatString="{0:n2}" />
                                     <asp:BoundField DataField="TipoRegistro" HeaderText="Tipo Registro" SortExpression="TipoRegistro" />
                                     <asp:BoundField DataField="FechaHoraModificacion" HeaderText="Fecha Hora Modificación" SortExpression="FechaHoraModificacion" />
                                     <asp:BoundField DataField="UsuarioModificacion" HeaderText="Usuario que Modificó" SortExpression="UsuarioModificacion" />
@@ -116,6 +116,7 @@
                 </div>
             </div>
             <input type="button" style="float: right" class="btn btn-default" name="Imprimir" value="Imprimir" onclick="window.print()">
+            <asp:Button ID="Button1" formnovalidate Style="margin-right: 5px; float: right" class="btn btn-default" runat="server" Text="Exportar a Excel" OnClick="ExportToExcel" />
         </div>
 
         <div class="visible-print">
@@ -130,7 +131,7 @@
                         <asp:BoundField DataField="Variedad" HeaderText="Variedad" SortExpression="Variedad" />
                         <asp:BoundField DataField="Cuartel" HeaderText="Cuartel" SortExpression="Cuartel" />
                         <asp:BoundField DataField="FechaHora" HeaderText="Fecha Hora" SortExpression="FechaHora" />
-                        <asp:BoundField DataField="PesoNeto" HeaderText="Peso Neto" SortExpression="PesoNeto" DataFormatString="{0:n2}"/>
+                        <asp:BoundField DataField="PesoNeto" HeaderText="Peso Neto" SortExpression="PesoNeto" DataFormatString="{0:n2}" />
                         <asp:BoundField DataField="TipoRegistro" HeaderText="Tipo Registro" SortExpression="TipoRegistro" />
                         <asp:BoundField DataField="FechaHoraModificacion" HeaderText="Fecha Hora Modificación" SortExpression="FechaHoraModificacion" />
                         <asp:BoundField DataField="UsuarioModificacion" HeaderText="Usuario que Modificó" SortExpression="UsuarioModificacion" />

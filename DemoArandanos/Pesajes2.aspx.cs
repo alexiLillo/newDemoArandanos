@@ -24,7 +24,7 @@ namespace DemoArandanos
                     Server.Transfer("Login.aspx", true);
                 }
 
-                txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-01");
+                txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 txtFechaTermino.Text = DateTime.Now.ToString("yyyy-MM-dd");
             }
 
