@@ -68,6 +68,8 @@
                             <li class="divider"></li>
                             <li><a href="Trabajadores2.aspx">Enrolamiento Trabajadores</a></li>
                             <li><a href="Pesajes2.aspx">Administración Pesajes</a></li>
+                            <li class="divider"></li>
+                            <li><a href="ModificarMasivo2.aspx">Modificación Masiva</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

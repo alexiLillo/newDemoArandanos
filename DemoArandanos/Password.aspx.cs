@@ -28,13 +28,13 @@ namespace DemoArandanos
                     Server.Transfer("Login.aspx", true);
                 }
 
-                txtUser.Text = Application["usuario"].ToString();
+                txtUser.Text = Session["usuario"].ToString();
             }
         }
 
         protected void btCambiarPass_Click(object sender, EventArgs e)
         {
-            if (control.login(Application["usuario"].ToString(), Encrypt.GetMD5(txtPassOld.Text)) == 1 || control.login(Application["usuario"].ToString(), Encrypt.GetMD5(txtPassOld.Text)) == 2 || control.login(Application["usuario"].ToString(), Encrypt.GetMD5(txtPassOld.Text)) == 3)
+            if (control.login(Session["usuario"].ToString(), Encrypt.GetMD5(txtPassOld.Text)) == 1 || control.login(Session["usuario"].ToString(), Encrypt.GetMD5(txtPassOld.Text)) == 2 || control.login(Session["usuario"].ToString(), Encrypt.GetMD5(txtPassOld.Text)) == 3)
             {
                 if (txtPass1.Text.Equals(txtPass2.Text))
                 {
@@ -43,11 +43,11 @@ namespace DemoArandanos
                         //eliminar usuario y generar nuevo (mantener tipo) o actualizar usuario (ver si se puede) (insertSyncUsuario)
 
                         //traer tipo
-                        String tipo = control.getTipoUser(Application["usuario"].ToString(), Encrypt.GetMD5(txtPassOld.Text));
+                        String tipo = control.getTipoUser(Session["usuario"].ToString(), Encrypt.GetMD5(txtPassOld.Text));
 
                         //eliminar antiguo
-                        control.eliminarUsuario(Application["usuario"].ToString(), Encrypt.GetMD5(txtPassOld.Text));
-                        control.insertarSyncUsuario(Application["usuario"].ToString(), Encrypt.GetMD5(txtPassOld.Text), tipo, 0, "delete");
+                        control.eliminarUsuario(Session["usuario"].ToString(), Encrypt.GetMD5(txtPassOld.Text));
+                        control.insertarSyncUsuario(Session["usuario"].ToString(), Encrypt.GetMD5(txtPassOld.Text), tipo, 0, "delete");
 
                         //insertar nuevo
                         control.insertarUsuario(txtUser.Text, Encrypt.GetMD5(txtPass1.Text), tipo);
@@ -136,7 +136,7 @@ namespace DemoArandanos
             if (Request.Cookies.Get("login") != null)
             {
                 Session["log"] = 0;
-
+                Session["usuario"] = "";
                 HttpCookie cookie1 = new HttpCookie("login");
                 cookie1.Expires = DateTime.Now.AddDays(-1d);
                 Response.Cookies.Add(cookie1);
@@ -145,7 +145,7 @@ namespace DemoArandanos
             else
             {
                 Session["log"] = 0;
-
+                Session["usuario"] = "";
                 Response.Redirect("Login.aspx");
             }
         }

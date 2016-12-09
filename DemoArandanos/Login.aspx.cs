@@ -31,7 +31,7 @@ namespace DemoArandanos
                 {
                     Session["log"] = 1;
 
-                    Application["usuario"] = txtUser.Text;
+                    Session["usuario"] = txtUser.Text;
                     HttpCookie cookie1 = new HttpCookie("login");
                     cookie1.Expires = DateTime.Now.AddMinutes(30);
                     Response.Cookies.Add(cookie1);
@@ -45,7 +45,7 @@ namespace DemoArandanos
                         Session["log"] = 2;
 
                         //usuario de tipo normals
-                        Application["usuario"] = txtUser.Text;
+                        Session["usuario"] = txtUser.Text;
                         HttpCookie cookie1 = new HttpCookie("login");
                         cookie1.Expires = DateTime.Now.AddMinutes(30);
                         Response.Cookies.Add(cookie1);
@@ -59,7 +59,7 @@ namespace DemoArandanos
                             Session["log"] = 3;
 
                             //usuario de tipo solo informes
-                            Application["usuario"] = txtUser.Text;
+                            Session["usuario"] = txtUser.Text;
                             HttpCookie cookie1 = new HttpCookie("login");
                             cookie1.Expires = DateTime.Now.AddMinutes(30);
                             Response.Cookies.Add(cookie1);

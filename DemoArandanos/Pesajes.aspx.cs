@@ -105,7 +105,7 @@ namespace DemoArandanos
                     decimal pesoNeto = Decimal.Parse(txtPesoBruto.Text.Replace(".", ",")) - Decimal.Parse(ddTara.SelectedValue.Replace(".", ","));
                     String[] split = ddTara.SelectedItem.Text.Split(':');
                     String formato = split[0];
-                    control.insertarPesaje("32", txtQRenvase.Text, txtRutTrabajador.Text, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto, Decimal.Parse(ddTara.SelectedValue), formato, 1, 1, 1, "", "Manual", "-", Application["usuario"].ToString());
+                    control.insertarPesaje("32", txtQRenvase.Text, txtRutTrabajador.Text, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto, Decimal.Parse(ddTara.SelectedValue), formato, 1, 1, 1, "", "Manual", "-", Session["usuario"].ToString());
                     lblsuccess.Text = "Pesaje ingresado correctamente.";
                     divSuccess.Visible = true;
                     limpiarCampos();
@@ -173,7 +173,7 @@ namespace DemoArandanos
                     decimal pesoNeto = Decimal.Parse(txtPesoBruto.Text.Replace(".", ",")) - Decimal.Parse(ddTara.SelectedValue.Replace(".", ","));
                     String[] split = ddTara.SelectedItem.Text.Split(':');
                     String formato = split[0];
-                    control.actualizarPesaje(lblqrold.Text, DateTime.Parse(lblfechaold.Text), "32", txtQRenvase.Text, txtRutTrabajador.Text, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto, Decimal.Parse(ddTara.SelectedValue), formato, 1, 1, 1, "", DateTime.Now.ToString("dd/MM/yyyy HH:mm"), Application["usuario"].ToString());
+                    control.actualizarPesaje(lblqrold.Text, DateTime.Parse(lblfechaold.Text), "32", txtQRenvase.Text, txtRutTrabajador.Text, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto, Decimal.Parse(ddTara.SelectedValue), formato, 1, 1, 1, "", DateTime.Now.ToString("dd/MM/yyyy HH:mm"), Session["usuario"].ToString());
                     lblsuccess.Text = "Pesaje actualizado correctamente.";
                     divSuccess.Visible = true;
                     limpiarCampos();

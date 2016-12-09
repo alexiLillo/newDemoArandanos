@@ -662,6 +662,35 @@ namespace DemoArandanos.Controlador
 
         }
 
+        public void actualizarPesajeMasivo(String id, String fundo, String potrero, String sector, String variedad, String cuartel, String fechahoramod, String usuariomod)
+        {
+            try
+            {
+                Pesaje pesaje = (from p in contexto.Pesaje
+                                 where p.id == int.Parse(id)
+                                 select p).FirstOrDefault();
+                pesaje.Fundo = fundo.ToUpper().Replace(".", "");
+                pesaje.Potrero = potrero.ToUpper().Replace(".", "");
+                pesaje.Sector = sector.ToUpper().Replace(".", "");
+                pesaje.Variedad = variedad.ToUpper().Replace(".", "");
+                pesaje.Cuartel = cuartel.ToUpper().Replace(".", "");                
+                pesaje.FechaHoraModificacion = fechahoramod.ToUpper().Replace(".", "");
+                pesaje.UsuarioModificacion = usuariomod.ToUpper().Replace(".", "");
+                contexto.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+
+        }
+
         public void eliminarPesaje(String producto, String qrenvase, DateTime fechahora)
         {
             try

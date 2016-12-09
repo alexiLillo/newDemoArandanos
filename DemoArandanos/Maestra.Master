@@ -83,6 +83,8 @@
                             <li><a href="Trabajadores.aspx">Enrolamiento Trabajadores</a></li>
                             <li><a href="Pesajes.aspx">Administración Pesajes</a></li>
                             <li><a href="Taras.aspx">Administración Taras</a></li>
+                            <li class="divider"></li>
+                            <li><a href="ModificarMasivo1.aspx">Modificación Masiva</a></li>
                         </ul>
                     </li>
                     <li id="user"><a href="Usuarios.aspx">Usuarios</a></li>

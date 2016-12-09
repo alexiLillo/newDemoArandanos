@@ -191,6 +191,8 @@
     <Content Include="InformeRepetidas2.aspx" />
     <Content Include="InformeRepetidas1.aspx" />
     <Content Include="mapa.aspx" />
+    <Content Include="ModificarMasivo1.aspx" />
+    <Content Include="ModificarMasivo2.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -471,6 +473,20 @@
     <Compile Include="Modelo\VistaConsulta.cs" />
     <Compile Include="Modelo\VistaConsultaDia.cs" />
     <Compile Include="Modelo\Vis_Fun_Pot_Sec_Cua_Hil_Est_Var.cs" />
+    <Compile Include="ModificarMasivo1.aspx.cs">
+      <DependentUpon>ModificarMasivo1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarMasivo1.aspx.designer.cs">
+      <DependentUpon>ModificarMasivo1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarMasivo2.aspx.cs">
+      <DependentUpon>ModificarMasivo2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarMasivo2.aspx.designer.cs">
+      <DependentUpon>ModificarMasivo2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Password.aspx.cs">
       <DependentUpon>Password.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
