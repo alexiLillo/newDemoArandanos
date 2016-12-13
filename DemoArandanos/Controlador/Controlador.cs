@@ -664,10 +664,11 @@ namespace DemoArandanos.Controlador
 
         public void actualizarPesajeMasivo(String id, String fundo, String potrero, String sector, String variedad, String cuartel, String fechahoramod, String usuariomod)
         {
+            int ide = int.Parse(id);
             try
             {
                 Pesaje pesaje = (from p in contexto.Pesaje
-                                 where p.id == int.Parse(id)
+                                 where p.id == ide
                                  select p).FirstOrDefault();
                 pesaje.Fundo = fundo.ToUpper().Replace(".", "");
                 pesaje.Potrero = potrero.ToUpper().Replace(".", "");

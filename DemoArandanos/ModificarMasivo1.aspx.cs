@@ -122,7 +122,7 @@ namespace DemoArandanos
                         int contador = 0;
                         foreach (GridViewRow row in grillaPesajes.Rows)
                         {
-                            control.actualizarPesajeMasivo(row.Cells[0].Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Now.ToString("dd/MM/yyyy HH:mm"), Application["usuario"].ToString());
+                            control.actualizarPesajeMasivo(row.Cells[0].Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Now.ToString("dd/MM/yyyy HH:mm"), Session["usuario"].ToString());
                             contador++;
                         }
                         lblsuccess.Text = "Se modificaron " + contador + " registros de " + lblcantidadbandejas.Text + " seleccionados";
@@ -132,7 +132,7 @@ namespace DemoArandanos
                     catch (Exception ex)
                     {
                         System.Diagnostics.Debug.WriteLine(ex.ToString());
-                        lbldanger.Text = "No se pudieron actualizar los registros seleccionados";
+                        lbldanger.Text = "No se pudieron actualizar los registros seleccionados" + ex.ToString();
                         divDanger.Visible = true;
                     }
                 }

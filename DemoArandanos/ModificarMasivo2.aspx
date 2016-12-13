@@ -248,12 +248,19 @@
                                             <asp:BoundField DataField="UsuarioModificacion" HeaderText="Usuario que modificó" SortExpression="UsuarioModificacion" HtmlEncode="False"></asp:BoundField>
                                         </Columns>
                                     </asp:GridView>
-                                    <asp:SqlDataSource ID="dsPesajesFiltrados" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT TOP(@Cant) [QRenvase], [RutTrabajador], [RutPesador], [Fundo], [Potrero], [Sector], [Variedad], [Cuartel], [FechaHora], [PesoNeto], [Tara], [TipoRegistro], [FechaHoraModificacion], [UsuarioModificacion], [id] FROM [Pesaje] WHERE (([RutPesador] LIKE '%' + @RutPesador + '%') AND [FechaHora] BETWEEN (@FechaHora + '') AND (@FechaHora2 + '')) ORDER BY [FechaHora]">
+                                    <asp:SqlDataSource ID="dsPesajesFiltrados" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo9 %>" SelectCommand="SELECT TOP(@Cant) [QRenvase], [RutTrabajador], [RutPesador], [Fundo], [Potrero], [Sector], [Variedad], [Cuartel], [FechaHora], [PesoNeto], [Tara], [TipoRegistro], [FechaHoraModificacion], [UsuarioModificacion], [id] FROM [Pesaje] WHERE ((Fundo LIKE  @ID_Fundo + '%') AND (Potrero LIKE @ID_Potrero + '%') AND (Sector LIKE @ID_Sector + '%') AND (Cuartel LIKE @ID_Cuartel + '%') AND (Variedad LIKE @ID_Variedad + '%') AND ([RutPesador] LIKE '%' + @RutPesador + '%') AND [FechaHora] BETWEEN (@FechaHora + '') AND (@FechaHora2 + '')) ORDER BY [FechaHora]">
                                         <SelectParameters>
                                             <asp:ControlParameter ControlID="txtCant" Name="Cant" PropertyName="Text" Type="Int32" ConvertEmptyStringToNull="False" />
                                             <asp:ControlParameter ControlID="txtFiltroRut" Name="RutPesador" PropertyName="Text" Type="String" ConvertEmptyStringToNull="False" />
                                             <asp:ControlParameter ControlID="txtFechaInicio" Name="FechaHora" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" DefaultValue="1999-01-01" />
                                             <asp:ControlParameter ControlID="txtFechaTermino" Name="FechaHora2" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" DefaultValue="2099-01-01" />
+
+                                            <asp:ControlParameter ControlID="ddFundoFiltro" ConvertEmptyStringToNull="False" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" />
+                                            <asp:ControlParameter ControlID="ddPotreroFiltro" ConvertEmptyStringToNull="False" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" />
+                                            <asp:ControlParameter ControlID="ddSectorFiltro" ConvertEmptyStringToNull="False" Name="ID_Sector" PropertyName="SelectedValue" Type="String" />
+                                            <asp:ControlParameter ControlID="ddCuartelFiltro" ConvertEmptyStringToNull="False" Name="ID_Cuartel" PropertyName="SelectedValue" Type="String" />
+                                            <asp:ControlParameter ControlID="ddVariedadFiltro" ConvertEmptyStringToNull="False" Name="ID_Variedad" PropertyName="SelectedValue" Type="String" />
+
                                         </SelectParameters>
                                     </asp:SqlDataSource>
                                 </div>
