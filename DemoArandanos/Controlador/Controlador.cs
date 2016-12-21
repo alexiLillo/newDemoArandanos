@@ -584,7 +584,11 @@ namespace DemoArandanos.Controlador
             trabajador.QRrut = qrrut.ToUpper().Replace(".", "");
             trabajador.FechaNacimiento = DateTime.Parse(fechaNac);
             trabajador.FechaIngreso = DateTime.Parse(fechaIngreso);
-            trabajador.Ficha = ficha;
+            if (trabajador.Ficha != ficha)
+            {
+                trabajador.Importado = null;
+                trabajador.Ficha = ficha;
+            }            
             contexto.SaveChanges();
         }
 
