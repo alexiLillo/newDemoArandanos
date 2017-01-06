@@ -45,8 +45,8 @@ namespace DemoArandanos
         {
             String inicio = DateTime.Parse(txtFechaInicio.Text + " 00:00").ToString("yyyy-MM-ddTHH:mm");
             String fin = DateTime.Parse(txtFechaTermino.Text + " 23:59").ToString("yyyy-MM-ddTHH:mm");
-            cargarGrafico(GraficoVariedad, control.getCantidadPorVariedad(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getVariedades(), true);
-            cargarGrafico(GraficoCuartel, control.getCantidadTotal(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getNombres(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue), false);
+            cargarGrafico(GraficoVariedad, control.getCantidadPorVariedad("32", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getVariedades("32"), true);
+            cargarGrafico(GraficoCuartel, control.getCantidadTotal("32", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getNombres("32", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue), false);
         }
 
         public void cargarGrafico(Chart graf, double[] yValores, String[] xNombres, bool colores)

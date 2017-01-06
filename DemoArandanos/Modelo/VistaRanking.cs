@@ -6,12 +6,12 @@ namespace DemoArandanos.Modelo
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("VistaConsulta")]
-    public partial class VistaConsulta
+    [Table("VistaRanking")]
+    public partial class VistaRanking
     {
         [Key]
         [StringLength(50)]
-        public string RutTrabajador { get; set; }
+        public string Rut { get; set; }
 
         [StringLength(50)]
         public string Nombre { get; set; }
@@ -19,14 +19,10 @@ namespace DemoArandanos.Modelo
         [StringLength(50)]
         public string Apellido { get; set; }
 
-        public decimal? PesoNeto { get; set; }
+        public decimal? Bandejas { get; set; }
 
-        public decimal? Cantidad { get; set; }
+        public decimal? Kilos { get; set; }
 
-        public int? ID_Map { get; set; }
-
-        public int? Anio { get; set; }
-
-        public int? Mes { get; set; }
+        public int? DiasTrabajados { get; set; }
     }
 }

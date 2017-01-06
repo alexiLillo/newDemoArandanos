@@ -28,6 +28,10 @@ namespace DemoArandanos.Modelo
         [StringLength(50)]
         public string Nombre { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        public string ID_Producto { get; set; }
+
         public virtual Fundo Fundo { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

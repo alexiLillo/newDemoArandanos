@@ -52,5 +52,8 @@ namespace DemoArandanos.Modelo
 
         [StringLength(50)]
         public string ID_Variedad { get; set; }
+
+        [StringLength(50)]
+        public string ID_Producto { get; set; }
     }
 }

@@ -23,6 +23,12 @@ namespace DemoArandanos.Modelo
         [StringLength(50)]
         public string ID_Producto { get; set; }
 
+        [Required]
+        [StringLength(20)]
+        public string TipoEnvase { get; set; }
+
+        public double KilosNetoEnvase { get; set; }
+
         public virtual Producto Producto { get; set; }
     }
 }

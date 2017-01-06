@@ -99,7 +99,7 @@
                             <asp:SqlDataSource ID="dsRepetidas" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo11 %>" SelectCommand="
                                                 SELECT *
                                                 FROM dbo.Pesaje
-                                                WHERE (CONVERT (VARCHAR(10), FechaHora, 103) = @Fecha) and dbo.Pesaje.QRenvase 
+                                                WHERE dbo.Pesaje.QRenvase = '32' (CONVERT (VARCHAR(10), FechaHora, 103) = @Fecha) and dbo.Pesaje.QRenvase 
                                                 IN (
                                                 SELECT dbo.Pesaje.QRenvase
                                                 FROM dbo.Pesaje

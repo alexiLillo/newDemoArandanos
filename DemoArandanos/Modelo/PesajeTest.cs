@@ -6,8 +6,8 @@ namespace DemoArandanos.Modelo
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Pesaje")]
-    public partial class Pesaje
+    [Table("PesajeTest")]
+    public partial class PesajeTest
     {
         [Required]
         [StringLength(50)]
@@ -16,10 +16,6 @@ namespace DemoArandanos.Modelo
         [Required]
         [StringLength(50)]
         public string QRenvase { get; set; }
-
-        [Required]
-        [StringLength(15)]
-        public string Cuadrilla { get; set; }
 
         [Required]
         [StringLength(50)]

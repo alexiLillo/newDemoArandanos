@@ -6,22 +6,29 @@ namespace DemoArandanos.Modelo
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class View_1
+    [Table("VistaCosechaHoy")]
+    public partial class VistaCosechaHoy
     {
         [Key]
         [Column(Order = 0)]
         [StringLength(50)]
-        public string ID_Fundo { get; set; }
-
-        [StringLength(50)]
-        public string Nombre { get; set; }
+        public string Fundo { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [StringLength(50)]
-        public string Variedad { get; set; }
+        public string Potrero { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
+        [StringLength(50)]
+        public string Sector { get; set; }
 
         [StringLength(50)]
-        public string ID_Producto { get; set; }
+        public string Cuartel { get; set; }
+
+        public decimal? BandejasDia { get; set; }
+
+        public decimal? KilosDia { get; set; }
     }
 }

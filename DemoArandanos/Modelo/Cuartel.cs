@@ -40,8 +40,6 @@ namespace DemoArandanos.Modelo
         [StringLength(50)]
         public string Nombre { get; set; }
 
-        public virtual Sector Sector { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hilera> Hilera { get; set; }
     }

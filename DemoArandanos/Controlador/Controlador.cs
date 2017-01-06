@@ -749,21 +749,21 @@ namespace DemoArandanos.Controlador
         }
 
         //funciones para llenar gráficos
-        public String[] getVariedades()
+        public String[] getVariedades(String producto)
         {
-            String[] variedades = (from v in contexto.Variedad where v.ID_Producto == "32" orderby v.ID_Variedad select v.Nombre).ToArray();
+            String[] variedades = (from v in contexto.Variedad where v.ID_Producto == producto orderby v.ID_Variedad select v.Nombre).ToArray();
             return variedades;
         }
 
-        public String[] getIDvariedades()
+        public String[] getIDvariedades(String producto)
         {
-            String[] variedades = (from v in contexto.Variedad where v.ID_Producto == "32" orderby v.ID_Variedad select v.ID_Variedad).ToArray();
+            String[] variedades = (from v in contexto.Variedad where v.ID_Producto == producto orderby v.ID_Variedad select v.ID_Variedad).ToArray();
             return variedades;
         }
 
-        public double[] getCantidadPorVariedad(String fundo, String potrero, String sector, String cuartel, DateTime fechinicio, DateTime fechtermino)
+        public double[] getCantidadPorVariedad(String producto, String fundo, String potrero, String sector, String cuartel, DateTime fechinicio, DateTime fechtermino)
         {
-            String[] lista = getIDvariedades();
+            String[] lista = getIDvariedades(producto);
             double[] cantidades = new double[lista.Length];
             for (int i = 0; i < lista.Length; i++)
             {
@@ -774,7 +774,8 @@ namespace DemoArandanos.Controlador
                     if (!potrero.Equals("0") && !sector.Equals("0") && !cuartel.Equals("0"))
                     {
                         cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Variedad == temp
+                                                 where p.Producto == producto 
+                                                 && p.Variedad == temp
                                                  && p.Fundo == fundo
                                                  && p.Potrero == potrero
                                                  && p.Sector == sector
@@ -786,8 +787,9 @@ namespace DemoArandanos.Controlador
                     else if (potrero.Equals("0"))
                     {
                         cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Variedad == temp
-                                                 && p.Fundo == fundo
+                                                 where p.Producto == producto
+                                                && p.Variedad == temp
+                                                && p.Fundo == fundo
                                                  && p.FechaHora >= fechinicio
                                                  && p.FechaHora <= fechtermino
                                                  select p.PesoNeto).Sum().ToString());
@@ -795,8 +797,9 @@ namespace DemoArandanos.Controlador
                     else if (sector.Equals("0"))
                     {
                         cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Variedad == temp
-                                                 && p.Fundo == fundo
+                                                 where p.Producto == producto
+                                                && p.Variedad == temp
+                                                && p.Fundo == fundo
                                                  && p.Potrero == potrero
                                                  && p.FechaHora >= fechinicio
                                                  && p.FechaHora <= fechtermino
@@ -805,8 +808,9 @@ namespace DemoArandanos.Controlador
                     else if (cuartel.Equals("0"))
                     {
                         cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Variedad == temp
-                                                 && p.Fundo == fundo
+                                                 where p.Producto == producto
+                                                && p.Variedad == temp
+                                                && p.Fundo == fundo
                                                  && p.Potrero == potrero
                                                  && p.Sector == sector
                                                  && p.FechaHora >= fechinicio
@@ -825,16 +829,16 @@ namespace DemoArandanos.Controlador
             return cantidades;
         }
 
-        public String[] getNombres(String fundo, String potrero, String sector)
+        public String[] getNombres(String producto, String fundo, String potrero, String sector)
         {
             String[] nombres = { };
             if (potrero.Equals("0") && sector.Equals("0"))
             {
-                nombres = (from p in contexto.Potrero where p.ID_Fundo == fundo orderby p.ID_Potrero select p.Nombre).ToArray();
+                nombres = (from p in contexto.Potrero where p.ID_Producto == producto && p.ID_Fundo == fundo orderby p.ID_Potrero select p.Nombre).ToArray();
             }
             if (!potrero.Equals("0") && sector.Equals("0"))
             {
-                nombres = (from s in contexto.Sector where s.ID_Fundo == fundo && s.ID_Potrero == potrero orderby s.ID_Sector select s.Nombre).ToArray();
+                nombres = (from s in contexto.Sector where s.ID_Producto == producto && s.ID_Fundo == fundo && s.ID_Potrero == potrero orderby s.ID_Sector select s.Nombre).ToArray();
             }
             if (!potrero.Equals("0") && !sector.Equals("0"))
             {
@@ -843,16 +847,16 @@ namespace DemoArandanos.Controlador
             return nombres;
         }
 
-        public String[] getIDs(String fundo, String potrero, String sector)
+        public String[] getIDs(String producto, String fundo, String potrero, String sector)
         {
             String[] ids = { };
             if (potrero.Equals("0") && sector.Equals("0"))
             {
-                ids = (from p in contexto.Potrero where p.ID_Fundo == fundo orderby p.ID_Potrero select p.ID_Potrero).ToArray();
+                ids = (from p in contexto.Potrero where p.ID_Producto == producto && p.ID_Fundo == fundo orderby p.ID_Potrero select p.ID_Potrero).ToArray();
             }
             if (!potrero.Equals("0") && sector.Equals("0"))
             {
-                ids = (from s in contexto.Sector where s.ID_Fundo == fundo && s.ID_Potrero == potrero orderby s.ID_Sector select s.ID_Sector).ToArray();
+                ids = (from s in contexto.Sector where s.ID_Producto == producto && s.ID_Fundo == fundo && s.ID_Potrero == potrero orderby s.ID_Sector select s.ID_Sector).ToArray();
             }
             if (!potrero.Equals("0") && !sector.Equals("0"))
             {
@@ -861,9 +865,9 @@ namespace DemoArandanos.Controlador
             return ids;
         }
 
-        public double[] getCantidadTotal(String fundo, String potrero, String sector, DateTime fechinicio, DateTime fechtermino)
+        public double[] getCantidadTotal(String producto, String fundo, String potrero, String sector, DateTime fechinicio, DateTime fechtermino)
         {
-            String[] lista = getIDs(fundo, potrero, sector);
+            String[] lista = getIDs(producto, fundo, potrero, sector);
             double[] cantidades = new double[lista.Length];
             for (int i = 0; i < lista.Length; i++)
             {
@@ -874,7 +878,8 @@ namespace DemoArandanos.Controlador
                     if (potrero.Equals("0") && sector.Equals("0"))
                     {
                         cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Potrero == temp
+                                                 where p.Producto == producto
+                                                 && p.Potrero == temp
                                                  && p.FechaHora >= fechinicio
                                                  && p.FechaHora <= fechtermino
                                                  select p.PesoNeto).Sum().ToString());
@@ -882,7 +887,8 @@ namespace DemoArandanos.Controlador
                     if (!potrero.Equals("0") && sector.Equals("0"))
                     {
                         cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Sector == temp
+                                                 where p.Producto == producto
+                                                 && p.Sector == temp
                                                  && p.Fundo == fundo
                                                  && p.Potrero == potrero
                                                  && p.FechaHora >= fechinicio
@@ -892,7 +898,8 @@ namespace DemoArandanos.Controlador
                     if (!potrero.Equals("0") && !sector.Equals("0"))
                     {
                         cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Cuartel == temp
+                                                 where p.Producto == producto
+                                                 && p.Cuartel == temp
                                                  && p.Fundo == fundo
                                                  && p.Potrero == potrero
                                                  && p.Sector == sector

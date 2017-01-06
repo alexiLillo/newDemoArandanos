@@ -55,5 +55,19 @@ namespace DemoArandanos.Modelo
         [Column(Order = 6)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID_Mapeo { get; set; }
+
+        [Key]
+        [Column(Order = 7)]
+        [StringLength(50)]
+        public string ID_Producto { get; set; }
+
+        [Key]
+        [Column(Order = 8)]
+        [StringLength(20)]
+        public string TipoEnvase { get; set; }
+
+        [Key]
+        [Column(Order = 9)]
+        public double KilosNetoEnvase { get; set; }
     }
 }

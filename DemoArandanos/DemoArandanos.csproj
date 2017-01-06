@@ -440,16 +440,20 @@
     <Compile Include="MasterInformes.Master.designer.cs">
       <DependentUpon>MasterInformes.Master</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Cuadrillas.cs" />
     <Compile Include="Modelo\Cuartel.cs" />
     <Compile Include="Modelo\Estado.cs" />
     <Compile Include="Modelo\Fundo.cs" />
+    <Compile Include="Modelo\Grupos.cs" />
     <Compile Include="Modelo\Hilera.cs" />
     <Compile Include="Modelo\Map.cs" />
     <Compile Include="Modelo\Modelo.cs" />
     <Compile Include="Modelo\Pesaje.cs" />
+    <Compile Include="Modelo\PesajeTest.cs" />
     <Compile Include="Modelo\Planta.cs" />
     <Compile Include="Modelo\Potrero.cs" />
     <Compile Include="Modelo\Producto.cs" />
+    <Compile Include="Modelo\rmorisb_acumDiaMes.cs" />
     <Compile Include="Modelo\Sector.cs" />
     <Compile Include="Modelo\SyncCuartel.cs" />
     <Compile Include="Modelo\SyncEstado.cs" />
@@ -462,6 +466,7 @@
     <Compile Include="Modelo\SyncSector.cs" />
     <Compile Include="Modelo\SyncUsuarios.cs" />
     <Compile Include="Modelo\SyncVariedad.cs" />
+    <Compile Include="Modelo\sysdiagrams.cs" />
     <Compile Include="Modelo\TablaVista.cs" />
     <Compile Include="Modelo\Tara.cs" />
     <Compile Include="Modelo\Trabajador.cs" />
@@ -472,7 +477,13 @@
     <Compile Include="Modelo\VistaApkPesaje.cs" />
     <Compile Include="Modelo\VistaConsulta.cs" />
     <Compile Include="Modelo\VistaConsultaDia.cs" />
+    <Compile Include="Modelo\VistaCosecha.cs" />
+    <Compile Include="Modelo\VistaCosechaHoy.cs" />
+    <Compile Include="Modelo\VistaDiasCosecha.cs" />
+    <Compile Include="Modelo\VistaRanking.cs" />
+    <Compile Include="Modelo\Vis_Duplicadas1.cs" />
     <Compile Include="Modelo\Vis_Fun_Pot_Sec_Cua_Hil_Est_Var.cs" />
+    <Compile Include="Modelo\Vis_PesajeGeneral.cs" />
     <Compile Include="ModificarMasivo1.aspx.cs">
       <DependentUpon>ModificarMasivo1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
