@@ -62,12 +62,14 @@
                         <ul class="dropdown-menu">
                             <li><a href="InformeCosecha2.aspx">Cosecha Cuarteles</a></li>
                             <li><a href="InformeProd2.aspx">Producción Arándanos</a></li>
+                            <li><a href="InformeMaquina2.aspx">Producción Máquina</a></li>
                             <li><a href="InformeGraficos2.aspx">Gráficos Producción</a></li>
                             <li><a href="InformeRanking2.aspx">Ranking Trabajadores</a></li>
                             <li><a href="InformeRepetidas2.aspx">Bandejas Repetidas</a></li>
                             <li class="divider"></li>
                             <li><a href="Trabajadores2.aspx">Enrolamiento Trabajadores</a></li>
                             <li><a href="Pesajes2.aspx">Administración Pesajes</a></li>
+                            <li><a href="Maquina2.aspx">Administración Máquina</a></li>
                             <li class="divider"></li>
                             <li><a href="ModificarMasivo2.aspx">Modificación Masiva</a></li>
                         </ul>

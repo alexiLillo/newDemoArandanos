@@ -720,6 +720,80 @@ namespace DemoArandanos.Controlador
             }
         }
 
+        //ADMINISTRACION DE COSECHA MAQUINA
+        public void insertarCosechaMaquina(String producto, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fecha, decimal pesoneto, decimal bandejas, String guia, String recepcion)
+        {
+            try
+            {
+                contexto.CosechaMaquina.Add(new CosechaMaquina { Producto = producto.ToUpper().Replace(".", ""), Fundo = fundo.ToUpper().Replace(".", ""), Potrero = potrero.ToUpper().Replace(".", ""), Sector = sector.ToUpper().Replace(".", ""), Variedad = variedad.ToUpper().Replace(".", ""), Cuartel = cuartel.ToUpper().Replace(".", ""), Fecha = fecha, PesoNeto = pesoneto, Bandejas = bandejas, Guia = guia.ToUpper().Replace(".", ""), Recepcion = recepcion.ToUpper().Replace(".", ""), ID_Map = lastMapeo() });
+                contexto.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+        }
+
+        public void actualizarCosechaMaquina(String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fecha, decimal pesoneto, decimal bandejas, String guia, String recepcion, int id)
+        {
+            try
+            {
+                CosechaMaquina cosechaMaquina = (from c in contexto.CosechaMaquina
+                                                 where c.id == id
+                                                 select c).FirstOrDefault();
+                cosechaMaquina.Fundo = fundo.ToUpper().Replace(".", "");
+                cosechaMaquina.Potrero = potrero.ToUpper().Replace(".", "");
+                cosechaMaquina.Sector = sector.ToUpper().Replace(".", "");
+                cosechaMaquina.Variedad = variedad.ToUpper().Replace(".", "");
+                cosechaMaquina.Cuartel = cuartel.ToUpper().Replace(".", "");
+                cosechaMaquina.Fecha = fecha;
+                cosechaMaquina.PesoNeto = pesoneto;
+                cosechaMaquina.Bandejas = bandejas;
+                cosechaMaquina.Guia = guia.ToUpper().Replace(".", "");
+                cosechaMaquina.Recepcion = recepcion.ToUpper().Replace(".", "");
+                contexto.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+
+        }
+
+        public void eliminarCosechaMaquina(int id)
+        {
+            try
+            {
+                CosechaMaquina cosechaMaquina = (from c in contexto.CosechaMaquina
+                                                 where c.id == id
+                                                 select c).FirstOrDefault();
+                contexto.CosechaMaquina.Remove(cosechaMaquina);
+                contexto.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+        }
+
         //ADMINISTRACION DE TARA
         public void insertarTara(String id_tara, decimal peso, String descripcion, String producto, String formato)
         {

@@ -8,7 +8,7 @@ namespace DemoArandanos.Modelo
     public partial class Modelo : DbContext
     {
         public Modelo()
-            : base("name=Modelo12")
+            : base("name=Modelo13")
         {
         }
 
@@ -41,6 +41,7 @@ namespace DemoArandanos.Modelo
         public virtual DbSet<Trabajador> Trabajador { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Variedad> Variedad { get; set; }
+        public virtual DbSet<CosechaMaquina> CosechaMaquina { get; set; }
         public virtual DbSet<TablaVista> TablaVista { get; set; }
         public virtual DbSet<rmorisb_acumDiaMes> rmorisb_acumDiaMes { get; set; }
         public virtual DbSet<View_1> View_1 { get; set; }
@@ -663,6 +664,46 @@ namespace DemoArandanos.Modelo
                 .Property(e => e.TipoEnvase)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Producto)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Fundo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Potrero)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Sector)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Variedad)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Cuartel)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.PesoNeto)
+                .HasPrecision(18, 3);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Bandejas)
+                .HasPrecision(18, 3);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Guia)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Recepcion)
+                .IsUnicode(false);
+
             modelBuilder.Entity<TablaVista>()
                 .Property(e => e.ID_Fundo)
                 .IsUnicode(false);
@@ -1094,6 +1135,10 @@ namespace DemoArandanos.Modelo
             modelBuilder.Entity<VistaDiasCosecha>()
                 .Property(e => e.KilosTotal)
                 .HasPrecision(38, 3);
+
+            modelBuilder.Entity<VistaDiasCosecha>()
+                .Property(e => e.Producto)
+                .IsUnicode(false);
 
             modelBuilder.Entity<VistaRanking>()
                 .Property(e => e.Rut)

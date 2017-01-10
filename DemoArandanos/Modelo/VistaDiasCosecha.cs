@@ -36,5 +36,10 @@ namespace DemoArandanos.Modelo
         [Key]
         [Column(Order = 3, TypeName = "smalldatetime")]
         public DateTime FechaHora { get; set; }
+
+        [Key]
+        [Column(Order = 4)]
+        [StringLength(50)]
+        public string Producto { get; set; }
     }
 }
