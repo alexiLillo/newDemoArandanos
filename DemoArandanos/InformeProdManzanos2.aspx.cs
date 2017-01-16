@@ -2,25 +2,25 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace DemoArandanos
 {
-    public partial class InformeMaquina3 : System.Web.UI.Page
+    public partial class InformeProdManzanos2 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if (Session["log"] == null || (int)Session["log"] != 3)
+                if (Session["log"] == null || (int)Session["log"] != 2)
                 {
                     Server.Transfer("Login.aspx", true);
                 }
+                //dsGrillaPesajeProd.SelectParameters["FechaHora"].DefaultValue = DateTime.Now.ToString("dd-MM-yyyy");
+                //dsGrillaPesajeProd.SelectParameters["FechaHora2"].DefaultValue = DateTime.Now.ToString("dd-MM-yyyy");
 
-                txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-01");
+                txtFechaInicio.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 txtFechaTermino.Text = DateTime.Now.ToString("yyyy-MM-dd");
             }
 
@@ -28,6 +28,8 @@ namespace DemoArandanos
             divWarning.Visible = false;
             divInfo.Visible = false;
             divDanger.Visible = false;
+
+            //resumen();
         }
 
         protected void ddVariedad_DataBound(object sender, EventArgs e)
@@ -55,39 +57,60 @@ namespace DemoArandanos
             ddCuartel.Items.Insert(0, new ListItem("Todos", ""));
         }
 
+
+        protected void btFiltrar_Click(object sender, EventArgs e)
+        {
+            grillaPesajesProd.DataBind();
+        }
+
+        protected void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            grillaPesajesProd.DataBind();
+        }
+
         protected void txtFechaInicio_TextChanged(object sender, EventArgs e)
         {
-            grillaProdMaquina.DataBind();
+            grillaPesajesProd.DataBind();
         }
 
         protected void txtFechaTermino_TextChanged(object sender, EventArgs e)
         {
-            grillaProdMaquina.DataBind();
-        }
-
-        protected void grillaProdMaquina_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            resumen();
+            grillaPesajesProd.DataBind();
         }
 
         public void resumen()
         {
-            int rows = grillaProdMaquina.Rows.Count;
+            int rows = grillaPesajesProd.Rows.Count;
             decimal kilos = 0;
-            decimal bandejas = 0;
+            decimal bins = 0;
+            List<String> lista = new List<string>();
 
             for (int i = 0; i < rows; i++)
             {
-                kilos += Decimal.Parse(grillaProdMaquina.Rows[i].Cells[6].Text);
+                kilos += Decimal.Parse(grillaPesajesProd.Rows[i].Cells[6].Text);
+                lista.Add(grillaPesajesProd.Rows[i].Cells[2].Text);
             }
 
             for (int i = 0; i < rows; i++)
             {
-                bandejas += Decimal.Parse(grillaProdMaquina.Rows[i].Cells[7].Text);
+                bins += Decimal.Parse(grillaPesajesProd.Rows[i].Cells[7].Text);
             }
 
+            int trabajadores = new HashSet<String>(lista).Count;
+
+            lbltotalbins.Text = decimal.Round(bins, 1).ToString();
             lbltotalkilos.Text = kilos.ToString();
-            lbltotalbandejas.Text = bandejas.ToString();
+            lbltotaltrabajadores.Text = trabajadores.ToString();
+            decimal prom = 0;
+            try
+            {
+                prom = decimal.Round(bins / trabajadores, 1);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
+            lblprombinstrab.Text = prom.ToString();
 
             //imprimir
             try
@@ -120,14 +143,22 @@ namespace DemoArandanos
                 lblsect.Text = ddSector.SelectedItem.Text;
             if (!ddCuartel.SelectedItem.Text.Equals("Todos"))
                 lblcuart.Text = ddCuartel.SelectedItem.Text;
+            lblfiltr.Text = txtFiltro.Text;
+
         }
+
+        protected void grillaPesajesProd_DataBound(object sender, EventArgs e)
+        {
+            resumen();
+        }
+
 
         protected void ExportToExcel(object sender, EventArgs e)
         {
             Response.Clear();
             Response.Buffer = true;
             Response.ContentEncoding = System.Text.Encoding.Default;
-            Response.AddHeader("content-disposition", "attachment;filename=Produccion-Maquina-Arandanos-" + lblvaried.Text + "-" + lblfund.Text + "-" + lblpotrer.Text + "-" + lblsect.Text + "-" + lblcuart.Text + "-'" + lbldesde.Text + "'-'" + lblhasta.Text + "'-.xls");
+            Response.AddHeader("content-disposition", "attachment;filename=Produccion-Manzanos-" + lblvaried.Text + "-" + lblfund.Text + "-" + lblpotrer.Text + "-" + lblsect.Text + "-" + lblcuart.Text + "-'" + lbldesde.Text + "'-'" + lblhasta.Text + "'-" + lblfiltr.Text + ".xls");
             Response.Charset = "";
             Response.ContentType = "application/vnd.ms-excel";
             using (StringWriter sw = new StringWriter())
@@ -135,32 +166,32 @@ namespace DemoArandanos
                 HtmlTextWriter hw = new HtmlTextWriter(sw);
 
                 //To Export all pages
-                grillaProdMaquina.AllowPaging = false;
-                grillaProdMaquina.DataBind();
+                grillaPesajesProd.AllowPaging = false;
+                grillaPesajesProd.DataBind();
 
-                grillaProdMaquina.HeaderRow.BackColor = Color.White;
-                foreach (TableCell cell in grillaProdMaquina.HeaderRow.Cells)
+                grillaPesajesProd.HeaderRow.BackColor = Color.White;
+                foreach (TableCell cell in grillaPesajesProd.HeaderRow.Cells)
                 {
-                    cell.BackColor = grillaProdMaquina.HeaderStyle.BackColor;
+                    cell.BackColor = grillaPesajesProd.HeaderStyle.BackColor;
                 }
-                foreach (GridViewRow row in grillaProdMaquina.Rows)
+                foreach (GridViewRow row in grillaPesajesProd.Rows)
                 {
                     row.BackColor = Color.White;
                     foreach (TableCell cell in row.Cells)
                     {
                         if (row.RowIndex % 2 == 0)
                         {
-                            cell.BackColor = grillaProdMaquina.AlternatingRowStyle.BackColor;
+                            cell.BackColor = grillaPesajesProd.AlternatingRowStyle.BackColor;
                         }
                         else
                         {
-                            cell.BackColor = grillaProdMaquina.RowStyle.BackColor;
+                            cell.BackColor = grillaPesajesProd.RowStyle.BackColor;
                         }
                         cell.CssClass = "textmode";
                     }
                 }
 
-                grillaProdMaquina.RenderControl(hw);
+                grillaPesajesProd.RenderControl(hw);
 
                 //style to format numbers to string
                 string style = @"<style> .textmode { } </style>";
@@ -174,11 +205,6 @@ namespace DemoArandanos
         public override void VerifyRenderingInServerForm(Control control)
         {
             /* Verifies that the control is rendered */
-        }
-
-        protected void grillaProdMaquina_DataBound(object sender, EventArgs e)
-        {
-            resumen();
         }
     }
 }

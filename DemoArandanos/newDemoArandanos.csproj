@@ -187,6 +187,9 @@
     <Content Include="InformeProd3.aspx" />
     <Content Include="InformeProd2.aspx" />
     <Content Include="InformeProd1.aspx" />
+    <Content Include="InformeProdManzanos1.aspx" />
+    <Content Include="InformeProdManzanos2.aspx" />
+    <Content Include="InformeProdManzanos3.aspx" />
     <Content Include="InformeRanking3.aspx" />
     <Content Include="InformeRanking2.aspx" />
     <Content Include="InformeRanking1.aspx" />
@@ -217,6 +220,9 @@
     <Content Include="apiapp.json" />
     <Content Include="ClassDiagram2.cd" />
     <Content Include="MasterInformes.Master" />
+    <Content Include="MasterManza1.Master" />
+    <Content Include="MasterManza2.Master" />
+    <Content Include="MasterManza3.Master" />
     <None Include="Properties\PublishProfiles\GESTION.pubxml" />
     <None Include="Properties\PublishProfiles\GESTIONPRODCAF.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -389,6 +395,27 @@
     <Compile Include="InformeProd1.aspx.designer.cs">
       <DependentUpon>InformeProd1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InformeProdManzanos1.aspx.cs">
+      <DependentUpon>InformeProdManzanos1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeProdManzanos1.aspx.designer.cs">
+      <DependentUpon>InformeProdManzanos1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeProdManzanos2.aspx.cs">
+      <DependentUpon>InformeProdManzanos2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeProdManzanos2.aspx.designer.cs">
+      <DependentUpon>InformeProdManzanos2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeProdManzanos3.aspx.cs">
+      <DependentUpon>InformeProdManzanos3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeProdManzanos3.aspx.designer.cs">
+      <DependentUpon>InformeProdManzanos3.aspx</DependentUpon>
+    </Compile>
     <Compile Include="InformeRanking3.aspx.cs">
       <DependentUpon>InformeRanking3.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -479,6 +506,27 @@
     </Compile>
     <Compile Include="MasterInformes.Master.designer.cs">
       <DependentUpon>MasterInformes.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterManza1.Master.cs">
+      <DependentUpon>MasterManza1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterManza1.Master.designer.cs">
+      <DependentUpon>MasterManza1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterManza2.Master.cs">
+      <DependentUpon>MasterManza2.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterManza2.Master.designer.cs">
+      <DependentUpon>MasterManza2.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterManza3.Master.cs">
+      <DependentUpon>MasterManza3.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterManza3.Master.designer.cs">
+      <DependentUpon>MasterManza3.Master</DependentUpon>
     </Compile>
     <Compile Include="Modelo\CosechaMaquina.cs" />
     <Compile Include="Modelo\Cuadrillas.cs" />

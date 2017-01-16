@@ -1,6 +1,5 @@
-﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="DemoArandanos.Login" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterManza1.master.cs" Inherits="DemoArandanos.MasterManza1" %>
 
-<%@ OutputCache Location="None" NoStore="true" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +11,8 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Producción CAF El Alamo</title>
-
+    <title>Manzanos</title>
+    <!--<META HTTP-EQUIV="REFRESH" CONTENT="1803;URL=Login.aspx">-->
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -34,10 +33,12 @@
     <![endif]-->
 
     <link href="content/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
 </head>
 
 <body>
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -46,8 +47,40 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Producción CAF El Alamo</a>
+                <a class="navbar-brand" href="InformeProdManzanos1.aspx">Manzanos</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Producción
+                               <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="InformeProdManzanos1.aspx">Producción Manzanos</a></li>
+                            <li class="divider"></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Administración
+                               <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="divider"></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Opciones
+                               <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li id="pass"><a href="Password.aspx">Cambiar contraseña</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" runat="server" onserverclick="salir">Cerrar sesión<img style="margin-left: 15px" class="imagen" width="20" heigth="20" src="images/logout.png"></a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
             <!--/.nav-collapse -->
         </div>
@@ -56,36 +89,8 @@
     <div class="container">
         <br>
         <br>
-        <br>
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <h2>Iniciar sesión</h2>
-            <form role="form" runat="server">
-                <br />
-                <br />
-                <br />
-                <br />
-                <label>Sitio:</label>
-                <br />
-                <asp:RadioButton ID="rbtArandanos" GroupName="Login" runat="server" class="radio-inline" Text="Arandanos" />
-                <asp:RadioButton ID="rbtManzanos" GroupName="Login" Style="float: right" runat="server" class="radio-inline" Text="Manzanos" />
-                <br />
-                <br />
-                <label for="txtUser">Usuario:</label>
-                <asp:TextBox ID="txtUser" Text="user" runat="server" type="input" required class="form-control" placeholder="Ingrese nombre de usuario"></asp:TextBox>
-                <br />
-                <label for="txtPass">Contraseña:</label>
-                <asp:TextBox ID="txtPass" Text="user" runat="server" type="password" required class="form-control" placeholder="Ingrese contraseña"></asp:TextBox>
-                <br />
-                <div class="alert alert-danger fade in" id="divBadLogin" runat="server">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Error!</strong>
-                    <asp:Label ID="lblLogin" runat="server" Text="Label"></asp:Label>
-                </div>
-                <asp:Button ID="btnLogin" runat="server" Style="float: right" Text="Ingresar" type="submit" class="btn btn-default" OnClick="btnLogin_Click" />
-            </form>
-        </div>
-        <div class="col-md-4"></div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
     </div>
     <!-- /.container -->
 
@@ -100,5 +105,6 @@
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     <script src="scripts/bootstrap.min.js"></script>
     <script src="scripts/jquery-3.0.0.min.js"></script>
+    <script src="scripts/bootstrap.js"></script>
 </body>
 </html>

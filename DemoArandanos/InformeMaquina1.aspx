@@ -109,8 +109,6 @@
             </div>
         </div>
 
-
-
         <div class="col-md-2">
             <label for="ddVariedad">Variedad</label>
             <asp:DropDownList ID="ddVariedad" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsVariedad" DataTextField="Nombre" DataValueField="ID_Variedad" OnDataBound="ddVariedad_DataBound">

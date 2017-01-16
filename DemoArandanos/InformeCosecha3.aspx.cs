@@ -115,7 +115,7 @@ namespace DemoArandanos
             Response.Clear();
             Response.Buffer = true;
             Response.ContentEncoding = System.Text.Encoding.Default;
-            Response.AddHeader("content-disposition", "attachment;filename=Cosecha - '" + lbldesde.Text + "' - '" + lblhasta.Text + "'.xls");
+            Response.AddHeader("content-disposition", "attachment;filename=Cosecha-Cuarteles-Arandanos- '" + lbldesde.Text + "' - '" + lblhasta.Text + "'.xls");
             Response.Charset = "";
             Response.ContentType = "application/vnd.ms-excel";
             using (StringWriter sw = new StringWriter())
