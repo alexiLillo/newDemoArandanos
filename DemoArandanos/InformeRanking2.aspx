@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 
     <div class="hidden-print">
-        <h1>Ranking de Trabajadores</h1>
+        <h1>Ranking de Trabajadores Arándanos</h1>
         <br />
     </div>
     <form runat="server">
@@ -92,7 +92,7 @@
         <div class="visible-print">
             <div class="col-md-12">
                 <div class="visible-print">
-                    <h2>Ranking de Trabajadores</h2>
+                    <h2>Ranking de Trabajadores Arándanos</h2>
                     <br />
                     <h5>Desde:
                         <asp:Label ID="lbldesde" runat="server" Text=""></asp:Label></h5>
@@ -124,7 +124,7 @@
                                     </asp:BoundField>
                                     <asp:BoundField DataField="Bandejas" HeaderText="Bandejas" ReadOnly="True" DataFormatString="{0:n0}" SortExpression="Bandejas">
                                         <ItemStyle HorizontalAlign="Center" />
-                                    </asp:BoundField>
+                                    </asp:BoundField>                                    
                                     <asp:BoundField DataField="DiasTrabajados" HeaderText="Dias Trabajados" DataFormatString="{0:n0}" ReadOnly="True" SortExpression="DiasTrabajados">
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>

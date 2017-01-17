@@ -1,11 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Maestra.Master" AutoEventWireup="true" CodeBehind="InformeRanking1.aspx.cs" Inherits="DemoArandanos.InformeRanking1" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterManza1.Master" AutoEventWireup="true" CodeBehind="InformeRankManzanos1.aspx.cs" Inherits="DemoArandanos.InformeRankManzanos1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <div class="hidden-print">
-        <h1>Ranking de Trabajadores Arándanos</h1>
+<div class="hidden-print">
+        <h1>Ranking de Trabajadores Manzanos</h1>
         <br />
     </div>
     <form runat="server">
@@ -92,7 +90,7 @@
         <div class="visible-print">
             <div class="col-md-12">
                 <div class="visible-print">
-                    <h2>Ranking de Trabajadores Arándanos</h2>
+                    <h2>Ranking de Trabajadores Manzanos</h2>
                     <br />
                     <h5>Desde:
                         <asp:Label ID="lbldesde" runat="server" Text=""></asp:Label></h5>
@@ -119,10 +117,10 @@
                                     <asp:BoundField DataField="Rut" HeaderText="Rut" ReadOnly="True" SortExpression="Rut" />
                                     <asp:BoundField DataField="Nombre" HeaderText="Nombres" SortExpression="Nombre" HtmlEncode="False" />
                                     <asp:BoundField DataField="Apellido" HeaderText="Apellidos" SortExpression="Apellido" HtmlEncode="False" />
-                                    <asp:BoundField DataField="Kilos" HeaderText="Kilos" ReadOnly="True" DataFormatString="{0:n2}" SortExpression="Kilos">
+                                    <asp:BoundField DataField="Bins" HeaderText="Bins" ReadOnly="True" DataFormatString="{0:n1}" SortExpression="Bins">
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="Bandejas" HeaderText="Bandejas" ReadOnly="True" DataFormatString="{0:n0}" SortExpression="Bandejas">
+                                    <asp:BoundField DataField="Kilos" HeaderText="Kilos" ReadOnly="True" DataFormatString="{0:n2}" SortExpression="Kilos">
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="DiasTrabajados" HeaderText="Dias Trabajados" DataFormatString="{0:n0}" ReadOnly="True" SortExpression="DiasTrabajados">
@@ -130,7 +128,7 @@
                                     </asp:BoundField>
                                 </Columns>
                             </asp:GridView>
-                            <asp:SqlDataSource ID="dsRanking" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo11 %>" SelectCommand="SP_VistaRanking" SelectCommandType="StoredProcedure">
+                            <asp:SqlDataSource ID="dsRanking" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo11 %>" SelectCommand="SP_VistaRankingManzanos" SelectCommandType="StoredProcedure">
                                 <SelectParameters>
                                     <asp:ControlParameter ControlID="txtFiltro" Name="FILTRO" PropertyName="Text" Type="String" ConvertEmptyStringToNull="False" />
                                     <asp:ControlParameter ControlID="txtFechaInicio" Name="FEC_D" PropertyName="Text" Type="DateTime" />
@@ -151,10 +149,10 @@
                         <asp:BoundField DataField="Rut" HeaderText="Rut" ReadOnly="True" SortExpression="Rut" />
                         <asp:BoundField DataField="Nombre" HeaderText="Nombres" SortExpression="Nombre" />
                         <asp:BoundField DataField="Apellido" HeaderText="Apellidos" SortExpression="Apellido" />
-                        <asp:BoundField DataField="Bandejas" HeaderText="Bandejas" ReadOnly="True" DataFormatString="{0:n0}" SortExpression="Bandejas">
+                        <asp:BoundField DataField="Bins" HeaderText="Bins" ReadOnly="True" DataFormatString="{0:n1}" SortExpression="Bins">
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="Kilos" HeaderText="Kilos" ReadOnly="True" DataFormatString="{0:n2}" SortExpression="Kilos">
+                        <asp:BoundField DataField="Kilos" HeaderText="Kilos Aprox." ReadOnly="True" DataFormatString="{0:n2}" SortExpression="Kilos">
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>
                         <asp:BoundField DataField="DiasTrabajados" HeaderText="Dias Trabajados" DataFormatString="{0:n0}" ReadOnly="True" SortExpression="DiasTrabajados">

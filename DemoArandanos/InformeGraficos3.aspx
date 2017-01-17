@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
     <div class="hidden-print">
-        <h1>Informe Producción Gráficos</h1>
+        <h1>Gráficos Producción Arándanos</h1>
         <br />
     </div>
     <form runat="server">

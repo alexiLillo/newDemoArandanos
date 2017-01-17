@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 
 namespace DemoArandanos
 {
-    public partial class InformeRepetidas1 : System.Web.UI.Page
+    public partial class InformeRepeManzanos1 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -90,7 +90,7 @@ namespace DemoArandanos
             Response.Clear();
             Response.Buffer = true;
             Response.ContentEncoding = System.Text.Encoding.Default;
-            Response.AddHeader("content-disposition", "attachment;filename=Informe-Bandejas-Repetidas-" + txtFecha.Text + ".xls");
+            Response.AddHeader("content-disposition", "attachment;filename=Informe-Registros-Bins-Repetidos-" + txtFecha.Text + ".xls");
             Response.Charset = "";
             Response.ContentType = "application/vnd.ms-excel";
             using (StringWriter sw = new StringWriter())
@@ -140,7 +140,7 @@ namespace DemoArandanos
                 catch (Exception)
                 {
                     lblwarning.Text = "No se puede convertir a Excel";
-                    divWarning.Visible = true;                                        
+                    divWarning.Visible = true;
                 }
             }
         }

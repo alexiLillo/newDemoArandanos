@@ -7,14 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace DemoArandanos
 {
-    public partial class InformeGraficos1 : System.Web.UI.Page
+    public partial class InformeGrafiManzanos2 : System.Web.UI.Page
     {
         Controler control = new Controler();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if (Session["log"] == null || (int)Session["log"] != 1)
+                if (Session["log"] == null || (int)Session["log"] != 2)
                 {
                     Server.Transfer("Login.aspx", true);
                 }
@@ -42,8 +42,8 @@ namespace DemoArandanos
         {
             String inicio = DateTime.Parse(txtFechaInicio.Text + " 00:00").ToString("yyyy-MM-ddTHH:mm");
             String fin = DateTime.Parse(txtFechaTermino.Text + " 23:59").ToString("yyyy-MM-ddTHH:mm");
-            cargarGrafico(GraficoVariedad, control.getCantidadPorVariedad("32", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getVariedades("32"), true);
-            cargarGrafico(GraficoCuartel, control.getCantidadTotal("32", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getNombres("32", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue), false);
+            cargarGrafico(GraficoVariedad, control.getCantidadPorVariedad("25", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getVariedades("25"), true);
+            cargarGrafico(GraficoCuartel, control.getCantidadTotal("25", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getNombres("25", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue), false);
         }
 
         public void cargarGrafico(Chart graf, double[] yValores, String[] xNombres, bool colores)
@@ -92,7 +92,7 @@ namespace DemoArandanos
             else
             {
                 graf.Series[0].Color = Color.Blue;
-                lbltotal.Text = yValores.Sum().ToString();
+                lbltotal.Text = decimal.Round(Convert.ToDecimal(yValores.Sum()), 2).ToString();
             }
 
             graf.ImageType = ChartImageType.Jpeg;

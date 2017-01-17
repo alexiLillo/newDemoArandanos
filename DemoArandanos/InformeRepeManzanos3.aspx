@@ -1,10 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master2.Master" AutoEventWireup="true" CodeBehind="InformeRepetidas2.aspx.cs" Inherits="DemoArandanos.InformeRepetidas2" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="head2" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterManza3.Master" AutoEventWireup="true" CodeBehind="InformeRepeManzanos3.aspx.cs" Inherits="DemoArandanos.InformeRepeManzanos3" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
-
-    <h1>Informe Bandejas Repetidas</h1>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<h1>Informe Registros Repetidos</h1>
     <br />
     <form runat="server">
         <div class="hidden-print">
@@ -76,13 +74,14 @@
                 <!-- grilla -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Bandejas repetidas del día</h3>
+                        <h3 class="panel-title">Registros de bins repetidos del día</h3>
                     </div>
                     <div class="panel-body" style="max-height: 480px; overflow-y: scroll; font-size: 83%">
                         <div class="table-responsive">
                             <asp:GridView ID="grillaRepetidas" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="dsRepetidas" OnDataBound="grillaRepetidas_DataBound">
                                 <Columns>
                                     <asp:BoundField DataField="QRenvase" HeaderText="QR Envase" SortExpression="QRenvase" />
+                                    <asp:BoundField DataField="Cuadrilla" HeaderText="Cuadrilla" SortExpression="Cuadrilla" />
                                     <asp:BoundField DataField="RutTrabajador" HeaderText="Rut Trabajador" SortExpression="RutTrabajador" />
                                     <asp:BoundField DataField="RutPesador" HeaderText="Rut Pesador" SortExpression="RutPesador" />
                                     <asp:BoundField DataField="Potrero" HeaderText="Potrero" SortExpression="Potrero" />
@@ -99,13 +98,16 @@
                             <asp:SqlDataSource ID="dsRepetidas" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo11 %>" SelectCommand="
                                                 SELECT *
                                                 FROM dbo.Pesaje
-                                                WHERE dbo.Pesaje.Producto = '32' and (CONVERT (VARCHAR(10), FechaHora, 103) = @Fecha) and dbo.Pesaje.QRenvase 
+                                                WHERE dbo.Pesaje.Producto = '25' and (CONVERT (VARCHAR(10), FechaHora, 103) = @Fecha)
+
+												and (dbo.Pesaje.QRenvase + dbo.Pesaje.RutTrabajador)
                                                 IN (
-                                                SELECT dbo.Pesaje.QRenvase
+                                                SELECT (dbo.Pesaje.QRenvase + dbo.Pesaje.RutTrabajador)
                                                 FROM dbo.Pesaje
                                                 WHERE (CONVERT (VARCHAR(10), FechaHora, 103) = @Fecha)
-                                                GROUP BY dbo.Pesaje.QRenvase
-                                                HAVING count( dbo.Pesaje.QRenvase ) &gt;1)
+                                                GROUP BY (dbo.Pesaje.QRenvase + dbo.Pesaje.RutTrabajador)
+                                                HAVING count(dbo.Pesaje.QRenvase + dbo.Pesaje.RutTrabajador) &gt; 1)
+
                                                 ORDER BY dbo.Pesaje.QRenvase">
                                 <SelectParameters>
                                     <asp:ControlParameter ControlID="txtFecha" Name="Fecha" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" />
@@ -124,6 +126,7 @@
                 <asp:GridView ID="grillaImp" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="dsRepetidas">
                     <Columns>
                         <asp:BoundField DataField="QRenvase" HeaderText="QR Envase" SortExpression="QRenvase" />
+                        <asp:BoundField DataField="Cuadrilla" HeaderText="Cuadrilla" SortExpression="Cuadrilla" />
                         <asp:BoundField DataField="RutTrabajador" HeaderText="Rut Trabajador" SortExpression="RutTrabajador" />
                         <asp:BoundField DataField="RutPesador" HeaderText="Rut Pesador" SortExpression="RutPesador" />
                         <asp:BoundField DataField="Potrero" HeaderText="Potrero" SortExpression="Potrero" />
@@ -139,7 +142,6 @@
                 </asp:GridView>
             </div>
         </div>
-
     </form>
 
 </asp:Content>

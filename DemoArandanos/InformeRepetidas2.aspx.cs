@@ -93,7 +93,7 @@ namespace DemoArandanos
             Response.Clear();
             Response.Buffer = true;
             Response.ContentEncoding = System.Text.Encoding.Default;
-            Response.AddHeader("content-disposition", "attachment;filename=Informe Repetidas - " + txtFecha.Text + ".xls");
+            Response.AddHeader("content-disposition", "attachment;filename=Informe-Bandejas-Repetidas-" + txtFecha.Text + ".xls");
             Response.Charset = "";
             Response.ContentType = "application/vnd.ms-excel";
             using (StringWriter sw = new StringWriter())

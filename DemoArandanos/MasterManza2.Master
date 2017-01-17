@@ -59,15 +59,11 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="InformeProdManzanos2.aspx">Producción Manzanos</a></li>
+                            <li><a href="InformeGrafiManzanos2.aspx">Gráficos Producción</a></li>
+                            <li><a href="InformeRankManzanos2.aspx">Ranking Trabajadores</a></li>
+                            <li><a href="InformeRepeManzanos2.aspx">Registros Repetidos</a></li>
                             <li class="divider"></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">Administración
-                               <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="divider"></li>
+                            <li><a href="TrabajadoresManzanos2.aspx">Enrolamiento Trabajadores</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

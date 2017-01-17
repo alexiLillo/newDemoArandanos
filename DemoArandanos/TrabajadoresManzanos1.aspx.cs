@@ -10,7 +10,7 @@ using DemoArandanos.Controlador;
 
 namespace DemoArandanos
 {
-    public partial class Trabajadores : Page
+    public partial class TrabajadoresManzanos1 : System.Web.UI.Page
     {
         Controler control = new Controler();
         protected void Page_Load(object sender, EventArgs e)
@@ -221,7 +221,7 @@ namespace DemoArandanos
             Response.Clear();
             Response.Buffer = true;
             Response.ContentEncoding = System.Text.Encoding.Default;
-            Response.AddHeader("content-disposition", "attachment;filename=Trabajadores-"+ txtFiltroRut.Text +".xls");
+            Response.AddHeader("content-disposition", "attachment;filename=Trabajadores-" + txtFiltroRut.Text + ".xls");
             Response.Charset = "";
             Response.ContentType = "application/vnd.ms-excel";
             using (StringWriter sw = new StringWriter())

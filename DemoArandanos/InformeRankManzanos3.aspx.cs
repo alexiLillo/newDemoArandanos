@@ -4,10 +4,9 @@ using System.Web.UI.WebControls;
 using System.IO;
 using System.Drawing;
 
-
 namespace DemoArandanos
 {
-    public partial class InformeRanking1 : System.Web.UI.Page
+    public partial class InformeRankManzanos3 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,7 +17,7 @@ namespace DemoArandanos
 
             if (!IsPostBack)
             {
-                if (Session["log"] == null || (int)Session["log"] != 1)
+                if (Session["log"] == null || (int)Session["log"] != 3)
                 {
                     Server.Transfer("Login.aspx", true);
                 }
@@ -86,7 +85,7 @@ namespace DemoArandanos
             Response.Clear();
             Response.Buffer = true;
             Response.ContentEncoding = System.Text.Encoding.Default;
-            Response.AddHeader("content-disposition", "attachment;filename=Ranking-Arandanos-'" + lbldesde.Text + "' - '" + lblhasta.Text + "' -" + lblfiltr.Text + ".xls");
+            Response.AddHeader("content-disposition", "attachment;filename=Ranking-Manzanos-'" + lbldesde.Text + "' - '" + lblhasta.Text + "' -" + lblfiltr.Text + ".xls");
             Response.Charset = "";
             Response.ContentType = "application/vnd.ms-excel";
             using (StringWriter sw = new StringWriter())
