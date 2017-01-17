@@ -19,7 +19,6 @@ namespace DemoArandanos
 
                 txtFecha.Text = DateTime.Now.ToString("yyyy-MM-dd");
             }
-
             divSuccess.Visible = false;
             divWarning.Visible = false;
             divInfo.Visible = false;
