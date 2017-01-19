@@ -588,7 +588,7 @@ namespace DemoArandanos.Controlador
             {
                 trabajador.Importado = null;
                 trabajador.Ficha = ficha;
-            }            
+            }
             contexto.SaveChanges();
         }
 
@@ -603,11 +603,11 @@ namespace DemoArandanos.Controlador
 
         //ADMINISTRADOR DE PESAJE
 
-        public void insertarPesaje(String producto, String qrenvase, String ruttrabajador, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval, String tiporegistro, String fechahoramod, String usuariomod)
+        public void insertarPesaje(String producto, String qrenvase, String cuadrilla, String ruttrabajador, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval, String tiporegistro, String fechahoramod, String usuariomod)
         {
             try
             {
-                contexto.Pesaje.Add(new Pesaje { Producto = producto.ToUpper().Replace(".", ""), QRenvase = qrenvase.ToUpper().Replace(".", ""), RutTrabajador = ruttrabajador.ToUpper().Replace(".", ""), RutPesador = rutpesador.ToUpper().Replace(".", ""), Fundo = fundo.ToUpper().Replace(".", ""), Potrero = potrero.ToUpper().Replace(".", ""), Sector = sector.ToUpper().Replace(".", ""), Variedad = variedad.ToUpper().Replace(".", ""), Cuartel = cuartel.ToUpper().Replace(".", ""), FechaHora = fechahora, PesoNeto = pesoneto, Tara = tara, Formato = formato.ToUpper().Replace(".", ""), TotalCantidad = totalcant, Factor = factor, Cantidad = cantidad, Lectura_SVAL = lecturasval.ToUpper().Replace(".", ""), ID_Map = lastMapeo(), TipoRegistro = tiporegistro.ToUpper().Replace(".", ""), FechaHoraModificacion = fechahoramod.ToUpper().Replace(".", ""), UsuarioModificacion = usuariomod.ToUpper().Replace(".", "") });
+                contexto.Pesaje.Add(new Pesaje { Producto = producto.ToUpper().Replace(".", ""), Cuadrilla = cuadrilla.ToUpper(), QRenvase = qrenvase.ToUpper().Replace(".", ""), RutTrabajador = ruttrabajador.ToUpper().Replace(".", ""), RutPesador = rutpesador.ToUpper().Replace(".", ""), Fundo = fundo.ToUpper().Replace(".", ""), Potrero = potrero.ToUpper().Replace(".", ""), Sector = sector.ToUpper().Replace(".", ""), Variedad = variedad.ToUpper().Replace(".", ""), Cuartel = cuartel.ToUpper().Replace(".", ""), FechaHora = fechahora, PesoNeto = pesoneto, Tara = tara, Formato = formato.ToUpper().Replace(".", ""), TotalCantidad = totalcant, Factor = factor, Cantidad = cantidad, Lectura_SVAL = lecturasval.ToUpper().Replace(".", ""), ID_Map = lastMapeo(), TipoRegistro = tiporegistro.ToUpper().Replace(".", ""), FechaHoraModificacion = fechahoramod.ToUpper().Replace(".", ""), UsuarioModificacion = usuariomod.ToUpper().Replace(".", "") });
                 contexto.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
@@ -622,7 +622,7 @@ namespace DemoArandanos.Controlador
             }
         }
 
-        public void actualizarPesaje(String qrold, DateTime fechaold, String producto, String qrenvase, String ruttrabajador, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval, String fechahoramod, String usuariomod)
+        public void actualizarPesaje(String qrold, DateTime fechaold, String producto, String qrenvase, String cuadrilla, String ruttrabajador, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval, String fechahoramod, String usuariomod)
         {
             try
             {
@@ -632,6 +632,7 @@ namespace DemoArandanos.Controlador
                                  && p.FechaHora == fechaold
                                  select p).FirstOrDefault();
                 pesaje.Producto = producto.ToUpper().Replace(".", "");
+                pesaje.Cuadrilla = cuadrilla.ToUpper();
                 pesaje.QRenvase = qrenvase.ToUpper().Replace(".", "");
                 pesaje.RutTrabajador = ruttrabajador.ToUpper().Replace(".", "");
                 pesaje.RutPesador = rutpesador.ToUpper().Replace(".", "");
@@ -678,7 +679,7 @@ namespace DemoArandanos.Controlador
                 pesaje.Potrero = potrero.ToUpper().Replace(".", "");
                 pesaje.Sector = sector.ToUpper().Replace(".", "");
                 pesaje.Variedad = variedad.ToUpper().Replace(".", "");
-                pesaje.Cuartel = cuartel.ToUpper().Replace(".", "");                
+                pesaje.Cuartel = cuartel.ToUpper().Replace(".", "");
                 pesaje.FechaHoraModificacion = fechahoramod.ToUpper().Replace(".", "");
                 pesaje.UsuarioModificacion = usuariomod.ToUpper().Replace(".", "");
                 contexto.SaveChanges();
@@ -719,6 +720,81 @@ namespace DemoArandanos.Controlador
                 }
             }
         }
+
+        //ADMINISTRACION DE REGISTROS DE BINS
+        public void insertarRegistroBin(String producto, String qrenvase, String cuadrilla, List<String> listaTrabajadores, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval, String tiporegistro, String fechahoramod, String usuariomod)
+        {
+            foreach (String ruttrabajador in listaTrabajadores)
+            {
+                try
+                {
+                    contexto.Pesaje.Add(new Pesaje { Producto = producto.ToUpper().Replace(".", ""), Cuadrilla = cuadrilla.ToUpper(), QRenvase = qrenvase.ToUpper().Replace(".", ""), RutTrabajador = ruttrabajador.ToUpper().Replace(".", ""), RutPesador = rutpesador.ToUpper().Replace(".", ""), Fundo = fundo.ToUpper().Replace(".", ""), Potrero = potrero.ToUpper().Replace(".", ""), Sector = sector.ToUpper().Replace(".", ""), Variedad = variedad.ToUpper().Replace(".", ""), Cuartel = cuartel.ToUpper().Replace(".", ""), FechaHora = fechahora, PesoNeto = pesoneto, Tara = tara, Formato = formato.ToUpper().Replace(".", ""), TotalCantidad = totalcant, Factor = factor, Cantidad = cantidad, Lectura_SVAL = lecturasval.ToUpper().Replace(".", ""), ID_Map = lastMapeo(), TipoRegistro = tiporegistro.ToUpper().Replace(".", ""), FechaHoraModificacion = fechahoramod.ToUpper().Replace(".", ""), UsuarioModificacion = usuariomod.ToUpper().Replace(".", "") });
+                    contexto.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Diagnostics.Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
+            }
+        }
+
+        public bool eliminarRegistrosBin(List<int> listadoIdRegistros)
+        {
+            int eliminados = 0;
+            foreach (int id in listadoIdRegistros)
+            {
+                try
+                {
+                    Pesaje pesaje = (from p in contexto.Pesaje
+                                     where p.id == id
+                                     select p).FirstOrDefault();
+                    contexto.Pesaje.Remove(pesaje);
+                    eliminados = contexto.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Diagnostics.Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
+                }
+            }
+            if (eliminados > 0)
+                return true;
+            else return false;
+        }
+
+        public String getFormato(String nombre_variedad)
+        {
+            Variedad variedad = (from v in contexto.Variedad where v.Nombre == nombre_variedad.ToUpper() select v).SingleOrDefault();
+            return variedad.TipoEnvase;
+        }
+
+        public decimal getKilosBin(String nombre_variedad)
+        {
+            Variedad variedad = (from v in contexto.Variedad where v.Nombre == nombre_variedad.ToUpper() select v).SingleOrDefault();
+            return Convert.ToDecimal(variedad.KilosNetoEnvase);
+        }
+
+        public List<String> getListadoTrabajadoresBin(String qr_envase, DateTime fecha)
+        {
+            return (from p in contexto.Pesaje where p.QRenvase == qr_envase && p.FechaHora == fecha select p.RutTrabajador).Distinct().ToList();
+        }
+
+        public List<int> getListadoIDsEliminarBin(String qr_envase, DateTime fecha)
+        {
+            return (from p in contexto.Pesaje where p.QRenvase == qr_envase && p.FechaHora == fecha select p.id).Distinct().ToList();
+        }
+
 
         //ADMINISTRACION DE COSECHA MAQUINA
         public void insertarCosechaMaquina(String producto, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fecha, decimal pesoneto, decimal bandejas, String guia, String recepcion)
@@ -848,7 +924,7 @@ namespace DemoArandanos.Controlador
                     if (!potrero.Equals("0") && !sector.Equals("0") && !cuartel.Equals("0"))
                     {
                         cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Producto == producto 
+                                                 where p.Producto == producto
                                                  && p.Variedad == temp
                                                  && p.Fundo == fundo
                                                  && p.Potrero == potrero

@@ -64,6 +64,7 @@
                             <li><a href="InformeRepeManzanos1.aspx">Registros Repetidos</a></li>
                             <li class="divider"></li>
                             <li><a href="TrabajadoresManzanos1.aspx">Enrolamiento Trabajadores</a></li>
+                            <li><a href="PesajesManzanos1.aspx">Administración Registros</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
