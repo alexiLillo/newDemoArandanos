@@ -39,7 +39,7 @@ namespace DemoArandanos
             bool change = true;
             foreach (GridViewRow row in grillaRepetidas.Rows)
             {
-                if (!vari.Equals(row.Cells[0].Text))
+                if (!vari.Equals(row.Cells[1].Text))
                 {
                     //cambia color
                     if (change)
@@ -50,14 +50,14 @@ namespace DemoArandanos
 
                 if (!change)
                 {
-                    for (int i = 0; i < 12; i++)
+                    for (int i = 0; i < 14; i++)
                     {
                         row.Cells[i].BackColor = Color.LightGray;
                         //row.Cells[i].ForeColor = Color.White;
                     }                    
                 }
 
-                vari = row.Cells[0].Text;
+                vari = row.Cells[1].Text;
             }
 
 

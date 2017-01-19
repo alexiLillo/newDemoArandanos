@@ -84,10 +84,10 @@
                                 <Columns>
                                     <%--<asp:CommandField ButtonType="Image" SelectImageUrl="~/images/delete-forever.png" ShowSelectButton="True" />--%>
 
-                                    <asp:TemplateField HeaderText="Delete">
+                                    <asp:TemplateField HeaderText="Eliminar">
                                         <ItemTemplate>
-                                            <asp:Button ID="btEliminarRepe" runat="server" CommandName="Select" Text="X"
-                                                OnClientClick="return confirm('¿Está seguro de que desea eliminar el registro repetido?');" />
+                                            <strong><asp:Button ID="btEliminarRepe" runat="server" CommandName="Select" Text="X"
+                                                OnClientClick="return confirm('¿Está seguro de que desea eliminar el registro repetido?');" /></strong>
                                         </ItemTemplate>
                                     </asp:TemplateField>
 
