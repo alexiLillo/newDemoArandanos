@@ -161,6 +161,7 @@
     <Content Include="images\arrowvb.png" />
     <Content Include="images\arrowvt.png" />
     <Content Include="images\bloggif_57b4cb42485b2.png" />
+    <Content Include="images\delete-forever.png" />
     <Content Include="images\ic_mode_edit_black_24dp_1x.png" />
     <Content Include="images\ic_mode_edit_black_24dp_2x.png" />
     <Content Include="images\logout.png" />

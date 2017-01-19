@@ -795,6 +795,29 @@ namespace DemoArandanos.Controlador
             return (from p in contexto.Pesaje where p.QRenvase == qr_envase && p.FechaHora == fecha select p.id).Distinct().ToList();
         }
 
+        //ELIMINAR REGISTRO EN TABLA PESAJE POR ID
+        public void eliminarRegPesajeID(int id)
+        {
+            try
+            {
+                Pesaje pesaje = (from p in contexto.Pesaje
+                                 where p.id == id                                
+                                 select p).FirstOrDefault();
+                contexto.Pesaje.Remove(pesaje);
+                contexto.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+        }
+
 
         //ADMINISTRACION DE COSECHA MAQUINA
         public void insertarCosechaMaquina(String producto, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fecha, decimal pesoneto, decimal bandejas, String guia, String recepcion)

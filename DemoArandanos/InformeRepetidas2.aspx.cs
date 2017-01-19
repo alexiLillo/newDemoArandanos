@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DemoArandanos.Controlador;
+using System;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -11,6 +9,7 @@ namespace DemoArandanos
 {
     public partial class InformeRepetidas2 : System.Web.UI.Page
     {
+        Controler control = new Controler();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -151,6 +150,15 @@ namespace DemoArandanos
         public override void VerifyRenderingInServerForm(Control control)
         {
             /* Verifies that the control is rendered */
+        }
+
+        //ELIMINAR REGISTRO REPETIDO
+        protected void grillaRepetidas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            control.eliminarRegPesajeID(int.Parse(grillaRepetidas.Rows[grillaRepetidas.SelectedIndex].Cells[14].Text.Replace("&nbsp;", "")));
+            lblinfo.Text = "Registro repetido eliminado";
+            divInfo.Visible = true;
+            grillaRepetidas.DataBind();
         }
     }
 }

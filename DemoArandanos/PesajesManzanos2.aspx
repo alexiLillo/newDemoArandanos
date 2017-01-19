@@ -61,7 +61,7 @@
         <!-- DIVIDER -->
         <div class="col-md-12">
             <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
-                <span style="font-size: 20px; background-color: #F3F5F6; padding: 0 10px;">Administración de Pesajes</span>
+                <span style="font-size: 20px; background-color: #F3F5F6; padding: 0 10px;">Administración de Registros de Bins</span>
             </div>
             <br />
         </div>
@@ -183,7 +183,7 @@
                 <!-- DIVIDER -->
                 <div class="col-md-12">
                     <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
-                        <span style="font-size: 20px; background-color: #F3F5F6; padding: 0 10px;">Tabla de Pesajes</span>
+                        <span style="font-size: 20px; background-color: #F3F5F6; padding: 0 10px;">Tabla de Registros de Bins</span>
                     </div>
                 </div>
                 <%--<asp:UpdatePanel ID="UpdatePanel2" UpdateMode="Always" runat="server">

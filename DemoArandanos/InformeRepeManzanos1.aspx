@@ -79,8 +79,17 @@
                     </div>
                     <div class="panel-body" style="max-height: 480px; overflow-y: scroll; font-size: 83%">
                         <div class="table-responsive">
-                            <asp:GridView ID="grillaRepetidas" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="dsRepetidas" OnDataBound="grillaRepetidas_DataBound">
+                            <asp:GridView ID="grillaRepetidas" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="dsRepetidas" OnDataBound="grillaRepetidas_DataBound" OnSelectedIndexChanged="grillaRepetidas_SelectedIndexChanged">
                                 <Columns>
+                                    <%--<asp:CommandField ButtonType="Image" OnClientClick="return confirm('¿Está seguro de que desea eliminar el registro repetido?');" SelectImageUrl="~/images/delete-forever.png" ShowSelectButton="True" />--%>
+
+                                    <asp:TemplateField HeaderText="Delete">
+                                        <ItemTemplate>
+                                            <asp:Button ID="btEliminarRepe" runat="server" CommandName="Select" Text="X"
+                                                OnClientClick="return confirm('¿Está seguro de que desea eliminar el registro repetido?');" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
                                     <asp:BoundField DataField="QRenvase" HeaderText="QR Envase" SortExpression="QRenvase" />
                                     <asp:BoundField DataField="Cuadrilla" HeaderText="Cuadrilla" SortExpression="Cuadrilla" />
                                     <asp:BoundField DataField="RutTrabajador" HeaderText="Rut Trabajador" SortExpression="RutTrabajador" />
@@ -94,6 +103,7 @@
                                     <asp:BoundField DataField="TipoRegistro" HeaderText="Tipo Registro" SortExpression="TipoRegistro" />
                                     <asp:BoundField DataField="FechaHoraModificacion" HeaderText="Fecha Hora Modificación" SortExpression="FechaHoraModificacion" />
                                     <asp:BoundField DataField="UsuarioModificacion" HeaderText="Usuario que Modificó" SortExpression="UsuarioModificacion" />
+                                    <asp:BoundField DataField="id" HeaderText="ID" SortExpression="id" />
                                 </Columns>
                             </asp:GridView>
                             <asp:SqlDataSource ID="dsRepetidas" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo11 %>" SelectCommand="
