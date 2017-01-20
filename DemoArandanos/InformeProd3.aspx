@@ -34,7 +34,7 @@
                                 $(".alert").fadeTo(500, 0).slideUp(500, function () {
                                     $(this).remove();
                                 });
-                            }, 4000);
+                            }, 6000);
                         }
                     </script>
                     <div class="alert alert-success fade in" role="alert" id="divSuccess" runat="server">
