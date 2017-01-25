@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterManza1.Master" AutoEventWireup="true" CodeBehind="InformeProdManzanos1.aspx.cs" Inherits="DemoArandanos.InformeProdManzanos1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<h1>Informe Producción Manzanos</h1>
+    <h1>Informe Producción Manzanos</h1>
     <br />
     <form runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -71,7 +72,9 @@
                         <h5>Hasta:
                             <asp:Label ID="lblhasta" runat="server" Text=""></asp:Label></h5>
                         <br />
-                        <h6>Variedad:
+                        <h6>Categoría: 
+                            <asp:Label ID="lblcateg" runat="server" Text=""></asp:Label>
+                            Variedad:
                             <asp:Label ID="lblvaried" runat="server" Text=""></asp:Label>
                             - Fundo:
                             <asp:Label ID="lblfund" runat="server" Text=""></asp:Label>
@@ -113,6 +116,11 @@
 
 
         <div class="col-md-2">
+            <label for="ddClase">Categoría</label>
+            <asp:DropDownList ID="ddClase" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsClase" DataTextField="Clase" DataValueField="Clase" OnDataBound="ddClase_DataBound"></asp:DropDownList>
+            <asp:SqlDataSource ID="dsClase" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo %>" SelectCommand="SELECT [Clase] FROM [Clase]"></asp:SqlDataSource>
+            
+            <br />
             <label for="ddVariedad">Variedad</label>
             <asp:DropDownList ID="ddVariedad" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsVariedad" DataTextField="Nombre" DataValueField="ID_Variedad" OnDataBound="ddVariedad_DataBound">
             </asp:DropDownList>
@@ -205,13 +213,14 @@
                                 <asp:BoundField DataField="Cantidad" HeaderText="Cantidad Bin" SortExpression="Cantidad" DataFormatString="{0:n2}" />
                             </Columns>
                         </asp:GridView>
-                        <asp:SqlDataSource ID="dsGrillaPesajeProd" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo10 %>" SelectCommand="SELECT * FROM [Pesaje] WHERE Producto = '25' and ((Fundo LIKE  @ID_Fundo + '%') AND (Potrero LIKE @ID_Potrero + '%') AND (Sector LIKE @ID_Sector + '%') AND (Cuartel LIKE @ID_Cuartel + '%') AND (Variedad LIKE @ID_Variedad + '%')) AND (([Formato] LIKE '%' + @Formato + '%') OR ([QRenvase] LIKE '%' + @QRenvase + '%') OR ([RutPesador] LIKE '%' + @RutPesador + '%') OR ([RutTrabajador] LIKE '%' + @RutTrabajador + '%')) AND [FechaHora] BETWEEN (@FechaHora + ' 00:00') AND (@FechaHora2 + ' 23:59') ORDER BY [FechaHora]">
+                        <asp:SqlDataSource ID="dsGrillaPesajeProd" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo10 %>" SelectCommand="SELECT * FROM [Pesaje] WHERE Producto = '25' and ((Fundo LIKE  @ID_Fundo + '%') AND (Potrero LIKE @ID_Potrero + '%') AND (Sector LIKE @ID_Sector + '%') AND (Cuartel LIKE @ID_Cuartel + '%') AND (Variedad LIKE @ID_Variedad + '%') AND (Clase LIKE @Clase + '%')) AND (([Formato] LIKE '%' + @Formato + '%') OR ([QRenvase] LIKE '%' + @QRenvase + '%') OR ([RutPesador] LIKE '%' + @RutPesador + '%') OR ([RutTrabajador] LIKE '%' + @RutTrabajador + '%')) AND [FechaHora] BETWEEN (@FechaHora + ' 00:00') AND (@FechaHora2 + ' 23:59') ORDER BY [FechaHora]">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="ddFundo" ConvertEmptyStringToNull="False" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" />
                                 <asp:ControlParameter ControlID="ddPotrero" ConvertEmptyStringToNull="False" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" />
                                 <asp:ControlParameter ControlID="ddSector" ConvertEmptyStringToNull="False" Name="ID_Sector" PropertyName="SelectedValue" Type="String" />
                                 <asp:ControlParameter ControlID="ddCuartel" ConvertEmptyStringToNull="False" Name="ID_Cuartel" PropertyName="SelectedValue" Type="String" />
                                 <asp:ControlParameter ControlID="ddVariedad" ConvertEmptyStringToNull="False" Name="ID_Variedad" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="ddClase" ConvertEmptyStringToNull="False" Name="Clase" PropertyName="SelectedValue" Type="String" />
 
                                 <asp:ControlParameter ControlID="txtFiltro" ConvertEmptyStringToNull="False" Name="Cuartel" PropertyName="Text" Type="String" />
                                 <asp:ControlParameter ControlID="txtFiltro" ConvertEmptyStringToNull="False" Name="Formato" PropertyName="Text" Type="String" />

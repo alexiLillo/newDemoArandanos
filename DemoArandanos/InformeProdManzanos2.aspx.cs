@@ -32,6 +32,11 @@ namespace DemoArandanos
             //resumen();
         }
 
+        protected void ddClase_DataBound(object sender, EventArgs e)
+        {
+            ddClase.Items.Insert(0, new ListItem("Todas", ""));
+        }
+
         protected void ddVariedad_DataBound(object sender, EventArgs e)
         {
             ddVariedad.Items.Insert(0, new ListItem("Todas", ""));
@@ -104,7 +109,7 @@ namespace DemoArandanos
             decimal prom = 0;
             try
             {
-                prom = decimal.Round(bins / trabajadores, 1);
+                prom = decimal.Round(bins / trabajadores, 2);
             }
             catch (Exception ex)
             {
@@ -135,6 +140,7 @@ namespace DemoArandanos
                 lblhasta.Text = "-";
             }
 
+            lblcateg.Text = ddClase.SelectedItem.Text;
             lblvaried.Text = ddVariedad.SelectedItem.Text;
             lblfund.Text = ddFundo.SelectedItem.Text;
             if (!ddPotrero.SelectedItem.Text.Equals("Todos"))
@@ -158,7 +164,7 @@ namespace DemoArandanos
             Response.Clear();
             Response.Buffer = true;
             Response.ContentEncoding = System.Text.Encoding.Default;
-            Response.AddHeader("content-disposition", "attachment;filename=Produccion-Manzanos-" + lblvaried.Text + "-" + lblfund.Text + "-" + lblpotrer.Text + "-" + lblsect.Text + "-" + lblcuart.Text + "-'" + lbldesde.Text + "'-'" + lblhasta.Text + "'-" + lblfiltr.Text + ".xls");
+            Response.AddHeader("content-disposition", "attachment;filename=Produccion-Manzanos-" + lblcateg.Text + "-" + lblvaried.Text + "-" + lblfund.Text + "-" + lblpotrer.Text + "-" + lblsect.Text + "-" + lblcuart.Text + "-'" + lbldesde.Text + "'-'" + lblhasta.Text + "'-" + lblfiltr.Text + ".xls");
             Response.Charset = "";
             Response.ContentType = "application/vnd.ms-excel";
             using (StringWriter sw = new StringWriter())
@@ -206,5 +212,7 @@ namespace DemoArandanos
         {
             /* Verifies that the control is rendered */
         }
+
+
     }
 }
