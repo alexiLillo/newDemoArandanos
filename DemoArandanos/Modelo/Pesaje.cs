@@ -45,6 +45,10 @@ namespace DemoArandanos.Modelo
         [StringLength(50)]
         public string Variedad { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        public string Clase { get; set; }
+
         [StringLength(50)]
         public string Cuartel { get; set; }
 

@@ -605,6 +605,8 @@
     <Compile Include="MasterManza3.Master.designer.cs">
       <DependentUpon>MasterManza3.Master</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Clase.cs" />
+    <Compile Include="Modelo\ClaseVariedadPeso.cs" />
     <Compile Include="Modelo\CosechaMaquina.cs" />
     <Compile Include="Modelo\Cuadrillas.cs" />
     <Compile Include="Modelo\Cuartel.cs" />

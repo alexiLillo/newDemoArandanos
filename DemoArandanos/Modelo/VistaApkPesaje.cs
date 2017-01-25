@@ -61,13 +61,12 @@ namespace DemoArandanos.Modelo
         [StringLength(50)]
         public string ID_Producto { get; set; }
 
-        [Key]
-        [Column(Order = 8)]
         [StringLength(20)]
         public string TipoEnvase { get; set; }
 
-        [Key]
-        [Column(Order = 9)]
-        public double KilosNetoEnvase { get; set; }
+        public double? KilosNetoEnvase { get; set; }
+
+        [StringLength(50)]
+        public string Clase { get; set; }
     }
 }

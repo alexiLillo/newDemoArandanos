@@ -70,7 +70,7 @@
                                <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li id="pass"><a href="Password.aspx">Cambiar contraseña</a></li>
+                            <li id="pass"><a href="#Password.aspx">Cambiar contraseña</a></li>
                             <li class="divider"></li>
                             <li><a href="#" runat="server" onserverclick="salir">Cerrar sesión<img style="margin-left: 15px" class="imagen" width="20" heigth="20" src="images/logout.png"></a></li>
                         </ul>

@@ -166,11 +166,18 @@
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <br />
+                    <label for="ddClase">Categoría</label>
+                    <asp:DropDownList ID="ddClase" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsClase" DataTextField="Clase" DataValueField="Clase"></asp:DropDownList>
+                    <asp:SqlDataSource ID="dsClase" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo %>" SelectCommand="SELECT [Clase] FROM [Clase]"></asp:SqlDataSource>
+                    <br />
+                </div>
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
                     <!-- GRUPO DE BOTONES -->
                     <label>Seleccione una opción</label>
                     <div class="btn-group" role="group" aria-label="...">
                         <asp:Button ID="btGuardarPesaje" runat="server" Text="Registrar" type="submit" class="btn btn-default" OnClick="btGuardarPesaje_Click" />
-                        <asp:Button ID="btActualizarPesaje" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btActualizarPesaje_Click" OnClientClick="return confirm('¿Está seguro de que desea actualizar todos los registros asociados al Bin seleccionado?');"/>
+                        <asp:Button ID="btActualizarPesaje" runat="server" Text="Actualizar" type="submit" class="btn btn-default" OnClick="btActualizarPesaje_Click" OnClientClick="return confirm('¿Está seguro de que desea actualizar todos los registros asociados al Bin seleccionado?');" />
                         <asp:Button ID="btEliminarPesaje" runat="server" Text="Eliminar" type="submit" class="btn btn-default" OnClick="btEliminarPesaje_Click" OnClientClick="return confirm('¿Está seguro de que desea eliminar todos los registros asociados al Bin seleccionado?');" />
                     </div>
                     <asp:Button ID="btLimpiar" runat="server" formnovalidate Text="Limpiar" type="submit" class="btn btn-default" OnClick="btLimpiar_Click" />
@@ -178,6 +185,7 @@
                     <br />
                     <br />
                 </div>
+                
                 <%-- </ContentTemplate>
         </asp:UpdatePanel>--%>
                 <!-- DIVIDER -->
@@ -217,7 +225,7 @@
                         </div>
                         <div class="panel-body" style="max-height: 500px; overflow-y: scroll; font-size: 83%">
                             <div class="table-responsive">
-                                <asp:GridView ID="grillaPesajes" AutoPostBack="true" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="dsPesajesFiltrados" OnSelectedIndexChanged="grillaPesajes_SelectedIndexChanged" >
+                                <asp:GridView ID="grillaPesajes" AutoPostBack="true" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="dsPesajesFiltrados" OnSelectedIndexChanged="grillaPesajes_SelectedIndexChanged">
                                     <Columns>
                                         <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
                                         <asp:BoundField DataField="QRenvase" HeaderText="QR Envase" SortExpression="QRenvase"></asp:BoundField>
@@ -228,6 +236,7 @@
                                         <asp:BoundField DataField="Potrero" HeaderText="Potrero" SortExpression="Potrero" HtmlEncode="False"></asp:BoundField>
                                         <asp:BoundField DataField="Sector" HeaderText="Sector" SortExpression="Sector" HtmlEncode="False"></asp:BoundField>
                                         <asp:BoundField DataField="Variedad" HeaderText="Variedad" SortExpression="Variedad" HtmlEncode="False"></asp:BoundField>
+                                        <asp:BoundField DataField="Clase" HeaderText="Categoría" SortExpression="Clase" HtmlEncode="False"></asp:BoundField>
                                         <asp:BoundField DataField="Cuartel" HeaderText="Cuartel" SortExpression="Cuartel" HtmlEncode="False"></asp:BoundField>
                                         <asp:BoundField DataField="FechaHora" HeaderText="Fecha Hora" SortExpression="FechaHora" DataFormatString="{0:dd/MM/yyyy HH:mm}"></asp:BoundField>
                                         <asp:BoundField DataField="PesoNeto" HeaderText="Peso Neto" SortExpression="PesoNeto" DataFormatString="{0:n2}"></asp:BoundField>

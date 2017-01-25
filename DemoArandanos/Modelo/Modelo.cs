@@ -12,6 +12,7 @@ namespace DemoArandanos.Modelo
         {
         }
 
+        public virtual DbSet<CosechaMaquina> CosechaMaquina { get; set; }
         public virtual DbSet<Cuadrillas> Cuadrillas { get; set; }
         public virtual DbSet<Cuartel> Cuartel { get; set; }
         public virtual DbSet<Estado> Estado { get; set; }
@@ -41,7 +42,8 @@ namespace DemoArandanos.Modelo
         public virtual DbSet<Trabajador> Trabajador { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Variedad> Variedad { get; set; }
-        public virtual DbSet<CosechaMaquina> CosechaMaquina { get; set; }
+        public virtual DbSet<Clase> Clase { get; set; }
+        public virtual DbSet<ClaseVariedadPeso> ClaseVariedadPeso { get; set; }
         public virtual DbSet<TablaVista> TablaVista { get; set; }
         public virtual DbSet<rmorisb_acumDiaMes> rmorisb_acumDiaMes { get; set; }
         public virtual DbSet<View_1> View_1 { get; set; }
@@ -59,6 +61,46 @@ namespace DemoArandanos.Modelo
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Producto)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Fundo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Potrero)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Sector)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Variedad)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Cuartel)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.PesoNeto)
+                .HasPrecision(18, 3);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Bandejas)
+                .HasPrecision(18, 3);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Guia)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Recepcion)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Cuadrillas>()
                 .Property(e => e.Cuadrilla)
                 .IsUnicode(false);
@@ -187,6 +229,10 @@ namespace DemoArandanos.Modelo
 
             modelBuilder.Entity<Pesaje>()
                 .Property(e => e.Variedad)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Pesaje>()
+                .Property(e => e.Clase)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Pesaje>()
@@ -660,48 +706,24 @@ namespace DemoArandanos.Modelo
                 .Property(e => e.ID_Producto)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Variedad>()
+            modelBuilder.Entity<Clase>()
+                .Property(e => e.Clase1)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ClaseVariedadPeso>()
+                .Property(e => e.ID_Variedad)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ClaseVariedadPeso>()
+                .Property(e => e.ID_Producto)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ClaseVariedadPeso>()
+                .Property(e => e.Clase)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ClaseVariedadPeso>()
                 .Property(e => e.TipoEnvase)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CosechaMaquina>()
-                .Property(e => e.Producto)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CosechaMaquina>()
-                .Property(e => e.Fundo)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CosechaMaquina>()
-                .Property(e => e.Potrero)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CosechaMaquina>()
-                .Property(e => e.Sector)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CosechaMaquina>()
-                .Property(e => e.Variedad)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CosechaMaquina>()
-                .Property(e => e.Cuartel)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CosechaMaquina>()
-                .Property(e => e.PesoNeto)
-                .HasPrecision(18, 3);
-
-            modelBuilder.Entity<CosechaMaquina>()
-                .Property(e => e.Bandejas)
-                .HasPrecision(18, 3);
-
-            modelBuilder.Entity<CosechaMaquina>()
-                .Property(e => e.Guia)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CosechaMaquina>()
-                .Property(e => e.Recepcion)
                 .IsUnicode(false);
 
             modelBuilder.Entity<TablaVista>()
@@ -1014,6 +1036,10 @@ namespace DemoArandanos.Modelo
 
             modelBuilder.Entity<VistaApkPesaje>()
                 .Property(e => e.TipoEnvase)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<VistaApkPesaje>()
+                .Property(e => e.Clase)
                 .IsUnicode(false);
 
             modelBuilder.Entity<VistaConsulta>()

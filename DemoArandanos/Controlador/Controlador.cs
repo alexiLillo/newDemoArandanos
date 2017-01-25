@@ -722,13 +722,13 @@ namespace DemoArandanos.Controlador
         }
 
         //ADMINISTRACION DE REGISTROS DE BINS
-        public void insertarRegistroBin(String producto, String qrenvase, String cuadrilla, List<String> listaTrabajadores, String rutpesador, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval, String tiporegistro, String fechahoramod, String usuariomod)
+        public void insertarRegistroBin(String producto, String qrenvase, String cuadrilla, List<String> listaTrabajadores, String rutpesador, String fundo, String potrero, String sector, String variedad, String clase, String cuartel, DateTime fechahora, decimal pesoneto, decimal tara, String formato, decimal totalcant, decimal factor, decimal cantidad, String lecturasval, String tiporegistro, String fechahoramod, String usuariomod)
         {
             foreach (String ruttrabajador in listaTrabajadores)
             {
                 try
                 {
-                    contexto.Pesaje.Add(new Pesaje { Producto = producto.ToUpper().Replace(".", ""), Cuadrilla = cuadrilla.ToUpper(), QRenvase = qrenvase.ToUpper().Replace(".", ""), RutTrabajador = ruttrabajador.ToUpper().Replace(".", ""), RutPesador = rutpesador.ToUpper().Replace(".", ""), Fundo = fundo.ToUpper().Replace(".", ""), Potrero = potrero.ToUpper().Replace(".", ""), Sector = sector.ToUpper().Replace(".", ""), Variedad = variedad.ToUpper().Replace(".", ""), Cuartel = cuartel.ToUpper().Replace(".", ""), FechaHora = fechahora, PesoNeto = pesoneto, Tara = tara, Formato = formato.ToUpper().Replace(".", ""), TotalCantidad = totalcant, Factor = factor, Cantidad = cantidad, Lectura_SVAL = lecturasval.ToUpper().Replace(".", ""), ID_Map = lastMapeo(), TipoRegistro = tiporegistro.ToUpper().Replace(".", ""), FechaHoraModificacion = fechahoramod.ToUpper().Replace(".", ""), UsuarioModificacion = usuariomod.ToUpper().Replace(".", "") });
+                    contexto.Pesaje.Add(new Pesaje { Producto = producto.ToUpper().Replace(".", ""), Cuadrilla = cuadrilla.ToUpper(), QRenvase = qrenvase.ToUpper().Replace(".", ""), RutTrabajador = ruttrabajador.ToUpper().Replace(".", ""), RutPesador = rutpesador.ToUpper().Replace(".", ""), Fundo = fundo.ToUpper().Replace(".", ""), Potrero = potrero.ToUpper().Replace(".", ""), Sector = sector.ToUpper().Replace(".", ""), Variedad = variedad.ToUpper().Replace(".", ""), Clase = clase.ToUpper().Replace(".", ""), Cuartel = cuartel.ToUpper().Replace(".", ""), FechaHora = fechahora, PesoNeto = pesoneto, Tara = tara, Formato = formato.ToUpper().Replace(".", ""), TotalCantidad = totalcant, Factor = factor, Cantidad = cantidad, Lectura_SVAL = lecturasval.ToUpper().Replace(".", ""), ID_Map = lastMapeo(), TipoRegistro = tiporegistro.ToUpper().Replace(".", ""), FechaHoraModificacion = fechahoramod.ToUpper().Replace(".", ""), UsuarioModificacion = usuariomod.ToUpper().Replace(".", "") });
                     contexto.SaveChanges();
                 }
                 catch (DbEntityValidationException dbEx)
@@ -773,17 +773,17 @@ namespace DemoArandanos.Controlador
             else return false;
         }
 
-        public String getFormato(String nombre_variedad)
-        {
-            Variedad variedad = (from v in contexto.Variedad where v.Nombre == nombre_variedad.ToUpper() select v).SingleOrDefault();
-            return variedad.TipoEnvase;
-        }
+        //public String getFormato(String nombre_variedad)
+        //{
+        //    Variedad variedad = (from v in contexto.Variedad where v.Nombre == nombre_variedad.ToUpper() select v).SingleOrDefault();
+        //    return variedad.TipoEnvase;
+        //}
 
-        public decimal getKilosBin(String nombre_variedad)
-        {
-            Variedad variedad = (from v in contexto.Variedad where v.Nombre == nombre_variedad.ToUpper() select v).SingleOrDefault();
-            return Convert.ToDecimal(variedad.KilosNetoEnvase);
-        }
+        //public decimal getKilosBin(String nombre_variedad)
+        //{
+        //    Variedad variedad = (from v in contexto.Variedad where v.Nombre == nombre_variedad.ToUpper() select v).SingleOrDefault();
+        //    return Convert.ToDecimal(variedad.KilosNetoEnvase);
+        //}
 
         public List<String> getListadoTrabajadoresBin(String qr_envase, DateTime fecha)
         {
@@ -801,7 +801,7 @@ namespace DemoArandanos.Controlador
             try
             {
                 Pesaje pesaje = (from p in contexto.Pesaje
-                                 where p.id == id                                
+                                 where p.id == id
                                  select p).FirstOrDefault();
                 contexto.Pesaje.Remove(pesaje);
                 contexto.SaveChanges();
@@ -818,6 +818,17 @@ namespace DemoArandanos.Controlador
             }
         }
 
+        //TRAER KILOS-NETO-ENVASE MANZANOS DESDE CLASE-VARIEDAD-PESO
+        public decimal getKilosBin(String variedad, String clase)
+        {
+            return Convert.ToDecimal((from c in contexto.ClaseVariedadPeso where c.ID_Producto == "25" && c.ID_Variedad == variedad && c.Clase == clase select c.KilosNetoEnvase).SingleOrDefault().ToString());
+        }
+
+        //TRAER TIPO-ENVASE MANZANOS DESDE CLASE-VARIEDAD-PESO
+        public String getFormato(String variedad, String clase)
+        {
+            return (from c in contexto.ClaseVariedadPeso where c.ID_Producto == "25" && c.ID_Variedad == variedad && c.Clase == clase select c.TipoEnvase).FirstOrDefault().ToString();
+        }
 
         //ADMINISTRACION DE COSECHA MAQUINA
         public void insertarCosechaMaquina(String producto, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fecha, decimal pesoneto, decimal bandejas, String guia, String recepcion)
