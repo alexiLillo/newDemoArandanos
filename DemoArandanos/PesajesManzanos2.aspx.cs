@@ -157,9 +157,9 @@ namespace DemoArandanos
             txtRutPesador.Text = grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[4].Text.Replace("&nbsp;", "");
             DateTime d = DateTime.Parse(grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[11].Text.Replace("&nbsp;", "").ToString());
             txtFechaHora.Text = d.ToString("yyyy-MM-ddTHH:mm:ss");
-            decimal neto = Decimal.Parse(grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[12].Text.Replace("&nbsp;", "").ToString().Replace(".", ","));
-            decimal tara = Decimal.Parse(grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[13].Text.Replace("&nbsp;", "").ToString().Replace(".", ","));
-            decimal bruto = neto + tara;
+            //decimal neto = Decimal.Parse(grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[12].Text.Replace("&nbsp;", "").ToString().Replace(".", ","));
+            //decimal tara = Decimal.Parse(grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[13].Text.Replace("&nbsp;", "").ToString().Replace(".", ","));
+            //decimal bruto = neto + tara;
             //txtPesoBruto.Text = bruto.ToString().Replace(",", ".");
             //ddTara.SelectedValue = tara.ToString();
             ddVariedad.SelectedValue = grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[8].Text.Replace("&nbsp;", "");
@@ -186,6 +186,9 @@ namespace DemoArandanos
             btGuardarPesaje.Attributes.Add("disabled", "true");
             txtQRenvase.Attributes.Add("disabled", "true");
             txtFechaHora.Attributes.Add("disabled", "true");
+
+            ddTipoEnvase.DataBind();
+            ddTipoEnvase.SelectedIndex = ddTipoEnvase.Items.IndexOf(ddTipoEnvase.Items.FindByText(grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[13].Text.Replace("&nbsp;", "").ToString().Replace(".", ",")));
         }
 
         protected void btActualizarPesaje_Click(object sender, EventArgs e)

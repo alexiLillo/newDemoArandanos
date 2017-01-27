@@ -252,7 +252,7 @@
                                         <asp:BoundField DataField="Cuartel" HeaderText="Cuartel" SortExpression="Cuartel" HtmlEncode="False"></asp:BoundField>
                                         <asp:BoundField DataField="FechaHora" HeaderText="Fecha Hora" SortExpression="FechaHora" DataFormatString="{0:dd/MM/yyyy HH:mm}"></asp:BoundField>
                                         <asp:BoundField DataField="PesoNeto" HeaderText="Peso Neto" SortExpression="PesoNeto" DataFormatString="{0:n2}"></asp:BoundField>
-                                        <asp:BoundField DataField="Tara" HeaderText="Tara" SortExpression="Tara" DataFormatString="{0:n1}"></asp:BoundField>
+                                        <asp:BoundField DataField="Formato" HeaderText="Formato" SortExpression="Formato" HtmlEncode="False"></asp:BoundField>
                                         <asp:BoundField DataField="TipoRegistro" HeaderText="Registro" SortExpression="TipoRegistro" HtmlEncode="False"></asp:BoundField>
                                         <asp:BoundField DataField="FechaHoraModificacion" HeaderText="Fecha Modificación" SortExpression="FechaHoraModificacion"></asp:BoundField>
                                         <asp:BoundField DataField="UsuarioModificacion" HeaderText="Usuario que modificó" SortExpression="UsuarioModificacion" HtmlEncode="False"></asp:BoundField>
