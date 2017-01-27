@@ -120,14 +120,14 @@ namespace DemoArandanos
             {
                 try
                 {
-                    decimal pesoNeto = control.getKilosBin(ddVariedad.SelectedValue, ddClase.SelectedValue);
-                    String formato = control.getFormato(ddVariedad.SelectedValue, ddClase.SelectedValue);
+                    decimal pesoNeto = control.getKilosBin(ddVariedad.SelectedValue, ddClase.SelectedValue, ddTipoEnvase.SelectedValue);
+                    //String formato = control.getFormato(ddVariedad.SelectedValue, ddClase.SelectedValue);
                     List<String> listadoTrabajadores = new List<string>();
                     foreach (ListItem rut in ddTrabajadores.Items)
                     {
                         listadoTrabajadores.Add(rut.Text);
                     }
-                    control.insertarRegistroBin("25", txtQRenvase.Text, txtCuadrilla.Text, listadoTrabajadores, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddClase.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto / Convert.ToDecimal(lblcantidadTrabajadores.Text), 0, formato, 1, Convert.ToDecimal(lblcantidadTrabajadores.Text), 1 / Convert.ToDecimal(lblcantidadTrabajadores.Text), "", "Manual", "-", Session["usuario"].ToString());
+                    control.insertarRegistroBin("25", txtQRenvase.Text, txtCuadrilla.Text, listadoTrabajadores, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddClase.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto / Convert.ToDecimal(lblcantidadTrabajadores.Text), 0, ddTipoEnvase.SelectedItem.Text, 1, Convert.ToDecimal(lblcantidadTrabajadores.Text), 1 / Convert.ToDecimal(lblcantidadTrabajadores.Text), "", "Manual", "-", Session["usuario"].ToString());
                     lblsuccess.Text = "Registros de bin ingresados correctamente.";
                     divSuccess.Visible = true;
                     limpiarCampos();
@@ -196,14 +196,14 @@ namespace DemoArandanos
                 {
                     if (control.eliminarRegistrosBin(control.getListadoIDsEliminarBin(txtQRenvase.Text, DateTime.Parse(txtFechaHora.Text))))
                     {
-                        decimal pesoNeto = control.getKilosBin(ddVariedad.SelectedValue, ddClase.SelectedValue);
-                        String formato = control.getFormato(ddVariedad.SelectedValue, ddClase.SelectedValue);
+                        decimal pesoNeto = control.getKilosBin(ddVariedad.SelectedValue, ddClase.SelectedValue, ddTipoEnvase.SelectedValue);
+                        //String formato = control.getFormato(ddVariedad.SelectedValue, ddClase.SelectedValue);
                         List<String> listadoTrabajadores = new List<string>();
                         foreach (ListItem rut in ddTrabajadores.Items)
                         {
                             listadoTrabajadores.Add(rut.Text);
                         }
-                        control.insertarRegistroBin("25", txtQRenvase.Text, txtCuadrilla.Text, listadoTrabajadores, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddClase.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto / Convert.ToDecimal(lblcantidadTrabajadores.Text), 0, formato, 1, Convert.ToDecimal(lblcantidadTrabajadores.Text), 1 / Convert.ToDecimal(lblcantidadTrabajadores.Text), "", "Manual", "-", Session["usuario"].ToString());
+                        control.insertarRegistroBin("25", txtQRenvase.Text, txtCuadrilla.Text, listadoTrabajadores, txtRutPesador.Text, ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddClase.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaHora.Text), pesoNeto / Convert.ToDecimal(lblcantidadTrabajadores.Text), 0, ddTipoEnvase.SelectedItem.Text, 1, Convert.ToDecimal(lblcantidadTrabajadores.Text), 1 / Convert.ToDecimal(lblcantidadTrabajadores.Text), "", "Manual", "-", Session["usuario"].ToString());
                         lblsuccess.Text = "Registros de Bin actualizados correctamente.";
                         divSuccess.Visible = true;
                         limpiarCampos();

@@ -819,16 +819,16 @@ namespace DemoArandanos.Controlador
         }
 
         //TRAER KILOS-NETO-ENVASE MANZANOS DESDE CLASE-VARIEDAD-PESO
-        public decimal getKilosBin(String variedad, String clase)
+        public decimal getKilosBin(String variedad, String clase, String tipoEnvase)
         {
-            return Convert.ToDecimal((from c in contexto.ClaseVariedadPeso where c.ID_Producto == "25" && c.ID_Variedad == variedad && c.Clase == clase select c.KilosNetoEnvase).SingleOrDefault().ToString());
+            return Convert.ToDecimal((from c in contexto.ClaseVariedadPeso where c.ID_Producto == "25" && c.ID_Variedad == variedad && c.Clase == clase && c.TipoEnvase == tipoEnvase select c.KilosNetoEnvase).SingleOrDefault().ToString());
         }
 
         //TRAER TIPO-ENVASE MANZANOS DESDE CLASE-VARIEDAD-PESO
-        public String getFormato(String variedad, String clase)
-        {
-            return (from c in contexto.ClaseVariedadPeso where c.ID_Producto == "25" && c.ID_Variedad == variedad && c.Clase == clase select c.TipoEnvase).FirstOrDefault().ToString();
-        }
+        //public List<String> getFormato(String variedad, String clase)
+        //{
+        //    return (from c in contexto.ClaseVariedadPeso where c.ID_Producto == "25" && c.ID_Variedad == variedad && c.Clase == clase select c.TipoEnvase).ToList();
+        //}
 
         //ADMINISTRACION DE COSECHA MAQUINA
         public void insertarCosechaMaquina(String producto, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fecha, decimal pesoneto, decimal bandejas, String guia, String recepcion)

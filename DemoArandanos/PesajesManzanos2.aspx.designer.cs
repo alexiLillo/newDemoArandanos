@@ -319,6 +319,24 @@ namespace DemoArandanos {
         protected global::System.Web.UI.WebControls.SqlDataSource dsClase;
         
         /// <summary>
+        /// Control ddTipoEnvase.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddTipoEnvase;
+        
+        /// <summary>
+        /// Control dsTipoEnvase.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource dsTipoEnvase;
+        
+        /// <summary>
         /// Control btGuardarPesaje.
         /// </summary>
         /// <remarks>

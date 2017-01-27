@@ -171,7 +171,18 @@
                     <asp:SqlDataSource ID="dsClase" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo %>" SelectCommand="SELECT [Clase] FROM [Clase]"></asp:SqlDataSource>
                     <br />
                 </div>
-                <div class="col-md-8"></div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <label for="ddTipoEnvase">Tipo Envase</label>
+                    <asp:DropDownList ID="ddTipoEnvase" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsTipoEnvase" DataTextField="TipoEnvase" DataValueField="KilosNetoEnvase" ></asp:DropDownList>
+                    <asp:SqlDataSource ID="dsTipoEnvase" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo %>" SelectCommand="SELECT [TipoEnvase], [KilosNetoEnvase] FROM [ClaseVariedadPeso] WHERE (([ID_Producto] = @ID_Producto) AND ([ID_Variedad] = @ID_Variedad) AND ([Clase] = @Clase))">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="25" Name="ID_Producto" Type="String" />
+                            <asp:ControlParameter ControlID="ddVariedad" Name="ID_Variedad" PropertyName="SelectedValue" Type="String" />
+                            <asp:ControlParameter ControlID="ddClase" Name="Clase" PropertyName="SelectedValue" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                </div>
                 <div class="col-md-4">
                     <!-- GRUPO DE BOTONES -->
                     <label>Seleccione una opción</label>
