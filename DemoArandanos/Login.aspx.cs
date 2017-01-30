@@ -156,7 +156,7 @@ namespace DemoArandanos
                 catch (Exception ex)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.ToString());
-                    lblLogin.Text = "No se puede establecer conexión con el servidor.";
+                    lblLogin.Text = "No se puede establecer conexión con el servidor." + ex.ToString();
                     divBadLogin.Visible = true;
                 }
 
