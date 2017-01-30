@@ -38,27 +38,44 @@ namespace DemoArandanos
 
         protected void ddVariedad_DataBound(object sender, EventArgs e)
         {
-            ddVariedad.Items.Insert(0, new ListItem("Seleccione...", ""));
+            if (ddVariedad.Items.Count > 1)
+                ddVariedad.Items.Insert(0, new ListItem("Seleccione...", ""));
         }
 
         protected void ddFundo_DataBound(object sender, EventArgs e)
         {
-            ddFundo.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddFundo.Items.Count > 1)
+                ddFundo.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void ddPotrero_DataBound(object sender, EventArgs e)
         {
-            ddPotrero.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddPotrero.Items.Count > 1)
+                ddPotrero.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void ddSector_DataBound(object sender, EventArgs e)
         {
-            ddSector.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddSector.Items.Count > 1)
+                ddSector.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void ddCuartel_DataBound(object sender, EventArgs e)
         {
-            ddCuartel.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddCuartel.Items.Count > 1)
+                ddCuartel.Items.Insert(0, new ListItem("Seleccione...", "0"));
+        }
+
+        protected void ddClase_DataBound(object sender, EventArgs e)
+        {
+            if (ddClase.Items.Count > 1)
+                ddClase.Items.Insert(0, new ListItem("Seleccione...", "0"));
+        }
+
+        protected void ddTipoEnvase_DataBound(object sender, EventArgs e)
+        {
+            if (ddTipoEnvase.Items.Count > 1)
+                ddTipoEnvase.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void txtFiltroRut_TextChanged(object sender, EventArgs e)
@@ -120,7 +137,7 @@ namespace DemoArandanos
             {
                 try
                 {
-                    decimal pesoNeto = control.getKilosBin(ddVariedad.SelectedValue, ddClase.SelectedValue, ddTipoEnvase.SelectedValue);
+                    decimal pesoNeto = control.getKilosBin(ddVariedad.SelectedValue, ddClase.SelectedValue, ddTipoEnvase.SelectedItem.Text);
                     //String formato = control.getFormato(ddVariedad.SelectedValue, ddClase.SelectedValue);
                     List<String> listadoTrabajadores = new List<string>();
                     foreach (ListItem rut in ddTrabajadores.Items)
@@ -199,7 +216,7 @@ namespace DemoArandanos
                 {
                     if (control.eliminarRegistrosBin(control.getListadoIDsEliminarBin(txtQRenvase.Text, DateTime.Parse(txtFechaHora.Text))))
                     {
-                        decimal pesoNeto = control.getKilosBin(ddVariedad.SelectedValue, ddClase.SelectedValue, ddTipoEnvase.SelectedValue);
+                        decimal pesoNeto = control.getKilosBin(ddVariedad.SelectedValue, ddClase.SelectedValue, ddTipoEnvase.SelectedItem.Text);
                         //String formato = control.getFormato(ddVariedad.SelectedValue, ddClase.SelectedValue);
                         List<String> listadoTrabajadores = new List<string>();
                         foreach (ListItem rut in ddTrabajadores.Items)

@@ -167,14 +167,14 @@
                     </asp:SqlDataSource>
                     <br />
                     <label for="ddClase">Categoría</label>
-                    <asp:DropDownList ID="ddClase" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsClase" DataTextField="Clase" DataValueField="Clase"></asp:DropDownList>
+                    <asp:DropDownList ID="ddClase" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsClase" DataTextField="Clase" DataValueField="Clase" OnDataBound="ddClase_DataBound"></asp:DropDownList>
                     <asp:SqlDataSource ID="dsClase" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo %>" SelectCommand="SELECT [Clase] FROM [Clase]"></asp:SqlDataSource>
                     <br />
                 </div>
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                     <label for="ddTipoEnvase">Tipo Envase</label>
-                    <asp:DropDownList ID="ddTipoEnvase" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsTipoEnvase" DataTextField="TipoEnvase" DataValueField="KilosNetoEnvase" ></asp:DropDownList>
+                    <asp:DropDownList ID="ddTipoEnvase" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsTipoEnvase" DataTextField="TipoEnvase" DataValueField="KilosNetoEnvase" OnDataBound="ddTipoEnvase_DataBound"></asp:DropDownList>
                     <asp:SqlDataSource ID="dsTipoEnvase" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo %>" SelectCommand="SELECT [TipoEnvase], [KilosNetoEnvase] FROM [ClaseVariedadPeso] WHERE (([ID_Producto] = @ID_Producto) AND ([ID_Variedad] = @ID_Variedad) AND ([Clase] = @Clase))">
                         <SelectParameters>
                             <asp:Parameter DefaultValue="25" Name="ID_Producto" Type="String" />
