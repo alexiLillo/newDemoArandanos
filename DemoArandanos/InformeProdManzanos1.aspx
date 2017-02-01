@@ -178,7 +178,7 @@
             <div class="col-md-12">
                 <br />
                 <div class="col-md-4">
-                    <label for="txtFiltro">Filtrar por QR, Rut o Formato</label>
+                    <label for="txtFiltro">Filtrar por QR, Rut, Cuadrilla</label>
                     <div class="input-group">
                         <asp:TextBox ID="txtFiltro" AutoPostBack="true" runat="server" type="input" class="form-control" placeholder="Buscar..." OnTextChanged="txtFiltro_TextChanged"></asp:TextBox>
                         <span class="input-group-btn">
@@ -209,11 +209,11 @@
                                 <asp:BoundField DataField="RutPesador" HeaderText="Rut Anotador" SortExpression="RutPesador"></asp:BoundField>
                                 <asp:BoundField DataField="Formato" HeaderText="Formato" SortExpression="Formato" />
                                 <asp:BoundField DataField="FechaHora" HeaderText="Fecha Hora" SortExpression="FechaHora" />
-                                <asp:BoundField DataField="PesoNeto" HeaderText="Peso Neto" SortExpression="PesoNeto" DataFormatString="{0:n2}" />
-                                <asp:BoundField DataField="Cantidad" HeaderText="Cantidad Bin" SortExpression="Cantidad" DataFormatString="{0:n2}" />
+                                <asp:BoundField DataField="PesoNeto" HeaderText="Peso Neto" SortExpression="PesoNeto" DataFormatString="{0:n3}" />
+                                <asp:BoundField DataField="Cantidad" HeaderText="Cantidad Bin" SortExpression="Cantidad" DataFormatString="{0:n3}" />
                             </Columns>
                         </asp:GridView>
-                        <asp:SqlDataSource ID="dsGrillaPesajeProd" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo10 %>" SelectCommand="SELECT * FROM [Pesaje] WHERE Producto = '25' and ((Fundo LIKE  @ID_Fundo + '%') AND (Potrero LIKE @ID_Potrero + '%') AND (Sector LIKE @ID_Sector + '%') AND (Cuartel LIKE @ID_Cuartel + '%') AND (Variedad LIKE @ID_Variedad + '%') AND (Clase LIKE @Clase + '%')) AND (([Formato] LIKE '%' + @Formato + '%') OR ([QRenvase] LIKE '%' + @QRenvase + '%') OR ([RutPesador] LIKE '%' + @RutPesador + '%') OR ([RutTrabajador] LIKE '%' + @RutTrabajador + '%')) AND [FechaHora] BETWEEN (@FechaHora + ' 00:00') AND (@FechaHora2 + ' 23:59') ORDER BY [FechaHora]">
+                        <asp:SqlDataSource ID="dsGrillaPesajeProd" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo10 %>" SelectCommand="SELECT * FROM [Pesaje] WHERE Producto = '25' and ((Fundo LIKE  @ID_Fundo + '%') AND (Potrero LIKE @ID_Potrero + '%') AND (Sector LIKE @ID_Sector + '%') AND (Cuartel LIKE @ID_Cuartel + '%') AND (Variedad LIKE @ID_Variedad + '%') AND (Clase LIKE @Clase + '%')) AND (([Formato] LIKE '%' + @Formato + '%') OR ([QRenvase] LIKE '%' + @QRenvase + '%') OR ([RutPesador] LIKE '%' + @RutPesador + '%') OR ([RutTrabajador] LIKE '%' + @RutTrabajador + '%') OR ([Cuadrilla] LIKE '%' + @Cuadrilla + '%')) AND [FechaHora] BETWEEN (@FechaHora + ' 00:00') AND (@FechaHora2 + ' 23:59') ORDER BY [FechaHora]">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="ddFundo" ConvertEmptyStringToNull="False" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" />
                                 <asp:ControlParameter ControlID="ddPotrero" ConvertEmptyStringToNull="False" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" />
@@ -231,6 +231,7 @@
                                 <asp:ControlParameter ControlID="txtFiltro" ConvertEmptyStringToNull="False" Name="RutTrabajador" PropertyName="Text" Type="String" />
                                 <asp:ControlParameter ControlID="txtFiltro" ConvertEmptyStringToNull="False" Name="Sector" PropertyName="Text" Type="String" />
                                 <asp:ControlParameter ControlID="txtFiltro" ConvertEmptyStringToNull="False" Name="Variedad" PropertyName="Text" Type="String" />
+                                <asp:ControlParameter ControlID="txtFiltro" ConvertEmptyStringToNull="False" Name="Cuadrilla" PropertyName="Text" Type="String" />
                                 <asp:ControlParameter ControlID="txtFechaInicio" Name="FechaHora" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" />
                                 <asp:ControlParameter ControlID="txtFechaTermino" Name="FechaHora2" PropertyName="Text" Type="DateTime" ConvertEmptyStringToNull="True" />
                             </SelectParameters>

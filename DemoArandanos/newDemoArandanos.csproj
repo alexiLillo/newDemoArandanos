@@ -260,6 +260,7 @@
     <Content Include="Pesajes2.aspx" />
     <Content Include="PesajesManzanos1.aspx" />
     <Content Include="PesajesManzanos2.aspx" />
+    <Content Include="ReajustarPesoBin.aspx" />
     <Content Include="Taras.aspx" />
     <Content Include="Trabajadores.aspx" />
     <Content Include="Trabajadores2.aspx" />
@@ -700,6 +701,13 @@
     </Compile>
     <Compile Include="PesajesManzanos2.aspx.designer.cs">
       <DependentUpon>PesajesManzanos2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReajustarPesoBin.aspx.cs">
+      <DependentUpon>ReajustarPesoBin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReajustarPesoBin.aspx.designer.cs">
+      <DependentUpon>ReajustarPesoBin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Taras.aspx.cs">
       <DependentUpon>Taras.aspx</DependentUpon>

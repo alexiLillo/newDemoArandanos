@@ -830,6 +830,45 @@ namespace DemoArandanos.Controlador
         //    return (from c in contexto.ClaseVariedadPeso where c.ID_Producto == "25" && c.ID_Variedad == variedad && c.Clase == clase select c.TipoEnvase).ToList();
         //}
 
+        //REAJUSTAR PESO DE BINS POR DÍA
+        public int reajustarPesosBins(DateTime fecha)
+        {
+            int reajustes = 0;
+            try
+            {
+                List<Pesaje> listaPesaje = (from p in contexto.Pesaje where p.Producto == "25" && p.FechaHora.Year == fecha.Year && p.FechaHora.Month == fecha.Month && p.FechaHora.Day == fecha.Day select p).ToList();
+                foreach (Pesaje pesaje in listaPesaje)
+                {
+                    //editar el peso neto del pesaje trayendo kilosBin de acuerdo a los mismos datos del pesaje traido
+                    pesaje.PesoNeto = (getKilosBin(pesaje.Variedad, pesaje.Clase, pesaje.Formato) / pesaje.Factor);
+                    reajustes += contexto.SaveChanges();
+                }
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+            return reajustes;
+        }
+
+        //contar la cantidad de registros de bin por dia
+        public int catidadRegistrosBinDia(DateTime fecha)
+        {
+            return (from p in contexto.Pesaje where p.Producto == "25" && p.FechaHora.Year == fecha.Year && p.FechaHora.Month == fecha.Month && p.FechaHora.Day == fecha.Day select p).Count();
+        }
+
+        //Devolver el peso total del día de manzanos
+        public decimal pesoPorDiaManzanos(DateTime fecha)
+        {
+            return (from p in contexto.Pesaje where p.Producto == "25" && p.FechaHora.Year == fecha.Year && p.FechaHora.Month == fecha.Month && p.FechaHora.Day == fecha.Day select p.PesoNeto).Sum();
+        }
+
         //ADMINISTRACION DE COSECHA MAQUINA
         public void insertarCosechaMaquina(String producto, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fecha, decimal pesoneto, decimal bandejas, String guia, String recepcion)
         {
