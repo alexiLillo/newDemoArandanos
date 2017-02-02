@@ -62,18 +62,26 @@
             </div>
         </div>
 
-        <div class="col-md-12">
-            <div class="col-md-3">
-                <label for="txtFecha">Seleccionar día a reajustar</label>
-                <asp:TextBox ID="txtFecha" AutoPostBack="true" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-MM-dd"> </asp:TextBox>
-                <br />
-            </div>
-            <div class="col-md-5">                
-                <label for="txtFecha">Peso del día: <asp:Label ID="lblpesodeldia" runat="server" Text=""></asp:Label></label>
-                <br />
-                <asp:Button ID="btReajustarPeso" class="btn btn-default" runat="server" Text="Reajustar Pesos" OnClick="btReajustarPeso_Click" OnClientClick="return confirm('¿Está seguro de que desea reajustar el peso de todos los registros de bins del día seleccionado?');" />
-            </div>
+        <div class="col-md-3">
+            <label for="txtFecha">Seleccionar día a reajustar</label>
+            <asp:TextBox ID="txtFecha" AutoPostBack="true" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-MM-dd"> </asp:TextBox>
+            <br />
         </div>
+        <div class="col-md-4">
+            <label for="txtFecha">
+                Peso del día:
+                <asp:Label ID="lblpesodeldia" runat="server" Text=""></asp:Label></label>
+            <br />
+            <asp:Button ID="btReajustarPeso" class="btn btn-default" runat="server" Text="Reajustar Pesos" OnClick="btReajustarPeso_Click" OnClientClick="return confirm('¿Está seguro de que desea reajustar el peso de todos los registros de bins del día seleccionado?');" />
+        </div>
+       <%-- <div class="col-md-5">
+            <div class="loading" align="center">
+                <strong>Reajustando, por favor espere...</strong><br />
+                <br />
+                <img src="loader.gif" alt="" />
+            </div>
+        </div>--%>
+
     </form>
 
 </asp:Content>
