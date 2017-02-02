@@ -61,7 +61,7 @@
                             <li><a href="InformeProdManzanos3.aspx">Producción Manzanos</a></li>
                             <li><a href="InformeGrafiManzanos3.aspx">Gráficos Producción</a></li>
                             <li><a href="InformeRankManzanos3.aspx">Ranking Trabajadores</a></li>
-                            <li><a href="InformeRankCuadrilla2.aspx">Ranking Cuadrillas</a></li>
+                            <li><a href="InformeRankCuadrilla3.aspx">Ranking Cuadrillas</a></li>
                             <li><a href="InformeRepeManzanos3.aspx">Registros Repetidos</a></li>
                             <li class="divider"></li>
                         </ul>
