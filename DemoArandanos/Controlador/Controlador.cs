@@ -860,13 +860,41 @@ namespace DemoArandanos.Controlador
         //contar la cantidad de registros de bin por dia
         public int catidadRegistrosBinDia(DateTime fecha)
         {
-            return (from p in contexto.Pesaje where p.Producto == "25" && p.FechaHora.Year == fecha.Year && p.FechaHora.Month == fecha.Month && p.FechaHora.Day == fecha.Day select p).Count();
+            try
+            {
+                return (from p in contexto.Pesaje where p.Producto == "25" && p.FechaHora.Year == fecha.Year && p.FechaHora.Month == fecha.Month && p.FechaHora.Day == fecha.Day select p).Count();
+            }
+            catch (DbEntityValidationException dbEx)
+            {                
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+                return 0;
+            }
         }
 
         //Devolver el peso total del día de manzanos
         public decimal pesoPorDiaManzanos(DateTime fecha)
         {
-            return (from p in contexto.Pesaje where p.Producto == "25" && p.FechaHora.Year == fecha.Year && p.FechaHora.Month == fecha.Month && p.FechaHora.Day == fecha.Day select p.PesoNeto).Sum();
+            try
+            {
+                return (from p in contexto.Pesaje where p.Producto == "25" && p.FechaHora.Year == fecha.Year && p.FechaHora.Month == fecha.Month && p.FechaHora.Day == fecha.Day select p.PesoNeto).DefaultIfEmpty(0).Sum();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+                return 0;
+            }
         }
 
         //ADMINISTRACION DE COSECHA MAQUINA

@@ -19,6 +19,9 @@ namespace DemoArandanos
                 {
                     Server.Transfer("Login.aspx", true);
                 }
+                //string script = "$(document).ready(function () { $('[id*=btReajustarPeso]').click(); });";
+                //ClientScript.RegisterStartupScript(this.GetType(), "load", script, true);
+
                 txtFecha.Text = DateTime.Now.ToString("yyyy-MM-dd");
             }
 
