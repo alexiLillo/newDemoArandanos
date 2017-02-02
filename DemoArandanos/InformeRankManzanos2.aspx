@@ -117,6 +117,7 @@
                                     <asp:BoundField DataField="Rut" HeaderText="Rut" ReadOnly="True" SortExpression="Rut" />
                                     <asp:BoundField DataField="Nombre" HeaderText="Nombres" SortExpression="Nombre" HtmlEncode="False" />
                                     <asp:BoundField DataField="Apellido" HeaderText="Apellidos" SortExpression="Apellido" HtmlEncode="False" />
+                                    <asp:BoundField DataField="Cuadrilla" HeaderText="Cuadrilla" SortExpression="Cuadrilla" HtmlEncode="False" />
                                     <asp:BoundField DataField="Bins" HeaderText="Bins" ReadOnly="True" DataFormatString="{0:n1}" SortExpression="Bins">
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
@@ -149,6 +150,7 @@
                         <asp:BoundField DataField="Rut" HeaderText="Rut" ReadOnly="True" SortExpression="Rut" />
                         <asp:BoundField DataField="Nombre" HeaderText="Nombres" SortExpression="Nombre" />
                         <asp:BoundField DataField="Apellido" HeaderText="Apellidos" SortExpression="Apellido" />
+                        <asp:BoundField DataField="Cuadrilla" HeaderText="Cuadrilla" SortExpression="Cuadrilla" HtmlEncode="False" />
                         <asp:BoundField DataField="Bins" HeaderText="Bins" ReadOnly="True" DataFormatString="{0:n1}" SortExpression="Bins">
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>

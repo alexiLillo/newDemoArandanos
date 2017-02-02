@@ -206,6 +206,15 @@ namespace DemoArandanos
 
             ddTipoEnvase.DataBind();
             ddTipoEnvase.SelectedIndex = ddTipoEnvase.Items.IndexOf(ddTipoEnvase.Items.FindByText(grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[13].Text.Replace("&nbsp;", "").ToString().Replace(".", ",")));
+
+            if (grillaPesajes.Rows[grillaPesajes.SelectedIndex].Cells[14].Text.Replace("&nbsp;", "").ToString().Equals("CELULAR"))
+            {
+                btEliminarPesaje.Attributes.Add("disabled", "true");
+            }
+            else
+            {
+                btEliminarPesaje.Attributes.Remove("disabled");
+            }
         }
 
         protected void btActualizarPesaje_Click(object sender, EventArgs e)

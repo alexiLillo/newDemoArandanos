@@ -1,13 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterManza1.Master" AutoEventWireup="true" CodeBehind="InformeRankManzanos1.aspx.cs" Inherits="DemoArandanos.InformeRankManzanos1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterManza2.Master" AutoEventWireup="true" CodeBehind="InformeRankCuadrilla2.aspx.cs" Inherits="DemoArandanos.InformeRankCuadrilla2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <div class="hidden-print">
-        <h1>Ranking de Trabajadores Manzanos</h1>
+        <h1>Ranking de Cuadrillas Manzanos</h1>
         <br />
     </div>
     <form runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:scriptmanager id="ScriptManager1" runat="server"></asp:scriptmanager>
         <div class=" col-md-12">
 
             <script language="javascript" type="text/javascript">
@@ -25,7 +25,7 @@
             </script>
             <div class="hidden-print">
                 <!-- Alertas de Bootstrap -->
-                <asp:UpdatePanel ID="UpdatePanel9" UpdateMode="Always" runat="server">
+                <asp:updatepanel id="UpdatePanel9" updatemode="Always" runat="server">
                     <ContentTemplate>
                         <!-- Funcion para desvanecer alertas -->
                         <script language="javascript" type="text/javascript">
@@ -58,30 +58,30 @@
                             <asp:Label ID="lbldanger" runat="server"></asp:Label>
                         </div>
                     </ContentTemplate>
-                </asp:UpdatePanel>
+                </asp:updatepanel>
             </div>
         </div>
 
         <div class="hidden-print">
             <div class="col-md-12">
                 <div class="col-md-6">
-                    <label for="txtFiltro">Filtrar por Rut o Nombre de Trabajador</label>
+                    <label for="txtFiltro">Filtrar por Cuadrilla</label>
                     <div class="input-group">
-                        <asp:TextBox ID="txtFiltro" AutoPostBack="true" runat="server" type="input" class="form-control" placeholder="Ingrese rut o nombre para filtrar la tabla" OnTextChanged="txtFiltro_TextChanged"></asp:TextBox>
+                        <asp:textbox id="txtFiltro" autopostback="true" runat="server" type="input" class="form-control" placeholder="Ingrese rut o nombre para filtrar la tabla" ontextchanged="txtFiltro_TextChanged"></asp:textbox>
                         <span class="input-group-btn">
-                            <asp:Button ID="btFiltrar" type="button" AutoPostBack="False" class="btn btn-default" runat="server" Text="Filtrar" OnClick="btFiltrar_Click" />
+                            <asp:button id="btFiltrar" type="button" autopostback="False" class="btn btn-default" runat="server" text="Filtrar" onclick="btFiltrar_Click" />
                         </span>
                     </div>
                     <br />
                 </div>
                 <div class="col-md-3">
                     <label for="txtFechaInicio">Fecha filtro inicio</label>
-                    <asp:TextBox ID="txtFechaInicio" AutoPostBack="true" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-MM-dd" OnTextChanged="txtFechaInicio_TextChanged"></asp:TextBox>
+                    <asp:textbox id="txtFechaInicio" autopostback="true" cssclass="form-control" textmode="Date" runat="server" placeholder="aaaa-MM-dd" ontextchanged="txtFechaInicio_TextChanged"></asp:textbox>
                     <br />
                 </div>
                 <div class="col-md-3">
                     <label for="txtFechaTermino">Fecha filtro fin</label>
-                    <asp:TextBox ID="txtFechaTermino" AutoPostBack="true" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-MM-dd" OnTextChanged="txtFechaTermino_TextChanged"></asp:TextBox>
+                    <asp:textbox id="txtFechaTermino" autopostback="true" cssclass="form-control" textmode="Date" runat="server" placeholder="aaaa-MM-dd" ontextchanged="txtFechaTermino_TextChanged"></asp:textbox>
                     <br />
                 </div>
             </div>
@@ -90,14 +90,17 @@
         <div class="visible-print">
             <div class="col-md-12">
                 <div class="visible-print">
-                    <h2>Ranking de Trabajadores Manzanos</h2>
+                    <h2>Ranking de Cuadrillas Manzanos</h2>
                     <br />
                     <h5>Desde:
-                        <asp:Label ID="lbldesde" runat="server" Text=""></asp:Label></h5>
+                        <asp:label id="lbldesde" runat="server" text=""></asp:label>
+                    </h5>
                     <h5>Hasta:
-                        <asp:Label ID="lblhasta" runat="server" Text=""></asp:Label></h5>
+                        <asp:label id="lblhasta" runat="server" text=""></asp:label>
+                    </h5>
                     <h6>Filtro:
-                        <asp:Label ID="lblfiltr" runat="server" Text=""></asp:Label></h6>
+                        <asp:label id="lblfiltr" runat="server" text=""></asp:label>
+                    </h6>
                     <br />
                 </div>
             </div>
@@ -108,17 +111,17 @@
                 <!-- grilla -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Ranking</h3>
+                        <h3 class="panel-title">Ranking Cuadrillas</h3>
                     </div>
                     <div class="panel-body" style="max-height: 420px; overflow-y: scroll;">
                         <div class="table-responsive">
-                            <asp:GridView ID="grillaRanking" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="dsRanking" DataKeyNames="Rut">
+                            <asp:gridview id="grillaRanking" class="table table-bordered" runat="server" autogeneratecolumns="False" datasourceid="dsRanking" datakeynames="Cuadrilla">
                                 <Columns>
-                                    <asp:BoundField DataField="Rut" HeaderText="Rut" ReadOnly="True" SortExpression="Rut" />
+                                    <%--<asp:BoundField DataField="Rut" HeaderText="Rut" ReadOnly="True" SortExpression="Rut" />
                                     <asp:BoundField DataField="Nombre" HeaderText="Nombres" SortExpression="Nombre" HtmlEncode="False" />
-                                    <asp:BoundField DataField="Apellido" HeaderText="Apellidos" SortExpression="Apellido" HtmlEncode="False" />
+                                    <asp:BoundField DataField="Apellido" HeaderText="Apellidos" SortExpression="Apellido" HtmlEncode="False" />--%>
                                     <asp:BoundField DataField="Cuadrilla" HeaderText="Cuadrilla" SortExpression="Cuadrilla" HtmlEncode="False" />
-                                    <asp:BoundField DataField="Bins" HeaderText="Bins" ReadOnly="True" DataFormatString="{0:n1}" SortExpression="Bins">
+                                    <asp:BoundField DataField="Bins" HeaderText="Bins" ReadOnly="True" DataFormatString="{0:n0}" SortExpression="Bins">
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="Kilos" HeaderText="Kilos" ReadOnly="True" DataFormatString="{0:n2}" SortExpression="Kilos">
@@ -127,15 +130,18 @@
                                     <asp:BoundField DataField="DiasTrabajados" HeaderText="Dias Trabajados" DataFormatString="{0:n0}" ReadOnly="True" SortExpression="DiasTrabajados">
                                         <ItemStyle HorizontalAlign="Center" />
                                     </asp:BoundField>
+                                    <asp:BoundField DataField="Trabajadores" HeaderText="Cantidad Trabajadores" ReadOnly="True" DataFormatString="{0:n0}" SortExpression="Trabajadores">
+                                        <ItemStyle HorizontalAlign="Center" />
+                                    </asp:BoundField>
                                 </Columns>
-                            </asp:GridView>
-                            <asp:SqlDataSource ID="dsRanking" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo11 %>" SelectCommand="SP_VistaRankingManzanos" SelectCommandType="StoredProcedure">
+                            </asp:gridview>
+                            <asp:sqldatasource id="dsRanking" runat="server" connectionstring="<%$ ConnectionStrings:Modelo11 %>" selectcommand="SP_RankingCuadrillas" selectcommandtype="StoredProcedure">
                                 <SelectParameters>
                                     <asp:ControlParameter ControlID="txtFiltro" Name="FILTRO" PropertyName="Text" Type="String" ConvertEmptyStringToNull="False" />
                                     <asp:ControlParameter ControlID="txtFechaInicio" Name="FEC_D" PropertyName="Text" Type="DateTime" />
                                     <asp:ControlParameter ControlID="txtFechaTermino" Name="FEC_H" PropertyName="Text" Type="DateTime" />
                                 </SelectParameters>
-                            </asp:SqlDataSource>
+                            </asp:sqldatasource>
                         </div>
                     </div>
                 </div>
@@ -145,13 +151,13 @@
         <div class="visible-print">
             <div class="table-responsive">
                 <!-- grilla de impresion -->
-                <asp:GridView ID="GridView1" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="dsRanking" DataKeyNames="Rut">
+                <asp:gridview id="GridView1" class="table table-bordered" runat="server" autogeneratecolumns="False" datasourceid="dsRanking" datakeynames="Cuadrilla">
                     <Columns>
-                        <asp:BoundField DataField="Rut" HeaderText="Rut" ReadOnly="True" SortExpression="Rut" />
+                        <%--<asp:BoundField DataField="Rut" HeaderText="Rut" ReadOnly="True" SortExpression="Rut" />
                         <asp:BoundField DataField="Nombre" HeaderText="Nombres" SortExpression="Nombre" />
-                        <asp:BoundField DataField="Apellido" HeaderText="Apellidos" SortExpression="Apellido" />
+                        <asp:BoundField DataField="Apellido" HeaderText="Apellidos" SortExpression="Apellido" />--%>
                         <asp:BoundField DataField="Cuadrilla" HeaderText="Cuadrilla" SortExpression="Cuadrilla" HtmlEncode="False" />
-                        <asp:BoundField DataField="Bins" HeaderText="Bins" ReadOnly="True" DataFormatString="{0:n1}" SortExpression="Bins">
+                        <asp:BoundField DataField="Bins" HeaderText="Bins" ReadOnly="True" DataFormatString="{0:n0}" SortExpression="Bins">
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>
                         <asp:BoundField DataField="Kilos" HeaderText="Kilos Aprox." ReadOnly="True" DataFormatString="{0:n2}" SortExpression="Kilos">
@@ -161,13 +167,13 @@
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>
                     </Columns>
-                </asp:GridView>
+                </asp:gridview>
             </div>
         </div>
 
         <div class="hidden-print">
             <input type="button" style="float: right" class="btn btn-default" name="Imprimir" value="Imprimir" onclick="window.print()">
-            <asp:Button ID="Button1" Style="margin-right:5px; float: right" class="btn btn-default" runat="server" Text="Exportar a Excel" OnClick="ExportToExcel" />
+            <asp:button id="Button1" style="margin-right: 5px; float: right" class="btn btn-default" runat="server" text="Exportar a Excel" onclick="ExportToExcel" />
         </div>
     </form>
 

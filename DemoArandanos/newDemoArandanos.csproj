@@ -196,6 +196,9 @@
     <Content Include="InformeProdManzanos1.aspx" />
     <Content Include="InformeProdManzanos2.aspx" />
     <Content Include="InformeProdManzanos3.aspx" />
+    <Content Include="InformeRankCuadrilla1.aspx" />
+    <Content Include="InformeRankCuadrilla2.aspx" />
+    <Content Include="InformeRankCuadrilla3.aspx" />
     <Content Include="InformeRanking3.aspx" />
     <Content Include="InformeRanking2.aspx" />
     <Content Include="InformeRanking1.aspx" />
@@ -453,6 +456,27 @@
     </Compile>
     <Compile Include="InformeProdManzanos3.aspx.designer.cs">
       <DependentUpon>InformeProdManzanos3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeRankCuadrilla1.aspx.cs">
+      <DependentUpon>InformeRankCuadrilla1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRankCuadrilla1.aspx.designer.cs">
+      <DependentUpon>InformeRankCuadrilla1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeRankCuadrilla2.aspx.cs">
+      <DependentUpon>InformeRankCuadrilla2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRankCuadrilla2.aspx.designer.cs">
+      <DependentUpon>InformeRankCuadrilla2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeRankCuadrilla3.aspx.cs">
+      <DependentUpon>InformeRankCuadrilla3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRankCuadrilla3.aspx.designer.cs">
+      <DependentUpon>InformeRankCuadrilla3.aspx</DependentUpon>
     </Compile>
     <Compile Include="InformeRanking3.aspx.cs">
       <DependentUpon>InformeRanking3.aspx</DependentUpon>
