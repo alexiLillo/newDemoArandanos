@@ -103,7 +103,12 @@ namespace DemoArandanos
 
             int trabajadores = new HashSet<String>(lista).Count;
 
-            lbltotalbins.Text = decimal.Round(bins, 0).ToString();
+            if (txtFiltro.Text.Equals(""))
+                lbltotalbins.Text = decimal.Round(bins, 0).ToString();
+            else
+                lbltotalbins.Text = decimal.Round(bins, 2).ToString();
+
+            //lbltotalbins.Text = decimal.Round(bins, 2).ToString();
             lbltotalkilos.Text = kilos.ToString();
             lbltotaltrabajadores.Text = trabajadores.ToString();
             decimal prom = 0;
