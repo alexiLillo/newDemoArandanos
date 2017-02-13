@@ -295,7 +295,7 @@ namespace DemoArandanos
             Response.Clear();
             Response.Buffer = true;
             Response.ContentEncoding = System.Text.Encoding.Default;
-            Response.AddHeader("content-disposition", "attachment;filename=Registros-Bins-" + txtFiltroRut.Text + "-'" + txtFechaInicio.Text + "'-'" + txtFechaTermino.Text + "'.xls");
+            Response.AddHeader("content-disposition", "attachment;filename=Registros-Bins-Manzanos-" + txtFiltroRut.Text + "-'" + txtFechaInicio.Text + "'-'" + txtFechaTermino.Text + "'.xls");
             Response.Charset = "";
             Response.ContentType = "application/vnd.ms-excel";
             using (StringWriter sw = new StringWriter())

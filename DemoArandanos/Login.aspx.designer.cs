@@ -31,6 +31,15 @@ namespace DemoArandanos {
         protected global::System.Web.UI.WebControls.RadioButton rbtManzanos;
         
         /// <summary>
+        /// Control rbtVinedos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbtVinedos;
+        
+        /// <summary>
         /// Control txtUser.
         /// </summary>
         /// <remarks>

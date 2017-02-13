@@ -184,6 +184,9 @@
     <Content Include="InformeGrafiManzanos1.aspx" />
     <Content Include="InformeGrafiManzanos2.aspx" />
     <Content Include="InformeGrafiManzanos3.aspx" />
+    <Content Include="InformeGrafiUvas1.aspx" />
+    <Content Include="InformeGrafiUvas2.aspx" />
+    <Content Include="InformeGrafiUvas3.aspx" />
     <Content Include="InformeMaquina1.aspx" />
     <Content Include="InformeMaquina2.aspx" />
     <Content Include="InformeMaquina3.aspx" />
@@ -196,21 +199,33 @@
     <Content Include="InformeProdManzanos1.aspx" />
     <Content Include="InformeProdManzanos2.aspx" />
     <Content Include="InformeProdManzanos3.aspx" />
+    <Content Include="InformeProdUvas1.aspx" />
+    <Content Include="InformeProdUvas2.aspx" />
+    <Content Include="InformeProdUvas3.aspx" />
     <Content Include="InformeRankCuadrilla1.aspx" />
     <Content Include="InformeRankCuadrilla2.aspx" />
     <Content Include="InformeRankCuadrilla3.aspx" />
+    <Content Include="InformeRankCuadrillaUvas1.aspx" />
+    <Content Include="InformeRankCuadrillaUvas2.aspx" />
+    <Content Include="InformeRankCuadrillaUvas3.aspx" />
     <Content Include="InformeRanking3.aspx" />
     <Content Include="InformeRanking2.aspx" />
     <Content Include="InformeRanking1.aspx" />
     <Content Include="InformeRankManzanos1.aspx" />
     <Content Include="InformeRankManzanos2.aspx" />
     <Content Include="InformeRankManzanos3.aspx" />
+    <Content Include="InformeRankUvas1.aspx" />
+    <Content Include="InformeRankUvas2.aspx" />
+    <Content Include="InformeRankUvas3.aspx" />
     <Content Include="InformeRepeManzanos1.aspx" />
     <Content Include="InformeRepeManzanos2.aspx" />
     <Content Include="InformeRepeManzanos3.aspx" />
     <Content Include="InformeRepetidas3.aspx" />
     <Content Include="InformeRepetidas2.aspx" />
     <Content Include="InformeRepetidas1.aspx" />
+    <Content Include="InformeRepeUvas1.aspx" />
+    <Content Include="InformeRepeUvas2.aspx" />
+    <Content Include="InformeRepeUvas3.aspx" />
     <Content Include="mapa.aspx" />
     <Content Include="Maquina1.aspx" />
     <Content Include="Maquina2.aspx" />
@@ -238,6 +253,9 @@
     <Content Include="MasterManza1.Master" />
     <Content Include="MasterManza2.Master" />
     <Content Include="MasterManza3.Master" />
+    <Content Include="MasterUva1.Master" />
+    <Content Include="MasterUva2.Master" />
+    <Content Include="MasterUva3.Master" />
     <None Include="Properties\PublishProfiles\GESTION.pubxml" />
     <None Include="Properties\PublishProfiles\GESTIONPRODCAF.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -265,7 +283,10 @@
     <Content Include="Pesajes2.aspx" />
     <Content Include="PesajesManzanos1.aspx" />
     <Content Include="PesajesManzanos2.aspx" />
+    <Content Include="PesajesUvas1.aspx" />
+    <Content Include="PesajesUvas2.aspx" />
     <Content Include="ReajustarPesoBin.aspx" />
+    <Content Include="ReajustarPesoBinUvas.aspx" />
     <Content Include="Taras.aspx" />
     <Content Include="Trabajadores.aspx" />
     <Content Include="Trabajadores2.aspx" />
@@ -278,6 +299,8 @@
     <Content Include="scripts\npm.js" />
     <Content Include="TrabajadoresManzanos1.aspx" />
     <Content Include="TrabajadoresManzanos2.aspx" />
+    <Content Include="TrabajadoresUvas1.aspx" />
+    <Content Include="TrabajadoresUvas2.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -373,6 +396,27 @@
     <Compile Include="InformeGrafiManzanos3.aspx.designer.cs">
       <DependentUpon>InformeGrafiManzanos3.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InformeGrafiUvas1.aspx.cs">
+      <DependentUpon>InformeGrafiUvas1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeGrafiUvas1.aspx.designer.cs">
+      <DependentUpon>InformeGrafiUvas1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeGrafiUvas2.aspx.cs">
+      <DependentUpon>InformeGrafiUvas2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeGrafiUvas2.aspx.designer.cs">
+      <DependentUpon>InformeGrafiUvas2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeGrafiUvas3.aspx.cs">
+      <DependentUpon>InformeGrafiUvas3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeGrafiUvas3.aspx.designer.cs">
+      <DependentUpon>InformeGrafiUvas3.aspx</DependentUpon>
+    </Compile>
     <Compile Include="InformeMaquina1.aspx.cs">
       <DependentUpon>InformeMaquina1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -457,6 +501,27 @@
     <Compile Include="InformeProdManzanos3.aspx.designer.cs">
       <DependentUpon>InformeProdManzanos3.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InformeProdUvas1.aspx.cs">
+      <DependentUpon>InformeProdUvas1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeProdUvas1.aspx.designer.cs">
+      <DependentUpon>InformeProdUvas1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeProdUvas2.aspx.cs">
+      <DependentUpon>InformeProdUvas2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeProdUvas2.aspx.designer.cs">
+      <DependentUpon>InformeProdUvas2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeProdUvas3.aspx.cs">
+      <DependentUpon>InformeProdUvas3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeProdUvas3.aspx.designer.cs">
+      <DependentUpon>InformeProdUvas3.aspx</DependentUpon>
+    </Compile>
     <Compile Include="InformeRankCuadrilla1.aspx.cs">
       <DependentUpon>InformeRankCuadrilla1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -477,6 +542,27 @@
     </Compile>
     <Compile Include="InformeRankCuadrilla3.aspx.designer.cs">
       <DependentUpon>InformeRankCuadrilla3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeRankCuadrillaUvas1.aspx.cs">
+      <DependentUpon>InformeRankCuadrillaUvas1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRankCuadrillaUvas1.aspx.designer.cs">
+      <DependentUpon>InformeRankCuadrillaUvas1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeRankCuadrillaUvas2.aspx.cs">
+      <DependentUpon>InformeRankCuadrillaUvas2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRankCuadrillaUvas2.aspx.designer.cs">
+      <DependentUpon>InformeRankCuadrillaUvas2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeRankCuadrillaUvas3.aspx.cs">
+      <DependentUpon>InformeRankCuadrillaUvas3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRankCuadrillaUvas3.aspx.designer.cs">
+      <DependentUpon>InformeRankCuadrillaUvas3.aspx</DependentUpon>
     </Compile>
     <Compile Include="InformeRanking3.aspx.cs">
       <DependentUpon>InformeRanking3.aspx</DependentUpon>
@@ -520,6 +606,27 @@
     <Compile Include="InformeRankManzanos3.aspx.designer.cs">
       <DependentUpon>InformeRankManzanos3.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InformeRankUvas1.aspx.cs">
+      <DependentUpon>InformeRankUvas1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRankUvas1.aspx.designer.cs">
+      <DependentUpon>InformeRankUvas1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeRankUvas2.aspx.cs">
+      <DependentUpon>InformeRankUvas2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRankUvas2.aspx.designer.cs">
+      <DependentUpon>InformeRankUvas2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeRankUvas3.aspx.cs">
+      <DependentUpon>InformeRankUvas3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRankUvas3.aspx.designer.cs">
+      <DependentUpon>InformeRankUvas3.aspx</DependentUpon>
+    </Compile>
     <Compile Include="InformeRepeManzanos1.aspx.cs">
       <DependentUpon>InformeRepeManzanos1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -561,6 +668,27 @@
     </Compile>
     <Compile Include="InformeRepetidas1.aspx.designer.cs">
       <DependentUpon>InformeRepetidas1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeRepeUvas1.aspx.cs">
+      <DependentUpon>InformeRepeUvas1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRepeUvas1.aspx.designer.cs">
+      <DependentUpon>InformeRepeUvas1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeRepeUvas2.aspx.cs">
+      <DependentUpon>InformeRepeUvas2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRepeUvas2.aspx.designer.cs">
+      <DependentUpon>InformeRepeUvas2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeRepeUvas3.aspx.cs">
+      <DependentUpon>InformeRepeUvas3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeRepeUvas3.aspx.designer.cs">
+      <DependentUpon>InformeRepeUvas3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -631,6 +759,27 @@
     </Compile>
     <Compile Include="MasterManza3.Master.designer.cs">
       <DependentUpon>MasterManza3.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterUva1.Master.cs">
+      <DependentUpon>MasterUva1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterUva1.Master.designer.cs">
+      <DependentUpon>MasterUva1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterUva2.Master.cs">
+      <DependentUpon>MasterUva2.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterUva2.Master.designer.cs">
+      <DependentUpon>MasterUva2.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterUva3.Master.cs">
+      <DependentUpon>MasterUva3.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterUva3.Master.designer.cs">
+      <DependentUpon>MasterUva3.Master</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Clase.cs" />
     <Compile Include="Modelo\ClaseVariedadPeso.cs" />
@@ -728,12 +877,33 @@
     <Compile Include="PesajesManzanos2.aspx.designer.cs">
       <DependentUpon>PesajesManzanos2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PesajesUvas1.aspx.cs">
+      <DependentUpon>PesajesUvas1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PesajesUvas1.aspx.designer.cs">
+      <DependentUpon>PesajesUvas1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PesajesUvas2.aspx.cs">
+      <DependentUpon>PesajesUvas2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PesajesUvas2.aspx.designer.cs">
+      <DependentUpon>PesajesUvas2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ReajustarPesoBin.aspx.cs">
       <DependentUpon>ReajustarPesoBin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ReajustarPesoBin.aspx.designer.cs">
       <DependentUpon>ReajustarPesoBin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReajustarPesoBinUvas.aspx.cs">
+      <DependentUpon>ReajustarPesoBinUvas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReajustarPesoBinUvas.aspx.designer.cs">
+      <DependentUpon>ReajustarPesoBinUvas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Taras.aspx.cs">
       <DependentUpon>Taras.aspx</DependentUpon>
@@ -782,6 +952,20 @@
     </Compile>
     <Compile Include="TrabajadoresManzanos2.aspx.designer.cs">
       <DependentUpon>TrabajadoresManzanos2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TrabajadoresUvas1.aspx.cs">
+      <DependentUpon>TrabajadoresUvas1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrabajadoresUvas1.aspx.designer.cs">
+      <DependentUpon>TrabajadoresUvas1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TrabajadoresUvas2.aspx.cs">
+      <DependentUpon>TrabajadoresUvas2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrabajadoresUvas2.aspx.designer.cs">
+      <DependentUpon>TrabajadoresUvas2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>

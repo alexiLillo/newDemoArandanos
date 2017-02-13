@@ -34,8 +34,8 @@ namespace DemoArandanos
 
         protected void btReajustarPeso_Click(object sender, EventArgs e)
         {
-            int reajustados = control.reajustarPesosBins(DateTime.Parse(txtFecha.Text));
-            int total = control.catidadRegistrosBinDia(DateTime.Parse(txtFecha.Text));
+            int reajustados = control.reajustarPesosBins("25", DateTime.Parse(txtFecha.Text));
+            int total = control.catidadRegistrosBinDia("25", DateTime.Parse(txtFecha.Text));
             if (reajustados == total)
             {
                 lblsuccess.Text = "Se reajustó el peso de " + reajustados + " registros, de un total de " + total;

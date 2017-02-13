@@ -71,6 +71,10 @@
                 <asp:RadioButton ID="rbtManzanos" GroupName="Login" Style="float: right" runat="server" class="radio-inline" Text="Manzanos" />
                 <br />
                 <br />
+                <asp:RadioButton ID="rbtVinedos" GroupName="Login" runat="server" class="radio-inline" Text="Viñedos" />
+                <br />
+                <br />
+                <br />
                 <label for="txtUser">Usuario:</label>
                 <asp:TextBox ID="txtUser" Text="user" runat="server" type="input" required class="form-control" placeholder="Ingrese nombre de usuario"></asp:TextBox>
                 <br />
