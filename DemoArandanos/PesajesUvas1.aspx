@@ -161,14 +161,14 @@
                         <SelectParameters>
                             <asp:ControlParameter ControlID="ddFundo" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" />
                             <asp:ControlParameter ControlID="ddPotrero" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" />
-                            <asp:ControlParameter ControlID="ddSector" Name="ID_Sector" PropertyName="SelectedValue" Type="String" />
+                            <asp:ControlParameter ControlID="ddSector" Name="ID_Sector" PropertyName="SelectedValue" Type="String" DefaultValue="0"/>
                             <asp:ControlParameter ControlID="ddVariedad" ConvertEmptyStringToNull="False" Name="ID_Variedad" PropertyName="SelectedValue" Type="String" />
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <br />
                     <label for="ddClase">Categoría</label>
                     <asp:DropDownList ID="ddClase" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsClase" DataTextField="Clase" DataValueField="Clase" OnDataBound="ddClase_DataBound"></asp:DropDownList>
-                    <asp:SqlDataSource ID="dsClase" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo %>" SelectCommand="SELECT [Clase] FROM [Clase]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="dsClase" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo %>" SelectCommand="SELECT DISTINCT [Clase] FROM [ClaseVariedadPeso] WHERE ID_Producto='33'"></asp:SqlDataSource>
                     <br />
                 </div>
                 <div class="col-md-4"></div>

@@ -32,27 +32,32 @@ namespace DemoArandanos
 
         protected void ddVariedad_DataBound(object sender, EventArgs e)
         {
-            ddVariedad.Items.Insert(0, new ListItem("Seleccione...", ""));
+            if (ddVariedad.Items.Count > 1)
+                ddVariedad.Items.Insert(0, new ListItem("Seleccione...", ""));
         }
 
         protected void ddFundo_DataBound(object sender, EventArgs e)
         {
-            ddFundo.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddFundo.Items.Count > 1)
+                ddFundo.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void ddPotrero_DataBound(object sender, EventArgs e)
         {
-            ddPotrero.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddPotrero.Items.Count > 1)
+                ddPotrero.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void ddSector_DataBound(object sender, EventArgs e)
         {
-            ddSector.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddSector.Items.Count > 1)
+                ddSector.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void ddCuartel_DataBound(object sender, EventArgs e)
         {
-            ddCuartel.Items.Insert(0, new ListItem("SIN CUARTEL", "0"));
+            if (ddCuartel.Items.Count > 1)
+                ddCuartel.Items.Insert(0, new ListItem("SIN CUARTEL", "0"));
         }
 
         protected void txtFechaInicio_TextChanged(object sender, EventArgs e)

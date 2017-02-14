@@ -1,5 +1,6 @@
 ﻿using DemoArandanos.Controlador;
 using System;
+using System.Web.UI.WebControls;
 
 namespace DemoArandanos
 {
@@ -887,6 +888,114 @@ namespace DemoArandanos
                 lbldanger.Text = "Complete todos los campos";
                 divDanger.Visible = true;
             }
+        }
+
+        protected void ddFundo_DataBound(object sender, EventArgs e)
+        {
+            if (ddFundo.Items.Count > 1)
+                ddFundo.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddFundo2_DataBound(object sender, EventArgs e)
+        {
+            if (ddFundo2.Items.Count > 1)
+                ddFundo2.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddPotrero_DataBound(object sender, EventArgs e)
+        {
+            if (ddPotrero.Items.Count > 1)
+                ddPotrero.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddFundo3_DataBound(object sender, EventArgs e)
+        {
+            if (ddFundo3.Items.Count > 1)
+                ddFundo3.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddPotrero2_DataBound(object sender, EventArgs e)
+        {
+            if (ddPotrero2.Items.Count > 1)
+                ddPotrero2.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddSector_DataBound(object sender, EventArgs e)
+        {
+            if (ddSector.Items.Count > 1)
+                ddSector.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddVariedad_DataBound(object sender, EventArgs e)
+        {
+            if (ddVariedad.Items.Count > 1)
+                ddVariedad.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddFundo4_DataBound(object sender, EventArgs e)
+        {
+            if (ddFundo4.Items.Count > 1)
+                ddFundo4.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddPotrero3_DataBound(object sender, EventArgs e)
+        {
+            if (ddPotrero3.Items.Count > 1)
+                ddPotrero3.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddSector2_DataBound(object sender, EventArgs e)
+        {
+            if (ddSector2.Items.Count > 1)
+                ddSector2.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddCuartel_DataBound(object sender, EventArgs e)
+        {
+            if (ddCuartel.Items.Count > 1)
+                ddCuartel.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddEstado_DataBound(object sender, EventArgs e)
+        {
+            if (ddEstado.Items.Count > 1)
+                ddEstado.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddFundo5_DataBound(object sender, EventArgs e)
+        {
+            if (ddFundo5.Items.Count > 1)
+                ddFundo5.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddPotrero4_DataBound(object sender, EventArgs e)
+        {
+            if (ddPotrero4.Items.Count > 1)
+                ddPotrero4.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddSector3_DataBound(object sender, EventArgs e)
+        {
+            if (ddSector3.Items.Count > 1)
+                ddSector3.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddCuartel2_DataBound(object sender, EventArgs e)
+        {
+            if (ddCuartel2.Items.Count > 1)
+                ddCuartel2.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddHilera_DataBound(object sender, EventArgs e)
+        {
+            if (ddHilera.Items.Count > 1)
+                ddHilera.Items.Insert(0, new ListItem("Seleccione...", ""));
+        }
+
+        protected void ddProducto_DataBound(object sender, EventArgs e)
+        {
+            if (ddProducto.Items.Count > 1)
+                ddProducto.Items.Insert(0, new ListItem("Seleccione...", ""));
         }
     }
 }

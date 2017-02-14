@@ -137,7 +137,7 @@ namespace DemoArandanos
             {
                 try
                 {
-                    decimal pesoNeto = control.getKilosBin(ddVariedad.SelectedValue, ddClase.SelectedValue, ddTipoEnvase.SelectedItem.Text);
+                    decimal pesoNeto = control.getKilosBin("33", ddVariedad.SelectedValue, ddClase.SelectedValue, ddTipoEnvase.SelectedItem.Text);
                     //String formato = control.getFormato(ddVariedad.SelectedValue, ddClase.SelectedValue);
                     List<String> listadoTrabajadores = new List<string>();
                     foreach (ListItem rut in ddTrabajadores.Items)
@@ -216,7 +216,7 @@ namespace DemoArandanos
                 {
                     if (control.eliminarRegistrosBin(control.getListadoIDsEliminarBin(txtQRenvase.Text, DateTime.Parse(txtFechaHora.Text))))
                     {
-                        decimal pesoNeto = control.getKilosBin(ddVariedad.SelectedValue, ddClase.SelectedValue, ddTipoEnvase.SelectedItem.Text);
+                        decimal pesoNeto = control.getKilosBin("33", ddVariedad.SelectedValue, ddClase.SelectedValue, ddTipoEnvase.SelectedItem.Text);
                         //String formato = control.getFormato(ddVariedad.SelectedValue, ddClase.SelectedValue);
                         List<String> listadoTrabajadores = new List<string>();
                         foreach (ListItem rut in ddTrabajadores.Items)

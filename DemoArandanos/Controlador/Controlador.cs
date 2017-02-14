@@ -819,9 +819,9 @@ namespace DemoArandanos.Controlador
         }
 
         //TRAER KILOS-NETO-ENVASE MANZANOS DESDE CLASE-VARIEDAD-PESO
-        public decimal getKilosBin(String variedad, String clase, String tipoEnvase)
+        public decimal getKilosBin(String producto, String variedad, String clase, String tipoEnvase)
         {
-            return Convert.ToDecimal((from c in contexto.ClaseVariedadPeso where c.ID_Producto == "25" && c.ID_Variedad == variedad && c.Clase == clase && c.TipoEnvase == tipoEnvase select c.KilosNetoEnvase).SingleOrDefault().ToString());
+            return Convert.ToDecimal((from c in contexto.ClaseVariedadPeso where c.ID_Producto == producto && c.ID_Variedad == variedad && c.Clase == clase && c.TipoEnvase == tipoEnvase select c.KilosNetoEnvase).SingleOrDefault().ToString());
         }
 
         //TRAER TIPO-ENVASE MANZANOS DESDE CLASE-VARIEDAD-PESO
@@ -840,7 +840,7 @@ namespace DemoArandanos.Controlador
                 foreach (Pesaje pesaje in listaPesaje)
                 {
                     //editar el peso neto del pesaje trayendo kilosBin de acuerdo a los mismos datos del pesaje traido
-                    pesaje.PesoNeto = (getKilosBin(pesaje.Variedad, pesaje.Clase, pesaje.Formato) / pesaje.Factor);
+                    pesaje.PesoNeto = (getKilosBin(producto, pesaje.Variedad, pesaje.Clase, pesaje.Formato) / pesaje.Factor);
                     reajustes += contexto.SaveChanges();
                 }
             }

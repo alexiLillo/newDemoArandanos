@@ -34,32 +34,38 @@ namespace DemoArandanos
 
         protected void ddClase_DataBound(object sender, EventArgs e)
         {
-            ddClase.Items.Insert(0, new ListItem("Todas", ""));
+            if (ddClase.Items.Count > 1)
+                ddClase.Items.Insert(0, new ListItem("Todas", ""));
         }
 
         protected void ddVariedad_DataBound(object sender, EventArgs e)
         {
-            ddVariedad.Items.Insert(0, new ListItem("Todas", ""));
+            if (ddVariedad.Items.Count > 1)
+                ddVariedad.Items.Insert(0, new ListItem("Todas", ""));
         }
 
         protected void ddFundo_DataBound(object sender, EventArgs e)
         {
-            ddFundo.Items.Insert(0, new ListItem("Todo", ""));
+            if (ddFundo.Items.Count > 1)
+                ddFundo.Items.Insert(0, new ListItem("Todo", ""));
         }
 
         protected void ddPotrero_DataBound(object sender, EventArgs e)
         {
-            ddPotrero.Items.Insert(0, new ListItem("Todos", ""));
+            if (ddPotrero.Items.Count > 1)
+                ddPotrero.Items.Insert(0, new ListItem("Todos", ""));
         }
 
         protected void ddSector_DataBound(object sender, EventArgs e)
         {
-            ddSector.Items.Insert(0, new ListItem("Todos", ""));
+            if (ddSector.Items.Count > 1)
+                ddSector.Items.Insert(0, new ListItem("Todos", ""));
         }
 
         protected void ddCuartel_DataBound(object sender, EventArgs e)
         {
-            ddCuartel.Items.Insert(0, new ListItem("Todos", ""));
+            if (ddCuartel.Items.Count > 1)
+                ddCuartel.Items.Insert(0, new ListItem("Todos", ""));
         }
 
 
@@ -148,11 +154,11 @@ namespace DemoArandanos
             lblcateg.Text = ddClase.SelectedItem.Text;
             lblvaried.Text = ddVariedad.SelectedItem.Text;
             lblfund.Text = ddFundo.SelectedItem.Text;
-            if (!ddPotrero.SelectedItem.Text.Equals("Todos"))
+            if (ddPotrero.SelectedItem != null)
                 lblpotrer.Text = ddPotrero.SelectedItem.Text;
-            if (!ddSector.SelectedItem.Text.Equals("Todos"))
+            if (ddSector.SelectedItem != null)
                 lblsect.Text = ddSector.SelectedItem.Text;
-            if (!ddCuartel.SelectedItem.Text.Equals("Todos"))
+            if (ddCuartel.SelectedItem != null)
                 lblcuart.Text = ddCuartel.SelectedItem.Text;
             lblfiltr.Text = txtFiltro.Text;
 
@@ -218,6 +224,6 @@ namespace DemoArandanos
             /* Verifies that the control is rendered */
         }
 
- 
+
     }
 }

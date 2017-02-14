@@ -46,11 +46,13 @@ namespace DemoArandanos
 
         protected void ddPotrero_DataBound(object sender, EventArgs e)
         {
+            //if (ddPotrero.Items.Count > 1)
             ddPotrero.Items.Insert(0, new ListItem("Todos...", "0"));
         }
 
         protected void ddSector_DataBound(object sender, EventArgs e)
         {
+            //if (ddSector.Items.Count > 1)
             ddSector.Items.Insert(0, new ListItem("Todos...", "0"));
         }
 
@@ -115,7 +117,7 @@ namespace DemoArandanos
             Response.Clear();
             Response.Buffer = true;
             Response.ContentEncoding = System.Text.Encoding.Default;
-            Response.AddHeader("content-disposition", "attachment;filename=Cosecha-Cuarteles-Arandanos- '"+ lbldesde.Text + "' - '" + lblhasta.Text + "'.xls");
+            Response.AddHeader("content-disposition", "attachment;filename=Cosecha-Cuarteles-Arandanos- '" + lbldesde.Text + "' - '" + lblhasta.Text + "'.xls");
             Response.Charset = "";
             Response.ContentType = "application/vnd.ms-excel";
             using (StringWriter sw = new StringWriter())

@@ -57,33 +57,40 @@ namespace DemoArandanos
 
         protected void ddVariedad_DataBound(object sender, EventArgs e)
         {
-            ddVariedad.Items.Insert(0, new ListItem("Todas", ""));
-            lblvariedad.Text = "Variedad: " + ddVariedad.SelectedItem.Text;
+            if (ddVariedad.Items.Count > 1)
+                ddVariedad.Items.Insert(0, new ListItem("Todas", ""));
+            if (ddVariedad.SelectedItem != null)
+                lblvariedad.Text = "Variedad: " + ddVariedad.SelectedItem.Text;
         }
 
         protected void ddFundo_DataBound(object sender, EventArgs e)
         {
-            ddFundo.Items.Insert(0, new ListItem("Todos", "0"));
+            if (ddFundo.Items.Count > 1)
+                ddFundo.Items.Insert(0, new ListItem("Todo", ""));
         }
 
         protected void ddPotrero_DataBound(object sender, EventArgs e)
         {
-            ddPotrero.Items.Insert(0, new ListItem("Todos", "0"));
+            if (ddPotrero.Items.Count > 1)
+                ddPotrero.Items.Insert(0, new ListItem("Todos", "0"));
         }
 
         protected void ddSector_DataBound(object sender, EventArgs e)
         {
-            ddSector.Items.Insert(0, new ListItem("Todos", "0"));
+            if (ddSector.Items.Count > 1)
+                ddSector.Items.Insert(0, new ListItem("Todos", "0"));
         }
 
         protected void ddCuartel_DataBound(object sender, EventArgs e)
         {
-            ddCuartel.Items.Insert(0, new ListItem("Todos", "0"));
+            if (ddCuartel.Items.Count > 1)
+                ddCuartel.Items.Insert(0, new ListItem("Todos", "0"));
         }
 
         protected void ddHilera_DataBound(object sender, EventArgs e)
         {
-            ddHilera.Items.Insert(0, new ListItem("Todas", "0"));
+            if (ddHilera.Items.Count > 1)
+                ddHilera.Items.Insert(0, new ListItem("Todas", "0"));
             nombresImp();
         }
 
@@ -133,22 +140,25 @@ namespace DemoArandanos
         public void nombresImp()
         {
             lbltemporada.Text = ddMapeo.SelectedItem.Text;
-            if (ddFundo.SelectedItem != null)
+            try
             {
-                try
-                {
+                if (ddFundo.SelectedItem != null)
                     lblfundo.Text = ddFundo.SelectedItem.Text;
+                if (ddPotrero.SelectedItem != null)
                     lblpotrero.Text = ddPotrero.SelectedItem.Text;
+                if (ddSector.SelectedItem != null)
                     lblsector.Text = ddSector.SelectedItem.Text;
+                if (ddCuartel.SelectedItem != null)
                     lblcuartel.Text = ddCuartel.SelectedItem.Text;
+                if (ddHilera.SelectedItem != null)
                     lblhilera.Text = ddHilera.SelectedItem.Text;
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine(ex.ToString());
-                }
-
             }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
+
+
         }
 
         protected void ddFundo_SelectedIndexChanged(object sender, EventArgs e)
@@ -187,7 +197,8 @@ namespace DemoArandanos
             }
             else
             {
-                lblgrafico.Text = " " + ddPotrero.SelectedItem.Text;
+                if (ddPotrero.SelectedItem != null)
+                    lblgrafico.Text = " " + ddPotrero.SelectedItem.Text;
                 nombresImp();
                 String variedades = string.Join(", ", control.variedades(ddHilera.SelectedValue, ddCuartel.SelectedValue, ddSector.SelectedValue, ddPotrero.SelectedValue, ddFundo.SelectedValue, int.Parse(ddMapeo.SelectedValue)).ToArray());
                 lblvariedad.Text = "Variedad: " + ddVariedad.SelectedItem.Text;
@@ -207,14 +218,16 @@ namespace DemoArandanos
             lbltotal.Text = Session["total"].ToString();
             if (ddSector.SelectedValue.Equals("0"))
             {
-                lblgrafico.Text = " " + ddPotrero.SelectedItem.Text;
+                if (ddPotrero.SelectedItem != null)
+                    lblgrafico.Text = " " + ddPotrero.SelectedItem.Text;
                 nombresImp();
                 String variedades = string.Join(", ", control.variedades(ddHilera.SelectedValue, ddCuartel.SelectedValue, ddSector.SelectedValue, ddPotrero.SelectedValue, ddFundo.SelectedValue, int.Parse(ddMapeo.SelectedValue)).ToArray());
                 lblvariedad.Text = "Variedad: " + ddVariedad.SelectedItem.Text;
             }
             else
             {
-                lblgrafico.Text = " " + ddSector.SelectedItem.Text;
+                if (ddSector.SelectedItem != null)
+                    lblgrafico.Text = " " + ddSector.SelectedItem.Text;
                 nombresImp();
                 String variedades = string.Join(", ", control.variedades(ddHilera.SelectedValue, ddCuartel.SelectedValue, ddSector.SelectedValue, ddPotrero.SelectedValue, ddFundo.SelectedValue, int.Parse(ddMapeo.SelectedValue)).ToArray());
                 lblvariedad.Text = "Variedad: " + ddVariedad.SelectedItem.Text;
@@ -234,7 +247,8 @@ namespace DemoArandanos
             lbltotal.Text = Session["total"].ToString();
             if (ddCuartel.SelectedValue.Equals("0"))
             {
-                lblgrafico.Text = " " + ddSector.SelectedItem.Text;
+                if (ddSector.SelectedItem != null)
+                    lblgrafico.Text = " " + ddSector.SelectedItem.Text;
                 nombresImp();
                 String variedades = string.Join(", ", control.variedades(ddHilera.SelectedValue, ddCuartel.SelectedValue, ddSector.SelectedValue, ddPotrero.SelectedValue, ddFundo.SelectedValue, int.Parse(ddMapeo.SelectedValue)).ToArray());
                 if (ddVariedad.SelectedItem.Text.Equals("Todas"))
@@ -276,7 +290,8 @@ namespace DemoArandanos
             lbltotal.Text = Session["total"].ToString();
             if (ddHilera.SelectedValue.Equals("0"))
             {
-                lblgrafico.Text = " " + ddCuartel.SelectedItem.Text;
+                if (ddCuartel.SelectedItem != null)
+                    lblgrafico.Text = " " + ddCuartel.SelectedItem.Text;
                 nombresImp();
                 String variedades = string.Join(", ", control.variedades(ddHilera.SelectedValue, ddCuartel.SelectedValue, ddSector.SelectedValue, ddPotrero.SelectedValue, ddFundo.SelectedValue, int.Parse(ddMapeo.SelectedValue)).ToArray());
                 if (ddVariedad.SelectedItem.Text.Equals("Todas"))
@@ -290,7 +305,8 @@ namespace DemoArandanos
             }
             else
             {
-                lblgrafico.Text = "HILERA " + ddHilera.SelectedItem.Text;
+                if (ddHilera.SelectedItem != null)
+                    lblgrafico.Text = "HILERA " + ddHilera.SelectedItem.Text;
                 nombresImp();
                 String variedades = string.Join(", ", control.variedades(ddHilera.SelectedValue, ddCuartel.SelectedValue, ddSector.SelectedValue, ddPotrero.SelectedValue, ddFundo.SelectedValue, int.Parse(ddMapeo.SelectedValue)).ToArray());
                 if (ddVariedad.SelectedItem.Text.Equals("Todas"))

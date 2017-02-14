@@ -118,7 +118,7 @@
         <div class="col-md-2">
             <label for="ddClase">Categoría</label>
             <asp:DropDownList ID="ddClase" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsClase" DataTextField="Clase" DataValueField="Clase" OnDataBound="ddClase_DataBound"></asp:DropDownList>
-            <asp:SqlDataSource ID="dsClase" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo %>" SelectCommand="SELECT [Clase] FROM [Clase]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="dsClase" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo %>" SelectCommand="SELECT DISTINCT [Clase] FROM [ClaseVariedadPeso] WHERE ID_Producto='25'"></asp:SqlDataSource>
             
             <br />
             <label for="ddVariedad">Variedad</label>

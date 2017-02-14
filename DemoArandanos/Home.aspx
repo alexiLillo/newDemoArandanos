@@ -143,7 +143,7 @@
                                 <asp:TextBox ID="txtNombrePotrero" runat="server" type="input" class="form-control" placeholder="Ingrese nombre de potrero"></asp:TextBox>
                                 <br />
                                 <label for="ddFundo">Fundo</label>
-                                <asp:DropDownList ID="ddFundo" CssClass="form-control" AutoPostBack="true" runat="server" DataSourceID="dsFundos" DataTextField="Nombre" DataValueField="ID_Fundo"></asp:DropDownList>
+                                <asp:DropDownList ID="ddFundo" CssClass="form-control" AutoPostBack="true" runat="server" DataSourceID="dsFundos" DataTextField="Nombre" DataValueField="ID_Fundo" OnDataBound="ddFundo_DataBound"></asp:DropDownList>
                                 <br />
                                 <div class="btn-group" role="group" aria-label="...">
                                     <asp:Button ID="btInsertarPotrero" runat="server" Text="Insertar" type="submit" class="btn btn-default" OnClick="btInsertarPotrero_Click" />
@@ -200,10 +200,10 @@
                                 <asp:TextBox ID="txtNombreSector" runat="server" type="input" class="form-control" placeholder="Ingrese nombre de sector"></asp:TextBox>
                                 <br />
                                 <label for="ddFundo2">Fundo</label>
-                                <asp:DropDownList ID="ddFundo2" AutoPostBack="true" CssClass="form-control" runat="server" DataSourceID="dsFundos" DataTextField="Nombre" DataValueField="ID_Fundo"></asp:DropDownList>
+                                <asp:DropDownList ID="ddFundo2" AutoPostBack="true" CssClass="form-control" runat="server" DataSourceID="dsFundos" DataTextField="Nombre" DataValueField="ID_Fundo" OnDataBound="ddFundo2_DataBound"></asp:DropDownList>
                                 <br />
                                 <label for="ddPotrero">Potrero</label>
-                                <asp:DropDownList ID="ddPotrero" AutoPostBack="True" CssClass="form-control" runat="server" DataTextField="Nombre" DataSourceID="potrerosDEfundo2" DataValueField="ID_Potrero"></asp:DropDownList>
+                                <asp:DropDownList ID="ddPotrero" AutoPostBack="True" CssClass="form-control" runat="server" DataTextField="Nombre" DataSourceID="potrerosDEfundo2" DataValueField="ID_Potrero" OnDataBound="ddPotrero_DataBound"></asp:DropDownList>
                                 <asp:SqlDataSource ID="potrerosDEfundo2" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Potrero] WHERE ([ID_Fundo] = @ID_Fundo)">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="ddFundo2" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
@@ -268,10 +268,10 @@
                                 <asp:TextBox ID="txtSuperficie" runat="server" type="number" class="form-control" placeholder="Ingrese superficie del cuartel"></asp:TextBox>
                                 <br />
                                 <label for="ddFundo3">Fundo</label>
-                                <asp:DropDownList ID="ddFundo3" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="dsFundos" DataTextField="Nombre" DataValueField="ID_Fundo"></asp:DropDownList>
+                                <asp:DropDownList ID="ddFundo3" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="dsFundos" DataTextField="Nombre" DataValueField="ID_Fundo" OnDataBound="ddFundo3_DataBound"></asp:DropDownList>
                                 <br />
                                 <label for="ddPotrero2">Potrero</label>
-                                <asp:DropDownList ID="ddPotrero2" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="potrerosDEfundo3" DataTextField="Nombre" DataValueField="ID_Potrero"></asp:DropDownList>
+                                <asp:DropDownList ID="ddPotrero2" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="potrerosDEfundo3" DataTextField="Nombre" DataValueField="ID_Potrero" OnDataBound="ddPotrero2_DataBound"></asp:DropDownList>
                                 <asp:SqlDataSource ID="potrerosDEfundo3" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Potrero] WHERE ([ID_Fundo] = @ID_Fundo)">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="ddFundo3" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
@@ -279,7 +279,7 @@
                                 </asp:SqlDataSource>
                                 <br />
                                 <label for="ddSector">Sector</label>
-                                <asp:DropDownList ID="ddSector" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="sectoresDEpotrero2" DataTextField="Nombre" DataValueField="ID_Sector"></asp:DropDownList>
+                                <asp:DropDownList ID="ddSector" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="sectoresDEpotrero2" DataTextField="Nombre" DataValueField="ID_Sector" OnDataBound="ddSector_DataBound"></asp:DropDownList>
                                 <asp:SqlDataSource ID="sectoresDEpotrero2" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Sector] WHERE (([ID_Fundo] = @ID_Fundo) AND ([ID_Potrero] = @ID_Potrero))">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="ddFundo3" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
@@ -342,14 +342,14 @@
                                 <asp:TextBox ID="txtIdHilera" runat="server" type="input" class="form-control" placeholder="Ingrese código de hilera con este formato: H****"></asp:TextBox>
                                 <br />
                                 <label for="ddVariedad">Variedad</label>
-                                <asp:DropDownList ID="ddVariedad" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="dsVariedades" DataTextField="Nombre" DataValueField="Nombre"></asp:DropDownList>
+                                <asp:DropDownList ID="ddVariedad" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="dsVariedades" DataTextField="Nombre" DataValueField="Nombre" OnDataBound="ddVariedad_DataBound"></asp:DropDownList>
                                 <asp:SqlDataSource ID="dsVariedades" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Variedad]"></asp:SqlDataSource>
                                 <br />
                                 <label for="ddFundo4">Fundo</label>
-                                <asp:DropDownList ID="ddFundo4" AutoPostBack="true" CssClass="form-control" runat="server" DataSourceID="dsFundos" DataValueField="ID_Fundo" DataTextField="Nombre"></asp:DropDownList>
+                                <asp:DropDownList ID="ddFundo4" AutoPostBack="true" CssClass="form-control" runat="server" DataSourceID="dsFundos" DataValueField="ID_Fundo" DataTextField="Nombre" OnDataBound="ddFundo4_DataBound"></asp:DropDownList>
                                 <br />
                                 <label for="ddPotrero3">Potrero</label>
-                                <asp:DropDownList ID="ddPotrero3" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="potreroDEfundo4" DataValueField="ID_Potrero" DataTextField="Nombre"></asp:DropDownList>
+                                <asp:DropDownList ID="ddPotrero3" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="potreroDEfundo4" DataValueField="ID_Potrero" DataTextField="Nombre" OnDataBound="ddPotrero3_DataBound"></asp:DropDownList>
                                 <asp:SqlDataSource ID="potreroDEfundo4" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Potrero] WHERE ([ID_Fundo] = @ID_Fundo)">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="ddFundo4" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
@@ -357,7 +357,7 @@
                                 </asp:SqlDataSource>
                                 <br />
                                 <label for="ddSector2">Sector</label>
-                                <asp:DropDownList ID="ddSector2" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="sectoresDEpotrero3" DataTextField="Nombre" DataValueField="ID_Sector"></asp:DropDownList>
+                                <asp:DropDownList ID="ddSector2" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="sectoresDEpotrero3" DataTextField="Nombre" DataValueField="ID_Sector" OnDataBound="ddSector2_DataBound"></asp:DropDownList>
                                 <asp:SqlDataSource ID="sectoresDEpotrero3" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Sector] WHERE (([ID_Potrero] = @ID_Potrero) AND ([ID_Fundo] = @ID_Fundo))">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="ddPotrero3" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
@@ -366,7 +366,7 @@
                                 </asp:SqlDataSource>
                                 <br />
                                 <label for="ddCuartel">Cuartel</label>
-                                <asp:DropDownList ID="ddCuartel" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="cuartelesDEsector2" DataTextField="Nombre" DataValueField="ID_Cuartel"></asp:DropDownList>
+                                <asp:DropDownList ID="ddCuartel" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="cuartelesDEsector2" DataTextField="Nombre" DataValueField="ID_Cuartel" OnDataBound="ddCuartel_DataBound"></asp:DropDownList>
                                 <asp:SqlDataSource ID="cuartelesDEsector2" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Cuartel] WHERE (([ID_Sector] = @ID_Sector) AND ([ID_Potrero] = @ID_Potrero) AND ([ID_Fundo] = @ID_Fundo))">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="ddSector2" Name="ID_Sector" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
@@ -430,7 +430,7 @@
                                 <asp:TextBox ID="txtIdPlanta" runat="server" type="input" class="form-control" placeholder="Ingrese código de plantacon este formato: PL****"></asp:TextBox>
                                 <br />
                                 <label for="ddEstado">Estado</label>
-                                <asp:DropDownList ID="ddEstado" AutoPostBack="true" CssClass="form-control" runat="server" DataSourceID="dsEstado" DataTextField="ID_Estado" DataValueField="ID_Estado"></asp:DropDownList>
+                                <asp:DropDownList ID="ddEstado" AutoPostBack="true" CssClass="form-control" runat="server" DataSourceID="dsEstado" DataTextField="ID_Estado" DataValueField="ID_Estado" OnDataBound="ddEstado_DataBound"></asp:DropDownList>
                                 <asp:SqlDataSource ID="dsEstado" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Estado]"></asp:SqlDataSource>
                                 <br />
                                 <label for="txtFechaPlantacion">Fecha Plantación</label>
@@ -440,10 +440,10 @@
                                 <asp:TextBox ID="txtObservaciones" type="input" class="form-control" TextMode="MultiLine" Height="100px" placeholder="Ingrese observaciones de planta" runat="server"></asp:TextBox>
                                 <br />
                                 <label for="ddFundo5">Fundo</label>
-                                <asp:DropDownList ID="ddFundo5" AutoPostBack="true" CssClass="form-control" runat="server" DataSourceID="dsFundos" DataTextField="Nombre" DataValueField="ID_Fundo"></asp:DropDownList>
+                                <asp:DropDownList ID="ddFundo5" AutoPostBack="true" CssClass="form-control" runat="server" DataSourceID="dsFundos" DataTextField="Nombre" DataValueField="ID_Fundo" OnDataBound="ddFundo5_DataBound"></asp:DropDownList>
                                 <br />
                                 <label for="ddPotrero4">Potrero</label>
-                                <asp:DropDownList ID="ddPotrero4" AutoPostBack="true" CssClass="form-control" runat="server" DataSourceID="potrerosDEfundo5" DataTextField="Nombre" DataValueField="ID_Potrero"></asp:DropDownList>
+                                <asp:DropDownList ID="ddPotrero4" AutoPostBack="true" CssClass="form-control" runat="server" DataSourceID="potrerosDEfundo5" DataTextField="Nombre" DataValueField="ID_Potrero" OnDataBound="ddPotrero4_DataBound"></asp:DropDownList>
                                 <asp:SqlDataSource ID="potrerosDEfundo5" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Potrero] WHERE ([ID_Fundo] = @ID_Fundo)">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="ddFundo5" Name="ID_Fundo" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
@@ -451,7 +451,7 @@
                                 </asp:SqlDataSource>
                                 <br />
                                 <label for="ddSector3">Sector</label>
-                                <asp:DropDownList ID="ddSector3" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="sectoresDEpotrero4" DataTextField="Nombre" DataValueField="ID_Sector"></asp:DropDownList>
+                                <asp:DropDownList ID="ddSector3" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="sectoresDEpotrero4" DataTextField="Nombre" DataValueField="ID_Sector" OnDataBound="ddSector3_DataBound"></asp:DropDownList>
                                 <asp:SqlDataSource ID="sectoresDEpotrero4" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Sector] WHERE (([ID_Potrero] = @ID_Potrero) AND ([ID_Fundo] = @ID_Fundo))">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="ddPotrero4" Name="ID_Potrero" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
@@ -460,7 +460,7 @@
                                 </asp:SqlDataSource>
                                 <br />
                                 <label for="ddCuartel2">Cuartel</label>
-                                <asp:DropDownList ID="ddCuartel2" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="cuartelesDEsector3" DataTextField="Nombre" DataValueField="ID_Cuartel"></asp:DropDownList>
+                                <asp:DropDownList ID="ddCuartel2" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="cuartelesDEsector3" DataTextField="Nombre" DataValueField="ID_Cuartel" OnDataBound="ddCuartel2_DataBound"></asp:DropDownList>
                                 <asp:SqlDataSource ID="cuartelesDEsector3" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Cuartel] WHERE (([ID_Sector] = @ID_Sector) AND ([ID_Potrero] = @ID_Potrero) AND ([ID_Fundo] = @ID_Fundo))">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="ddSector3" Name="ID_Sector" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
@@ -470,7 +470,7 @@
                                 </asp:SqlDataSource>
                                 <br />
                                 <label for="ddHilera">Hilera</label>
-                                <asp:DropDownList ID="ddHilera" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="hilerasDEcuartel2" DataTextField="ID_Hilera" DataValueField="ID_Hilera"></asp:DropDownList>
+                                <asp:DropDownList ID="ddHilera" AutoPostBack="True" CssClass="form-control" runat="server" DataSourceID="hilerasDEcuartel2" DataTextField="ID_Hilera" DataValueField="ID_Hilera" OnDataBound="ddHilera_DataBound"></asp:DropDownList>
                                 <asp:SqlDataSource ID="hilerasDEcuartel2" runat="server" ConnectionString="<%$ ConnectionStrings:ArandanosConnectionString %>" SelectCommand="SELECT * FROM [Hilera] WHERE (([ID_Cuartel] = @ID_Cuartel) AND ([ID_Sector] = @ID_Sector) AND ([ID_Potrero] = @ID_Potrero) AND ([ID_Fundo] = @ID_Fundo))">
                                     <SelectParameters>
                                         <asp:ControlParameter ControlID="ddCuartel2" Name="ID_Cuartel" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
@@ -587,7 +587,7 @@
                                 <asp:TextBox ID="txtNombreVariedad" runat="server" type="input" class="form-control" placeholder="Ingrese nombre de variedad"></asp:TextBox>
                                 <br />
                                 <label for="ddProducto">Producto</label>
-                                <asp:DropDownList ID="ddProducto" AutoPostBack="True" CssClass="form-control" runat="server" DataTextField="Nombre" DataValueField="ID_Producto" DataSourceID="dsProducto"></asp:DropDownList>
+                                <asp:DropDownList ID="ddProducto" AutoPostBack="True" CssClass="form-control" runat="server" DataTextField="Nombre" DataValueField="ID_Producto" DataSourceID="dsProducto" OnDataBound="ddProducto_DataBound"></asp:DropDownList>
                                 <br />
                                 <asp:SqlDataSource ID="dsProducto" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo6 %>" SelectCommand="SELECT * FROM [Producto]"></asp:SqlDataSource>
 

@@ -32,27 +32,32 @@ namespace DemoArandanos
 
         protected void ddVariedad_DataBound(object sender, EventArgs e)
         {
-            ddVariedad.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddVariedad.Items.Count > 1)
+                ddVariedad.Items.Insert(0, new ListItem("Seleccione...", ""));
         }
 
         protected void ddFundo_DataBound(object sender, EventArgs e)
         {
-            ddFundo.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddFundo.Items.Count > 1)
+                ddFundo.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void ddPotrero_DataBound(object sender, EventArgs e)
         {
-            ddPotrero.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddPotrero.Items.Count > 1)
+                ddPotrero.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void ddSector_DataBound(object sender, EventArgs e)
         {
-            ddSector.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddSector.Items.Count > 1)
+                ddSector.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void ddCuartel_DataBound(object sender, EventArgs e)
         {
-            ddCuartel.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddCuartel.Items.Count > 1)
+                ddCuartel.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void txtFiltroRut_TextChanged(object sender, EventArgs e)
@@ -83,27 +88,32 @@ namespace DemoArandanos
         //ddFiltros
         protected void ddVariedadFiltro_DataBound(object sender, EventArgs e)
         {
-            ddVariedadFiltro.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddVariedadFiltro.Items.Count > 1)
+                ddVariedadFiltro.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void ddFundoFiltro_DataBound(object sender, EventArgs e)
         {
-            ddFundoFiltro.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddFundoFiltro.Items.Count > 1)
+                ddFundoFiltro.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void ddPotreroFiltro_DataBound(object sender, EventArgs e)
         {
-            ddPotreroFiltro.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddPotreroFiltro.Items.Count > 1)
+                ddPotreroFiltro.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void ddSectorFiltro_DataBound(object sender, EventArgs e)
         {
-            ddSectorFiltro.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddSectorFiltro.Items.Count > 1)
+                ddSectorFiltro.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void ddCuartelFiltro_DataBound(object sender, EventArgs e)
         {
-            ddCuartelFiltro.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            if (ddCuartelFiltro.Items.Count > 1)
+                ddCuartelFiltro.Items.Insert(0, new ListItem("Seleccione...", "0"));
         }
 
         protected void btModificarMasivo_Click(object sender, EventArgs e)

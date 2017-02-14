@@ -122,9 +122,12 @@ namespace DemoArandanos
                 lblhastaimp.Text = "-";
             }
             lblfundimp.Text = ddFundo.SelectedItem.Text;
-            lblpotrerimp.Text = ddPotrero.SelectedItem.Text;
-            lblsectimp.Text = ddSector.SelectedItem.Text;
-            lblcuartelimp.Text = ddCuartel.SelectedItem.Text;
+            if (ddPotrero.SelectedItem != null)
+                lblpotrerimp.Text = ddPotrero.SelectedItem.Text;
+            if (ddSector.SelectedItem != null)
+                lblsectimp.Text = ddSector.SelectedItem.Text;
+            if (ddCuartel.SelectedItem != null)
+                lblcuartelimp.Text = ddCuartel.SelectedItem.Text;
             lbltotalimp.Text = lbltotal.Text;
         }
 
@@ -135,16 +138,19 @@ namespace DemoArandanos
 
         protected void ddPotrero_DataBound(object sender, EventArgs e)
         {
+            //if (ddPotrero.Items.Count > 1)
             ddPotrero.Items.Insert(0, new ListItem("Todos", "0"));
         }
 
         protected void ddSector_DataBound(object sender, EventArgs e)
         {
+            //if (ddSector.Items.Count > 1)
             ddSector.Items.Insert(0, new ListItem("Todos", "0"));
         }
 
         protected void ddCuartel_DataBound(object sender, EventArgs e)
         {
+            //if (ddCuartel.Items.Count > 1)
             ddCuartel.Items.Insert(0, new ListItem("Todos", "0"));
         }
 
