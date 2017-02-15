@@ -115,7 +115,7 @@ namespace DemoArandanos
                 lbltotalbins.Text = decimal.Round(bins, 2).ToString();
 
             //lbltotalbins.Text = decimal.Round(bins, 2).ToString();
-            lbltotalkilos.Text = kilos.ToString();
+            lbltotalkilos.Text = decimal.Round(kilos, 2).ToString();
             lbltotaltrabajadores.Text = trabajadores.ToString();
             decimal prom = 0;
             try

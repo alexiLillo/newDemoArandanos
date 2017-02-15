@@ -100,7 +100,7 @@ namespace DemoArandanos
             int trabajadores = new HashSet<String>(lista).Count;
 
             lbltotalbandejas.Text = rows.ToString();
-            lbltotalkilos.Text = kilos.ToString();
+            lbltotalkilos.Text = decimal.Round(kilos, 2).ToString();
             lbltotaltrabajadores.Text = trabajadores.ToString();
             decimal prom = 0;
             try
