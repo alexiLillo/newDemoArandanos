@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterUva3.Master" AutoEventWireup="true" CodeBehind="InformeGrafiUvas3.aspx.cs" Inherits="DemoArandanos.InformeGrafiUvas3" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div class="hidden-print">
+    <div class="hidden-print">
         <h1>Gráficos Producción Viñedos</h1>
         <br />
     </div>
@@ -95,13 +96,22 @@
                     <br />
                     <br />
                 </div>
-                <div class="col-md-3">
+
+                <div class="col-md-2">
+                    <label for="ddEnvaseOKilo">Gráficos por</label>
+                    <asp:DropDownList ID="ddEnvaseOKilo" CssClass="form-control" AutoPostBack="True" runat="server" OnSelectedIndexChanged="ddEnvaseOKilo_SelectedIndexChanged">
+                        <asp:ListItem Text="KILOS" Value="KILOS" />
+                        <asp:ListItem Text="ENVASES" Value="ENVASES" />
+                    </asp:DropDownList>
+                </div>
+
+                <div class="col-md-2">
                     <label for="txtFechaInicio">Fecha filtro inicio</label>
                     <asp:TextBox ID="txtFechaInicio" AutoPostBack="true" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-MM-dd" OnTextChanged="txtFechaInicio_TextChanged"></asp:TextBox>
                     <br />
                     <br />
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="txtFechaTermino">Fecha filtro fin</label>
                     <asp:TextBox ID="txtFechaTermino" AutoPostBack="true" CssClass="form-control" TextMode="Date" runat="server" placeholder="aaaa-MM-dd" OnTextChanged="txtFechaTermino_TextChanged"></asp:TextBox>
                     <br />
@@ -142,12 +152,12 @@
                     <br />
                 </div>
                 <div class=" col-md-4">
-                    <label>Gráfico por Variedades Kilos Aprox. Neto </label>
+                    <label>Gráfico Total por Variedades</label>
                 </div>
                 <div class=" col-md-1"></div>
                 <div class=" col-md-5">
                     <label>
-                        Gráfico Total Kilos Aprox. Neto:
+                        Gráfico Total Acumulado <asp:Label ID="lblKilosOEnvases1" runat="server" Text=""></asp:Label>:
                     <asp:Label ID="lbltotal" runat="server" Text=""></asp:Label></label>
                 </div>
             </div>
@@ -158,8 +168,7 @@
             <input type="button" style="float: right" class="btn btn-default" name="Imprimir" value="Imprimir" onclick="window.print();">
         </div>
         <div class="visible-print">
-            <h6 align="center">Total Kilos Neto:
-            <asp:Label ID="lbltotalimp" runat="server" Text=""></asp:Label></h6>
+            <h6 align="center">Total <asp:Label ID="lblKilosOEnvases2" runat="server" Text=""></asp:Label>: <asp:Label ID="lbltotalimp" runat="server" Text=""></asp:Label></h6>
         </div>
     </form>
 </asp:Content>

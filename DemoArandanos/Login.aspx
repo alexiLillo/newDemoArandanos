@@ -91,6 +91,11 @@
         </div>
         <div class="col-md-4"></div>
     </div>
+
+   <%-- <div class="col-md-12">
+        <script src="http://www.yr.no/place/Chile/Maule/Copihue/external_box_hour_by_hour.js"></script><noscript><a href="http://www.yr.no/place/Chile/Maule/Copihue/">yr.no: Forecast for Retiro</a></noscript>
+    </div>--%>
+
     <!-- /.container -->
 
 

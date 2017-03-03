@@ -18,12 +18,17 @@ namespace DemoArandanos
                 {
                     Server.Transfer("Login.aspx", true);
                 }
+
+                lblKilosOEnvases1.Text = ddEnvaseOKilo.SelectedValue;
+                lblKilosOEnvases2.Text = ddEnvaseOKilo.SelectedValue;
             }
 
             divSuccess.Visible = false;
             divWarning.Visible = false;
             divInfo.Visible = false;
             divDanger.Visible = false;
+
+            
 
             if (!IsPostBack)
             {
@@ -42,8 +47,8 @@ namespace DemoArandanos
         {
             String inicio = DateTime.Parse(txtFechaInicio.Text + " 00:00").ToString("yyyy-MM-ddTHH:mm");
             String fin = DateTime.Parse(txtFechaTermino.Text + " 23:59").ToString("yyyy-MM-ddTHH:mm");
-            cargarGrafico(GraficoVariedad, control.getCantidadPorVariedad("33", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getVariedades("33"), true);
-            cargarGrafico(GraficoCuartel, control.getCantidadTotal("33", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getNombres("33", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue), false);
+            cargarGrafico(GraficoVariedad, control.getCantidadPorVariedad(ddEnvaseOKilo.SelectedValue, "33", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getVariedades("33"), true);
+            cargarGrafico(GraficoCuartel, control.getCantidadTotal(ddEnvaseOKilo.SelectedValue, "33", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, DateTime.Parse(inicio), DateTime.Parse(fin)), control.getNombres("33", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue), false);
         }
 
         public void cargarGrafico(Chart graf, double[] yValores, String[] xNombres, bool colores)
@@ -162,6 +167,12 @@ namespace DemoArandanos
         protected void txtFechaTermino_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void ddEnvaseOKilo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblKilosOEnvases1.Text = ddEnvaseOKilo.SelectedValue;
+            lblKilosOEnvases2.Text = ddEnvaseOKilo.SelectedValue;
         }
     }
 }

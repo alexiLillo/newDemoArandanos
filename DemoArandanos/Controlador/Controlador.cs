@@ -865,7 +865,7 @@ namespace DemoArandanos.Controlador
                 return (from p in contexto.Pesaje where p.Producto == producto && p.FechaHora.Year == fecha.Year && p.FechaHora.Month == fecha.Month && p.FechaHora.Day == fecha.Day select p).Count();
             }
             catch (DbEntityValidationException dbEx)
-            {                
+            {
                 foreach (var validationErrors in dbEx.EntityValidationErrors)
                 {
                     foreach (var validationError in validationErrors.ValidationErrors)
@@ -1031,72 +1031,142 @@ namespace DemoArandanos.Controlador
             return variedades;
         }
 
-        public double[] getCantidadPorVariedad(String producto, String fundo, String potrero, String sector, String cuartel, DateTime fechinicio, DateTime fechtermino)
+        public double[] getCantidadPorVariedad(String kilosOenvases, String producto, String fundo, String potrero, String sector, String cuartel, DateTime fechinicio, DateTime fechtermino)
         {
             String[] lista = getIDvariedades(producto);
             double[] cantidades = new double[lista.Length];
-            for (int i = 0; i < lista.Length; i++)
+            if (kilosOenvases.Equals("KILOS"))
             {
-                var temp = lista[i];
-                double cantidad = 0;
-                try
+                for (int i = 0; i < lista.Length; i++)
                 {
-                    if (!potrero.Equals("0") && !sector.Equals("0") && !cuartel.Equals("0"))
+                    var temp = lista[i];
+                    double cantidad = 0;
+                    try
                     {
-                        cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Producto == producto
-                                                 && p.Variedad == temp
-                                                 && p.Fundo == fundo
-                                                 && p.Potrero == potrero
-                                                 && p.Sector == sector
-                                                 && p.Cuartel == cuartel
-                                                 && p.FechaHora >= fechinicio
-                                                 && p.FechaHora <= fechtermino
-                                                 select p.PesoNeto).Sum().ToString());
-                    }
-                    else if (potrero.Equals("0"))
-                    {
-                        cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Producto == producto
-                                                && p.Variedad == temp
-                                                && p.Fundo == fundo
-                                                 && p.FechaHora >= fechinicio
-                                                 && p.FechaHora <= fechtermino
-                                                 select p.PesoNeto).Sum().ToString());
-                    }
-                    else if (sector.Equals("0"))
-                    {
-                        cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Producto == producto
-                                                && p.Variedad == temp
-                                                && p.Fundo == fundo
-                                                 && p.Potrero == potrero
-                                                 && p.FechaHora >= fechinicio
-                                                 && p.FechaHora <= fechtermino
-                                                 select p.PesoNeto).Sum().ToString());
-                    }
-                    else if (cuartel.Equals("0"))
-                    {
-                        cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Producto == producto
-                                                && p.Variedad == temp
-                                                && p.Fundo == fundo
-                                                 && p.Potrero == potrero
-                                                 && p.Sector == sector
-                                                 && p.FechaHora >= fechinicio
-                                                 && p.FechaHora <= fechtermino
-                                                 select p.PesoNeto).Sum().ToString());
-                    }
+                        if (!potrero.Equals("0") && !sector.Equals("0") && !cuartel.Equals("0"))
+                        {
+                            cantidad = Double.Parse((from p in contexto.Pesaje
+                                                     where p.Producto == producto
+                                                     && p.Variedad == temp
+                                                     && p.Fundo == fundo
+                                                     && p.Potrero == potrero
+                                                     && p.Sector == sector
+                                                     && p.Cuartel == cuartel
+                                                     && p.FechaHora >= fechinicio
+                                                     && p.FechaHora <= fechtermino
+                                                     select p.PesoNeto).Sum().ToString());
+                        }
+                        else if (potrero.Equals("0"))
+                        {
+                            cantidad = Double.Parse((from p in contexto.Pesaje
+                                                     where p.Producto == producto
+                                                    && p.Variedad == temp
+                                                    && p.Fundo == fundo
+                                                     && p.FechaHora >= fechinicio
+                                                     && p.FechaHora <= fechtermino
+                                                     select p.PesoNeto).Sum().ToString());
+                        }
+                        else if (sector.Equals("0"))
+                        {
+                            cantidad = Double.Parse((from p in contexto.Pesaje
+                                                     where p.Producto == producto
+                                                    && p.Variedad == temp
+                                                    && p.Fundo == fundo
+                                                     && p.Potrero == potrero
+                                                     && p.FechaHora >= fechinicio
+                                                     && p.FechaHora <= fechtermino
+                                                     select p.PesoNeto).Sum().ToString());
+                        }
+                        else if (cuartel.Equals("0"))
+                        {
+                            cantidad = Double.Parse((from p in contexto.Pesaje
+                                                     where p.Producto == producto
+                                                    && p.Variedad == temp
+                                                    && p.Fundo == fundo
+                                                     && p.Potrero == potrero
+                                                     && p.Sector == sector
+                                                     && p.FechaHora >= fechinicio
+                                                     && p.FechaHora <= fechtermino
+                                                     select p.PesoNeto).Sum().ToString());
+                        }
 
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine(ex.ToString());
+                        cantidad = 0;
+                    }
+                    cantidades[i] = cantidad;
                 }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine(ex.ToString());
-                    cantidad = 0;
-                }
-                cantidades[i] = cantidad;
             }
+
+            if (kilosOenvases.Equals("ENVASES"))
+            {
+                for (int i = 0; i < lista.Length; i++)
+                {
+                    var temp = lista[i];
+                    double cantidad = 0;
+                    try
+                    {
+                        if (!potrero.Equals("0") && !sector.Equals("0") && !cuartel.Equals("0"))
+                        {
+                            cantidad = Double.Parse((from p in contexto.Pesaje
+                                                     where p.Producto == producto
+                                                     && p.Variedad == temp
+                                                     && p.Fundo == fundo
+                                                     && p.Potrero == potrero
+                                                     && p.Sector == sector
+                                                     && p.Cuartel == cuartel
+                                                     && p.FechaHora >= fechinicio
+                                                     && p.FechaHora <= fechtermino
+                                                     select p.Cantidad).Sum().ToString());
+                        }
+                        else if (potrero.Equals("0"))
+                        {
+                            cantidad = Double.Parse((from p in contexto.Pesaje
+                                                     where p.Producto == producto
+                                                    && p.Variedad == temp
+                                                    && p.Fundo == fundo
+                                                     && p.FechaHora >= fechinicio
+                                                     && p.FechaHora <= fechtermino
+                                                     select p.Cantidad).Sum().ToString());
+                        }
+                        else if (sector.Equals("0"))
+                        {
+                            cantidad = Double.Parse((from p in contexto.Pesaje
+                                                     where p.Producto == producto
+                                                    && p.Variedad == temp
+                                                    && p.Fundo == fundo
+                                                     && p.Potrero == potrero
+                                                     && p.FechaHora >= fechinicio
+                                                     && p.FechaHora <= fechtermino
+                                                     select p.Cantidad).Sum().ToString());
+                        }
+                        else if (cuartel.Equals("0"))
+                        {
+                            cantidad = Double.Parse((from p in contexto.Pesaje
+                                                     where p.Producto == producto
+                                                    && p.Variedad == temp
+                                                    && p.Fundo == fundo
+                                                     && p.Potrero == potrero
+                                                     && p.Sector == sector
+                                                     && p.FechaHora >= fechinicio
+                                                     && p.FechaHora <= fechtermino
+                                                     select p.Cantidad).Sum().ToString());
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine(ex.ToString());
+                        cantidad = 0;
+                    }
+                    cantidades[i] = Math.Round(cantidad, 0);
+                }
+            }
+
             return cantidades;
+
         }
 
         public String[] getNombres(String producto, String fundo, String potrero, String sector)
@@ -1135,56 +1205,111 @@ namespace DemoArandanos.Controlador
             return ids;
         }
 
-        public double[] getCantidadTotal(String producto, String fundo, String potrero, String sector, DateTime fechinicio, DateTime fechtermino)
+        public double[] getCantidadTotal(String kilosOenvases, String producto, String fundo, String potrero, String sector, DateTime fechinicio, DateTime fechtermino)
         {
             String[] lista = getIDs(producto, fundo, potrero, sector);
             double[] cantidades = new double[lista.Length];
-            for (int i = 0; i < lista.Length; i++)
+
+            if (kilosOenvases.Equals("KILOS"))
             {
-                var temp = lista[i];
-                double cantidad = 0;
-                try
+                for (int i = 0; i < lista.Length; i++)
                 {
-                    if (potrero.Equals("0") && sector.Equals("0"))
+                    var temp = lista[i];
+                    double cantidad = 0;
+                    try
                     {
-                        cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Producto == producto
-                                                 && p.Potrero == temp
-                                                 && p.FechaHora >= fechinicio
-                                                 && p.FechaHora <= fechtermino
-                                                 select p.PesoNeto).Sum().ToString());
+                        if (potrero.Equals("0") && sector.Equals("0"))
+                        {
+                            cantidad = Double.Parse((from p in contexto.Pesaje
+                                                     where p.Producto == producto
+                                                     && p.Potrero == temp
+                                                     && p.FechaHora >= fechinicio
+                                                     && p.FechaHora <= fechtermino
+                                                     select p.PesoNeto).Sum().ToString());
+                        }
+                        if (!potrero.Equals("0") && sector.Equals("0"))
+                        {
+                            cantidad = Double.Parse((from p in contexto.Pesaje
+                                                     where p.Producto == producto
+                                                     && p.Sector == temp
+                                                     && p.Fundo == fundo
+                                                     && p.Potrero == potrero
+                                                     && p.FechaHora >= fechinicio
+                                                     && p.FechaHora <= fechtermino
+                                                     select p.PesoNeto).Sum().ToString());
+                        }
+                        if (!potrero.Equals("0") && !sector.Equals("0"))
+                        {
+                            cantidad = Double.Parse((from p in contexto.Pesaje
+                                                     where p.Producto == producto
+                                                     && p.Cuartel == temp
+                                                     && p.Fundo == fundo
+                                                     && p.Potrero == potrero
+                                                     && p.Sector == sector
+                                                     && p.FechaHora >= fechinicio
+                                                     && p.FechaHora <= fechtermino
+                                                     select p.PesoNeto).Sum().ToString());
+                        }
                     }
-                    if (!potrero.Equals("0") && sector.Equals("0"))
+                    catch (Exception ex)
                     {
-                        cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Producto == producto
-                                                 && p.Sector == temp
-                                                 && p.Fundo == fundo
-                                                 && p.Potrero == potrero
-                                                 && p.FechaHora >= fechinicio
-                                                 && p.FechaHora <= fechtermino
-                                                 select p.PesoNeto).Sum().ToString());
+                        System.Diagnostics.Debug.WriteLine(ex.ToString());
+                        cantidad = 0;
                     }
-                    if (!potrero.Equals("0") && !sector.Equals("0"))
-                    {
-                        cantidad = Double.Parse((from p in contexto.Pesaje
-                                                 where p.Producto == producto
-                                                 && p.Cuartel == temp
-                                                 && p.Fundo == fundo
-                                                 && p.Potrero == potrero
-                                                 && p.Sector == sector
-                                                 && p.FechaHora >= fechinicio
-                                                 && p.FechaHora <= fechtermino
-                                                 select p.PesoNeto).Sum().ToString());
-                    }
+                    cantidades[i] = cantidad;
                 }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine(ex.ToString());
-                    cantidad = 0;
-                }
-                cantidades[i] = cantidad;
             }
+
+            if (kilosOenvases.Equals("ENVASES"))
+            {
+                for (int i = 0; i < lista.Length; i++)
+                {
+                    var temp = lista[i];
+                    double cantidad = 0;
+                    try
+                    {
+                        if (potrero.Equals("0") && sector.Equals("0"))
+                        {
+                            cantidad = Double.Parse((from p in contexto.Pesaje
+                                                     where p.Producto == producto
+                                                     && p.Potrero == temp
+                                                     && p.FechaHora >= fechinicio
+                                                     && p.FechaHora <= fechtermino
+                                                     select p.Cantidad).Sum().ToString());
+                        }
+                        if (!potrero.Equals("0") && sector.Equals("0"))
+                        {
+                            cantidad = Double.Parse((from p in contexto.Pesaje
+                                                     where p.Producto == producto
+                                                     && p.Sector == temp
+                                                     && p.Fundo == fundo
+                                                     && p.Potrero == potrero
+                                                     && p.FechaHora >= fechinicio
+                                                     && p.FechaHora <= fechtermino
+                                                     select p.Cantidad).Sum().ToString());
+                        }
+                        if (!potrero.Equals("0") && !sector.Equals("0"))
+                        {
+                            cantidad = Double.Parse((from p in contexto.Pesaje
+                                                     where p.Producto == producto
+                                                     && p.Cuartel == temp
+                                                     && p.Fundo == fundo
+                                                     && p.Potrero == potrero
+                                                     && p.Sector == sector
+                                                     && p.FechaHora >= fechinicio
+                                                     && p.FechaHora <= fechtermino
+                                                     select p.Cantidad).Sum().ToString());
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine(ex.ToString());
+                        cantidad = 0;
+                    }
+                    cantidades[i] = Math.Round(cantidad, 0);
+                }
+            }
+
             return cantidades;
         }
     }

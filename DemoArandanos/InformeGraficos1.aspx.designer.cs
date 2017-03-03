@@ -157,6 +157,15 @@ namespace DemoArandanos {
         protected global::System.Web.UI.WebControls.SqlDataSource sectoresDEpotreroVista;
         
         /// <summary>
+        /// Control ddEnvaseOKilo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddEnvaseOKilo;
+        
+        /// <summary>
         /// Control txtFechaInicio.
         /// </summary>
         /// <remarks>
@@ -247,6 +256,15 @@ namespace DemoArandanos {
         protected global::System.Web.UI.WebControls.SqlDataSource cuartelesDEsectorVista;
         
         /// <summary>
+        /// Control lblKilosOEnvases1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblKilosOEnvases1;
+        
+        /// <summary>
         /// Control lbltotal.
         /// </summary>
         /// <remarks>
@@ -272,6 +290,15 @@ namespace DemoArandanos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.DataVisualization.Charting.Chart GraficoCuartel;
+        
+        /// <summary>
+        /// Control lblKilosOEnvases2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblKilosOEnvases2;
         
         /// <summary>
         /// Control lbltotalimp.
