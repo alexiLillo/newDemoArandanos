@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterUva3.Master" AutoEventWireup="true" CodeBehind="InformeProdUvas3.aspx.cs" Inherits="DemoArandanos.InformeProdUvas3" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<h1>Informe Producción Viñedos</h1>
+    <h1>Informe Producción Viñedos</h1>
     <br />
     <form runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -118,7 +119,7 @@
             <label for="ddClase">Categoría</label>
             <asp:DropDownList ID="ddClase" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsClase" DataTextField="Clase" DataValueField="Clase" OnDataBound="ddClase_DataBound"></asp:DropDownList>
             <asp:SqlDataSource ID="dsClase" runat="server" ConnectionString="<%$ ConnectionStrings:Modelo %>" SelectCommand="SELECT DISTINCT [Clase] FROM [ClaseVariedadPeso] WHERE ID_Producto='33'"></asp:SqlDataSource>
-            
+
             <br />
             <label for="ddVariedad">Variedad</label>
             <asp:DropDownList ID="ddVariedad" CssClass="form-control" AutoPostBack="True" runat="server" DataSourceID="dsVariedad" DataTextField="Nombre" DataValueField="ID_Variedad" OnDataBound="ddVariedad_DataBound">

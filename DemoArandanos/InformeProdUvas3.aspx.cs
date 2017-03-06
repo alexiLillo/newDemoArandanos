@@ -95,11 +95,13 @@ namespace DemoArandanos
             decimal kilos = 0;
             decimal bins = 0;
             List<String> lista = new List<string>();
+            List<String> listaTrabDia = new List<string>();
 
             for (int i = 0; i < rows; i++)
             {
                 kilos += Decimal.Parse(grillaPesajesProd.Rows[i].Cells[6].Text);
                 lista.Add(grillaPesajesProd.Rows[i].Cells[2].Text);
+                listaTrabDia.Add(grillaPesajesProd.Rows[i].Cells[2].Text + "/" + DateTime.Parse(grillaPesajesProd.Rows[i].Cells[5].Text).ToString("dd-MM-yyyy"));
             }
 
             for (int i = 0; i < rows; i++)
@@ -107,7 +109,9 @@ namespace DemoArandanos
                 bins += Decimal.Parse(grillaPesajesProd.Rows[i].Cells[7].Text);
             }
 
-            int trabajadores = new HashSet<String>(lista).Count;
+            int trabajadoresReal = new HashSet<String>(lista).Count;
+            int trabajadores = new HashSet<String>(listaTrabDia).Count;
+            //int trabajadores = lista.Count;
 
             if (txtFiltro.Text.Equals(""))
                 lbltotalbins.Text = decimal.Round(bins, 0).ToString();
@@ -115,8 +119,8 @@ namespace DemoArandanos
                 lbltotalbins.Text = decimal.Round(bins, 2).ToString();
 
             //lbltotalbins.Text = decimal.Round(bins, 2).ToString();
-            lbltotalkilos.Text = decimal.Round(kilos, 2).ToString();
-            lbltotaltrabajadores.Text = trabajadores.ToString();
+            lbltotalkilos.Text = decimal.Round(kilos, 0).ToString();
+            lbltotaltrabajadores.Text = trabajadores.ToString() + " (Real: " + trabajadoresReal.ToString() + ")";
             decimal prom = 0;
             try
             {
@@ -126,7 +130,7 @@ namespace DemoArandanos
             {
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
-            lblprombinstrab.Text = prom.ToString();
+            lblprombinstrab.Text = prom.ToString() + " diario";
 
             //imprimir
             try

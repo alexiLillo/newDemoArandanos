@@ -94,7 +94,7 @@ namespace DemoArandanos
             else
             {
                 graf.Series[0].Color = Color.Blue;
-                lbltotal.Text = yValores.Sum().ToString();
+                lbltotal.Text = decimal.Round(Convert.ToDecimal(yValores.Sum()), 0).ToString();
             }
 
             graf.ImageType = ChartImageType.Jpeg;
