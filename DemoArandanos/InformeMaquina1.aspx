@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Informe Producción Máquina</h1>
+    <h1>Informe Producción Contratistas, Arándanos</h1>
     <br />
     <form runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -65,7 +65,7 @@
 
                 <div class="col-md-12">
                     <div class="visible-print">
-                        <h2>Informe de Producción Máquina Cosechadora Arándanos</h2>
+                        <h2>Informe de Producción Arándanos, Contratistas</h2>
                         <br />
                         <h5>Desde:
                             <asp:Label ID="lbldesde" runat="server" Text=""></asp:Label></h5>
@@ -185,6 +185,7 @@
                     <div class="table-responsive">
                         <asp:GridView ID="grillaProdMaquina" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="dsGrillaMaquina" OnDataBound="grillaProdMaquina_DataBound" >
                             <Columns>
+                                <asp:BoundField DataField="Descripcion" HeaderText="Descripción" SortExpression="Descripcion" />
                                 <asp:BoundField DataField="Variedad" HeaderText="Variedad" SortExpression="Variedad" />
                                 <asp:BoundField DataField="Fundo" HeaderText="Fundo" SortExpression="Fundo" />
                                 <asp:BoundField DataField="Potrero" HeaderText="Potrero" SortExpression="Potrero" />

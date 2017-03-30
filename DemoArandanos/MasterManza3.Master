@@ -59,6 +59,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="InformeProdManzanos3.aspx">Producción Manzanos</a></li>
+                            <li><a href="InformeMaquinaManzanos3.aspx">Producción Contratistas</a></li>
                             <li><a href="InformeGrafiManzanos3.aspx">Gráficos Producción</a></li>
                             <li><a href="InformeRankManzanos3.aspx">Ranking Trabajadores</a></li>
                             <li><a href="InformeRankCuadrilla3.aspx">Ranking Cuadrillas</a></li>

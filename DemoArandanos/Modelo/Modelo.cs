@@ -47,9 +47,15 @@ namespace DemoArandanos.Modelo
         public virtual DbSet<TablaVista> TablaVista { get; set; }
         public virtual DbSet<rmorisb_acumDiaMes> rmorisb_acumDiaMes { get; set; }
         public virtual DbSet<View_1> View_1 { get; set; }
+        public virtual DbSet<View_2> View_2 { get; set; }
+        public virtual DbSet<View_3> View_3 { get; set; }
+        public virtual DbSet<Vis_ClaseVariedadPeso> Vis_ClaseVariedadPeso { get; set; }
         public virtual DbSet<Vis_Duplicadas1> Vis_Duplicadas1 { get; set; }
         public virtual DbSet<Vis_Fun_Pot_Sec_Cua_Hil_Est_Var> Vis_Fun_Pot_Sec_Cua_Hil_Est_Var { get; set; }
+        public virtual DbSet<Vis_Pesaje_Variedad_Producto> Vis_Pesaje_Variedad_Producto { get; set; }
         public virtual DbSet<Vis_PesajeGeneral> Vis_PesajeGeneral { get; set; }
+        public virtual DbSet<Vis_PesajeGeneral_2> Vis_PesajeGeneral_2 { get; set; }
+        public virtual DbSet<Vis_PotreroSectorCuartelSuperf> Vis_PotreroSectorCuartelSuperf { get; set; }
         public virtual DbSet<VistaAll> VistaAll { get; set; }
         public virtual DbSet<VistaApkPesaje> VistaApkPesaje { get; set; }
         public virtual DbSet<VistaConsulta> VistaConsulta { get; set; }
@@ -99,6 +105,10 @@ namespace DemoArandanos.Modelo
 
             modelBuilder.Entity<CosechaMaquina>()
                 .Property(e => e.Recepcion)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CosechaMaquina>()
+                .Property(e => e.Descripcion)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Cuadrillas>()
@@ -794,6 +804,62 @@ namespace DemoArandanos.Modelo
                 .Property(e => e.ID_Producto)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<View_2>()
+                .Property(e => e.QRenvase)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<View_2>()
+                .Property(e => e.FechaHoraModificacion)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<View_2>()
+                .Property(e => e.Lectura_SVAL)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<View_2>()
+                .Property(e => e.Cantidad)
+                .HasPrecision(18, 3);
+
+            modelBuilder.Entity<View_2>()
+                .Property(e => e.PesoNeto)
+                .HasPrecision(18, 3);
+
+            modelBuilder.Entity<View_2>()
+                .Property(e => e.RutTrabajador)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<View_3>()
+                .Property(e => e.Producto)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<View_3>()
+                .Property(e => e.Fecha)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<View_3>()
+                .Property(e => e.Cantidad)
+                .HasPrecision(38, 3);
+
+            modelBuilder.Entity<View_3>()
+                .Property(e => e.Kilos)
+                .HasPrecision(38, 3);
+
+            modelBuilder.Entity<Vis_ClaseVariedadPeso>()
+                .Property(e => e.PRODUCTO)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_ClaseVariedadPeso>()
+                .Property(e => e.VARIEDAD)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_ClaseVariedadPeso>()
+                .Property(e => e.Clase)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_ClaseVariedadPeso>()
+                .Property(e => e.TipoEnvase)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Vis_Duplicadas1>()
                 .Property(e => e.QRenvase)
                 .IsUnicode(false);
@@ -832,6 +898,26 @@ namespace DemoArandanos.Modelo
 
             modelBuilder.Entity<Vis_Fun_Pot_Sec_Cua_Hil_Est_Var>()
                 .Property(e => e.ID_Planta)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_Pesaje_Variedad_Producto>()
+                .Property(e => e.Producto)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_Pesaje_Variedad_Producto>()
+                .Property(e => e.N_Producto)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_Pesaje_Variedad_Producto>()
+                .Property(e => e.Variedad)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_Pesaje_Variedad_Producto>()
+                .Property(e => e.N_Variedad)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_Pesaje_Variedad_Producto>()
+                .Property(e => e.Fecha)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Vis_PesajeGeneral>()
@@ -936,6 +1022,118 @@ namespace DemoArandanos.Modelo
 
             modelBuilder.Entity<Vis_PesajeGeneral>()
                 .Property(e => e.UsuarioModificacion)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral>()
+                .Property(e => e.Clase)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Producto)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Nombre_Producto)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.QRenvase)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.RutTrabajador)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Nombre_Trabajador)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Apellido)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Fundo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Nombre_Fundo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Potrero)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Nombre_Potrero)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Sector)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Nombre_Sector)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Variedad)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Nombre_Variedad)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Cuartel)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Nombre_Cuartel)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Tara)
+                .HasPrecision(18, 3);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Formato)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Lectura_SVAL)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.TipoRegistro)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.FechaHoraModificacion)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.UsuarioModificacion)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PesajeGeneral_2>()
+                .Property(e => e.Clase)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PotreroSectorCuartelSuperf>()
+                .Property(e => e.ID_Producto)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PotreroSectorCuartelSuperf>()
+                .Property(e => e.N_Potrero)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PotreroSectorCuartelSuperf>()
+                .Property(e => e.N_Sector)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vis_PotreroSectorCuartelSuperf>()
+                .Property(e => e.N_Cuartel)
                 .IsUnicode(false);
 
             modelBuilder.Entity<VistaAll>()

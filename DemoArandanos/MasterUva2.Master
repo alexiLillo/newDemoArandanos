@@ -60,6 +60,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="InformeProdUvas2.aspx">Producción Uvas</a></li>
+                            <li><a href="InformeMaquinaUva2.aspx">Producción Contratistas</a></li>
                             <li><a href="InformeGrafiUvas2.aspx">Gráficos Producción</a></li>
                             <li><a href="InformeRankUvas2.aspx">Ranking Trabajadores</a></li>
                             <li><a href="InformeRankCuadrillaUvas2.aspx">Ranking Cuadrillas</a></li>
@@ -67,6 +68,7 @@
                             <li class="divider"></li>
                             <li><a href="TrabajadoresUvas2.aspx">Enrolamiento Trabajadores</a></li>
                             <li><a href="PesajesUvas2.aspx">Administración Registros</a></li>
+                            <li><a href="MaquinaUva2.aspx">Adm. Cosecha Contratistas</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

@@ -119,5 +119,10 @@ namespace DemoArandanos.Modelo
         [Column(Order = 15)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
+
+        [Key]
+        [Column(Order = 16)]
+        [StringLength(50)]
+        public string Clase { get; set; }
     }
 }

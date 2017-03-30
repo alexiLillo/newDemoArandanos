@@ -63,7 +63,7 @@
                         <ul class="dropdown-menu">
                              <li><a href="InformeCosecha3.aspx">Cosecha Cuarteles</a></li>
                             <li><a href="InformeProd3.aspx">Producción Arándanos</a></li>
-                            <li><a href="InformeMaquina3.aspx">Producción Máquina</a></li>
+                            <li><a href="InformeMaquina3.aspx">Producción Contratistas</a></li>
                             <li><a href="InformeGraficos3.aspx">Gráficos Producción</a></li>
                             <li><a href="InformeRanking3.aspx">Ranking Trabajadores</a></li>
                             <li><a href="InformeRepetidas3.aspx">Bandejas Repetidas</a></li>

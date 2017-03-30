@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h1>Cosecha Máquina</h1>
+    <h1>Cosecha Arándanos Contratistas</h1>
     <br />
     <form runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -61,9 +61,18 @@
                 <!-- DIVIDER -->
                 <div class="col-md-12">
                     <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
-                        <span style="font-size: 20px; background-color: #F3F5F6; padding: 0 10px;">Administración Cosecha Máquina</span>
+                        <span style="font-size: 20px; background-color: #F3F5F6; padding: 0 10px;">Administración Cosecha Contratistas</span>
                     </div>
                 </div>
+
+                <div class="col-md-12">
+                    <div class="col-md-5">
+                        <br />
+                        <label for="txtDescripcion">Descripción</label>
+                        <asp:TextBox ID="txtDescripcion" runat="server" type="input" required="required" class="form-control" placeholder="Cosecha externa, máquina, contratistas..."></asp:TextBox>
+                    </div>
+                </div>
+
                 <div class="col-md-12">
                     <br />
                     <div class="col-md-2">
@@ -178,7 +187,7 @@
                     <br />
                     <br />
                     <div style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
-                        <span style="font-size: 20px; background-color: #F3F5F6; padding: 0 10px;">Seleccionar Cosecha Máquina</span>
+                        <span style="font-size: 20px; background-color: #F3F5F6; padding: 0 10px;">Seleccionar Cosecha Contratistas</span>
                     </div>
                 </div>
 
@@ -203,21 +212,22 @@
                     <!-- grilla -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Cosechas Máquina</h3>
+                            <h3 class="panel-title">Cosechas Contratistas</h3>
                         </div>
                         <div class="panel-body" style="max-height: 500px; overflow-y: scroll; font-size: 100%">
                             <div class="table-responsive">
                                 <asp:GridView ID="grillaMaquina" class="table table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="dsCosechaMaquina" OnSelectedIndexChanged="grillaMaquina_SelectedIndexChanged">
-                                    <Columns>                                        
+                                    <Columns>
                                         <asp:CommandField ButtonType="Image" SelectImageUrl="~/images/ic_mode_edit_black_24dp_1x.png" ShowSelectButton="True" />
+                                        <asp:BoundField DataField="Descripcion" HeaderText="Descripción" SortExpression="Descripcion" />
                                         <asp:BoundField DataField="Variedad" HeaderText="Variedad" SortExpression="Variedad" />
                                         <asp:BoundField DataField="Fundo" HeaderText="Fundo" SortExpression="Fundo" />
                                         <asp:BoundField DataField="Potrero" HeaderText="Potrero" SortExpression="Potrero" />
-                                        <asp:BoundField DataField="Sector" HeaderText="Sector" SortExpression="Sector" />                                        
+                                        <asp:BoundField DataField="Sector" HeaderText="Sector" SortExpression="Sector" />
                                         <asp:BoundField DataField="Cuartel" HeaderText="Cuartel" SortExpression="Cuartel" />
-                                        <asp:BoundField DataField="Fecha" HeaderText="Fecha" SortExpression="Fecha" DataFormatString="{0:dd/MM/yyyy}"/>
-                                        <asp:BoundField DataField="PesoNeto" HeaderText="Kilos" SortExpression="PesoNeto" DataFormatString="{0:n}"/>
-                                        <asp:BoundField DataField="Bandejas" HeaderText="Bandejas" SortExpression="Bandejas" DataFormatString="{0:n0}"/>
+                                        <asp:BoundField DataField="Fecha" HeaderText="Fecha" SortExpression="Fecha" DataFormatString="{0:dd/MM/yyyy}" />
+                                        <asp:BoundField DataField="PesoNeto" HeaderText="Kilos" SortExpression="PesoNeto" DataFormatString="{0:n}" />
+                                        <asp:BoundField DataField="Bandejas" HeaderText="Bandejas" SortExpression="Bandejas" DataFormatString="{0:n0}" />
                                         <asp:BoundField DataField="Guia" HeaderText="Guía" SortExpression="Guia" />
                                         <asp:BoundField DataField="Recepcion" HeaderText="Recepción" SortExpression="Recepcion" />
                                         <asp:BoundField DataField="id" HeaderText="ID" SortExpression="id" />

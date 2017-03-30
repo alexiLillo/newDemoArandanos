@@ -59,6 +59,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="InformeProdManzanos1.aspx">Producción Manzanos</a></li>
+                            <li><a href="InformeMaquinaManzanos1.aspx">Producción Contratistas</a></li>
                             <li><a href="InformeGrafiManzanos1.aspx">Gráficos Producción</a></li>
                             <li><a href="InformeRankManzanos1.aspx">Ranking Trabajadores</a></li>
                             <li><a href="InformeRankCuadrilla1.aspx">Ranking Cuadrillas</a></li>
@@ -66,6 +67,7 @@
                             <li class="divider"></li>
                             <li><a href="TrabajadoresManzanos1.aspx">Enrolamiento Trabajadores</a></li>
                             <li><a href="PesajesManzanos1.aspx">Administración Registros</a></li>
+                            <li><a href="MaquinaManzanos1.aspx">Adm. Cosecha Contratistas</a></li>
                             <li><a href="ReajustarPesoBin.aspx">Reajustar Pesajes</a></li>
                         </ul>
                     </li>

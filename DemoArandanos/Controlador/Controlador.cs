@@ -917,11 +917,11 @@ namespace DemoArandanos.Controlador
             }
         }
         //ADMINISTRACION DE COSECHA MAQUINA
-        public void insertarCosechaMaquina(String producto, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fecha, decimal pesoneto, decimal bandejas, String guia, String recepcion)
+        public void insertarCosechaMaquina(String producto, String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fecha, decimal pesoneto, decimal bandejas, String guia, String recepcion, String descripcion)
         {
             try
             {
-                contexto.CosechaMaquina.Add(new CosechaMaquina { Producto = producto.ToUpper().Replace(".", ""), Fundo = fundo.ToUpper().Replace(".", ""), Potrero = potrero.ToUpper().Replace(".", ""), Sector = sector.ToUpper().Replace(".", ""), Variedad = variedad.ToUpper().Replace(".", ""), Cuartel = cuartel.ToUpper().Replace(".", ""), Fecha = fecha, PesoNeto = pesoneto, Bandejas = bandejas, Guia = guia.ToUpper().Replace(".", ""), Recepcion = recepcion.ToUpper().Replace(".", ""), ID_Map = lastMapeo() });
+                contexto.CosechaMaquina.Add(new CosechaMaquina { Producto = producto.ToUpper().Replace(".", ""), Fundo = fundo.ToUpper().Replace(".", ""), Potrero = potrero.ToUpper().Replace(".", ""), Sector = sector.ToUpper().Replace(".", ""), Variedad = variedad.ToUpper().Replace(".", ""), Cuartel = cuartel.ToUpper().Replace(".", ""), Fecha = fecha, PesoNeto = pesoneto, Bandejas = bandejas, Guia = guia.ToUpper().Replace(".", ""), Recepcion = recepcion.ToUpper().Replace(".", ""), ID_Map = lastMapeo(), Descripcion = descripcion.ToUpper().Replace(".", "") });
                 contexto.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
@@ -936,7 +936,7 @@ namespace DemoArandanos.Controlador
             }
         }
 
-        public void actualizarCosechaMaquina(String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fecha, decimal pesoneto, decimal bandejas, String guia, String recepcion, int id)
+        public void actualizarCosechaMaquina(String fundo, String potrero, String sector, String variedad, String cuartel, DateTime fecha, decimal pesoneto, decimal bandejas, String guia, String recepcion, int id, String descripcion)
         {
             try
             {
@@ -953,6 +953,7 @@ namespace DemoArandanos.Controlador
                 cosechaMaquina.Bandejas = bandejas;
                 cosechaMaquina.Guia = guia.ToUpper().Replace(".", "");
                 cosechaMaquina.Recepcion = recepcion.ToUpper().Replace(".", "");
+                cosechaMaquina.Descripcion = descripcion.ToUpper().Replace(".", "");
                 contexto.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)

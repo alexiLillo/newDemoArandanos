@@ -50,5 +50,9 @@ namespace DemoArandanos.Modelo
         public int? ID_Map { get; set; }
 
         public int id { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Descripcion { get; set; }
     }
 }

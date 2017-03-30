@@ -190,6 +190,12 @@
     <Content Include="InformeMaquina1.aspx" />
     <Content Include="InformeMaquina2.aspx" />
     <Content Include="InformeMaquina3.aspx" />
+    <Content Include="InformeMaquinaManzanos1.aspx" />
+    <Content Include="InformeMaquinaManzanos2.aspx" />
+    <Content Include="InformeMaquinaManzanos3.aspx" />
+    <Content Include="InformeMaquinaUva1.aspx" />
+    <Content Include="InformeMaquinaUva2.aspx" />
+    <Content Include="InformeMaquinaUva3.aspx" />
     <Content Include="InformePlantas.aspx" />
     <Content Include="InformePlantas2.aspx" />
     <Content Include="InformePlantas3.aspx" />
@@ -229,6 +235,10 @@
     <Content Include="mapa.aspx" />
     <Content Include="Maquina1.aspx" />
     <Content Include="Maquina2.aspx" />
+    <Content Include="MaquinaManzanos1.aspx" />
+    <Content Include="MaquinaManzanos2.aspx" />
+    <Content Include="MaquinaUva1.aspx" />
+    <Content Include="MaquinaUva2.aspx" />
     <Content Include="ModificarMasivo1.aspx" />
     <Content Include="ModificarMasivo2.aspx" />
     <Content Include="packages.config" />
@@ -437,6 +447,48 @@
     </Compile>
     <Compile Include="InformeMaquina3.aspx.designer.cs">
       <DependentUpon>InformeMaquina3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeMaquinaManzanos1.aspx.cs">
+      <DependentUpon>InformeMaquinaManzanos1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeMaquinaManzanos1.aspx.designer.cs">
+      <DependentUpon>InformeMaquinaManzanos1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeMaquinaManzanos2.aspx.cs">
+      <DependentUpon>InformeMaquinaManzanos2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeMaquinaManzanos2.aspx.designer.cs">
+      <DependentUpon>InformeMaquinaManzanos2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeMaquinaManzanos3.aspx.cs">
+      <DependentUpon>InformeMaquinaManzanos3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeMaquinaManzanos3.aspx.designer.cs">
+      <DependentUpon>InformeMaquinaManzanos3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeMaquinaUva1.aspx.cs">
+      <DependentUpon>InformeMaquinaUva1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeMaquinaUva1.aspx.designer.cs">
+      <DependentUpon>InformeMaquinaUva1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeMaquinaUva2.aspx.cs">
+      <DependentUpon>InformeMaquinaUva2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeMaquinaUva2.aspx.designer.cs">
+      <DependentUpon>InformeMaquinaUva2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InformeMaquinaUva3.aspx.cs">
+      <DependentUpon>InformeMaquinaUva3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InformeMaquinaUva3.aspx.designer.cs">
+      <DependentUpon>InformeMaquinaUva3.aspx</DependentUpon>
     </Compile>
     <Compile Include="InformePlantas.aspx.cs">
       <DependentUpon>InformePlantas.aspx</DependentUpon>
@@ -725,6 +777,34 @@
     <Compile Include="Maquina2.aspx.designer.cs">
       <DependentUpon>Maquina2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MaquinaManzanos1.aspx.cs">
+      <DependentUpon>MaquinaManzanos1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaquinaManzanos1.aspx.designer.cs">
+      <DependentUpon>MaquinaManzanos1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MaquinaManzanos2.aspx.cs">
+      <DependentUpon>MaquinaManzanos2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaquinaManzanos2.aspx.designer.cs">
+      <DependentUpon>MaquinaManzanos2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MaquinaUva1.aspx.cs">
+      <DependentUpon>MaquinaUva1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaquinaUva1.aspx.designer.cs">
+      <DependentUpon>MaquinaUva1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MaquinaUva2.aspx.cs">
+      <DependentUpon>MaquinaUva2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaquinaUva2.aspx.designer.cs">
+      <DependentUpon>MaquinaUva2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Master2.Master.cs">
       <DependentUpon>Master2.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -817,6 +897,8 @@
     <Compile Include="Modelo\Usuarios.cs" />
     <Compile Include="Modelo\Variedad.cs" />
     <Compile Include="Modelo\View_1.cs" />
+    <Compile Include="Modelo\View_2.cs" />
+    <Compile Include="Modelo\View_3.cs" />
     <Compile Include="Modelo\VistaAll.cs" />
     <Compile Include="Modelo\VistaApkPesaje.cs" />
     <Compile Include="Modelo\VistaConsulta.cs" />
@@ -825,9 +907,13 @@
     <Compile Include="Modelo\VistaCosechaHoy.cs" />
     <Compile Include="Modelo\VistaDiasCosecha.cs" />
     <Compile Include="Modelo\VistaRanking.cs" />
+    <Compile Include="Modelo\Vis_ClaseVariedadPeso.cs" />
     <Compile Include="Modelo\Vis_Duplicadas1.cs" />
     <Compile Include="Modelo\Vis_Fun_Pot_Sec_Cua_Hil_Est_Var.cs" />
     <Compile Include="Modelo\Vis_PesajeGeneral.cs" />
+    <Compile Include="Modelo\Vis_PesajeGeneral_2.cs" />
+    <Compile Include="Modelo\Vis_Pesaje_Variedad_Producto.cs" />
+    <Compile Include="Modelo\Vis_PotreroSectorCuartelSuperf.cs" />
     <Compile Include="ModificarMasivo1.aspx.cs">
       <DependentUpon>ModificarMasivo1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

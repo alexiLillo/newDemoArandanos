@@ -75,6 +75,7 @@ namespace DemoArandanos
             grillaMaquina.DataBind();
             btGuardarCosechaMaquina.Attributes.Remove("disabled");
 
+            txtDescripcion.Text = "";
             txtBandejas.Text = "";
             txtFechaCosecha.Text = "";
             txtGuia.Text = "";
@@ -91,24 +92,25 @@ namespace DemoArandanos
 
         protected void grillaMaquina_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddVariedad.SelectedValue = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[1].Text.Replace("&nbsp;", "");
+            txtDescripcion.Text = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[1].Text.Replace("&nbsp;", "");
+            ddVariedad.SelectedValue = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[2].Text.Replace("&nbsp;", "");
             ddFundo.DataBind();
-            ddFundo.SelectedValue = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[2].Text.Replace("&nbsp;", "");
+            ddFundo.SelectedValue = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[3].Text.Replace("&nbsp;", "");
             ddPotrero.DataBind();
-            ddPotrero.SelectedValue = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[3].Text.Replace("&nbsp;", "");
+            ddPotrero.SelectedValue = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[4].Text.Replace("&nbsp;", "");
             ddSector.DataBind();
-            ddSector.SelectedValue = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[4].Text.Replace("&nbsp;", "");
+            ddSector.SelectedValue = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[5].Text.Replace("&nbsp;", "");
             ddCuartel.DataBind();
-            ddCuartel.SelectedValue = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[5].Text.Replace("&nbsp;", "");
-            DateTime d = DateTime.Parse(grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[6].Text.Replace("&nbsp;", "").ToString());
+            ddCuartel.SelectedValue = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[6].Text.Replace("&nbsp;", "");
+            DateTime d = DateTime.Parse(grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[7].Text.Replace("&nbsp;", "").ToString());
             txtFechaCosecha.Text = d.ToString("yyyy-MM-dd");
-            decimal pesoNeto = Decimal.Parse(grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[7].Text.Replace("&nbsp;", "").ToString().Replace(".", ""));
-            decimal bandejas = Decimal.Parse(grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[8].Text.Replace("&nbsp;", "").ToString().Replace(".", ""));
+            decimal pesoNeto = Decimal.Parse(grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[8].Text.Replace("&nbsp;", "").ToString().Replace(".", ""));
+            decimal bandejas = Decimal.Parse(grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[9].Text.Replace("&nbsp;", "").ToString().Replace(".", ""));
             txtKilos.Text = pesoNeto.ToString().Replace(",", ".");
             txtBandejas.Text = bandejas.ToString().Replace(",", ".");
-            txtGuia.Text = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[9].Text.Replace("&nbsp;", "");
-            txtRecepcion.Text = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[10].Text.Replace("&nbsp;", "");
-            lblid.Text = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[11].Text.Replace("&nbsp;", "");
+            txtGuia.Text = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[10].Text.Replace("&nbsp;", "");
+            txtRecepcion.Text = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[11].Text.Replace("&nbsp;", "");
+            lblid.Text = grillaMaquina.Rows[grillaMaquina.SelectedIndex].Cells[12].Text.Replace("&nbsp;", "");
 
             btGuardarCosechaMaquina.Attributes.Add("disabled", "true");
         }
@@ -121,22 +123,22 @@ namespace DemoArandanos
                 {
                     decimal pesoNeto = Decimal.Parse(txtKilos.Text.Replace(".", ","));
                     decimal bandejas = Decimal.Parse(txtBandejas.Text.Replace(".", ","));
-                    control.insertarCosechaMaquina("32", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaCosecha.Text), pesoNeto, bandejas, txtGuia.Text, txtRecepcion.Text);
-                    lblsuccess.Text = "Cosecha Máquina ingresada correctamente.";
+                    control.insertarCosechaMaquina("32", ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaCosecha.Text), pesoNeto, bandejas, txtGuia.Text, txtRecepcion.Text, txtDescripcion.Text);
+                    lblsuccess.Text = "Cosecha Contratista ingresada correctamente.";
                     divSuccess.Visible = true;
                     limpiarCampos();
                 }
                 catch (Exception ex)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.ToString());
-                    lbldanger.Text = "No se pudo ingresar Cosecha Máquina";
+                    lbldanger.Text = "No se pudo ingresar Cosecha Contratista";
                     divDanger.Visible = true;
                 }
 
             }
             else
             {
-                lblwarning.Text = "Seleccione todos los campos para poder registrar Cosecha Máquina";
+                lblwarning.Text = "Seleccione todos los campos para poder registrar Cosecha Contratista";
                 divWarning.Visible = true;
             }
         }
@@ -150,8 +152,8 @@ namespace DemoArandanos
                     decimal pesoNeto = Decimal.Parse(txtKilos.Text.Replace(".", ","));
                     decimal bandejas = Decimal.Parse(txtBandejas.Text.Replace(".", ","));
                     int id = int.Parse(lblid.Text);
-                    control.actualizarCosechaMaquina(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaCosecha.Text), pesoNeto, bandejas, txtGuia.Text, txtRecepcion.Text, id);
-                    lblsuccess.Text = "Cosecha Máquina actualizada correctamente.";
+                    control.actualizarCosechaMaquina(ddFundo.SelectedValue, ddPotrero.SelectedValue, ddSector.SelectedValue, ddVariedad.SelectedValue, ddCuartel.SelectedValue, DateTime.Parse(txtFechaCosecha.Text), pesoNeto, bandejas, txtGuia.Text, txtRecepcion.Text, id, txtDescripcion.Text);
+                    lblsuccess.Text = "Cosecha Contratista actualizada correctamente.";
                     divSuccess.Visible = true;
                     limpiarCampos();
                     btGuardarCosechaMaquina.Attributes.Remove("disabled");
@@ -159,13 +161,13 @@ namespace DemoArandanos
                 catch (Exception ex)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.ToString());
-                    lbldanger.Text = "No se pudo actualizar Cosecha Máquina ";
+                    lbldanger.Text = "No se pudo actualizar Cosecha Contratista ";
                     divDanger.Visible = true;
                 }
             }
             else
             {
-                lblwarning.Text = "Seleccione todos los campos para poder actualizar Cosecha Máquina";
+                lblwarning.Text = "Seleccione todos los campos para poder actualizar Cosecha Contratista";
                 divWarning.Visible = true;
             }
         }
@@ -176,7 +178,7 @@ namespace DemoArandanos
             {
                 int id = int.Parse(lblid.Text);
                 control.eliminarCosechaMaquina(id);
-                lblinfo.Text = "Cosecha Máquina eliminada.";
+                lblinfo.Text = "Cosecha Contratista eliminada.";
                 divInfo.Visible = true;
                 limpiarCampos();
                 btGuardarCosechaMaquina.Attributes.Remove("disabled");
@@ -184,7 +186,7 @@ namespace DemoArandanos
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
-                lbldanger.Text = "No se pudo eliminar Cosecha Máquina";
+                lbldanger.Text = "No se pudo eliminar Cosecha Contratista";
                 divDanger.Visible = true;
             }
         }

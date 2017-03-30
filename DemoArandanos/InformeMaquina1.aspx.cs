@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -83,15 +80,15 @@ namespace DemoArandanos
 
             for (int i = 0; i < rows; i++)
             {
-                kilos += Decimal.Parse(grillaProdMaquina.Rows[i].Cells[6].Text);
+                kilos += Decimal.Parse(grillaProdMaquina.Rows[i].Cells[7].Text);
             }
 
             for (int i = 0; i < rows; i++)
             {
-                bandejas += Decimal.Parse(grillaProdMaquina.Rows[i].Cells[7].Text);
+                bandejas += Decimal.Parse(grillaProdMaquina.Rows[i].Cells[8].Text);
             }
 
-            lbltotalkilos.Text = kilos.ToString();
+            lbltotalkilos.Text = decimal.Round(kilos, 0).ToString();
             lbltotalbandejas.Text = bandejas.ToString();            
            
             //imprimir
@@ -132,7 +129,7 @@ namespace DemoArandanos
             Response.Clear();
             Response.Buffer = true;
             Response.ContentEncoding = System.Text.Encoding.Default;
-            Response.AddHeader("content-disposition", "attachment;filename=Produccion-Maquina-Arandanos-" + lblvaried.Text + "-" + lblfund.Text + "-" + lblpotrer.Text + "-" + lblsect.Text + "-" + lblcuart.Text + "-'" + lbldesde.Text + "'-'" + lblhasta.Text + "'-.xls");
+            Response.AddHeader("content-disposition", "attachment;filename=Produccion-Contratistas-Arandanos-" + lblvaried.Text + "-" + lblfund.Text + "-" + lblpotrer.Text + "-" + lblsect.Text + "-" + lblcuart.Text + "-'" + lbldesde.Text + "'-'" + lblhasta.Text + "'-.xls");
             Response.Charset = "";
             Response.ContentType = "application/vnd.ms-excel";
             using (StringWriter sw = new StringWriter())

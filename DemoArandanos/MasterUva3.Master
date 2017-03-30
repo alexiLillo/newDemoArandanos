@@ -60,6 +60,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="InformeProdUvas3.aspx">Producción Uvas</a></li>
+                            <li><a href="InformeMaquinaUva3.aspx">Producción Contratistas</a></li>
                             <li><a href="InformeGrafiUvas3.aspx">Gráficos Producción</a></li>
                             <li><a href="InformeRankUvas3.aspx">Ranking Trabajadores</a></li>
                             <li><a href="InformeRankCuadrillaUvas3.aspx">Ranking Cuadrillas</a></li>
